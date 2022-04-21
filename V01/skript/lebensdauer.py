@@ -5,42 +5,50 @@ import uncertainties.unumpy as unp
 from uncertainties.unumpy import (nominal_values as noms, std_devs as stds)
 from scipy.optimize import curve_fit
 
-
-
-def efunk(N0, l, U, x):
+def efunk(x, N0, l, U):
     return N0*np.exp(-l*x)+U 
 
 N = np.genfromtxt('data/ronja.dat', unpack=True)
 K = np.linspace(1,len(N),len(N))
 
+#Kanäle in Zeit umrechnen
 a = ufloat(0.02166913, 0.00001165)
 b = ufloat(0.15088736, 0.00293726)
 t = a * K + b
 
-params, cov = curve_fit(efunk,  noms(t),  N, bounds=([75,0.3,0.4],[85,0.46,0.9]))
-
-print(params)
-
-K_null=np.zeros(69,dtype=int)
-j=0
+#cutte unphysikalische Werte (N=0)
+indexes=np.zeros(69)
+n=0
 for i in range(len(N)):
     if N[i]<1:
-        K_null[j]=i+1
-        j=j+1
-t_null = a * K_null + b
+        indexes[n]=i
+        n=n+1
+indexes = indexes.astype(int)
 
-N0 = 82
-l  = 0.46
-U  = 0.74
+N_cut = np.delete(N, indexes)
+t_cut = np.delete(t, indexes)
 
+#Regression
+params, cov = curve_fit(efunk,  noms(t_cut),  N_cut)
+
+print("\nRegressionsparameter für die Lebensdauer sind")
+errors = np.sqrt(np.diag(cov))
+for name, value, error in zip('NlU', params, errors):
+    print(f'{name} = {value:.8f} ± {error:.8f}')
+
+#Plot
 x=noms(np.linspace(np.min(t), np.max(t)))
-plt.errorbar(noms(t),       N,                     xerr=stds(t),      yerr=np.sqrt(N), color='navy', ecolor='grey', markersize=3.5, elinewidth=0.5, fmt='.', label="Daten")
-plt.errorbar(noms(t_null),  np.zeros(len(t_null)), xerr=stds(t_null), yerr=0,          color='red',                 markersize=3.5, elinewidth=0.5, fmt='.', label="entfernte Daten")
-plt.plot(x, efunk(N0, l, U, x),                       color='black', label="Ronja")
-plt.plot(x, efunk(params[0], params[1], params[2],x), color='orangered', label="fit")
+plt.errorbar(noms(t),     N,     xerr=stds(t),     yerr=np.sqrt(N),     color='red', ecolor='grey',  markersize=3.5, elinewidth=0.5, fmt='.', label="entfernte Daten")
+plt.errorbar(noms(t_cut), N_cut, xerr=stds(t_cut), yerr=np.sqrt(N_cut), color='navy', ecolor='grey', markersize=3.5, elinewidth=0.5, fmt='.', label="Daten")
+plt.plot(x, efunk(x, params[0], params[1], params[2]), color='orangered', label="fit")
 plt.xlabel(r"t[us]")
 plt.ylabel(r"$N[1/s]$")
 plt.legend(loc='best')
 plt.tight_layout()
 plt.grid()
 plt.savefig('build/lebensdauer.pdf')
+
+#Berechnung der mittleren Lebensdauer
+lam=ufloat(params[1], errors[1])
+tau=1/lam
+print(f"\ndie mittlere Lebensdauer beträgt tau=({tau})us")
