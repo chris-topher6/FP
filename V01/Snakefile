@@ -5,4 +5,8 @@ rule mach_alles:
 
 rule mach_plot_justage:
     output:"build/{plotname}.pdf",
-    shell: "python skript/justage.py"
+    shell: "python skript/{plotname}.py"
+
+rule mach_plot_kalibration:
+    output:"build/kalibration.pdf",
+    shell: "python skript/kalibration.py"
