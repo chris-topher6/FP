@@ -1,11 +1,15 @@
 rule mach_alles:
-    input: expand("build/{plotname}.pdf", plotname = ["justage_10", "justage_15"]),
+    input: "build/justage_10.pdf","build/justage_15.pdf",
     output: "main.pdf",
     shell: "lualatex main.tex"
 
-rule mach_plot_justage:
-    output:"build/{plotname}.pdf",
-    shell: "python skript/{plotname}.py"
+rule mach_plot_justage_15:
+    output:"build/justage_15.pdf",
+    shell: "python skript/justage_15.py"
+
+rule mach_plot_justage_10:
+    output:"build/justage_10.pdf",
+    shell: "python skript/justage_10.py"
 
 rule mach_plot_kalibration:
     output:"build/kalibration.pdf",
