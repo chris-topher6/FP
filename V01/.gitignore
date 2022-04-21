@@ -1,1 +1,6 @@
 build
+.DS_Store
+main.pdf
+main.aux
+main.toc
+.snakemake
