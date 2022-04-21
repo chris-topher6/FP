@@ -22,8 +22,8 @@ for name, value, error in zip('ab', params, errors):
     print(f'{name} = {value:.8f} ± {error:.8f}')
 
 x = np.linspace(np.min(dt_cut), np.max(dt_cut))
-plt.plot(x, gerade(x, *params), "k", linewidth=1, label="Regression")
-plt.errorbar(dt, N, xerr=0, yerr=np.sqrt(N), fmt='.', label="Data")
+plt.plot(x, gerade(x, *params), "darkgreen", linewidth=1, label="lineare Regression")
+plt.errorbar(dt, N, xerr=0, yerr=np.sqrt(N), color="darkblue", ecolor="royalblue", fmt='.', label="Daten")
 #plt.hlines(np.mean(N_cut)/2, np.min(dt_cut)-5, np.max(dt_cut)+6, color='green', linestyles='dashed', label='Plataumittelwert/2')
 plt.xlabel(r"$dt[ns]$")
 plt.ylabel(r"$N[1/s]$")
