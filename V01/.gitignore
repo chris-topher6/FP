@@ -1,6 +1,9 @@
 build
 .DS_Store
-main.pdf
-main.aux
-main.toc
+V01/main.pdf
+V01/main.aux
+V01/main.toc
+V01/main.bcf
+V01/content/.auctex-auto/
+V01/main.run.xml
 .snakemake
