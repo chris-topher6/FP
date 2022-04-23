@@ -1,7 +1,7 @@
 rule mach_alles:
     input: "build/justage_10.pdf","build/justage_15.pdf",
     output: "main.pdf",
-    shell: "lualatex main.tex"
+    shell: "lualatex main.tex lualatex main.tex lualatex main.tex"
 
 rule mach_plot_justage_15:
     output:"build/justage_15.pdf",
