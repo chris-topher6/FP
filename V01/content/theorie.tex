@@ -1,4 +1,4 @@
-\section{Theoretischer Hintergrund}
+\section{Theoretischer Hintergrund des Versuches}
 \label{sec:Theorie}
 
 \subsection{Eigenschaften des Myons}
@@ -14,13 +14,75 @@ Wechselwirkung.
 \subsection{Enstehung von kosmischer Strahlung}
 \label{subsec:kosmischeStrahlung}
 
+Als primäre kosmische Strahlung bezeichnet man hochenergetische Teilchen, welche
+in anderen Galaxien und der Sonne entstanden ist. Sie besteht hauptsächlich aus Protonen.
+Diese wechselwirken mit Teilchen in der Atmosphäre, was elektromagnetische
+Schauer erzeugt. In diesen Schauern entstehen Sekundärteilchen. Bei diesen
+Sekundärteilchen handelt es sich hauptsächlich um Pionen und Kaonen.
 
+\begin{figure}
+  \centering
+  \includegraphics[width=0.2\textwidth]{pictures/Schauer.png}
+  \caption{Schematische Darstellung eines EM-Schauers kosmischer Strahlung. \cite{Q1}}
+  \label{fig:schauer}
+\end{figure}
+\noindent
 
-Myonen zerfallen wie folgt über die schwache Wechselwirkung:
+Die so enstandenen Pionen zerfallen aufgrund der Helizitätsunterdrückung
+des Zerfalls
+
+\begin{align}
+  \pi^{-} & \rightarrow e^{-} + \bar{\nu_{e}} \\
+  \pi^{+} & \rightarrow e^{+} + \nu_{e}
+\end{align}
+
+hauptsächlich über die Zerfallskanäle
+
+\begin{align}
+\pi^{-} & \rightarrow \mu^{-} + \bar{\nu_{\mu}} \\
+\pi^{+} & \rightarrow \mu^{+} + \nu_{\mu}.
+\end{align}
+
+Der Zerfall der Kaonen verhält sich analog. Die aus kosmischer Strahlung entstandenen
+Myonen nennt man kosmische Myonen.
+Sie zerfallen wie Folgt über die schwache Wechselwirkung:
+
 \begin{figure}
   \centering
   \includegraphics[width=0.5\textwidth]{pictures/Muon_Decay.png}
   \caption{Feynman-Graph des Myonenzerfalls.\cite{Myon-Wikipedia}}
   \label{zerfall}
 \end{figure}
+\noindent
 
+Teilchenzerfälle sind statistische Prozesse. Daher wird dem Zerfall des Myons
+eine Wahrscheinlichkeit $\text{d}W$  zugeordnet, mit der dieser in einer bestimmten Zeit $\text{d}t$
+stattfindet:
+
+\begin{equation}
+  \text{d}W = \lambda \text{d}t.
+\end{equation}
+
+Hierbei ist der Proportionalitätsfaktor $\lambda$ die Zerfallskonstante.
+Die Zerfallskonstante und die mittlere Lebensdauer eines Teilchens haben den folgenden
+Zusammenhang:
+
+\begin{equation}
+  \lambda = \frac{1}{\tau}.
+\end{equation}
+
+Die mittlere Lebensdauer beschreibt die Zeit, nach der sich die Anzahl der Teilchen um
+den Faktor $e \approx 2.7$ verringert hat.
+Für die Änderung der Teilchenzahl $N$ in einem Zeitraum $\text{d}t$ gilt
+
+\begin{equation}
+  \text{d}N = - N \cdot \text{d}W = - N \cdot \lambda \text{d}t.
+  \label{eqn:zerfall1}
+\end{equation}
+
+Durch Integration der Gleichung \ref{eqn:zerfall1} kann das Zerfallsgesetz hergeleitet werden:
+
+\begin{equation}
+  N(t) = N_{0} \cdot \exp{- \lambda t}.
+  \label{eqn:zerfallsgesetz}
+\end{equation}
