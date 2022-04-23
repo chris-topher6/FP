@@ -1,0 +1,17 @@
+#+title: Plan Theorieteil
+#+AUTHOR: Henry Krämerkämper
+
+* TODO Grober Plan [1/4]
++ [X] Einleitung
++ [-] Theoretischer Hintergund
+  + [X] Fakten Myonen
+  + [ ] Entstehung in der Atmosphäre
+    + [ ] Enstehung primäre kosmische Strahlung
+    + [ ] Entstehung sekundäre kosmische Strahlung
+      + [ ] Grafik kosmische Strahlung einfügen
+  + [ ] Zerfallskanal Myon
+  + [ ] Zerfallsgesetz
++ [ ] Konzept Messung der Lebensdauer
++ [ ] Durchführung
+  + [ ] Versuchsaufbau
+  + [ ] Justagekram
