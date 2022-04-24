@@ -14,3 +14,7 @@ rule mach_plot_justage_10:
 rule mach_plot_kalibration:
     output:"build/kalibration.pdf",
     shell: "python skript/kalibration.py"
+
+rule mach_plot_lebensdauer:
+    output:"build/lebensdauer.pdf",
+    shell: "python skript/lebensdauer.py"
