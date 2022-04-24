@@ -12,6 +12,11 @@
   + [X] Zerfallskanal Myon
   + [X] Zerfallsgesetz
 + [ ] Konzept Messung der Lebensdauer
+  + [ ] Szintillator
+  + [ ] Photomultiplier
+  + [ ] Untergrundentstehung
+  + [ ] Bestimmung der Untergrundrate
 + [ ] Durchführung
   + [ ] Versuchsaufbau
+    + [ ] Bestandteile der Schaltung
   + [ ] Justagekram
