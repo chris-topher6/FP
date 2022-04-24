@@ -1,5 +1,5 @@
 rule mach_alles:
-    input: "build/justage_10.pdf","build/justage_15.pdf",
+    input: "build/justage_10.pdf","build/justage_15.pdf", "build/kalibration.pdf", "build/lebensdauer.pdf",
     output: "main.pdf",
     shell: "lualatex main.tex biber main.bcf lualatex main.tex lualatex main.tex"
 
