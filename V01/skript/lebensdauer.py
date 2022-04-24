@@ -54,3 +54,7 @@ plt.savefig('build/lebensdauer.pdf')
 lam=ufloat(params[1], errors[1])
 tau=1/lam
 print(f"\ndie mittlere Lebensdauer beträgt tau=({tau:.4})us")
+
+tau_pdg=ufloat(2.1969811,0.0000022)
+p=(tau-tau_pdg)/tau_pdg *100
+print(p)
