@@ -8,3 +8,12 @@ V01/main.bbl
 V01/content/.auctex-auto/
 V01/main.run.xml
 .snakemake
+main.pdf
+main.aux
+main.toc
+main.bcf
+main.bbl
+content/.auctex-auto/
+main.run.xml
+main.blg
+main.log
