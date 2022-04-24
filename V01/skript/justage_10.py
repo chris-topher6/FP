@@ -12,11 +12,14 @@ dt, N = np.genfromtxt('data/justage_10.dat', unpack=True)
 N_cut=N[10:21]
 dt_cut = dt[10:21]
 
+print(dt_cut[0])
+print(dt_cut[-1])
+
 params, covariance_matrix = np.polyfit(dt_cut, N_cut, deg=1, cov=True)
 uncertainties = np.sqrt(np.diag(covariance_matrix))
 
 #Ausgeben der Parameter
-print("\nRegressionsparameter für Platau für justage 15")
+print("\nRegressionsparameter für Platau für justage 10")
 errors = np.sqrt(np.diag(covariance_matrix))
 for name, value, error in zip('ab', params, errors):
     print(f'{name} = {value:.8f} ± {error:.8f}')
@@ -30,3 +33,6 @@ plt.ylabel(r"$N[1/s]$")
 plt.legend(loc='best')
 plt.tight_layout()
 plt.savefig('build/justage_10.pdf')
+
+print(f"Mittelwert=({np.mean(N_cut):.4}+/-{np.std(N_cut):.3})")
+#print(f"Halbwertsbreite=({np.mean(N_cut/2):.3}+/-{np.std(N_cut/2):.3})")

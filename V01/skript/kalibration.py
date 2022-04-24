@@ -15,7 +15,7 @@ uncertainties = np.sqrt(np.diag(covariance_matrix))
 print("\nRegressionsparameter für Kalibration")
 errors = np.sqrt(np.diag(covariance_matrix))
 for name, value, error in zip('ab', params, errors):
-    print(f'{name} = {value:.8f} ± {error:.8f}')
+    print(f'{name} = ({value*10**3:.8f} ± {error*10**3:.8f})ns')
 
 x = np.linspace(np.min(K), np.max(K))
 plt.plot(x, gerade(x, *params), "k", linewidth=1, label="lineare Regression")

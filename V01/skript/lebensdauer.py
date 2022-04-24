@@ -5,8 +5,8 @@ import uncertainties.unumpy as unp
 from uncertainties.unumpy import (nominal_values as noms, std_devs as stds)
 from scipy.optimize import curve_fit
 
-def efunk(x, N0, l, U):
-    return N0*np.exp(-l*x)+U 
+def efunk(x, N0, l):
+    return N0*np.exp(-l*x)+0.238
 
 #N = np.genfromtxt('data/ronja.dat', unpack=True)
 N = np.genfromtxt('data/myonen.dat', unpack=True)
@@ -35,14 +35,14 @@ params, cov = curve_fit(efunk,  noms(t[4:-57]),  N[4:-57])
 
 print("\nRegressionsparameter für die Lebensdauer sind")
 errors = np.sqrt(np.diag(cov))
-for name, value, error in zip('NlU', params, errors):
+for name, value, error in zip('Nl', params, errors):
     print(f'{name} = {value:.8f} ± {error:.8f}')
 
 #Plot
 x=noms(np.linspace(np.min(t[4:-57]), np.max(t[4:-57])))
 plt.errorbar(noms(t),     N,     xerr=stds(t),     yerr=np.sqrt(N),     color='red', ecolor='grey',  markersize=3.5, elinewidth=0.5, fmt='.', label="entfernte Daten")
 plt.errorbar(noms(t[4:-57]), N[4:-57], xerr=stds(t[4:-57]), yerr=np.sqrt(N[4:-57]), color='navy', ecolor='grey', markersize=3.5, elinewidth=0.5, fmt='.', label="Daten")
-plt.plot(x, efunk(x, params[0], params[1], params[2]), color='orangered', label="Fit")
+plt.plot(x, efunk(x, params[0], params[1]), color='orangered', label="Fit")
 plt.xlabel(r"$t[\mu s]$")
 plt.ylabel(r"$N[1/s]$")
 plt.legend(loc='best')

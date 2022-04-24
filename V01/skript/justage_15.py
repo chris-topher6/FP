@@ -12,6 +12,9 @@ dt, N = np.genfromtxt('data/justage_15.dat', unpack=True)
 N_cut=N[8:22]
 dt_cut = dt[8:22]
 
+print(dt_cut[0])
+print(dt_cut[-1])
+
 params, covariance_matrix = np.polyfit(dt_cut, N_cut, deg=1, cov=True)
 uncertainties = np.sqrt(np.diag(covariance_matrix))
 
@@ -30,3 +33,6 @@ plt.ylabel(r"$N[1/s]$")
 plt.legend(loc='best')
 plt.tight_layout()
 plt.savefig('build/justage_15.pdf')
+
+print(f"Mittelwert=({np.mean(N_cut):.4}+/-{np.std(N_cut):.3})")
+#print(f"Halbwertsbreite=({np.mean(N_cut/2):.3}+/-{np.std(N_cut/2):.3})")
