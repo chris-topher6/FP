@@ -86,3 +86,32 @@ Durch Integration der Gleichung \ref{eqn:zerfall1} kann das Zerfallsgesetz herge
   N(t) = N_{0} \cdot \exp{- \lambda t}.
   \label{eqn:zerfallsgesetz}
 \end{equation}
+
+\subsection{Bestimmung der mittleren Lebensdauer der Myonen}
+\label{subsec:BestimmungLebensdauer}
+
+Um die kosmischen Myonen zu detektieren, wird ein organischer Szintillator verwendet.
+Szintillatoren erzeugen bei Eintritt eines geladenen Teilchens einen Lichtpuls.
+Dieser entsteht, da durch Eintritt eines geladenen Teilchens Moleküle des Szintillators
+angeregt werden, welche dann unter Abgabe von Photonen wieder in ihre Grundzustände zurückfallen.
+Diese Lichtpulse können in elektrische Signale umgewandelt und weiterverarbeitet werden.
+Bei Eintritt eines Myons in den Szintillator wird ein Signal gemessen. Wenn das Myon innerhalb
+des Szintillators wie in \ref{zerfall} dargestellt zerfällt, kann auch von den Zerfallsprodukten
+ein Signal detektiert werden. Dies ist der Fall, wenn das Myon seine gesamte kinetische Energie
+an das Szintillatormaterial abgibt.
+Durch Messung der Zeit zwischen dem Eintritt des Myons und des
+Zerfalls ist eine Bestimmung der mittleren Lebensdauer des Myons möglich. Es wird also
+innerhalb eines bestimmten Zeitrahmens nach Eintritt eines Myons auf ein weiteres Signal
+gewartet. Wenn innerhalb dieses Zeitrahmens ein weiteres Myon den Detektor erreicht oder wenn
+ein Myon nicht innerhalb des Detektors zerfällt, kann die Messung verfälscht werden.
+Diese Verfälschungen der Messung erzeugen einen Untergrund. Dieser lässt sich mithilfe
+einer Poissonverteilung abschätzen. Dies ist in folgender Gleichung angegeben:
+
+\begin{equation}
+  U = P_{\lambda} (k) = \frac{\lambda^{k}}{k!} \exp{-\lambda},
+  \label{eqn:Untergrundrate}
+\end{equation}
+
+mit dem Erwartungswert der Poissonverteilung $\lambda$ und der Ereignisanzahl $k$.
+Hier ist die Ereignisanzahl $k = 1$, da der Untergrund durch ein weiteres
+Ereignis innerhalb des Zeitrahmens nach Eintritt eines Myons erzeugt wird.
