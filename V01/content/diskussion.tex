@@ -5,12 +5,12 @@
 Wie bereits in Kapitel \ref{sec:justage} angedeutet, sollte die Zählrate in Abhängigkeit der Verzögerungszeit (vgl. Abb. \ref{fig:justage10}, \ref*{fig:justage15})
 ein Platau aufweisen. Die Regression ergab jedoch eine Steigung von 
 \begin{align*}
-    \SI{-0.242 \pm 0.056}{\per\nano\second}
-    \SI{0.191 \pm 0.062 }{\per\nano\second}
+    a&=\SI{-0.242 \pm 0.056}{\per\nano\second} \quad &\text{für $\Delta t_{\text{Puls}}=\SI{10}{\nano\second}$}\\
+    b&=\SI{0.191 \pm 0.062 }{\per\nano\second} \quad &\text{für $\Delta t_{\text{Puls}}=\SI{15}{\nano\second}$}
 \end{align*}
 und damit eine Steigung ungleich null. Insbesondere ist in der Verteilung für $\Delta t_{\text{Puls}}=\SI{15}{\nano\second}$ \ref{fig:justage15} eine 
-Unstetigkeit bei $\Delta t=0$ zu erkennen. Schon während der Aufnahme der Daten ist aufgefallen, dass einige Schalter für das Einstellen der Verzögerungs
-blockierten, sodass diese teilweise gar kein Signal mehr durchließen oder unklar war, ob das Umschalten erfolgreich war oder nicht. Eine nicht richtig zurück
+Unstetigkeit bei $\Delta t_\text{Delay}=0$ zu erkennen. Schon während der Aufnahme der Daten ist aufgefallen, dass einige Schalter für das Einstellen der Verzögerungs
+blockierten, sodass diese teilweise kein Signal mehr durchließen oder unklar war, ob das Umschalten erfolgreich war oder nicht. Eine nicht richtig zurück
 gesetzte Verzögerung könnte genau so eine Unstetigkeit wie beobachtet hervor rufen. Um die weitere Messung nicht zu sehr durch diese Problematik zu beeinflussen,
 wurde eine Verzögerung gewählt, die nicht nur zentral auf dem Platau liegt, sondern auch eine möglichst unproblematische Einstellung an den Schaltern aufwies.
 
@@ -18,7 +18,7 @@ wurde eine Verzögerung gewählt, die nicht nur zentral auf dem Platau liegt, so
 Die für den Zusammenhang zwischen Zeit und Kanal berechneten Regressionsparameter 
 \begin{align*}
     a &= \SI{21.67 \pm 0.01}{\nano\second} \\ 
-    b &= \SI{150.89 \pm 2.94}{\nano\second} \quad.
+    b &= \SI{150.89 \pm 2.94}{\nano\second}
  \end{align*}
 haben eine vergleichsweise geringe Unsicherheit, weswegen keine systematischen Fehler durch die Umrechnung von den Kanälen in die jeweiligen Zeiten zu erwarten sind. 
 
@@ -30,6 +30,6 @@ zu dem Literaturwert $\tau_{\mu,\text{PDG}}=\SI{2.1969811 \pm0.0000022}{\micro\s
 \end{equation*}
 Im Rahmen der in Kapitel \ref{sec:Auswertung} thematisierten Analyse der Daten ist diese Abweichung als gering gering einzuschätzen. Mögliche Gründe für die Abweichung 
 können kleinere systematische Fehler bei der Kalibration der Messaparatur sein, wie zum Beispiel Probleme bei der Verzögerungsleitung. Zudem sind auch Prozessen in dem
-Szintillator möglich, die im Rahmen dieses Versuches vernachlässigt werden können. So ist es theoretsch nicht ausgeschlossen, dass ein Myon kurzzeitig von einem Atomkern 
-eingefangen wird und diese dadurch anregt. Ein dadurch entstehenden Lichtblitz würde zu einer zu kurzen Einschätzung der Zeit bis zum Zerfall führen und somit die 
+Szintillator möglich, die im Rahmen dieses Versuches vernachlässigt wurden. So ist es theoretisch nicht ausgeschlossen, dass ein Myon kurzzeitig von einem Atomkern 
+eingefangen wird und dieses dadurch anregt. Ein so entstehender Lichtblitz würde zu einer zu kurzen Einschätzung der Zeit bis zum Zerfall führen und somit die 
 bestimmte mittlere Lebensdauer senken.

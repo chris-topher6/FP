@@ -3,7 +3,7 @@
 Im Folgenen werden die aufgenommenen Messdaten mit \textit{numpy} und \textit{scipy.optimize} ausgewertet. Da die Zählrate $N$ einer Poisson-Verteilung folgt, wird
 für die Unsicherheit $\sqrt{N}$ angenommen. 
 
-\subsection*{Justage des der Verzögerungsleitung}
+\subsection*{Justage der Verzögerungsleitung}
 \label{sec:justage}
 Um die durch die PMTs, die Kabel und die Diskriminatoren entstehende Verzögerung auszugleichen, wird die Verzögerung systematisch verändert und dabei die Impulszahl innerhalb \SI{10}{\second} 
 notiert. Die Messwerte sind in Tabelle \ref*{tab:justage} gelistet. 
@@ -55,14 +55,14 @@ notiert. Die Messwerte sind in Tabelle \ref*{tab:justage} gelistet.
         \bottomrule
       \end{tabular}
     \end{table}
-
+\noindent 
 Zur Bestimmung des Plataus wurde eine lineare Regression der Form 
 \begin{equation}
     y=ax+b \label{eqn:gerade}
 \end{equation}
-durchgeführt, wobei $y$ der Impulszahl $N$ und $x$ der Verzögerungszeit $\Delta t$ entspricht. Dabei wurden für die Ausgleichsrechnung für  
-$\Delta t_{\text{Puls}}=\SI{10}{\nano\second}$ die Messwerte von $\Delta t=\SI{0}{\nano\second}$ - $t=\SI{19}{\nano\second}$ und für 
-$\Delta t_{\text{Puls}}=\SI{15}{\nano\second}$ die Messwerte von $\Delta t=\SI{0}{\nano\second}$ - $t=\SI{21}{\nano\second}$ verwendet. 
+durchgeführt, wobei $y$ der Impulszahl $N$ und $x$ der Verzögerungszeit $\Delta t_\text{Delay}$ entspricht. Dabei wurden für die Ausgleichsrechnung für  
+$\Delta t_{\text{Puls}}=\SI{10}{\nano\second}$ die Messwerte von $\Delta t_\text{Delay}=\SI{0}{\nano\second}$ - $\Delta t_\text{Delay}=\SI{19}{\nano\second}$ und für 
+$\Delta t_{\text{Puls}}=\SI{15}{\nano\second}$ die Messwerte von $\Delta t_\text{Delay}=\SI{0}{\nano\second}$ - $\Delta t_\text{Delay}=\SI{21}{\nano\second}$ verwendet. 
 Die Messdaten aus Tabelle \ref{tab:justage} samt Regression sind in den Abbildungen \ref*{fig:justage10} und \ref{fig:justage15} dargestellt.
 
 \begin{figure}[H]
@@ -78,7 +78,7 @@ Die Messdaten aus Tabelle \ref{tab:justage} samt Regression sind in den Abbildun
     \caption{Messwerte aus Tabelle \ref{tab:justage} mit linearer Regression im Plataubereich für $\Delta t_{\text{Puls}}=\SI{15}{\nano\second}$.}
     \label{fig:justage15}
   \end{figure}
-
+\noindent
 Die Regressionsparameter, sowie das arithmetische Mittel des Wertebereichs sind in Tabelle \ref*{tab:parameter} aufgeführt. Für ein Platau sollte dabei idealer Weise $a\approx 0$ und 
 $N\approx b$ gelten.
 
@@ -97,8 +97,8 @@ $N\approx b$ gelten.
         \bottomrule
       \end{tabular}
     \end{table}
-
-Für die weitere Messung wurde $\Delta t_{\text{Puls}}=\SI{10}{\nano\second}$ und $\Delta_t=\SI{5}{\nano\second}$ verwendet, da sich dieser Wert recht zentral
+\noindent
+Für die weitere Messung wurde $\Delta t_{\text{Puls}}=\SI{10}{\nano\second}$ und $\Delta t_{\text{Puls}}=\SI{5}{\nano\second}$ verwendet, da sich dieser Wert recht zentral
 auf dem Platau befindet (vgl. Abb.\ref*{fig:justage10}).
 
 \subsection*{Kalibration des MCA}
@@ -125,17 +125,17 @@ Die mittels Doppelimpulsgenerator aufgenommenen Messwerte zur Kalibration des Mu
         \bottomrule
       \end{tabular}
     \end{table}
-
+\noindent
 Um bei der späteren Messung die Kanalnummern den jeweiligen Zeiten zuzuordnen, wurde eine Regression der Form \ref{eqn:gerade} erstellt, welche in Abbildungen
 \ref{fig:MCA} dargestellt ist. 
 
 \begin{figure}[H]
   \centering
   \includegraphics[scale= 0.8]{build/kalibration.pdf}
-  \caption{Der zeitliche Abstand der Doppelimpule $\Delta t$ in Abhängigkeit des Kanals mit linearer Regression.}
+  \caption{Der zeitliche Abstand der Doppelimpulse $\Delta t$ in Abhängigkeit des Kanals mit linearer Regression.}
   \label{fig:MCA}
 \end{figure}
-
+\noindent
 Die Regressionsparameter der eingezeichneten Gerade sind dabei
 \begin{align*}
    a &= \SI{21.67 \pm 0.01}{\nano\second} \\ 
@@ -150,24 +150,24 @@ Die Wahrscheinlichkeit $P$, dass $k$ Myonen während der Suchzeit $T_S$ in den D
 \end{equation}
 gegeben. Der Parameter $\lambda$ beschreibt dabei die durchschnittliche Ereignisrate, mit der ein Myon in den Detektor fällt und wird berechnet durch 
 \begin{equation}
-  \lambda=\frac{N_\text{Start}}{t_text{ges}}=\frac{\num{4615018}}{\SI{174986}{\second}}\approx \SI{26.37}{\per\second},
+  \lambda=\frac{N_\text{Start}}{t_\text{ges}}=\frac{\num{4615018}}{\SI{174986}{\second}}\approx \SI{26.37}{\per\second},
 \end{equation}
-also durch die Anzahl an Startsignalen pro gesamter Messzeit. Da die Wahrscheinlichkeit, dass mindestens ein Myon während der Suchzeit in dn Detektor eintritt
+also durch die Anzahl an Startsignalen pro gesamter Messzeit. Da die Wahrscheinlichkeit, dass mindestens ein Myon während der Suchzeit in den Detektor eintritt,
 gefragt ist, wird Gleichung \ref{eqn:poisson} über $k$ summiert. Es ergibt sich
 \begin{equation*}
   P_{\text{ges}}=\sum_{k=1}^\infty\frac{\lambda^k}{k!}e^{-\lambda T_S}\approx\SI{0.0264}{‰}\quad .
 \end{equation*}
-Demnach sind schätzungsweise $N_{\text{BG}}=P_{\text{ges}}N_{\text{Start}}\approx\num{121.7}$ während der Suchzeit in den Detektor eingefallen, woraus ein Untergrund
+Demnach sind schätzungsweise $N_{\text{BG}}=P_{\text{ges}}N_{\text{Start}}\approx\num{121.7}$ Myonen während der Suchzeit in den Detektor eingefallen, woraus ein Untergrund
 von $U=121.7/512=0.248$ pro Kanal folgt.
 
 \subsection*{Bestimmung der mittleren Lebensdauer der kosmischen Myonen}
 \label{sec:lebensdauer}
-Die Messung der Lebensdauer erfolge $t_\text{ges}=\SI{174986}{\second}$ lang. Dabei sind $N_\text{Start}=\num{4615018}$ Start- und  $N_\text{Stop}=\num{15899}$
+Die Messung der Lebensdauer erfolgte $t_\text{ges}=\SI{174986}{\second}$ lang. Dabei sind $N_\text{Start}=\num{4615018}$ Start- und  $N_\text{Stop}=\num{15899}$
 Stopimpulse gemessen worden. 
-
-Da der Zerall der Myonen dem Zerfallsgesetz folgt, wurden die gemessenen Werte mittels \textit{sciypy.optimize.curve\_fit} an eine Funktion der Form 
+\noindent
+Da der Zerfall der Myonen dem Zerfallsgesetz folgt, wurden die gemessenen Werte mittels \textit{sciypy.optimize.curve\_fit} an eine Funktion der Form 
 \begin{equation}
-  N(t)=N_0*e^{-\lambda t}+U \label{eqn:expo}
+  N(t)=N_0\cdot e^{-\lambda t}+U \label{eqn:expo}
 \end{equation}
 angepasst. Nach der Abschätzung aus Kapitel \ref{sec:untergrund} wurde $U=0.248$ gesetzt. Die berechnete Regression und die zugehörigen Messdaten sind in Abbildung 
 \ref{fig:lebensdauer} abgebildet.
@@ -178,7 +178,7 @@ angepasst. Nach der Abschätzung aus Kapitel \ref{sec:untergrund} wurde $U=0.248
   \caption{Anzahl an gemessenen Impulsen in Abhängigkeit der Zeit mit Regression der Form \ref{eqn:expo}.}
   \label{fig:lebensdauer}
 \end{figure}
-
+\noindent
 Die berechneten Parameter der Regression lauten
 \begin{align*}
   N_0    &=\num{106.35 \pm 1.19} \\
@@ -187,7 +187,7 @@ Die berechneten Parameter der Regression lauten
 Die rot markierten Messwerte wurden aus der Rechnung entfernt, da eine Impulszahl von $N=0$ im vordersten Bereich der Verteilung unphysikalisch ist. Auch ab einer 
 Zeit von $t=\SI{10}{\micro\second}$ verschwinden die Impulszahlen aus dem Grund, dass die Suchzeit abgelaufen ist. Deswegen werden auch diese Werte nicht weiter
 betrachtet.
-
+\\\noindent
 Die mittlere Lebensdauer ist definiert als
 \begin{equation*}
   \tau=1/\lambda\quad .
