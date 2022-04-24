@@ -15,7 +15,8 @@
   + [X] Szintillator
   + [X] Untergrundentstehung
   + [X] Bestimmung der Untergrundrate
-+ [ ] Durchführung
-  + [ ] Versuchsaufbau
-    + [ ] Bestandteile der Schaltung
++ [-] Durchführung
+  + [X] Versuchsaufbau
+    + [X] Bestandteile der Schaltung
+    + [X] Schaltbild einfügen
   + [ ] Justagekram

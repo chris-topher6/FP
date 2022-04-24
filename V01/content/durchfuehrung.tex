@@ -1,6 +1,48 @@
 \section{Durchführung des Versuches}
 \label{sec:Durchführung}
 
+\subsection{Aufbau des Versuches}
+\label{subsec:Aufbau}
+
 Organische Szintillatoren haben gegenüber anorganischen Szintillatoren den Vorteil, dass sie eine sehr
-gute Zeitauflösung haben. Da eine gute Zeitauflösung instrumental für die Qualität der genommenen
+gute Zeitauflösung besitzen. Da eine gute Zeitauflösung instrumental für die Qualität der genommenen
 Daten ist, wird in diesem Versuch ein organischer Szintillator verwendet.
+Dieser Szintillator befindet sich in einem Detektortank mit einem Volumen $V = \SI{50}{\liter}$.
+Der Lichtpuls des Szintillators wird durch einen Photovervielfacher (im englischen Sprachraum: Photomultipliertube,
+daher oft abgekürzt als PMT) in ein elektrisches Signal umgewandelt und verstärkt.
+Dabei können durch thermische Effekte Elektronen emittiert werden, welche die
+Messung verfälschen würden. Daher werden zwei PMTs verwendet, welche durch eine
+Koinzidenzschaltung miteinander verbunden sind. So werden nur Signale verwendet, welche
+von beiden PMTs nachezu gleichzeitig ausgesandt werden, was Fehler durch thermische
+Effekte vermeidet.
+Die Schaltung ist in folgender Abbildung wiedergegeben.
+
+\begin{figure}
+  \centering
+    \includegraphics[width=0.5\textwidth]{pictures/Schaltbild.png}
+    \label{fig:Schaltbild}
+    \caption{Schaltbild des Versuchsaufbaus.}
+\end{figure}
+
+Das Signal der PMTs wird über eine Verzögerungsleitung, welche schaltungstechnische Unterschiede
+wie z.b. Kabelwege ausgleicht, durch einen Diskriminator geleitet. Dieser lässt nur Signale ab
+einer gewissen Schwelle hindurch. Diese Schwelle lässt sich einstellen, wodurch Rauschen
+minimiert werden kann. Das elektrische Signal, welches von dem Diskriminator ausgegeben wird,
+kann auf verschiedene Breiten eingesteltt werden. Hiernach folgt die bereits erwähnte Koinzidenz.
+Die nun folgende Schaltung funktioniert wie eine Stoppuhr, welche das Warten auf ein Zerfallssignal
+nach einer Suchzeit $T_{\text{S}}$ abbricht, was nötig wird, wenn das Myon nicht innerhalb des Detektors
+zerfällt. Dies ist realisiert mittles zweier AND-Gatter, welche beide das Signal erhalten. Zusätzlich
+wird das Signal auch über eine Verzögerungsleitung in einen Monoflop gesendet, welcher einen negierten
+Ausgang zum linken AND-Gatter und einen normalen Ausgang zum rechten AND-Gatter besitzt. Erhält der
+Monoflop das erste Signal, wird über den negierten Ausgang in das linke AND-Gatter ein Start-Signal zum
+Time-to-Amplitude Converter (TAC) gesendet. Dies startet die Suchzeit. Nach Ablauf selbiger oder
+nach Erhalt eines weiteren Signals sendet der Monoflop ein Signal über den normalen Ausgang in
+das rechte AND-Gatter, welches ein Stop-Signal an den TAC sendet.
+Der TAC wandelt die Zeitspanne zwischen Start-Signal und Stop-Signal in eine Amplitude, dessen Höhe der
+Länge der Zeitspanne entspricht, um.
+Der TAC ist verbunden mit einem Vielkanalanalysator (im englischen Sprachraum Multi-Channel Analyser, daher abgekürzt als MCA).
+Der MCA sortiert die erhaltenen Amplituden nach ihrer Höhe in ein Histogramm, welches von einem
+angeschlossenen Computer ausgelesen und gespeichert werden kann.
+
+\subsection{Justage des Versuchsaufbaus}
+\label{JustageVersuchsaufbau}
