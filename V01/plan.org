@@ -1,7 +1,7 @@
 #+title: Plan Theorieteil
 #+AUTHOR: Henry Krämerkämper
 
-* TODO Grober Plan [2/4]
+* TODO Grober Plan [3/4]
 + [X] Einleitung
 + [X] Theoretischer Hintergund
   + [X] Fakten Myonen
@@ -11,7 +11,11 @@
       + [X] Grafik kosmische Strahlung einfügen
   + [X] Zerfallskanal Myon
   + [X] Zerfallsgesetz
-+ [ ] Konzept Messung der Lebensdauer
++ [X] Konzept Messung der Lebensdauer
+  + [X] Szintillator
+  + [X] Untergrundentstehung
+  + [X] Bestimmung der Untergrundrate
 + [ ] Durchführung
   + [ ] Versuchsaufbau
+    + [ ] Bestandteile der Schaltung
   + [ ] Justagekram
