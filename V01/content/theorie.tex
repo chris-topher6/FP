@@ -1,25 +1,20 @@
 \section{Theoretischer Hintergrund des Versuches}
 \label{sec:Theorie}
-
 \subsection{Eigenschaften des Myons}
 \label{subsec:Eigenschaften}
-
 Myonen sind Leptonen aus der zweiten der drei Leptonenfamilien. Sie haben
 eine Ruhemasse von $\SI{105.66}{\mega\electronvolt}$ sowie eine Lebensdauer
 von $\SI{2.197}{\micro\second}$. Das Myon $\mu^{-}$ ist einfach negativ geladen,
 das Antimyon $\mu^{+}$ daher einfach positiv.
 Myonen unterliegen wie alle Fermionen der schwachen und der elektromagnetischen
 Wechselwirkung.
-
 \subsection{Enstehung von kosmischer Strahlung}
 \label{subsec:kosmischeStrahlung}
-
 Als primäre kosmische Strahlung bezeichnet man hochenergetische Teilchen, welche
 in anderen Galaxien und der Sonne entstanden sind. Sie besteht hauptsächlich aus Protonen.
 Diese wechselwirken mit Teilchen in der Atmosphäre, was elektromagnetische
 Schauer erzeugt. In diesen Schauern entstehen Sekundärteilchen. Bei diesen
 Sekundärteilchen handelt es sich hauptsächlich um Pionen und Kaonen.
-
 \begin{figure}
   \centering
   \includegraphics[width=0.2\textwidth]{pictures/Schauer.png}
@@ -27,26 +22,22 @@ Sekundärteilchen handelt es sich hauptsächlich um Pionen und Kaonen.
   \label{fig:schauer}
 \end{figure}
 \noindent
-
 Die so enstandenen Pionen zerfallen aufgrund der Helizitätsunterdrückung
 des Zerfalls
-
-\begin{align}
-  \pi^{-} & \rightarrow e^{-} + \bar{\nu_{e}} \\
+\begin{align*}
+  \pi^{-} & \rightarrow e^{-} + \bar{\nu}_{e} \\
   \pi^{+} & \rightarrow e^{+} + \nu_{e}
-\end{align}
-
+\end{align*}
+\noindent
 hauptsächlich über die Zerfallskanäle
-
-\begin{align}
-\pi^{-} & \rightarrow \mu^{-} + \bar{\nu_{\mu}} \\
+\begin{align*}
+\pi^{-} & \rightarrow \mu^{-} + \bar{\nu}_{\mu} \\
 \pi^{+} & \rightarrow \mu^{+} + \nu_{\mu}.
-\end{align}
-
+\end{align*}
+\noindent
 Der Zerfall der Kaonen verhält sich analog. Die aus kosmischer Strahlung entstandenen
 Myonen nennt man kosmische Myonen.
 Sie zerfallen wie Folgt über die schwache Wechselwirkung:
-
 \begin{figure}
   \centering
   \includegraphics[width=0.5\textwidth]{pictures/Muon_Decay.png}
@@ -54,42 +45,36 @@ Sie zerfallen wie Folgt über die schwache Wechselwirkung:
   \label{zerfall}
 \end{figure}
 \noindent
-
 Teilchenzerfälle sind statistische Prozesse. Daher wird dem Zerfall des Myons
 eine Wahrscheinlichkeit $\text{d}W$  zugeordnet, mit der dieser in einer bestimmten Zeit $\text{d}t$
 stattfindet:
-
-\begin{equation}
+\begin{equation*}
   \text{d}W = \lambda \text{d}t.
-\end{equation}
-
+\end{equation*}
+\noindent
 Hierbei ist der Proportionalitätsfaktor $\lambda$ die Zerfallskonstante.
 Die Zerfallskonstante und die mittlere Lebensdauer eines Teilchens haben den folgenden
 Zusammenhang:
-
-\begin{equation}
+\begin{equation*}
   \lambda = \frac{1}{\tau}.
-\end{equation}
-
+\end{equation*}
+\noindent
 Die mittlere Lebensdauer beschreibt die Zeit, nach der sich die Anzahl der Teilchen um
 den Faktor $e \approx 2.7$ verringert hat.
 Für die Änderung der Teilchenzahl $N$ in einem Zeitraum $\text{d}t$ gilt
-
 \begin{equation}
   \text{d}N = - N \cdot \text{d}W = - N \cdot \lambda \text{d}t.
   \label{eqn:zerfall1}
 \end{equation}
-
+\noindent
 Durch Integration der Gleichung \ref{eqn:zerfall1} kann das Zerfallsgesetz hergeleitet werden:
-
 \begin{equation}
   N(t) = N_{0} \cdot \exp{- \lambda t}.
   \label{eqn:zerfallsgesetz}
 \end{equation}
-
+\noindent
 \subsection{Bestimmung der mittleren Lebensdauer der Myonen}
 \label{subsec:BestimmungLebensdauer}
-
 Um die kosmischen Myonen zu detektieren, wird ein organischer Szintillator verwendet.
 Szintillatoren erzeugen bei Eintritt eines geladenen Teilchens einen Lichtpuls.
 Dieser entsteht, da durch Eintritt eines geladenen Teilchens Moleküle des Szintillators
@@ -106,10 +91,9 @@ gewartet. Wenn innerhalb dieses Zeitrahmens ein weiteres Myon den Detektor errei
 ein Myon nicht innerhalb des Detektors zerfällt, kann die Messung verfälscht werden.
 Diese Verfälschungen der Messung erzeugen einen Untergrund. Dieser lässt sich mithilfe
 einer Poissonverteilung abschätzen. Dies ist in folgender Gleichung angegeben:
-
 \begin{equation}
   U = P_{\lambda} (k) = \frac{\lambda^{k}}{k!} \exp{-\lambda},
   \label{eqn:Untergrundrate}
 \end{equation}
-
+\noindent
 mit dem Erwartungswert der Poissonverteilung $\lambda$ und der Ereignisanzahl $k$.
