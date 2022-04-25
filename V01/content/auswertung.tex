@@ -3,10 +3,10 @@
 Im Folgenen werden die aufgenommenen Messdaten mit \textit{numpy} und \textit{scipy.optimize} ausgewertet. Da die Zählrate $N$ einer Poisson-Verteilung folgt, wird
 für die Unsicherheit $\sqrt{N}$ angenommen. 
 
-\subsection*{Justage der Verzögerungsleitung}
+\subsection{Justage der Verzögerungsleitung}
 \label{sec:justage}
 Um die durch die PMTs, die Kabel und die Diskriminatoren entstehende Verzögerung auszugleichen, wird die Verzögerung systematisch verändert und dabei die Impulszahl innerhalb \SI{10}{\second} 
-notiert. Die Messwerte sind in Tabelle \ref*{tab:justage} gelistet. 
+notiert. Die Messwerte sind in Tabelle \ref{tab:justage} gelistet. 
 
 \begin{table}[H]
     \centering
@@ -15,7 +15,7 @@ notiert. Die Messwerte sind in Tabelle \ref*{tab:justage} gelistet.
       \sisetup{table-format=2.1}
       \begin{tabular}{S[table-format=2.0] c c}
         \toprule
-        {$\Delta t[\si{nano\second}]$} & \multicolumn{2}{c}{$N[\si{\per\second}]$}\\
+        {$\Delta t[\si{\nano\second}]$} & \multicolumn{2}{c}{$N[\si{\per\second}]$}\\
         \cmidrule(lr){2-3}
         & {$\Delta t_{\text{Puls}}=\SI{10}{\nano\second}$} & {$\Delta t_{\text{Puls}}=\SI{15}{\nano\second}$} \\
         \midrule
@@ -56,30 +56,30 @@ notiert. Die Messwerte sind in Tabelle \ref*{tab:justage} gelistet.
       \end{tabular}
     \end{table}
 \noindent 
-Zur Bestimmung des Plataus wurde eine lineare Regression der Form 
+Zur Bestimmung des Plateaus wurde eine lineare Regression der Form 
 \begin{equation}
     y=ax+b \label{eqn:gerade}
 \end{equation}
 durchgeführt, wobei $y$ der Impulszahl $N$ und $x$ der Verzögerungszeit $\Delta t_\text{Delay}$ entspricht. Dabei wurden für die Ausgleichsrechnung für  
-$\Delta t_{\text{Puls}}=\SI{10}{\nano\second}$ die Messwerte von $\Delta t_\text{Delay}=\SI{0}{\nano\second}$ - $\Delta t_\text{Delay}=\SI{19}{\nano\second}$ und für 
-$\Delta t_{\text{Puls}}=\SI{15}{\nano\second}$ die Messwerte von $\Delta t_\text{Delay}=\SI{0}{\nano\second}$ - $\Delta t_\text{Delay}=\SI{21}{\nano\second}$ verwendet. 
-Die Messdaten aus Tabelle \ref{tab:justage} samt Regression sind in den Abbildungen \ref*{fig:justage10} und \ref{fig:justage15} dargestellt.
+$\Delta t_{\text{Puls}}=\SI{10}{\nano\second}$ die Messwerte von $\Delta t_\text{Delay}=\SI{0}{\nano\second}$ bis $\Delta t_\text{Delay}=\SI{19}{\nano\second}$ und für 
+$\Delta t_{\text{Puls}}=\SI{15}{\nano\second}$ die Messwerte von $\Delta t_\text{Delay}=\SI{0}{\nano\second}$ bis $\Delta t_\text{Delay}=\SI{21}{\nano\second}$ verwendet. 
+Die Messdaten aus Tabelle \ref{tab:justage} samt Regression sind in den Abbildungen \ref{fig:justage10} und \ref{fig:justage15} dargestellt.
 
 \begin{figure}[H]
     \centering
     \includegraphics[scale= 0.8]{build/justage_10.pdf}
-    \caption{Messwerte aus Tabelle \ref{tab:justage} mit linearer Regression im Plataubereich für $\Delta t_{\text{Puls}}=\SI{10}{\nano\second}$.}
+    \caption{Messwerte aus Tabelle \ref{tab:justage} mit linearer Regression im Plateaubereich für $\Delta t_{\text{Puls}}=\SI{10}{\nano\second}$.}
     \label{fig:justage10}
   \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[scale= 0.8]{build/justage_15.pdf}
-    \caption{Messwerte aus Tabelle \ref{tab:justage} mit linearer Regression im Plataubereich für $\Delta t_{\text{Puls}}=\SI{15}{\nano\second}$.}
+    \caption{Messwerte aus Tabelle \ref{tab:justage} mit linearer Regression im Plateaubereich für $\Delta t_{\text{Puls}}=\SI{15}{\nano\second}$.}
     \label{fig:justage15}
   \end{figure}
 \noindent
-Die Regressionsparameter, sowie das arithmetische Mittel des Wertebereichs sind in Tabelle \ref*{tab:parameter} aufgeführt. Für ein Platau sollte dabei idealer Weise $a\approx 0$ und 
+Die Regressionsparameter, sowie das arithmetische Mittel des Wertebereichs sind in Tabelle \ref{tab:parameter} aufgeführt. Für ein Plateau sollte dabei idealer Weise $a\approx 0$ und 
 $N\approx b$ gelten.
 
 \begin{table}[H]
@@ -99,9 +99,9 @@ $N\approx b$ gelten.
     \end{table}
 \noindent
 Für die weitere Messung wurde $\Delta t_{\text{Puls}}=\SI{10}{\nano\second}$ und $\Delta t_{\text{Puls}}=\SI{5}{\nano\second}$ verwendet, da sich dieser Wert recht zentral
-auf dem Platau befindet (vgl. Abb.\ref*{fig:justage10}).
+auf dem Plateau befindet (vgl. Abb.\ref{fig:justage10}).
 
-\subsection*{Kalibration des MCA}
+\subsection{Kalibration des MCA}
 Die mittels Doppelimpulsgenerator aufgenommenen Messwerte zur Kalibration des Mulitchannel-Analyzers sind in Tabelle \ref{tab:MCA} enumeriert. 
 \begin{table}[H]
     \centering
@@ -142,7 +142,7 @@ Die Regressionsparameter der eingezeichneten Gerade sind dabei
    b &= \SI{150.89 \pm 2.94}{\nano\second} \quad.
 \end{align*}
 
-\subsection*{Theoretische Abschätzung der Untergrundrate}
+\subsection{Theoretische Abschätzung der Untergrundrate}
 \label{sec:untergrund}
 Die Wahrscheinlichkeit $P$, dass $k$ Myonen während der Suchzeit $T_S$ in den Detektor fallen, ist durch eine Poisson Verteilung
 \begin{equation}
@@ -160,7 +160,7 @@ gefragt ist, wird Gleichung \ref{eqn:poisson} über $k$ summiert. Es ergibt sich
 Demnach sind schätzungsweise $N_{\text{BG}}=P_{\text{ges}}N_{\text{Start}}\approx\num{121.7}$ Myonen während der Suchzeit in den Detektor eingefallen, woraus ein Untergrund
 von $U=121.7/512=0.248$ pro Kanal folgt.
 
-\subsection*{Bestimmung der mittleren Lebensdauer der kosmischen Myonen}
+\subsection{Bestimmung der mittleren Lebensdauer der kosmischen Myonen}
 \label{sec:lebensdauer}
 Die Messung der Lebensdauer erfolgte $t_\text{ges}=\SI{174986}{\second}$ lang. Dabei sind $N_\text{Start}=\num{4615018}$ Start- und  $N_\text{Stop}=\num{15899}$
 Stopimpulse gemessen worden. 

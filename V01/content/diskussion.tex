@@ -1,9 +1,9 @@
-\section{Diskussion}
+\section{Diskussion der Ergebnisse}
 \label{sec:Diskussion}
 
-\subsection*{Probleme bei der Justage der Verzögerungsleitung}
-Wie bereits in Kapitel \ref{sec:justage} angedeutet, sollte die Zählrate in Abhängigkeit der Verzögerungszeit (vgl. Abb. \ref{fig:justage10}, \ref*{fig:justage15})
-ein Platau aufweisen. Die Regression ergab jedoch eine Steigung von 
+\subsection{Probleme bei der Justage der Verzögerungsleitung}
+Wie bereits in Kapitel \ref{sec:justage} angedeutet, sollte die Zählrate in Abhängigkeit der Verzögerungszeit (vgl. Abb. \ref{fig:justage10}, \ref{fig:justage15})
+ein Plateau aufweisen. Die Regression ergab jedoch eine Steigung von 
 \begin{align*}
     a&=\SI{-0.242 \pm 0.056}{\per\nano\second} \quad &\text{für $\Delta t_{\text{Puls}}=\SI{10}{\nano\second}$}\\
     b&=\SI{0.191 \pm 0.062 }{\per\nano\second} \quad &\text{für $\Delta t_{\text{Puls}}=\SI{15}{\nano\second}$}
@@ -12,9 +12,9 @@ und damit eine Steigung ungleich null. Insbesondere ist in der Verteilung für $
 Unstetigkeit bei $\Delta t_\text{Delay}=0$ zu erkennen. Schon während der Aufnahme der Daten ist aufgefallen, dass einige Schalter für das Einstellen der Verzögerungs
 blockierten, sodass diese teilweise kein Signal mehr durchließen oder unklar war, ob das Umschalten erfolgreich war oder nicht. Eine nicht richtig zurück
 gesetzte Verzögerung könnte genau so eine Unstetigkeit wie beobachtet hervor rufen. Um die weitere Messung nicht zu sehr durch diese Problematik zu beeinflussen,
-wurde eine Verzögerung gewählt, die nicht nur zentral auf dem Platau liegt, sondern auch eine möglichst unproblematische Einstellung an den Schaltern aufwies.
+wurde eine Verzögerung gewählt, die nicht nur zentral auf dem Plateau liegt, sondern auch eine möglichst unproblematische Einstellung an den Schaltern aufwies.
 
-\subsection*{Diskussion Kalibration des MCA}
+\subsection{Diskussion Kalibration des MCA}
 Die für den Zusammenhang zwischen Zeit und Kanal berechneten Regressionsparameter 
 \begin{align*}
     a &= \SI{21.67 \pm 0.01}{\nano\second} \\ 
@@ -22,11 +22,15 @@ Die für den Zusammenhang zwischen Zeit und Kanal berechneten Regressionsparamet
  \end{align*}
 haben eine vergleichsweise geringe Unsicherheit, weswegen keine systematischen Fehler durch die Umrechnung von den Kanälen in die jeweiligen Zeiten zu erwarten sind. 
 
-\subsection*{Diskussion der experimentell bestimmten Lebensdauer}
+\subsection{Diskussion der experimentell bestimmten Lebensdauer}
 Für die Diskussion der Messung wird die prozentuale Abweichung der in Kapitel \ref{sec:lebensdauer} bestimmten mittleren Lebensdauer $\tau_\text{Exp}$ 
-zu dem Literaturwert $\tau_{\mu,\text{PDG}}=\SI{2.1969811 \pm0.0000022}{\micro\second}$ \cite{PDG} berechnet
+zu dem Literaturwert 
 \begin{equation*}
-    p=\frac{|\tau_\text{Exp}-\tau_{\mu,\text{PDG}}|}{\tau_{\mu,\text{PDG}}}\approx \SI{4.1\pm1.3}{\percent}.
+    \tau_{\mu,\text{PDG}}=\SI{2.1969811 \pm0.0000022}{\micro\second} \quad\text{\cite{PDG}}    
+\end{equation*}
+berechnet
+\begin{equation*}
+    p=\frac{|\tau_\text{Exp}-\tau_{\mu,\text{PDG}}|}{\tau_{\mu,\text{PDG}}}\approx \SI{4.1\pm1.3}{\percent}\quad.
 \end{equation*}
 Im Rahmen der in Kapitel \ref{sec:Auswertung} thematisierten Analyse der Daten ist diese Abweichung als gering gering einzuschätzen. Mögliche Gründe für die Abweichung 
 können kleinere systematische Fehler bei der Kalibration der Messaparatur sein, wie zum Beispiel Probleme bei der Verzögerungsleitung. Zudem sind auch Prozessen in dem
