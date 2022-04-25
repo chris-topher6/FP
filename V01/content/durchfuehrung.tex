@@ -43,9 +43,17 @@ Länge der Zeitspanne entspricht, um.
 Der TAC ist verbunden mit einem Vielkanalanalysator (im englischen Sprachraum Multi-Channel Analyser, daher abgekürzt als MCA).
 Der MCA sortiert die erhaltenen Amplituden nach ihrer Höhe in ein Histogramm, welches von einem
 angeschlossenen Computer ausgelesen und gespeichert werden kann.
+Zusätzlich sind an Start- und Stop-Eingang des MCAs Impulszähler verbunden, sodass für eine Abschätzung
+des Untergrundes auch die Myonen gezählt werden, welche nicht im Detektor zerfallen.
 
 \subsection{Justage des Versuchsaufbaus}
 \label{JustageVersuchsaufbau}
 
 Bevor die Messung durchgeführt werden kann, muss die nach Abbildung~\ref{fig:Schaltbild} aufgebaute Schaltung justiert
-werden.
+werden. Die Diskriminatoren werden so eingestellt, das in etwa $30$ Impulse pro Sekunde gemessen werden können.
+Die Breite eines Pulses der Diskriminatoren wird einmal auf $\Delta t = \SI{15}{\nano\second}$ und einmal auf $\Delta t = \SI{10}{\nano\second}$
+eingestellt, womit später auch die eigentliche Messung durchgeführt wird. Die Verzögerungsleitungen werden separat
+variiert, um die Ereignisrate zu maximieren. Die Suchzeit des Monoflops muss auf $T_{\text{S}} = \SI{10}{\micro\second} $ eingestellt werden.
+Unter Verwendung des Doppelimpulsgenerators wird der TAC kalibriert. Es werden verschiedene Impulsabstände eingestellt
+und diese dann den einzelnen Kanälen zugeordnet. Dies wird mit mindestens $10$ Werten zwischen $\SI{0.3}{\micro\second}$
+und $\SI{9.9}{\micro\second}$ durchgeführt.
