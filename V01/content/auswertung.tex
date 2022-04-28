@@ -79,8 +79,8 @@ Die Messdaten aus Tabelle \ref{tab:justage} samt Regression sind in den Abbildun
     \label{fig:justage15}
   \end{figure}
 \noindent
-Die Regressionsparameter, sowie das arithmetische Mittel des Wertebereichs sind in Tabelle \ref{tab:parameter} aufgeführt. Für ein Plateau sollte dabei idealer Weise $a\approx 0$ und 
-$N\approx b$ gelten.
+Die Regressionsparameter sowie das arithmetische Mittel des Wertebereichs sind in Tabelle \ref{tab:parameter} aufgeführt. Für ein Plateau sollte dabei idealerweise $a\approx 0$ und
+$b\approx N$ gelten.
 
 \begin{table}[H]
     \centering
@@ -98,7 +98,7 @@ $N\approx b$ gelten.
       \end{tabular}
     \end{table}
 \noindent
-Für die weitere Messung wurde $\Delta t_{\text{Puls}}=\SI{10}{\nano\second}$ und $\Delta t_{\text{Puls}}=\SI{5}{\nano\second}$ verwendet, da sich dieser Wert recht zentral
+Für die weitere Messung wurde $\Delta t_{\text{Puls}}=\SI{10}{\nano\second}$ und $\Delta t_{\text{Delay}}=\SI{5}{\nano\second}$ verwendet, da sich dieser Wert hinreichend zentral
 auf dem Plateau befindet (vgl. Abb.\ref{fig:justage10}).
 
 \subsection{Kalibration des MCA}
@@ -144,11 +144,11 @@ Die Regressionsparameter der eingezeichneten Gerade sind dabei
 
 \subsection{Theoretische Abschätzung der Untergrundrate}
 \label{sec:untergrund}
-Die Wahrscheinlichkeit $P$, dass $k$ Myonen während der Suchzeit $T_S$ in den Detektor fallen, ist durch eine Poisson Verteilung \ref{eqn:Untergrundrate}
+Die Wahrscheinlichkeit $P$, dass $k$ Myonen während der Suchzeit $T_S$ in den Detektor fallen, ist durch eine Poisson- Verteilung \ref{eqn:Untergrundrate}
 %\begin{equation}
 %  P(k)=\frac{\lambda^k}{k!}e^{-\lambda T_S} \label{eqn:poisson}
 %\end{equation}
-gegeben. Der Parameter $\lambda$ beschreibt dabei die durchschnittliche Ereignisrate, mit der ein Myon in den Detektor fällt und wird berechnet durch 
+gegeben. Der Parameter $\lambda$ beschreibt dabei die durchschnittliche Ereignisrate, mit der ein Myon in den Detektor fällt, und wird berechnet durch
 \begin{equation*}
   \lambda=\frac{N_\text{Start}}{t_\text{ges}}=\frac{\num{4615018}}{\SI{174986}{\second}}\approx \SI{26.37}{\per\second},
 \end{equation*}
