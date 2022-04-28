@@ -1,0 +1,5 @@
+rule mach_alles:
+    input: "build/irgendein.pdf",
+    output: "main.pdf",
+    shell: "lualatex main.tex" # Hier sollte irgendwie noch rerunfilecheck sowie biber integriert werden
+# Hier weitere Rules für Plots, Skripte etc. ergänzen
