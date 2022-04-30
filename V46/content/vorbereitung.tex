@@ -13,6 +13,11 @@
     Die Leitungselektronen können ihre Energie ändern.
     Leitfähigkeit kann so beeinflusst werden (z.B. durch Temperatur oder Dotierung)
 \end{enumerate}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.4]{pictures/Bandstrukturen.png}
+\end{figure}
+%http://wwwex.physik.uni-ulm.de/lehre/physikalischeelektronik/phys_elektr/phys_elektrse10.html
 
 
 \subsubsection*{Konzept der effektiven Masse von freien Ladungsträgern in Festkörpern}
@@ -53,15 +58,15 @@
         \to p-Dotierung 
         \to erhöht Valenzband
 \end{itemize}
-\begin{figure*}[H]
+\begin{figure}[H]
     \centering
-    \includegraphics*[scale=0.8]{pictures/Dotierung.png}
-\end{figure*}
+    \includegraphics[scale=0.5]{pictures/Dotierung.png}
+\end{figure}
 
 \subsection{Faraday-Effek}
 \subsubsection*{Definition des Effekts der Faraday-Rotation}
 \begin{itemize}
-    \item linear polarisierte Welle = Superposition zweier zikular polarisierter Wellen (gleiche Frequenz, entgegengesetzer Umlaufsinn)
+    \item linear polarisierte Welle = Superposition zweier zirkular polarisierter Wellen (gleiche Frequenz, entgegengesetzer Umlaufsinn)
         \begin{equation*}
             E(z)=\frac{1}{2}(E_R(z)+E_L(z))    
         \end{equation*}
@@ -89,19 +94,75 @@
 \end{itemize}
 
 \subsubsection*{Phänomenologische Beschreibung}
-
-\subsection{Bestimmung der effektiven Masse von Ladungsträgern mittels des Faraday-Effekts}
-\subsubsection*{Modelle und Ansatz.}
-\subsubsection*{Wie beeinflussen Magnetfelder freie Elektronen?}
 \begin{itemize}
-    \item je nach Spin wird Energie erhöht oder erniedrigt
-        \to Fermienergie bleibt gleich
-        \iff 
+    \item zikulare Doppelbrechung:
+        Fähigkeit eines Kristalls, die Polarisationsebene eines linear polarisierten Lichtstrahls bei der Transmission zu drehen
+        \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.5]{pictures/Doppelbrechung.png}
+        \end{figure}
+        \to optisch aktive Materie
+    \item durch anlegen eines Magnetfeldes wird optisch inaktive Materie doppelbrechend
+        \to Symmetrie des Kristalls wird gebrochen
 \end{itemize}
 
+\subsection{Bestimmung der effektiven Masse von Ladungsträgern mittels des Faraday-Effekts}
+\subsubsection*{Modelle und Ansatz}
+\begin{itemize}
+    \item messe Faraday-Effekt für dotierte und nicht dotierte Polarisationsebene
+        \to Differenz der Probe ist der Einfluss der Leitungselektronen
+        \begin{equation*}
+            \theta_{frei}=\frac{e_0^3}{8\pi^2\epsilon_0c^3}\frac{1}{(m^*)^2}\lambda^2\frac{NB}{n}
+        \end{equation*}
+        \begin{itemize}
+            \item $\theta_{frei}=\theta_{dotierte}-\theta_{rein}$: Faraday-Rotation
+            \item $e_0$: Elemenatarladung
+            \item $\epsilon_0$: Influenzkonstante
+            \item $c$: Lichtgeschwindigkeit
+            \item $m^*$: effektive Masse des Elektrons 
+            \item $\lambda$: Wellenlänge des Lichts 
+            \item $N$: Donatorkonzentration
+            \item $B$: Magnetfeldstärke
+            \item $L$: Probendicke
+            \item $n$: Brechungsindex
+        \end{itemize}
+\end{itemize}
+
+\subsubsection*{Wie beeinflussen Magnetfelder freie Elektronen?}
+\begin{itemize}
+    \item je nach Spin wird Energie um $\epsilon_{Zeeman}$ erhöht oder erniedrigt
+        \to Fermienergie $\epsilon_F$ bleibt gleich
+        \iff in den Bandhälften befindet sich eine unterschiedliche Anzahl an e 
+\end{itemize}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8]{pictures/magnetfeld_freieElektronen.png}
+\end{figure}
+%https://qnap.e3.physik.tu-dortmund.de/suter/Vorlesung/Festkoerperphysik_WS21/8_Magnetismus.pdf
+
 \subsection{Detektionstechnik}
-\subsubsection*{Warum ermöglicht die Modulation des Lichts in Kombination mit selektiver Verstärkung eine Unterdrückung des Signalrauschens?}
+\subsubsection*{Warum ermöglicht die Modulation des Lichts in Kombination mit selektiver Verstärkung eine Unterdrückung des Signalrauschens?} %???
+\begin{itemize}
+    \item Signalrauschen entsteht durch Photowiderstände (Dunkelrate)
+    \item Sektorscheibe zerhackt Lichtsignale
+        \to Lichtimpulse und Dunkelheit wechseln sich Abgabe
+        \iff Impusle können besser vom Untergrund getrennt werden
+    \item Selektivverstärker wird als Nulldetektor verwendet
+        \to vergleicht die Signalspannungen beider Photowiderstände miteinander
+\end{itemize}
+
 
 \subsection{Alternativer Ansatz zur Detektion} 
-\subsection*{Was ist der Hauptvorteil der balancierten Detektion mit zwei Photodetektoren?}
-\subsection*{Kann man die Faraday-Rotation auch mit nur einem Detektor messen?}
+\subsection*{Was ist der Hauptvorteil der balancierten Detektion mit zwei Photodetektoren?} %???
+\begin{itemize}
+    \item Zweistrahlverfahren für hohe Winkelauflösung
+\end{itemize}
+\subsection*{Kann man die Faraday-Rotation auch mit nur einem Detektor messen?} %???
+\begin{itemize}
+    \item Ja
+    \item schicke linear polarisiertes Licht durch Polfilter
+        \to bei richtiger Einstellung sollte kein Licht durch den Polfilter gelangen
+    \item Schalte B-Feld an 
+        \to Polfilter muss nun um Winkel $theta$ gedreht werden, bis die Intensität hinter dem Polfilter wieder auf 0 absinkt
+    \item hinter dem Filter wird also nur ein Photowiderstand benötigt 
+\end{itemize}
