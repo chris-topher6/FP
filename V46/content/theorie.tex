@@ -53,7 +53,7 @@ als Superposition zweier entgegengesetzt, zirkular polarisierter Wellen dargeste
     E_{L/R}=(E_0\vec{x}_0\pm iE_0\vec{y})e^{ik_{L/R}z} .
 \end{equation*}
 Bei einem optisch aktiven Medium unterscheiden sich aufgrund der Matrialstruktur die Phasengeschwindigkeiten der beiden Anteile. 
-Nachdem die Welle durch einen Kristall der Länge $z=L$ gedrungen ist, lässt sie sich durch Gleichung \ref{eqn:E} beschreiben durch
+Nachdem die Welle durch einen Kristall der Länge $z=L$ gedrungen ist, lässt sie sich nach Gleichung \ref{eqn:E} beschreiben durch
 \begin{equation*}
     E(L)=E_0e^{i\Psi}(\cos{(\theta\vec{x}_0)}+\sin{(\theta\vec{y}_0)})
 \end{equation*}
@@ -68,10 +68,10 @@ Ersetzungen kann $\theta$ auch durch
     \theta=\frac{L\omega}{2c}(n_R-n_L)
 \end{equation*}
 ausgedrückt werden, wobei $n$ den Brechungsindex und $\omega$ die Kreisfrequenz der Welle angibt. Die Drehung der Polarisationsebene
-um den Winkel $\theta$ ist in Abbildung \ref{fig:Doppebrechung} visualisiert
+um den Winkel $\theta$ ist in Abbildung \ref{fig:Doppebrechung} visualisiert.
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.5]{pictures/Doppelbrechung.png}
+    \includegraphics[scale=0.6]{pictures/Doppelbrechung.png}
     \caption{Drehung der Polarisationsebene einer linar polarisierten Welle beim Druchgang durch einen optisch aktiven Kristall. \cite{Anhang}}
 \end{figure}
 \noindent
@@ -82,6 +82,7 @@ Magentfeld induziert werden. Die makroskopische Polarisation des Kristalls
 \end{equation*}
 ist abhängig von der dielektischen Suszeptibilität des Stoffes. Es lässt sich zeigen, dass ein Material doppelbrechend ist, wenn
 \begin{equation}
+    \chi=
     \left[
         \begin{array}{ccc}
         \chi_{xx}          & +i\chi_{xy} & 0         \\ 
@@ -91,7 +92,7 @@ ist abhängig von der dielektischen Suszeptibilität des Stoffes. Es lässt sich
     \right]
     \label{eqn:chi}
 \end{equation}
-gilt. Ist die Suszeptibilität hingegen eine Diagonalmatrix ohne komplexe Einträge, so tritt keine Doppelbrechung auf. Ein solches 
+gilt. Ist die Suszeptibilität hingegen eine Diagonalmatrix ohne komplexe Einträge, tritt keine Doppelbrechung auf. Ein solches 
 Material wird als optisch isotrop bezeichnet. 
 
 \subsection{Der Faraday-Effekt}
@@ -101,12 +102,13 @@ Durch Anlegen eines Magnetfeldes kann ein optisch isotropes Material doppelbrech
 \end{equation*}
 mit der Kopplungskonstante $K$ des Elektrons an das Kristallfeld aufstellen.
 
+\noindent
 Es folgt, dass die Suszeptibilität $\chi_{B\neq 0}$ die Form \ref{eqn:chi} annimmt. Das Matrixelement $\chi_{xy}$ ist dabei gegeben 
 durch 
 \begin{equation*}
     \chi_{xy}=\frac{Ne_0^3\omega B}{\epsilon_0(-m\omega^2+K)^2-(e_0\omega B)^2)} .
 \end{equation*}
-Es ist also insbesondere $\neq 0$ für $B\neq 0$. Die Drehung der Polarisationsebene ergibt sich zu 
+Es ist also insbesondere $\chi_{xy}\neq 0$ für $B\neq 0$. Die Drehung der Polarisationsebene ergibt sich zu 
 \begin{equation}
     \theta=\frac{e_0^3}{2\epsilon_0 c m^2}\frac{\omega^2}{(\omega_0^2-\omega^2)^2-\omega_c^2\omega^2}\frac{NBL}{n}
     \label{eqn:theta_kompliziert}
