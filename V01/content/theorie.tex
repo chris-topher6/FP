@@ -69,7 +69,7 @@ Für die Änderung der Teilchenzahl $N$ in einem Zeitraum $\text{d}t$ gilt
 \noindent
 Durch Integration der Gleichung \ref{eqn:zerfall1} kann das Zerfallsgesetz hergeleitet werden:
 \begin{equation}
-  N(t) = N_{0} \cdot \exp{- \lambda t}.
+  N(t) = N_{0} \cdot e^{(-\lambda t)}.
   \label{eqn:zerfallsgesetz}
 \end{equation}
 \noindent
@@ -92,7 +92,7 @@ ein Myon nicht innerhalb des Detektors zerfällt, kann die Messung verfälscht w
 Diese Verfälschungen der Messung erzeugen einen Untergrund. Dieser lässt sich mithilfe
 einer Poissonverteilung abschätzen. Dies ist in folgender Gleichung angegeben:
 \begin{equation}
-  U = P_{\lambda} (k) = \frac{\lambda^{k}}{k!} \exp{-\lambda},
+  U = P_{\lambda} (k) = \frac{\lambda^{k}}{k!} e^{(-\lambda)},
   \label{eqn:Untergrundrate}
 \end{equation}
 \noindent
