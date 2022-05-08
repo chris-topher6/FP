@@ -5,7 +5,7 @@ für die Unsicherheit $\sqrt{N}$ angenommen.
 
 \subsection{Justage der Verzögerungsleitung}
 \label{sec:justage}
-Um die durch die PMTs, die Kabel und die Diskriminatoren entstehende Verzögerung auszugleichen, wird die Verzögerung systematisch verändert und dabei die Impulszahl innerhalb \SI{10}{\second} 
+Um die durch die PMTs, die Kabel und die Diskriminatoren entstehende Verzögerung auszugleichen, wird die Verzögerung systematisch verändert und dabei die Impulszahl innerhalb von \SI{10}{\second} 
 notiert. Die Messwerte sind in Tabelle \ref{tab:justage} gelistet. 
 
 \begin{table}[H]
@@ -102,15 +102,15 @@ Für die weitere Messung wurde $\Delta t_{\text{Puls}}=\SI{10}{\nano\second}$ un
 auf dem Plateau befindet (vgl. Abb.\ref{fig:justage10}).
 
 \subsection{Kalibration des MCA}
-Die mittels Doppelimpulsgenerator aufgenommenen Messwerte zur Kalibration des Mulitchannel-Analyzers sind in Tabelle \ref{tab:MCA} enumeriert. 
+Die mittels Doppelimpulsgenerator generierten Messwerte zur Kalibration des Mulitchannel-Analyzers sind in Tabelle \ref{tab:MCA} enumeriert. 
 \begin{table}[H]
     \centering
-      \caption{Am Doppelimpulsgenerator eingestellter zeitlicher Abstand $\Delta t$ und zugehörige Kanäle $ch$ im MCA.}
+      \caption{Am Doppelimpulsgenerator eingestellter zeitlicher Abstand $\Delta t$ und zugehörige Kanäle $K$ im MCA.}
       \label{tab:MCA}
       \sisetup{table-format=3.1}
       \begin{tabular}{S[table-format=1.1] S}
         \toprule
-        {$\Delta t[\si{\micro\second}]$} & {$ch$}\\
+        {$\Delta t[\si{\micro\second}]$} & {$K$}\\
         \midrule
         0.3  &  7     \\
         1.3  &  53    \\
@@ -126,7 +126,7 @@ Die mittels Doppelimpulsgenerator aufgenommenen Messwerte zur Kalibration des Mu
       \end{tabular}
     \end{table}
 \noindent
-Um bei der späteren Messung die Kanalnummern den jeweiligen Zeiten zuzuordnen, wurde eine Regression der Form \ref{eqn:gerade} erstellt, welche in Abbildungen
+Um bei der Auswertung die Kanalnummern den jeweiligen Zeiten zuzuordnen, wurde eine Regression der Form \ref{eqn:gerade} erstellt, welche in Abbildung
 \ref{fig:MCA} dargestellt ist. 
 
 \begin{figure}[H]
@@ -144,7 +144,7 @@ Die Regressionsparameter der eingezeichneten Gerade sind dabei
 
 \subsection{Theoretische Abschätzung der Untergrundrate}
 \label{sec:untergrund}
-Die Wahrscheinlichkeit $P$, dass $k$ Myonen während der Suchzeit $T_S$ in den Detektor fallen, ist durch eine Poisson- Verteilung \ref{eqn:Untergrundrate}
+Die Wahrscheinlichkeit $P$, dass $k$ Myonen während der Suchzeit $T_\text{S}$ in den Detektor fallen, ist durch eine Poisson- Verteilung \ref{eqn:Untergrundrate}
 %\begin{equation}
 %  P(k)=\frac{\lambda^k}{k!}e^{-\lambda T_S} \label{eqn:poisson}
 %\end{equation}
@@ -152,17 +152,17 @@ gegeben. Der Parameter $\lambda$ beschreibt dabei die durchschnittliche Ereignis
 \begin{equation*}
   \lambda=\frac{N_\text{Start}}{t_\text{ges}}=\frac{\num{4615018}}{\SI{174986}{\second}}\approx \SI{26.37}{\per\second},
 \end{equation*}
-also durch die Anzahl an Startsignalen pro gesamter Messzeit. Da die Wahrscheinlichkeit, dass mindestens ein Myon während der Suchzeit in den Detektor eintritt,
+also durch die Anzahl an Startsignalen pro gesamter Messzeit. Da die Wahrscheinlichkeit $P_\text{ges}$, dass mindestens ein Myon während der Suchzeit in den Detektor eintritt,
 gefragt ist, wird Gleichung \ref{eqn:Untergrundrate} über $k$ summiert. Es ergibt sich
 \begin{equation*}
-  P_{\text{ges}}=\sum_{k=1}^\infty\frac{\lambda^k}{k!}e^{-\lambda T_S}\approx\SI{0.0264}{‰}.
+  P_{\text{ges}}=\sum_{k=1}^\infty\frac{\lambda^k}{k!}e^{-\lambda T_\text{S}}\approx\SI{0.0264}{‰}.
 \end{equation*}
 Demnach sind schätzungsweise $N_{\text{BG}}=P_{\text{ges}}N_{\text{Start}}\approx\num{121.7}$ Myonen während der Suchzeit in den Detektor eingefallen, woraus ein Untergrund
-von $U=121.7/512=0.248$ pro Kanal folgt.
+von $U=\num{121.7}/\num{512}=\num{0.248}$ pro Kanal folgt.
 
 \subsection{Bestimmung der mittleren Lebensdauer der kosmischen Myonen}
 \label{sec:lebensdauer}
-Die Messung der Lebensdauer erfolgte $t_\text{ges}=\SI{174986}{\second}$ lang. Dabei sind $N_\text{Start}=\num{4615018}$ Start- und  $N_\text{Stop}=\num{15899}$
+Die Messung der Lebensdauer erfolgte über eine Zeit von $t_\text{ges}=\SI{174986}{\second}$. Dabei sind $N_\text{Start}=\num{4615018}$ Start- und  $N_\text{Stop}=\num{15899}$
 Stopimpulse gemessen worden. 
 \noindent
 Da der Zerfall der Myonen dem Zerfallsgesetz folgt, wurden die gemessenen Werte mittels \textit{sciypy.optimize.curve\_fit} an eine Funktion der Form 
