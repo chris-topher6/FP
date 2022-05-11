@@ -2,13 +2,13 @@
 \label{sec:Theorie}
 \subsection{Halbleiter}
 \label{sec:Halbleiter}
-Die elektronischen Energiezustände in einem Kristall werden durch das Bändermodell beschrieben. Nach diesem sind Elektronen in quasikontinuierliche
-Bänder gefüllt, zwischen welchen Lücken liegen, in welchen sich keine Elektronen aufhalten können. Das Valenzband ist dabei vollständig mit Elektronen
-gefüllt, während das darüberliegende Leitungsband freie Zustände für Elektronen besitzt. Diese Bandstruktur erklärt die elektrischen Eigenschafen
+Die elektronischen Energiezustände in einem Kristall können durch das Bändermodell beschrieben werden. Nach diesem sind Elektronen in quasikontinuierliche
+Bänder gefüllt, zwischen welchen Lücken liegen. In diesen können sich keine Elektronen aufhalten. Das energetisch niedrigere Valenzband ist dabei vollständig 
+mit Elektronen gefüllt, während das darüberliegende Leitungsband freie Zustände für Elektronen besitzt. Diese Bandstruktur erklärt die elektrischen Eigenschafen
 des jeweiligen Kristalls. Unterschieden werden die leitenden Metalle, in denen die Fermienergie $\epsilon_F$ der Elektronen innerhalb eines Bandes liegt,
 die nicht-leitenden Isolatoren, in denen sich keine freien Ladungsträger in dem Leitungsband befinden, und Halbleiter, wo anders als bei den Isolatoren
-Elektronen durch Anregung in das Leitungsband gelangen können. Je nach Temperatur und breite der Bandlücke können Iolatoren und Halbleiter in einander 
-über gehen. 
+Elektronen durch Anregung in das Leitungsband gelangen können. 
+%Je nach Temperatur und Breite der Bandlücke können Iolatoren und Halbleiter in einander über gehen. 
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.4]{pictures/Bandstrukturen.png}
@@ -16,7 +16,7 @@ Elektronen durch Anregung in das Leitungsband gelangen können. Je nach Temperat
 \end{figure}
 \noindent
 Gelangt bei einem Halbleiter ein Elektron in das Leitungsband, entsteht durch das fehlende Elektron ein Loch in dem Valenzband, sodass zwei freie 
-Ladungsträger entstehen. Zusätzlich zu thermischen Anregungen, können bei dem Halbleiter durch Dotierung auch gezielt Ladungsträger eingebracht werden.
+Ladungsträger entstehen. Zusätzlich zur thermischen Anregungen, können bei Halbleitern durch Dotierung auch gezielt Ladungsträger eingebracht werden.
 Dabei wird zwischen der n- und p-Dotierung unterschieden. Bei der n-Dotierung werden Donatoratome in den Halbleiter eingebracht, die ein Valenzelektron mehr
 besitzen als das Halbleitermaterial. Das Überschusselektron wird dann, wie in Abbildung \ref{fig:Donatorenergie} dargestellt, durch thermische Anregung in das
 Leitungsband gehoben. Analog kann bei der p-Dotierung druch Einbringen eines Akzeptors ein Loch erzeugt werden. 
@@ -33,9 +33,9 @@ effektive Masse $m^*$ definiert. Die Elektronenenergie $\epsilon(\vec{k})$ wird 
     \epsilon(\vec{k})=\epsilon(0)+\frac{1}{2}\sum_{i=1}^3\left(\frac{\partial \epsilon^2}{\partial k_i^2}\right)+O(k^4) .
     \label{eqn:Taylor}
 \end{equation}
-Dieser Ausdruck entscheidet sich von der Energie eines freien Elektrons
+Dieser Ausdruck unterscheidet sich von der Energie eines freien Elektrons
 \begin{equation*}
-    \epsilon_{V=0}=\frac{\hbar^2 k^2}{2m}
+    \epsilon_\text{V=0}=\frac{\hbar^2 k^2}{2m}
 \end{equation*}
 gerade durch die effektive Masse
 \begin{equation*}
@@ -43,9 +43,10 @@ gerade durch die effektive Masse
 \end{equation*}
 
 \subsection{Zirkulare Doppelbrechung}
+\label{sec:Doppebrechung}
 Jede linear polarisierte Welle kann gemäß
 \begin{equation}
-    E(z)=\frac{1}{2}(E_R(z)+E_L(z)) . 
+    E(z)=\frac{1}{2}(E_R(z)+E_L(z))
     \label{eqn:E}   
 \end{equation}
 als Superposition zweier entgegengesetzt, zirkular polarisierter Wellen dargestellt werden. Dabei gilt 
@@ -53,7 +54,7 @@ als Superposition zweier entgegengesetzt, zirkular polarisierter Wellen dargeste
     E_{L/R}=(E_0\vec{x}_0\pm iE_0\vec{y})e^{ik_{L/R}z} .
 \end{equation*}
 Bei einem optisch aktiven Medium unterscheiden sich aufgrund der Matrialstruktur die Phasengeschwindigkeiten der beiden Anteile. 
-Nachdem die Welle durch einen Kristall der Länge $z=L$ gedrungen ist, lässt sie sich nach Gleichung \ref{eqn:E} beschreiben durch
+Nachdem die Welle durch einen Kristall der Länge $z=L$ gedrungen ist, lässt sich diese nach Gleichung \ref{eqn:E} beschreiben durch
 \begin{equation*}
     E(L)=E_0e^{i\Psi}(\cos{(\theta\vec{x}_0)}+\sin{(\theta\vec{y}_0)})
 \end{equation*}
@@ -87,7 +88,7 @@ ist abhängig von der dielektischen Suszeptibilität des Stoffes. Es lässt sich
         \begin{array}{ccc}
         \chi_{xx}          & +i\chi_{xy} & 0         \\ 
         -i\chi_{xy}   & \chi_{yy}        & 0         \\
-        0                  & 0                & \chi_{zz} \\ 
+        0                  & 0                & \chi_{zz}
     \end{array}
     \right]
     \label{eqn:chi}
@@ -96,21 +97,46 @@ gilt. Ist die Suszeptibilität hingegen eine Diagonalmatrix ohne komplexe Eintr�
 Material wird als optisch isotrop bezeichnet. 
 
 \subsection{Der Faraday-Effekt}
-Durch Anlegen eines Magnetfeldes kann ein optisch isotropes Material doppelbrechend werden. Dazu lässt sich die Bewegungsgleichung
+Durch Anlegen eines Magnetfeldes kann ein optisch isotropes Material doppelbrechend werden. Es lässt sich für ein gebundenes Elektron in einem 
+Magnetfeld die Bewegungsgleichung
 \begin{equation*}
     m\ddot{\vec{r}}+K\vec{r}=-e_0\vec{E}-e_0\dot{\vec{r}}\times\vec{B}
 \end{equation*}
-mit der Kopplungskonstante $K$ des Elektrons an das Kristallfeld aufstellen.
+mit der Kopplungskonstante $K$ des Elektrons an das Kristallfeld aufstellen. 
+Da das elektromagnetische Welle mit der Frequenz $\omega$ oszilliert, ist auch die Zeitabhängigkeit des Ortsvektors durch 
+\begin{equation*}
+    r(t)\propto e^(-i\omega t)
+\end{equation*}
+gegeben, sodass sich die Bewegungsgleichung zu 
+\begin{align*}
+    &-m\omega^2\vec{r}+K\vec{r}=-e\vec{E}+ie_0\omega\vec{r}\times\vec{B}\\
+    \Leftrightarrow &-\omega^2\vec{P}+K\vec{P}=e_0^2N\vec{E}+ie_0\omega\vec{P}\times\vec{B}
+\end{align*}
+mit der Polarisation $\vec{P}= -Ne_0\vec{r}$ vereinfacht. Im Rahmen des Versuches gilt für das Magnetfeld $\vec{B}=B\vec{\text{e}}_\text{z}$. 
+Daraus ergibt sich
+\begin{equation*}
+    \vec{P}=\frac{Ne_0^2}{-m\omega^2+K}\left(\vec{E}+ie_o\omega B
+    \left[
+    \begin{array}{c}
+        P_\text{y}\\
+        P_\text{x}\\
+        0
+    \end{array}
+    \right]\right)
+    =\epsilon_0\chi\vec{E} .
+\end{equation*}
+Unter der Bedingung, dass die Einträge $\chi_\text{nm}$ unabhängig von den Komponenten $E_\text{x}$ und $E_\text{y}$ sein sollen, existiert nur eine 
+nicht triviale Lösung, wenn $\chi_{B\neq 0}$ die Form \ref{eqn:chi} besitzt. Daraus folgt nach Kapitel \ref{sec:Doppebrechung}, dass das Material in 
+Anwesenheit des Magnetfeldes doppelbrechend geworden.
 
 \noindent
-Es folgt, dass die Suszeptibilität $\chi_{B\neq 0}$ die Form \ref{eqn:chi} annimmt. Das Matrixelement $\chi_{xy}$ ist dabei gegeben 
-durch 
+Das Matrixelement $\chi_{xy}$ ist gegeben durch 
 \begin{equation*}
     \chi_{xy}=\frac{Ne_0^3\omega B}{\epsilon_0(-m\omega^2+K)^2-(e_0\omega B)^2)} .
 \end{equation*}
 Es ist also insbesondere $\chi_{xy}\neq 0$ für $B\neq 0$. Die Drehung der Polarisationsebene ergibt sich zu 
 \begin{equation}
-    \theta=\frac{e_0^3}{2\epsilon_0 c m^2}\frac{\omega^2}{(\omega_0^2-\omega^2)^2-\omega_c^2\omega^2}\frac{NBL}{n}
+    \theta\approx\frac{L\omega}{2cn}\chi_\text{xy}=\frac{e_0^3}{2\epsilon_0 c m^2}\frac{\omega^2}{(\omega_0^2-\omega^2)^2-\omega_c^2\omega^2}\frac{NBL}{n}
     \label{eqn:theta_kompliziert}
 \end{equation}
 mit der Zyklotronfrequenz $\omega_c=Be_0/m$ und der Resonanzfrequenz $\omega_0=K/m$. 
