@@ -16,10 +16,10 @@ Elektronen durch Anregung in das Leitungsband gelangen können.
 \end{figure}
 \noindent
 Gelangt bei einem Halbleiter ein Elektron in das Leitungsband, entsteht durch das fehlende Elektron ein Loch in dem Valenzband, sodass zwei freie 
-Ladungsträger entstehen. Zusätzlich zur thermischen Anregungen, können bei Halbleitern durch Dotierung auch gezielt Ladungsträger eingebracht werden.
+Ladungsträger entstehen. Zusätzlich zur thermischen Anregungen können bei Halbleitern durch Dotierung auch gezielt Ladungsträger eingebracht werden.
 Dabei wird zwischen der n- und p-Dotierung unterschieden. Bei der n-Dotierung werden Donatoratome in den Halbleiter eingebracht, die ein Valenzelektron mehr
 besitzen als das Halbleitermaterial. Das Überschusselektron wird dann, wie in Abbildung \ref{fig:Donatorenergie} dargestellt, durch thermische Anregung in das
-Leitungsband gehoben. Analog kann bei der p-Dotierung druch Einbringen eines Akzeptors ein Loch erzeugt werden. 
+Leitungsband gehoben. Analog kann bei der p-Dotierung durch Einbringen eines Akzeptors ein Loch erzeugt werden. 
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.8]{pictures/Donatorelektron.png}
@@ -28,12 +28,12 @@ Leitungsband gehoben. Analog kann bei der p-Dotierung druch Einbringen eines Akz
 \end{figure}
 \noindent
 Die Leitungselektronen wechselwirken mit dem Kristallpotential, sind also keine freien Teilchen. Als Maß für diese Wechselwirkung wird im Folgenden die 
-effektive Masse $m^*$ definiert. Die Elektronenenergie $\epsilon(\vec{k})$ wird für kleine Wellenvektoren $\vec{k}$ entwickelt zu
+effektive Masse $m^*$ definiert. Die Elektronenenergie $\epsilon(\vec{k})$ wird für kleine Wellenvektoren $\vec{k}$ zu
 \begin{equation}
-    \epsilon(\vec{k})=\epsilon(0)+\frac{1}{2}\sum_{i=1}^3\left(\frac{\partial \epsilon^2}{\partial k_i^2}\right)+O(k^4) .
+    \epsilon(\vec{k})=\epsilon(0)+\frac{1}{2}\sum_{i=1}^3\left(\frac{\partial \epsilon^2}{\partial k_i^2}\right)+O(k^4) 
     \label{eqn:Taylor}
 \end{equation}
-Dieser Ausdruck unterscheidet sich von der Energie eines freien Elektrons
+entwickelt. Dieser Ausdruck unterscheidet sich von der Energie eines freien Elektrons
 \begin{equation*}
     \epsilon_\text{V=0}=\frac{\hbar^2 k^2}{2m}
 \end{equation*}
@@ -43,7 +43,7 @@ gerade durch die effektive Masse
 \end{equation*}
 
 \subsection{Zirkulare Doppelbrechung}
-\label{sec:Doppebrechung}
+\label{sec:Doppelbrechung}
 Jede linear polarisierte Welle kann gemäß
 \begin{equation}
     E(z)=\frac{1}{2}(E_R(z)+E_L(z))
@@ -69,11 +69,12 @@ Ersetzungen kann $\theta$ auch durch
     \theta=\frac{L\omega}{2c}(n_R-n_L)
 \end{equation*}
 ausgedrückt werden, wobei $n$ den Brechungsindex und $\omega$ die Kreisfrequenz der Welle angibt. Die Drehung der Polarisationsebene
-um den Winkel $\theta$ ist in Abbildung \ref{fig:Doppebrechung} visualisiert.
+um den Winkel $\theta$ ist in Abbildung \ref{fig:Doppelbrechung} visualisiert.
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.6]{pictures/Doppelbrechung.png}
-    \caption{Drehung der Polarisationsebene einer linar polarisierten Welle beim Druchgang durch einen optisch aktiven Kristall. \cite{Anhang}}
+    \caption{Drehung der Polarisationsebene einer linar polarisierten Welle beim Durchgang durch einen optisch aktiven Kristall. \cite{Anhang}}
+    \label{fig:Doppelbrechung}
 \end{figure}
 \noindent
 Mikroskopisch lässt sich die zirkulare Doppelbrechung durch elektrische Dipole verstehen, die in dem Material durch das 
@@ -103,16 +104,16 @@ Magnetfeld die Bewegungsgleichung
     m\ddot{\vec{r}}+K\vec{r}=-e_0\vec{E}-e_0\dot{\vec{r}}\times\vec{B}
 \end{equation*}
 mit der Kopplungskonstante $K$ des Elektrons an das Kristallfeld aufstellen. 
-Da das elektromagnetische Welle mit der Frequenz $\omega$ oszilliert, ist auch die Zeitabhängigkeit des Ortsvektors durch 
+Da die elektromagnetische Welle mit der Frequenz $\omega$ oszilliert, ist auch die Zeitabhängigkeit des Ortsvektors durch 
 \begin{equation*}
-    r(t)\propto e^(-i\omega t)
+    r(t)\propto e^{-i\omega t}
 \end{equation*}
 gegeben, sodass sich die Bewegungsgleichung zu 
 \begin{align*}
     &-m\omega^2\vec{r}+K\vec{r}=-e\vec{E}+ie_0\omega\vec{r}\times\vec{B}\\
     \Leftrightarrow &-\omega^2\vec{P}+K\vec{P}=e_0^2N\vec{E}+ie_0\omega\vec{P}\times\vec{B}
 \end{align*}
-mit der Polarisation $\vec{P}= -Ne_0\vec{r}$ vereinfacht. Im Rahmen des Versuches gilt für das Magnetfeld $\vec{B}=B\vec{\text{e}}_\text{z}$. 
+mit der Polarisation $\vec{P}= -Ne_0\vec{r}$ vereinfacht. Im Rahmen des Versuches gilt für das Magnetfeld $\vec{B}=B\cdot\vec{\text{e}}_\text{z}$. 
 Daraus ergibt sich
 \begin{equation*}
     \vec{P}=\frac{Ne_0^2}{-m\omega^2+K}\left(\vec{E}+ie_o\omega B
@@ -126,8 +127,8 @@ Daraus ergibt sich
     =\epsilon_0\chi\vec{E} .
 \end{equation*}
 Unter der Bedingung, dass die Einträge $\chi_\text{nm}$ unabhängig von den Komponenten $E_\text{x}$ und $E_\text{y}$ sein sollen, existiert nur eine 
-nicht triviale Lösung, wenn $\chi_{B\neq 0}$ die Form \ref{eqn:chi} besitzt. Daraus folgt nach Kapitel \ref{sec:Doppebrechung}, dass das Material in 
-Anwesenheit des Magnetfeldes doppelbrechend geworden.
+nicht triviale Lösung, wenn $\chi_{B\neq 0}$ die Form \ref{eqn:chi} besitzt. Daraus folgt nach Kapitel \ref{sec:Doppelbrechung}, dass das Material in 
+Anwesenheit des Magnetfeldes doppelbrechend geworden ist.
 
 \noindent
 Das Matrixelement $\chi_{xy}$ ist gegeben durch 
