@@ -12,13 +12,13 @@ from uncertainties.unumpy import nominal_values as noms, std_devs as stds
 import scipy.constants
 
 # Messwerte importieren
-df0 = pd.read_csv("data/magnetfeld.csv")
+df0 = pd.read_csv("../data/magnetfeld.csv")
 # Probe 1: GaAs, n-dotiert, N=1.2*10^18 cm^-3, d=1.36mm
-df1 = pd.read_csv("data/probe1.csv")
+df1 = pd.read_csv("../data/probe1.csv")
 # Probe 2: GaAs, n-dotiert, N=2.8*10^18 cm^-3, d=1.296mm
-df2 = pd.read_csv("data/probe2.csv")
+df2 = pd.read_csv("../data/probe2.csv")
 # Probe 3: GaAs, hochrein, d=5.1mm
-df3 = pd.read_csv("data/probe3.csv")
+df3 = pd.read_csv("../data/probe3.csv")
 
 # 1. Magnetfeldstärkenmaximum bestimmen
 
@@ -37,7 +37,7 @@ plt.xlabel("$d$ [mm]")
 plt.title("Magnetische Flussdichte")
 plt.legend(loc="best")
 plt.tight_layout()
-plt.savefig("build/B_Feld.pdf")
+plt.savefig("../build/B_Feld.pdf")
 plt.close()
 
 # 2.Graphische Darstellung der Messergebnisse
@@ -123,7 +123,7 @@ plt.xlabel(r"$\lambda^2$  [$\mu m^2$]")
 plt.title("Normierte Drehwinkel")
 plt.legend(loc="best")
 plt.tight_layout()
-plt.savefig("build/Drehwinkel.pdf")
+plt.savefig("../build/Drehwinkel.pdf")
 plt.close()
 
 # 3. Graphische Darstellung des Drehwinkels der freien Elektronen
@@ -161,7 +161,7 @@ plt.xlabel(r"$\lambda^2$  [$\mu m^2$]")
 plt.title("Drehwinkel der freien Elektronen für Probe 1")
 plt.legend(loc="best")
 plt.tight_layout()
-plt.savefig("build/Drehwinkel_frei_Probe1.pdf")
+plt.savefig("../build/Drehwinkel_frei_Probe1.pdf")
 plt.close()
 
 # Fit an den Daten der Probe 2
@@ -193,7 +193,7 @@ plt.xlabel(r"$\lambda^2$  [$\mu m^2$]")
 plt.title("Drehwinkel der freien Elektronen für Probe 2")
 plt.legend(loc="best")
 plt.tight_layout()
-plt.savefig("build/Drehwinkel_frei_Probe2.pdf")
+plt.savefig("../build/Drehwinkel_frei_Probe2.pdf")
 plt.close()
 
 # Ausreißer herausnehmen, um den Fit zu verbessern
@@ -236,5 +236,5 @@ plt.xlabel(r"$\lambda^2$  [$\mu m^2$]")
 plt.title("Drehwinkel der freien Elektronen für Probe 1")
 plt.legend(loc="best")
 plt.tight_layout()
-plt.savefig("build/Drehwinkel_frei_Probe1v2.pdf")
+plt.savefig("../build/Drehwinkel_frei_Probe1v2.pdf")
 plt.close()
