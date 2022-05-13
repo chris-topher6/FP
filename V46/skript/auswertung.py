@@ -9,7 +9,7 @@ import uncertainties
 from uncertainties import ufloat
 import uncertainties.unumpy as unp
 from uncertainties.unumpy import nominal_values as noms, std_devs as stds
-import scipy.constants
+import scipy.constants as c
 
 # Messwerte importieren
 df0 = pd.read_csv("../data/magnetfeld.csv")
@@ -137,7 +137,6 @@ def f(x, m, b):
 params1, cov1 = curve_fit(f, df1["Filter [mikro m]"] ** 2, df1["Theta frei"])
 errors1 = np.sqrt(np.diag(cov1))
 params1_err = unp.uarray(params1, errors1)
-err1 = params1_err[0] * df1["Filter [mikro m]"] ** 2 + params1_err[1]
 
 
 plt.figure()
@@ -168,7 +167,6 @@ plt.close()
 params2, cov2 = curve_fit(f, df2["Filter [mikro m]"] ** 2, df2["Theta frei"])
 errors2 = np.sqrt(np.diag(cov2))
 params2_err = unp.uarray(params2, errors2)
-err2 = params2_err[0] * df2["Filter [mikro m]"] ** 2 + params2_err[1]
 
 plt.figure()
 plt.plot(
@@ -204,7 +202,6 @@ df1_antiv2 = df1.drop([0, 1, 2, 3, 4, 5, 6, 8], axis=0)
 params1v2, cov1v2 = curve_fit(f, df1_v2["Filter [mikro m]"] ** 2, df1_v2["Theta frei"])
 errors1v2 = np.sqrt(np.diag(cov1v2))
 params1v2_err = unp.uarray(params1v2, errors1v2)
-err1v2 = params1v2_err[0] * df1_v2["Filter [mikro m]"] ** 2 + params1v2_err[1]
 
 
 plt.figure()
@@ -238,3 +235,36 @@ plt.legend(loc="best")
 plt.tight_layout()
 plt.savefig("../build/Drehwinkel_frei_Probe1v2.pdf")
 plt.close()
+
+# Berechnung der effektiven Masse
+# Konstanten definieren
+B = 434 * 10 ** (-3)  # von mT in T umrechnen
+n = 3.57  # aus Altprotokoll, Quelle raussuchen und ersetzen
+N1 = 1.2 * 10 ** (24)  # von  cm^-3 in m^-3 umrechnen
+N2 = 2.8 * 10 ** (24)  # von cm^-3 in m^-3 umrechnen
+params1v2_err[0] *= 10 ** (12)  # von radian/micro m^3 in radian/m^3 umrechnen
+params2_err[0] *= 10 ** (12)  # von radian/micro m^3 in radian/m^3 umrechnen
+print("Es ergeben sich die Proportionalitätsfaktoren:")
+print("Probe 1: ")
+print("m = ", params1v2_err[0], "radian/m^3")
+print("b = ", params1_err[1])
+print("Probe 2: ")
+print("m = ", params2_err[0], "radian/m^3")
+print("b = ", params2_err[1])
+# Berechnung
+print("Es ergeben sich die effektiven Massen:")
+m1 = unp.sqrt(
+    (c.e**3 * B)
+    / (8 * np.pi**2 * c.epsilon_0 * c.c**3 * n)
+    * (N1 / params1v2_err[0])
+)  # in kg
+m2 = unp.sqrt(
+    (c.e**3 * B)
+    / (8 * np.pi**2 * c.epsilon_0 * c.c**3 * n)
+    * (N2 / params2_err[0])
+)  # in kg
+print("m1: ", m1, " kg")
+print("m2: ", m2, " kg")
+print("In Elektronenmassen ausgedrückt: ")
+print("m1: ", m1 / c.m_e, "* m_e")
+print("m2: ", m2 / c.m_e, "* m_e")
