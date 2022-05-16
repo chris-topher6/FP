@@ -256,8 +256,8 @@ N1 = 1.2 * 10 ** (24)  # Dotierung       # von  cm^-3 in m^-3 umrechnen
 N2 = 2.8 * 10 ** (24)  # Dotierung       # von cm^-3 in m^-3 umrechnen
 # params1v2_err[0] *= 10 ** (12)  # von radian/micro m^3 in radian/m^3 umrechnen
 # params2_err[0] *= 10 ** (12)  # von radian/micro m^3 in radian/m^3 umrechnen
-params1v2_err[0] = 3.0 * 10**12
-params2_err[0] = 3.0 * 10**12
+params1v2_err[0] = 3.0 * 10**15
+params2_err[0] = 3.0 * 10**15
 
 print(f"Es ergeben sich die Proportionalitätsfaktoren:")
 print(f"Probe 1: ")
