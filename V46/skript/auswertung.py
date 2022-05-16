@@ -276,6 +276,13 @@ print("m2: ", m2, " kg")
 print("In Elektronenmassen ausgedrückt: ")
 print("m1: ", m1 / c.m_e, "* m_e")
 print("m2: ", m2 / c.m_e, "* m_e")
+# Abweichungen
+print("Abweichung vom Literaturwert 0.067 * m_e:")
+lit = 0.067
+abw1 = (np.abs((m1 / c.m_e) - 0.067) / 0.067) * 100
+abw2 = (np.abs((m2 / c.m_e) - 0.067) / 0.067) * 100
+print("m1 weicht um ", abw1, "% vom Literaturwert ab")
+print("m2 weicht um ", abw2, "% vom Literaturwert ab")
 
 # Einheitencheck
 print("\nEinheiten")
