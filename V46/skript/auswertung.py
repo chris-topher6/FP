@@ -12,13 +12,17 @@ from uncertainties.unumpy import nominal_values as noms, std_devs as stds
 import scipy.constants as c
 
 # Messwerte importieren
-df0 = pd.read_csv("../data/magnetfeld.csv")
+df0 = pd.read_csv("data/magnetfeld.csv")
 # Probe 1: GaAs, n-dotiert, N=1.2*10^18 cm^-3, d=1.36mm
-df1 = pd.read_csv("../data/probe1.csv")
+df1 = pd.read_csv("data/probe1.csv")
 # Probe 2: GaAs, n-dotiert, N=2.8*10^18 cm^-3, d=1.296mm
-df2 = pd.read_csv("../data/probe2.csv")
+df2 = pd.read_csv("data/probe2.csv")
 # Probe 3: GaAs, hochrein, d=5.1mm
-df3 = pd.read_csv("../data/probe3.csv")
+df3 = pd.read_csv("data/probe3.csv")
+
+#df1["Filter [mikro m]"]=df1["Filter [mikro m]"]*10**(-6) #umrechnen in der 
+#df2["Filter [mikro m]"]=df2["Filter [mikro m]"]*10**(-6)
+#df3["Filter [mikro m]"]=df3["Filter [mikro m]"]*10**(-6)
 
 # 1. Magnetfeldstärkenmaximum bestimmen
 
@@ -37,7 +41,7 @@ plt.xlabel("$d$ [mm]")
 plt.title("Magnetische Flussdichte")
 plt.legend(loc="best")
 plt.tight_layout()
-plt.savefig("../build/B_Feld.pdf")
+plt.savefig("build/B_Feld.pdf")
 plt.close()
 
 # 2.Graphische Darstellung der Messergebnisse
@@ -119,11 +123,11 @@ plt.plot(
     color="#2ca02c",
 )
 plt.ylabel(r"$\theta_{norm}$ [rad]")
-plt.xlabel(r"$\lambda^2$  [$\mu m^2$]")
+plt.xlabel(r"$\lambda^2$  [$m^2$]")
 plt.title("Normierte Drehwinkel")
 plt.legend(loc="best")
 plt.tight_layout()
-plt.savefig("../build/Drehwinkel.pdf")
+plt.savefig("build/Drehwinkel.pdf")
 plt.close()
 
 # 3. Graphische Darstellung des Drehwinkels der freien Elektronen
@@ -148,19 +152,20 @@ plt.plot(
     color="red",
     label=r"Drehwinkel $\theta_{frei}$",
 )
+x=np.linspace(np.min(df1["Filter [mikro m]"] ** 2), np.max(df1["Filter [mikro m]"] ** 2))
 plt.plot(
-    np.linspace(1, 7, 100),
-    f(np.linspace(1, 7, 100), params1[0], params1[1]),
+    x,
+    f(x, params1[0], params1[1]),
     ls="-",
     label=r"Fit",
     color="#1f77b4",
 )
 plt.ylabel(r"$\theta_{frei}$ [rad]")
-plt.xlabel(r"$\lambda^2$  [$\mu m^2$]")
+plt.xlabel(r"$\lambda^2$  [$m^2$]")
 plt.title("Drehwinkel der freien Elektronen für Probe 1")
 plt.legend(loc="best")
 plt.tight_layout()
-plt.savefig("../build/Drehwinkel_frei_Probe1.pdf")
+plt.savefig("build/Drehwinkel_frei_Probe1.pdf")
 plt.close()
 
 # Fit an den Daten der Probe 2
@@ -177,21 +182,21 @@ plt.plot(
     color="red",
     label=r"Drehwinkel $\theta_{frei}$",
 )
-
+x=np.linspace(np.min(df2["Filter [mikro m]"] ** 2), np.max(df2["Filter [mikro m]"] ** 2))
 plt.plot(
-    np.linspace(1, 7, 100),
-    f(np.linspace(1, 7, 100), params2[0], params2[1]),
+    x,
+    f(x, params2[0], params2[1]),
     ls="-",
     label=r"Fit",
     color="#1f77b4",
 )
 
 plt.ylabel(r"$\theta_{frei}$ [rad]")
-plt.xlabel(r"$\lambda^2$  [$\mu m^2$]")
+plt.xlabel(r"$\lambda^2$  [$m^2$]")
 plt.title("Drehwinkel der freien Elektronen für Probe 2")
 plt.legend(loc="best")
 plt.tight_layout()
-plt.savefig("../build/Drehwinkel_frei_Probe2.pdf")
+plt.savefig("build/Drehwinkel_frei_Probe2.pdf")
 plt.close()
 
 # Ausreißer herausnehmen, um den Fit zu verbessern
@@ -221,36 +226,39 @@ plt.plot(
     color="black",
     label="Ausreißer",
 )
+x=np.linspace(np.min(df1_v2["Filter [mikro m]"] ** 2), np.max(df1_v2["Filter [mikro m]"] ** 2))
 plt.plot(
-    np.linspace(1, 7, 100),
-    f(np.linspace(1, 7, 100), params1v2[0], params1v2[1]),
+    x,
+    f(x, params1v2[0], params1v2[1]),
     ls="-",
     label=r"Fit",
     color="#1f77b4",
 )
 plt.ylabel(r"$\theta_{frei}$ [rad]")
-plt.xlabel(r"$\lambda^2$  [$\mu m^2$]")
+plt.xlabel(r"$\lambda^2$  [$m^2$]")
 plt.title("Drehwinkel der freien Elektronen für Probe 1")
 plt.legend(loc="best")
 plt.tight_layout()
-plt.savefig("../build/Drehwinkel_frei_Probe1v2.pdf")
+plt.savefig("build/Drehwinkel_frei_Probe1v2.pdf")
 plt.close()
 
 # Berechnung der effektiven Masse
 # Konstanten definieren
-B = 434 * 10 ** (-3)  # von mT in T umrechnen
-n = 3.57  # aus Altprotokoll, Quelle raussuchen und ersetzen
-N1 = 1.2 * 10 ** (24)  # von  cm^-3 in m^-3 umrechnen
-N2 = 2.8 * 10 ** (24)  # von cm^-3 in m^-3 umrechnen
+B = 434 * 10 ** (-3)   #externes B-Feld # von mT in T umrechnen
+n = 3.57               #Brechungsindex  # aus Altprotokoll, Quelle raussuchen und ersetzen
+N1 = 1.2 * 10 ** (24)  #Dotierung       # von  cm^-3 in m^-3 umrechnen
+N2 = 2.8 * 10 ** (24)  #Dotierung       # von cm^-3 in m^-3 umrechnen
 params1v2_err[0] *= 10 ** (12)  # von radian/micro m^3 in radian/m^3 umrechnen
 params2_err[0] *= 10 ** (12)  # von radian/micro m^3 in radian/m^3 umrechnen
-print("Es ergeben sich die Proportionalitätsfaktoren:")
-print("Probe 1: ")
-print("m = ", params1v2_err[0], "radian/m^3")
-print("b = ", params1_err[1])
-print("Probe 2: ")
-print("m = ", params2_err[0], "radian/m^3")
-print("b = ", params2_err[1])
+
+
+print(f"Es ergeben sich die Proportionalitätsfaktoren:")
+print(f"Probe 1: ")
+print(f"m = {params1v2_err[0]:.2} radian/m^3")
+print(f"b = {params1_err[1]:.2} radian")
+print(f"Probe 2: ")
+print(f"m = {params2_err[0]:.2} radian/m^3")
+print(f"b = {params2_err[1]:.2} radian")
 # Berechnung
 print("Es ergeben sich die effektiven Massen:")
 m1 = unp.sqrt(
@@ -268,3 +276,12 @@ print("m2: ", m2, " kg")
 print("In Elektronenmassen ausgedrückt: ")
 print("m1: ", m1 / c.m_e, "* m_e")
 print("m2: ", m2 / c.m_e, "* m_e")
+
+#Einheitencheck
+print("\nEinheiten")
+print(f"e_0={c.e:.2}")
+print(f"epsilon={c.epsilon_0:.2}")
+print(f"c={c.c:.2}")
+print(f"n={n:.2}")
+print(f"N1={N1:.2}")
+print(f"N2={N2:.2}")
