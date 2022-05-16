@@ -20,9 +20,9 @@ df2 = pd.read_csv("data/probe2.csv")
 # Probe 3: GaAs, hochrein, d=5.1mm
 df3 = pd.read_csv("data/probe3.csv")
 
-#df1["Filter [mikro m]"]=df1["Filter [mikro m]"]*10**(-6) #umrechnen in der 
-#df2["Filter [mikro m]"]=df2["Filter [mikro m]"]*10**(-6)
-#df3["Filter [mikro m]"]=df3["Filter [mikro m]"]*10**(-6)
+# df1["Filter [mikro m]"]=df1["Filter [mikro m]"]*10**(-6) #umrechnen in der
+# df2["Filter [mikro m]"]=df2["Filter [mikro m]"]*10**(-6)
+# df3["Filter [mikro m]"]=df3["Filter [mikro m]"]*10**(-6)
 
 # 1. Magnetfeldstärkenmaximum bestimmen
 
@@ -152,7 +152,9 @@ plt.plot(
     color="red",
     label=r"Drehwinkel $\theta_{frei}$",
 )
-x=np.linspace(np.min(df1["Filter [mikro m]"] ** 2), np.max(df1["Filter [mikro m]"] ** 2))
+x = np.linspace(
+    np.min(df1["Filter [mikro m]"] ** 2), np.max(df1["Filter [mikro m]"] ** 2)
+)
 plt.plot(
     x,
     f(x, params1[0], params1[1]),
@@ -182,7 +184,9 @@ plt.plot(
     color="red",
     label=r"Drehwinkel $\theta_{frei}$",
 )
-x=np.linspace(np.min(df2["Filter [mikro m]"] ** 2), np.max(df2["Filter [mikro m]"] ** 2))
+x = np.linspace(
+    np.min(df2["Filter [mikro m]"] ** 2), np.max(df2["Filter [mikro m]"] ** 2)
+)
 plt.plot(
     x,
     f(x, params2[0], params2[1]),
@@ -226,7 +230,9 @@ plt.plot(
     color="black",
     label="Ausreißer",
 )
-x=np.linspace(np.min(df1_v2["Filter [mikro m]"] ** 2), np.max(df1_v2["Filter [mikro m]"] ** 2))
+x = np.linspace(
+    np.min(df1_v2["Filter [mikro m]"] ** 2), np.max(df1_v2["Filter [mikro m]"] ** 2)
+)
 plt.plot(
     x,
     f(x, params1v2[0], params1v2[1]),
@@ -244,13 +250,14 @@ plt.close()
 
 # Berechnung der effektiven Masse
 # Konstanten definieren
-B = 434 * 10 ** (-3)   #externes B-Feld # von mT in T umrechnen
-n = 3.57               #Brechungsindex  # aus Altprotokoll, Quelle raussuchen und ersetzen
-N1 = 1.2 * 10 ** (24)  #Dotierung       # von  cm^-3 in m^-3 umrechnen
-N2 = 2.8 * 10 ** (24)  #Dotierung       # von cm^-3 in m^-3 umrechnen
-params1v2_err[0] *= 10 ** (12)  # von radian/micro m^3 in radian/m^3 umrechnen
-params2_err[0] *= 10 ** (12)  # von radian/micro m^3 in radian/m^3 umrechnen
-
+B = 434 * 10 ** (-3)  # externes B-Feld # von mT in T umrechnen
+n = 3.85744  # Brechungsindex  # aus Altprotokoll, Quelle raussuchen und ersetzen
+N1 = 1.2 * 10 ** (24)  # Dotierung       # von  cm^-3 in m^-3 umrechnen
+N2 = 2.8 * 10 ** (24)  # Dotierung       # von cm^-3 in m^-3 umrechnen
+# params1v2_err[0] *= 10 ** (12)  # von radian/micro m^3 in radian/m^3 umrechnen
+# params2_err[0] *= 10 ** (12)  # von radian/micro m^3 in radian/m^3 umrechnen
+params1v2_err[0] = 3.0 * 10**12
+params2_err[0] = 3.0 * 10**12
 
 print(f"Es ergeben sich die Proportionalitätsfaktoren:")
 print(f"Probe 1: ")
@@ -277,7 +284,7 @@ print("In Elektronenmassen ausgedrückt: ")
 print("m1: ", m1 / c.m_e, "* m_e")
 print("m2: ", m2 / c.m_e, "* m_e")
 
-#Einheitencheck
+# Einheitencheck
 print("\nEinheiten")
 print(f"e_0={c.e:.2}")
 print(f"epsilon={c.epsilon_0:.2}")
