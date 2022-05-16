@@ -96,10 +96,10 @@ Die freien Drehwinkel sind in Abbildung \ref{fig:frei1} für die Probe 1 und in
 \ref{fig:frei2} für die Probe 2 abgebildet. An die Werte wird eine lineare
 Funktion der Form
 \begin{equation}
-  y = m \cdot x + b
+  y = a \cdot x + b
   \label{eqn:linearerfit}
 \end{equation}
-angepasst.
+angepasst. Dies wird durchgeführt mittels der \texttt{python}-Bibliothek \texttt{scipy.optimize} \cite{scipy}.
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.7]{./build/Drehwinkel_frei_Probe1.pdf}
@@ -127,10 +127,32 @@ Dies ist in Abbildung \ref{fig:frei1v2} dargestellt.
 Aus den Parametern des Fits kann die effektive Masse der freien Elektronen bestimmt werden,
 da sie dem Proportionalitätsfaktor entsprechen:
 \begin{equation*}
-  \theta_{\text{frei}} (\lambda^{2}) = m \cdot \lambda^{2}.
+  \theta_{\text{frei}} (\lambda^{2}) = a \cdot \lambda^{2}.
 \end{equation*}
 Nach den Fits ergeben sich die Faktoren
 \begin{align}
-  m_{1} = & \SI{3.0(1.2)e-3}{\per\micro\meter\squared} \\
-  m_{2} = & \SI{11.8(2.9)e-3}{\per\micro\meter\squared}.
+  a_{1} = & \SI{3.0(1.2)e12}{\per\meter\cubed} \\
+  a_{2} = & \SI{1.2(0.3)e13}{\per\meter\cubed}.
 \end{align}
+Mit Gleichung \ref{eqn:winkel_masse} lässt sich zeigen, dass
+\begin{equation}
+  a = \frac{e_{0}^{3} N B}{8 \pi^{2} \epsilon_{0} c^{3} n (m^{*})^{2}}
+  \label{eqn:faktor_a}
+\end{equation}
+gilt. Gleichung \ref{eqn:faktor_a} kann wiederum nach der effektiven Masse
+umgestellt werden, um diese zu bestimmen:
+\begin{equation}
+  m^{*} = \sqrt{\frac{e_{0}^{3} N B}{8 \pi^{2} \epsilon_{0} c^{3} n a}}.
+  \label{eqn:effektive_masse_aus_a}
+\end{equation}
+Dann ergibt sich für die effektive Masse, berechnet aus jeweils den
+Messwerten der Probe 1 sowie der Probe 2:
+\begin{align}
+  m_{1}^{*} = & \SI{9.9(2.0)e-32}{\kilo\gram} = \num{0.109(0.022)} \cdot m_{e} \\
+  m_{2}^{*} = & \SI{7.6(0.9)e-32}{\kilo\gram} = \num{0.084(0.010)} \cdot m_{e}.
+\end{align}
+Bei der Berechnung werden die Naturkonstanten der \texttt{python}-Bibliothek
+\texttt{scipy.constants} verwendet. Für die magnetische Flussdichte wird der
+in Abschnitt \ref{subsec:Magnetflussdichte} bestimmte maximale Flussdichte
+$B_{\text{max}} = \SI{434}{\milli\tesla}$ genutzt. Der Wert für den
+Brechungsindex $n$ beträgt $n = 3.857$ \cite{Brechungsindex}.
