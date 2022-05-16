@@ -38,7 +38,6 @@ plt.plot(
 plt.axhline(y=434, ls="--", label="Maximum", color="black")
 plt.ylabel(f"$B$ [mT]")
 plt.xlabel("$d$ [mm]")
-plt.title("Magnetische Flussdichte")
 plt.legend(loc="best")
 plt.tight_layout()
 plt.savefig("build/B_Feld.pdf")
@@ -123,8 +122,7 @@ plt.plot(
     color="#2ca02c",
 )
 plt.ylabel(r"$\theta_{norm}$ [rad]")
-plt.xlabel(r"$\lambda^2$  [$m^2$]")
-plt.title("Normierte Drehwinkel")
+plt.xlabel(r"$\lambda^2$  [$\mu m^2$]")
 plt.legend(loc="best")
 plt.tight_layout()
 plt.savefig("build/Drehwinkel.pdf")
@@ -163,8 +161,7 @@ plt.plot(
     color="#1f77b4",
 )
 plt.ylabel(r"$\theta_{frei}$ [rad]")
-plt.xlabel(r"$\lambda^2$  [$m^2$]")
-plt.title("Drehwinkel der freien Elektronen für Probe 1")
+plt.xlabel(r"$\lambda^2$  [$\mu m^2$]")
 plt.legend(loc="best")
 plt.tight_layout()
 plt.savefig("build/Drehwinkel_frei_Probe1.pdf")
@@ -196,8 +193,7 @@ plt.plot(
 )
 
 plt.ylabel(r"$\theta_{frei}$ [rad]")
-plt.xlabel(r"$\lambda^2$  [$m^2$]")
-plt.title("Drehwinkel der freien Elektronen für Probe 2")
+plt.xlabel(r"$\lambda^2$  [$\mu m^2$]")
 plt.legend(loc="best")
 plt.tight_layout()
 plt.savefig("build/Drehwinkel_frei_Probe2.pdf")
@@ -241,8 +237,7 @@ plt.plot(
     color="#1f77b4",
 )
 plt.ylabel(r"$\theta_{frei}$ [rad]")
-plt.xlabel(r"$\lambda^2$  [$m^2$]")
-plt.title("Drehwinkel der freien Elektronen für Probe 1")
+plt.xlabel(r"$\lambda^2$  [$\mu m^2$]")
 plt.legend(loc="best")
 plt.tight_layout()
 plt.savefig("build/Drehwinkel_frei_Probe1v2.pdf")
@@ -254,10 +249,8 @@ B = 434 * 10 ** (-3)  # externes B-Feld # von mT in T umrechnen
 n = 3.85744  # Brechungsindex  # aus Altprotokoll, Quelle raussuchen und ersetzen
 N1 = 1.2 * 10 ** (24)  # Dotierung       # von  cm^-3 in m^-3 umrechnen
 N2 = 2.8 * 10 ** (24)  # Dotierung       # von cm^-3 in m^-3 umrechnen
-# params1v2_err[0] *= 10 ** (12)  # von radian/micro m^3 in radian/m^3 umrechnen
-# params2_err[0] *= 10 ** (12)  # von radian/micro m^3 in radian/m^3 umrechnen
-params1v2_err[0] = 3.0 * 10**15
-params2_err[0] = 3.0 * 10**15
+params1v2_err[0] *= 10 ** (15)  # von radian/micro m^3 in radian/m^3 umrechnen
+params2_err[0] *= 10 ** (15)  # von radian/((micro m^2)*mm) in radian/m^3 umrechnen
 
 print(f"Es ergeben sich die Proportionalitätsfaktoren:")
 print(f"Probe 1: ")
