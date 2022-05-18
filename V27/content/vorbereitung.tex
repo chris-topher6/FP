@@ -1,0 +1,93 @@
+\section{Vorbereitung}
+\label{sec:vorbereitung}
+\subsection{Energiestruktur des Atoms}
+
+\subsubsection{Welche Quantenzahlen definieren den Zuestand des Elektrons im Wasserstoffatom?}
+$\ket{n,l,m}$
+\begin{itemize}
+    \item n: Haupt-QZ
+    \item l: Bahndrehimpuls QZ
+    \item m: magnetische QZ
+\end{itemize}
+
+\subsubsection{Was ist die Feinstruktur (Spin-Bahn-Kopplung)?}
+\begin{itemize}
+    \item WW zwischen Bahndrehimpuls $L$ und Spin $S$
+    \item Halbklassisch: 
+        \to im Bezugssys. des Elektrons stellt der Kern einen Kreistrom um das Elektron dar
+        \to Kreisströme verursachen magnetisches Feld (Biot-Savart) (Kreisstrom entspricht dem Bahndrehimpuls)
+        \to dieses magnetische Feld wechselwirkt mit dem magnetischen Moment des Elektronen-Spins
+        \to klassisches Analogon: Stabmagnet in Spule
+    \item in nicht-relativistischer QM wird ein Störterm $H_S\propto\vec{L}\cdot\vec{S}$ ergänzt
+    \item in relativistischer QM ergibt sich die WW automatisch aus der Dirac-Gleichung
+\end{itemize}
+
+\subsubsection{Beschreiben Sie die Elektronenkonfiguration und Drehimpulskopplungen in Mehrelektronenatomen (LS-Kopplung und jj-Kopplung)}
+\begin{itemize}
+    \to Stärke der Spin-Bahn-WW nimmt mit steigendem $Z$ stark zu
+    \to Stärke der Spin-Bahn-WW nimmt mit steigendem $n$ ab
+\end{itemize}
+jj-Kopplung:
+\begin{itemize}
+    \item Gesamtdrehimpuls aller einzelnen Teilchen werden addiert
+    \begin{equation*}
+        J=\sum_i j_i=\sum_i(l_i+s_i)\\
+    \end{equation*}
+    \item elektrostatische Störung der Elektronen untereinander vernachlässigt
+    \to Spin-Bahn-WW jedes einzelnen Elektrons >> elektrostatische Störung der Elektronen untereinander
+    \iff gute Näherung für mittelschwere Atome auf inneren Schalen & schwere Atome auf ganzen Hülle
+\end{itemize}
+LS-Kopplung: 
+\begin{itemize}
+    \item Bahndrehimpuls aller Teilchen und Spin aller Teilchen werden addiert
+        \begin{equation*}
+            J=L+S=\sum_il_i + \sum_i s_i
+        \end{equation*}
+    \item Spin-Bahn-WW wird vernachlässigt \iff L & S sind gute QZ 
+    \to elektrostatische Störung der Elektronen untereinander >> Spin-Bahn-WW jedes einzelnen Elektrons
+    \to gute Näherung für leichte Atome
+\end{itemize}
+
+
+\subsection{Magnetisches Moment des Atoms}
+
+\subsubsection{Wie ist der Zusammenhang zwischen dem magnetischen Moment eines Elektrons und seinen Drehimpulsquantenzahlen?}
+\begin{align*}
+    \vec{\mu_L}&=-\frac{g_L\mu_B}{\hbar}\vec{L}=-g_L\mu_B\sqrt{l(l+1)}, \quad g_L\approx 1\\
+    \vec{\mu_S}&=-\frac{g_S\mu_B}{\hbar}\vec{S}=-g_S\mu_B\sqrt{s(s+1)}, \quad g_S\approx 2
+\end{align*}
+\subsubsection{Was ist der Unterschied zwischen dem gyromagnetischen Verhältnis für den Elektronenspin und demjenigen für den Drehimpuls?}
+\begin{align*}
+    \gamma=\frac{|\vec{\mu_l}|}{|\vec{l}|} \qquad
+    \gamma=\frac{|\vec{\mu_s}|}{|\vec{s}|}
+\end{align*}
+
+\subsection{Aufspaltung des Energieniveaus eines Atoms im homogenen Magnetfeld}
+
+\subsubsection{In wie viele Niveas spaltet sich der Zustand mit Gesamtdrehimpuls J?}
+\subsubsection{Wie ändert sich die Aufspaltung mit der Magnetfeldstärke?}
+\subsubsection{Was versteht man unter dem Paschen-Back-Effekt?}
+\subsection{Optische Übergänge zwischen Zeemannaufgespaltenen Energieniveaus}
+\subsubsection{Zwischen welchen Zuständen sind optische Übergänge erlaubt?}
+\subsubsection{Wie viele Spektrallinien beobachtet man im normalen und anormalen Zeeman-Effekt?}
+\subsubsection{Wie sind die Spektrallinien polarisiert?}
+\textit{Beachten Sie die geomatrischen Verhältnisse des Experiments, d.h. wie ändert sich das Spektrum und die Polarisation der Linien
+bei der Beobachtung entlang der Magnetfeldrichtung (longitudinale Geometrie) oder senkrecht zur Magnetfeldrichtung (transversale
+Geometrie)?}
+\subsection{Optische Übergänge in Cd Atomen}
+\subsubsection[]{Stellen Sie das Termschema für die rote $(^1P_1 \leftrightarrow ^1D_2)$ und blaue 
+$(^3S_1 \leftrightarrow ^3P_1)$ Linie der Cd-Lampe auf.}
+\subsubsection[]{Berechnen Sie die Landé-Faktoren $g_i$ und die Aufspaltung $\Delta E$ der Zeeman-Linie.}
+\subsubsection{Zeichnen Sie die erwartetden Spektren.}
+\subsubsection{Wie viele Linien erwarten Sie im Magnetfeld?}
+\subsubsection{Ordnen Sie den beobachtbaren Linien ihre Polarisation zu.}
+\subsection{Dispersionsgebiet und spektrale Auflösung der Messapparatur}
+\subsubsection[]{Berechnen Sie für $\lambda=\SI{643.8}{\nano\metre}$ und $\lambda=\SI{480}{\nano\metre}$ das Dispersionsgebiet 
+$\Delta\lambda_D$  und das Auflösevermögen $A$ der Lummer-Gehrcke-Platte ($d=\SI{4}{\milli\metre}, L=\SI{120}{\milli\metre}, 
+n(\SI{643.8}{\nano\metre})=\num{1.4567}, n(\SI{480}{\nano\metre})=\num{1.4635}$).}
+\subsection{Optimale Einstellung der Magnetfeldstärke}
+\subsubsection[]{Bestimmen Sie die Bedingung für die optimale Aufspaltung $\Delta\lambda$.}
+\textit{Die Messung ist nur sinnvoll für die Aufspaltung innerhalb des Dispersionsgebiets $\Delta\lambda_D$. Das bedeutet, dass 
+es eine Begrenzung für die Magnetfeldstärke gibt.}
+\subsubsection{Dauras schätzen Sie die entsprechende optimale Magnetfeldstärke für jede spektrale Linie, die Sie anschließend
+messen sollen.}
