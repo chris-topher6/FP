@@ -37,8 +37,8 @@ for i in range(N):
     a=c.h*c.c*l
     b=lam[i]**2*muB*B[i]
     g=(c.h*c.c*l)/(lam[i]**2*muB*B[i])
-    print(f"s1=({ms1:.3})px")
-    print(f"s2=({ms2:.3})px")
+    print(f"s1=({ms1:.4})px")
+    print(f"s2=({ms2:.4})px")
     print(f"l =({l*10**12:.3})pm")
     print(f"g =({g:.3})")
     print(f"p =({abw(lit[i],g):.2})%\n")
