@@ -35,18 +35,17 @@ jj-Kopplung:
     \begin{equation*}
         J=\sum_i j_i=\sum_i(l_i+s_i)\\
     \end{equation*}
-    \item elektrostatische Störung der Elektronen untereinander vernachlässigt
-    \to Spin-Bahn-WW jedes einzelnen Elektrons >> elektrostatische Störung der Elektronen untereinander
-    \iff gute Näherung für mittelschwere Atome auf inneren Schalen und schwere Atome auf ganzen Hülle
+    \item Kopplung der magnetischen Momente untereinander stärker als einzeln zum B-Feld
+    \to gute Näherung für mittelschwere Atome auf inneren Schalen und schwere Atome auf ganzen Hülle
 \end{itemize}
+
 LS-Kopplung: 
 \begin{itemize}
     \item Bahndrehimpuls aller Teilchen und Spin aller Teilchen werden addiert
         \begin{equation*}
             J=L+S=\sum_il_i + \sum_i s_i
         \end{equation*}
-    \item Spin-Bahn-WW wird vernachlässigt \iff L und S sind gute QZ 
-    \to elektrostatische Störung der Elektronen untereinander >> Spin-Bahn-WW jedes einzelnen Elektrons
+    \item Kopplung der einzelnen Momente an B-Feld stärker als untereinander
     \to gute Näherung für leichte Atome
 \end{itemize}
 
@@ -67,14 +66,20 @@ LS-Kopplung:
 
 \subsection{Aufspaltung des Energieniveaus eines Atoms im homogenen Magnetfeld}
 
-\subsubsection{In wie viele Niveaus spaltet sich der Zustand mit Gesamtdrehimpuls J?}
-Durch Spin-Bahn WW: 2 Niveaus\\\noindent
-Durch B-Feld: 2 Niveaus
+%\subsubsection{In wie viele Niveaus spaltet sich der Zustand mit Gesamtdrehimpuls J?}
+%Durch Spin-Bahn WW: 2 Niveaus\\\noindent
+%Durch B-Feld: 2 Niveaus
 
 \subsubsection{Wie ändert sich die Aufspaltung mit der Magnetfeldstärke?}
+normaler:
 \begin{equation*}
-    \Delta E=g_S\mu B_0
+    \Delta E=g_L \mu_B m_l B_0
 \end{equation*}
+anormaler:
+\begin{equation*}
+    \Delta E=g_j \mu_B m_j B_0
+\end{equation*}
+
 
 \subsubsection{Was versteht man unter dem Paschen-Back-Effekt?}
 Magnetfeld mit Berücksichtigung des Spins (B>LS-Kopplung)
@@ -92,11 +97,11 @@ Auswahlregeln:
 \begin{align*}
     \Delta l\in\{-1,+1\},\quad\Delta m\in\{-1,0,+1\}
 \end{align*}
-$\Delta m=0$: $\pi$-Linie
+$\Delta m=0$: $\pi$-Linie \\\noindent
 $\Delta m=\pm1$: $\sigma$-Linie
 
 \subsubsection{Wie viele Spektrallinien beobachtet man im normalen und anormalen Zeeman-Effekt?}
-normaler Zeeman:  Aufspaltung in $m_L$ \to $2l+1$-Linien
+normaler Zeeman:  Aufspaltung in $m_L$ \to $2l+1$-Linien \\\noindent
 anormaler Zeeman: Aufspaltung in $m_J$ \to $2j+1$-Linien
 
 \subsubsection{Wie sind die Spektrallinien polarisiert?}
@@ -114,8 +119,11 @@ Geometrie)?}
 
 \subsubsection[]{Stellen Sie das Termschema für die rote $(^1P_1 \leftrightarrow ^1D_2)$ und blaue 
 $(^3S_1 \leftrightarrow ^3P_1)$ Linie der Cd-Lampe auf.}
+\begin{equation*}
+    ^{2s+1}L_J
+\end{equation*}
 \begin{align*}
-    \text{rot: } \quad&^1P_1 \leftrightarrow ^1D_2 \\\iff &S=0, L=0, J=1\leftrightarrow S=0, L=2, J=2 \to\text{normal}\\
+    \text{rot: } \quad&^1P_1 \leftrightarrow ^1D_2 \\\iff &S=0, L=1, J=1\leftrightarrow S=0, L=2, J=2 \to\text{normal}\\
     \text{blau:} \quad&^3S_1 \leftrightarrow ^3P_1 \\\iff &S=1, L=0, J=1\leftrightarrow S=1, L=1, J=1 \to\text{anormal}   
 \end{align*}
 
