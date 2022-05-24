@@ -15,7 +15,7 @@ dt_cut = dt[8:22]
 print(dt_cut[0])
 print(dt_cut[-1])
 
-params, covariance_matrix = np.polyfit(dt_cut, N_cut, deg=1, cov=True)
+params, covariance_matrix = np.polyfit(dt_cut, N_cut, deg=0, cov=True)
 uncertainties = np.sqrt(np.diag(covariance_matrix))
 
 #Ausgeben der Parameter
@@ -24,8 +24,11 @@ errors = np.sqrt(np.diag(covariance_matrix))
 for name, value, error in zip('ab', params, errors):
     print(f'{name} = {value:.8f} ± {error:.8f}')
 
+halfmax = params[0]/2
+
 x = np.linspace(np.min(dt_cut), np.max(dt_cut))
-plt.plot(x, gerade(x, *params), "darkgreen", linewidth=1, label="lineare Regression")
+y = np.ones(len(x))
+plt.plot(x, params[0]*y, "darkgreen", linewidth=1, label="Plateau")
 plt.errorbar(dt, N, xerr=0, yerr=np.sqrt(N), color="darkblue", ecolor="royalblue", fmt='.', label="Daten")
 #plt.hlines(np.mean(N_cut)/2, np.min(dt_cut)-5, np.max(dt_cut)+6, color='green', linestyles='dashed', label='Plataumittelwert/2')
 plt.xlabel(r"$\Delta t_{Delay}[ns]$")
