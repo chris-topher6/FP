@@ -3,6 +3,8 @@
 
 \subsection{Eichung des Magnetfeldes}
 \label{sec:magnetfeld}
+Die bei der Messung des Magnetfeldes aufgenommenen Daten sind in Tabelle \ref{tab:B} aufgelistet.
+
 \begin{table}[H]
     \centering
       \caption{Magnetfeldstärke $B$ für verschiedene Stromstärken $I$.}
@@ -26,6 +28,12 @@
 \end{table}
 \noindent
 
+Für diese Messwerte wurde mittels \textit{numpy.polyfit} \cite{numpy} eine Regression der Form 
+\begin{equation*}
+  B=aI^3+bI^2+cI+d
+\end{equation*}
+durchgeführt. Diese ist in Abbildung \ref{fig:B} visualisiert. 
+
 \begin{figure}[H]
     \centering
     \includegraphics[scale= 0.8]{build/magnet.pdf}
@@ -34,15 +42,17 @@
 \end{figure}
 \noindent
 
+Die berechneten Parameter ergeben sich zu
 \begin{align*}
     a&=\SI{-0.59\pm 0.06}{\milli\tesla\per\cubic\ampere}\\
     b&=\SI{1.20 \pm 0.66}{\milli\tesla\per\square\ampere}\\
     c&=\SI{99.91\pm 2.05}{\milli\tesla\per\ampere}\\
-    d&=\SI{6.68 \pm 1.64}{\milli\tesla}
+    d&=\SI{6.68 \pm 1.64}{\milli\tesla} .
 \end{align*}
 
 \subsection{Auswertung der roten Spektrallinie}
 \label{sec:rot}
+Für die rote Spektrallinie wurden während der Messung folgende Spektrallinien aufgenommenen.
 
 \begin{figure}[H]
     \centering
