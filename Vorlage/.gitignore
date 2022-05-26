@@ -1,4 +1,3 @@
-build
 .DS_Store
 V01/main.pdf
 V01/main.aux
@@ -17,4 +16,4 @@ content/.auctex-auto/
 main.run.xml
 main.blg
 main.log
-
+build/*
