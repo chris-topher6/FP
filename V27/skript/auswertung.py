@@ -21,7 +21,7 @@ lam=[               #m #Wellenlänge des Lichts
 ]
 B=[                 #T #Magnetfeld für verschiedene Messreihen
     577.5*10**-3,   #rot
-    427*10**-3,     #blau sigma
+    427.0*10**-3,     #blau sigma
     577.5*10**-3    #blau pi
 ]
 lit=[1,
@@ -34,9 +34,8 @@ for i in range(N):
     ms1 = ufloat(np.mean(x), np.std(x))
     ms2 = ufloat(np.mean(y), np.std(y))
     l=(ms2/ms1)*dlam[i]/2
-    a=c.h*c.c*l
-    b=lam[i]**2*muB*B[i]
     g=(c.h*c.c*l)/(lam[i]**2*muB*B[i])
+    print(f"B={B[i]}T")
     print(f"s1=({ms1:.4})px")
     print(f"s2=({ms2:.4})px")
     print(f"l =({l*10**12:.3})pm")
