@@ -101,13 +101,32 @@ Energieniveaus und wird als Zeeman-Effekt bezeichnet. Dieser gliedert sich
 in zwei Arten, den normalen und den anormalen Zeeman-Effekt.
 \subsection*{normaler Zeeman-Effekt}
 Der normale Zeeman-Effekt kann beobachtet werden, wenn der Gesamtdrehimpuls
-sich nur aus dem Bahndrehimpuls zusammensetzt. Dies gilt, wenn $\vec{S} = 0$
-ist. In diesem Fall ist die Wechselwirkungsenergie mit dem äußeren Magnetfeld
-gegeben durch~\ref{eqn:wwmagnet}:
+sich nur aus dem Bahndrehimpuls zusammensetzt. Der Spin wird also
+vernachlässigt, es gilt $\vec{S} = 0$.
+In diesem Fall ist die Wechselwirkungsenergie mit dem äußeren Magnetfeld
+gegeben durch~\ref{eqn:energienormal}:
 \begin{equation}
-  E_{Z,L} = - \vec{\mu}_{L} \cdot \vec{B} = \mu_{B} m_{L} B.
-  \label{eqn:wwmagnet}
+  E_{Z,L} = - \vec{\mu}_{L} \cdot \vec{B} = g_{L} \mu_{B} m_{L} B.
+  \label{eqn:energienormal}
 \end{equation}
+Hierbei ist $g_{L} \approx 1$.
 Da $m_{L}$ Werte zwischen $-L$ und $L$ annehmen kann (siehe \ref{subsec:quantenzahlen})
 ist ein Energieniveau in $2L+1$ äquidistante Energieniveaus aufgespalten.
 \subsection*{anormaler Zeeman-Effekt}
+Bei zusätzlicher Berücksichtigung des Spins (der Gesamtdrehimpuls setzt sich also
+aus Bahndrehimpuls und Spin zusammen) gilt für die
+Wechselwirkungsenergie~\ref{eqn:energieanormal}
+\begin{equation}
+ E_{Z, J} = -\vec{\mu_{J}} \cdot \vec{B} = g_{J} \mu_{B}m_{J} B.
+ \label{eqn:energieanormal}
+\end{equation}
+Für die Berechnung des Land\'e-Faktors gilt~\ref{eqn:lande}
+\begin{equation}
+  g_{J} = 1 + \frac{J(J+1) + S(S+1) - L(L+1)}{2J(J+1)}.
+  \label{eqn:lande}
+\end{equation}
+Hierbei ist $g_{S} \approx 2$. Der Land\'e-Faktor verändert hier also die Aufspaltung
+im Vergleich zum normalen Zeeman-Effekt.
+
+\subsection{Auswahlregeln der Übergänge}
+\label{subsec:auswahlregeln}
