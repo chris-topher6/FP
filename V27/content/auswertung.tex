@@ -29,9 +29,9 @@ Die bei der Messung des Magnetfeldes aufgenommenen Daten sind in Tabelle \ref{ta
 \noindent
 
 Für diese Messwerte wurde mittels \textit{numpy.polyfit} \cite{numpy} eine Regression der Form 
-\begin{equation*}
-  B=aI^3+bI^2+cI+d
-\end{equation*}
+\begin{equation}
+  B=aI^3+bI^2+cI+d \label{eqn:B}
+\end{equation}
 durchgeführt. Diese ist in Abbildung \ref{fig:B} visualisiert. 
 
 \begin{figure}[H]
@@ -52,7 +52,11 @@ Die berechneten Parameter ergeben sich zu
 
 \subsection{Auswertung der roten Spektrallinie}
 \label{sec:rot}
-Für die rote Spektrallinie wurden während der Messung folgende Spektrallinien aufgenommenen.
+Für die rote Spektrallinie wurden während der Messung folgende Spektrallinien aufgenommenen. Dabei ist 
+in Abbildung \ref{fig:rot} das Interferenzmuster ohne Magnetfeld und in Abbildung \ref{fig:rot_sigma}
+das Interferenzmuster mit Magnetfeld abegebildet. Der Elektromagnet wurde bei einer Stromstärke von 
+$I=\SI{7.5}{\ampere}$ betrieben, was nach Kapitel \ref{sec:magnetfeld} einem Feld von 
+$B=\SI{577.5}{\milli\tesla}$ entspricht.
 
 \begin{figure}[H]
     \centering
@@ -69,6 +73,9 @@ Für die rote Spektrallinie wurden während der Messung folgende Spektrallinien 
     \label{fig:rot_sigma}
 \end{figure}
 \noindent
+Zur Bestimmung des Lande-Faktors wurden mittels \textit{Affinity Designer} \cite{???} die Abstände $\Delta s$ 
+in Abbildung \ref{fig:rot} und $\delta s$ in Abbildung \ref{fig:rot_sigma} bestimmt. Die Abstände sind in 
+Tabelle \ref{tab:rot} enumeriert.
 
 \begin{table}[H]
     \centering
@@ -91,14 +98,26 @@ Für die rote Spektrallinie wurden während der Messung folgende Spektrallinien 
       \end{tabular}
 \end{table}
 \noindent
-
+Die mit \textit{NumPy} \cite{numpy} bestimmten Mittelwerte mit Standardabweichung lauten
 \begin{align*}
     \overline{\Delta s}&=\num{152.1\pm 26.0}\text{px}\\
-    \overline{\delta s}&=\num{64.81\pm 64.8}\text{px}
+    \overline{\delta s}&=\num{64.81\pm 64.8}\text{px} .
 \end{align*}
+Einsetzen in Gleichung \ref{eqn:dispersionsgebiet} ergibt für Dispersionsgebiet
+\begin{equation*}
+  \delta\lambda=\SI{10.4\pm 2.5}{\pico\metre} .
+\end{equation*}
+Der Landefaktor $g$ berechnet sich nach Gleichung \ref{eqn:lande} zu 
+\begin{equation*}
+  g=\num{0.93\pm0.22} .
+\end{equation*}
 
 \subsection{Auswertung der blauen Spektrallinie}
 \label{sec:blau}
+Für die Untersuchung des anormalen Zeeman-Effekts werden zwei verschiedene Magnetfeldstärken verwendet, um 
+die $\pi$- von den $\sigma$-Übergängen unterscheiden zu können. Die Bestimmung von $\Delta s$ wird für beide 
+Übergänge an Abbildung \ref{fig:blau} vorgenommen. 
+
 \begin{figure}[H]
     \centering
     \includegraphics[scale= 0.2]{Messung/Blau[3].JPG}
@@ -107,10 +126,12 @@ Für die rote Spektrallinie wurden während der Messung folgende Spektrallinien 
 \end{figure}
 \noindent
 
-
 \subsubsection[]{$\sigma$-Übergang}
 \label{sec:sigma}
 
+In Abbildung ist Interferenzmuster der blauen Spektrallinie für eine Stromstärke von $I=\SI{4.5}{\ampere}$
+dargestellt. Dieser Stromstärke entspricht nach der Regression \ref{eqn:B} eine Feldstärke von 
+$B=\SI{426.7}{\milli\tesla}$. 
 \begin{figure}[H]
     \centering
     \includegraphics[scale= 0.2]{Messung/Blau_Sigma[4].JPG}
@@ -118,10 +139,12 @@ Für die rote Spektrallinie wurden während der Messung folgende Spektrallinien 
     \label{fig:blau_sigma}
 \end{figure}
 \noindent
+Die mit \textit{Affinity Designer} bestimmten Abstände $\Delta s$ und $\delta s$ sind in Tabelle \ref{tab:blau_sigma}
+angeführt.
 
 \begin{table}[H]
     \centering
-      \caption{Messwerte für die Linienabstände $\Delta s$ und die Aufspaltung $\delta s$ in Pixeln für dden $\sigma$-Übergang der blaue Spektrallinie.}
+      \caption{Messwerte für die Linienabstände $\Delta s$ und die Aufspaltung $\delta s$ in Pixeln für den $\sigma$-Übergang der blaue Spektrallinie.}
       \label{tab:blau_sigma}
       \sisetup{table-format=3.1}
       \begin{tabular}{S[table-format=1.1] S}
@@ -145,16 +168,25 @@ Für die rote Spektrallinie wurden während der Messung folgende Spektrallinien 
       \end{tabular}
 \end{table}
 \noindent
-
+Doe Mittelwerte werden mit \textit{NumPy} \cite{numpy} als 
 \begin{align*}
     \overline{\Delta s}&=\num{122.5\pm 30.1}\text{px}\\
     \overline{\delta s}&=\num{43.2\pm 7.4}\text{px}
 \end{align*}
-
+ermittelt. Daraus ergibt sich mit Gleichung \ref{eqn:dispersionsgebiet} zu 
+\begin{equation*}
+  \delta\lambda=\SI{4.75\pm 1.42}{\pico\metre},
+\end{equation*}
+sodass sich der Landefaktor mit Gleichung \ref{eqn:lande} zu
+\begin{equation*}
+  g=\num{1.03\pm0.31}
+\end{equation*}
+bestimmen lässt.
 
 \subsubsection[]{$\pi$-Übergang}
 \label{sec:pi}
-
+Das Interferenzmuster \ref{fig:blau_pi} wurde bei einer Stromstärke von $I=\SI{7.5}{\ampere}$ aufgenommenen. 
+Der Elektromagnet hat demnach ein Magnetfeld von $B=\SI{577.5}{\milli\tesla}$ erzeugt. 
 \begin{figure}[H]
     \centering
     \includegraphics[scale= 0.2]{Messung/Blau_Pi[5].JPG}
@@ -162,6 +194,8 @@ Für die rote Spektrallinie wurden während der Messung folgende Spektrallinien 
     \label{fig:blau_pi}
 \end{figure}
 \noindent
+Die in Tabelle \ref{tab:blau_pi} gelisteten Werte von $\Delta s$ und $\delta s$ sind erneut mit \textit{Affinity Designer} \cite{???}
+bestimmt.
 
 \begin{table}[H]
     \centering
@@ -189,8 +223,16 @@ Für die rote Spektrallinie wurden während der Messung folgende Spektrallinien 
       \end{tabular}
 \end{table}
 \noindent
-
+Die Mittelwerte der Messwerte sind 
 \begin{align*}
     \overline{\Delta s}&=\num{122.5\pm 30.1}\text{px}\\
-    \overline{\delta s}&=\num{33.6 \pm 10.5}\text{px}
+    \overline{\delta s}&=\num{33.6 \pm 10.5}\text{px},
 \end{align*}
+woraus sich ein Dispersionsgebiet von 
+\begin{equation*}
+  \delta\lambda=\SI{3.70\pm 1.47}{\pico\metre}
+\end{equation*}
+ergibt. Dies führt schlussendlich nach Gleichung \ref{eqn:lande} zu einem Landefaktor von 
+\begin{equation*}
+  g=\num{0.60\pm 0.24} .
+\end{equation*}
