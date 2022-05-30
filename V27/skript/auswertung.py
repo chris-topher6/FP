@@ -7,26 +7,30 @@ def abw(lit, exp): #Abweichung in %
     return (np.abs(lit-exp)/lit*100)
 
 #Konstanten
-N=3 #Anzahl an .data files
+N=4 #Anzahl an .data files
 muB=9.2740100783*10**(-24) #Bohrsches Magneton
 dlam=[               #m #Dispersionsgebiet
     48.91*10**(-12), #rot
     26.95*10**(-12), #blau
-    26.95*10**(-12)  
+    26.95*10**(-12),
+    26.95*10**(-12),   
 ]
 lam=[               #m #Wellenlänge des Lichts
     643.8*10**(-9), #rot
     480.0*10**(-9), #blau
-    480.0*10**(-9)  #blau
+    480.0*10**(-9),  #blau
+    480.0*10**(-9)
 ]
 B=[                 #T #Magnetfeld für verschiedene Messreihen
     577.5*10**-3,   #rot
     427.0*10**-3,     #blau sigma
-    577.5*10**-3    #blau pi
+    577.5*10**-3,    #blau pi
+    106.2*10**-3
 ]
 lit=[1,
     1.75,
-    0.5
+    0.5,
+    1.75
 ]
 for i in range(N):
     print(f"Messreihe{i+1}:")
