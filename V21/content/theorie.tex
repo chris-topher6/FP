@@ -2,9 +2,9 @@
 \label{sec:Theorie}
 \subsection{Energieniveaus der Rubidiumisotope}
 Mit einer Ordungszahl von $Z=\num{37}$ befindet sich Rubidium in der 
-fünften Periode des ersten Gruppe im Periodensystem und ist somit ein
+fünften Periode der ersten Gruppe im Periodensystem und ist somit ein
 Alkalimetall. Die Elektronenkonfiguration dieser wird nur durch 
-das einzige Valenzelktron bestimmt, das alle darunterliegenden Schalen
+das einzige Valenzelktron bestimmt, da alle darunterliegenden Schalen
 vollständig gefüllt sind. Aus der Elektronenkonfiguration 
 $\text{[Kr]}5\text{s}^1$ folgen nach den Hundeschen Regeln
 \begin{equation*}
@@ -21,7 +21,7 @@ wird die Entartung in $L$ gebrochen, da jedem Gesamtdrehimpuls
 $\vec{J}=\vec{L}+\vec{S}$ von 
 $|L-S|$ bis $|L+S|$ eine andere Energie zugeordnet wird. Diese 
 Korrektur wird Spin-Bahn-Kopplung genannt. Die magnetische Quantenzahl
-$M_J$ ist nun dem Gesamtdrehimpuls zugehörig, sie bleibt jedoch mit 
+$M_J$ ist nun dem Gesamtdrehimpuls zugehörig. Sie bleibt jedoch mit 
 $M_J\in[-J,J]$ entartet. Die durch die Aufspaltung entstehende Struktur
 der Energieniveaus wird Feinstruktur genannt. 
 
@@ -30,8 +30,8 @@ Eine höhere Korrektur bildet die Hyperfeinstruktur. Bei dieser wird
 die Wechselwirkung des Kernspins $I$ mit dem Gesamtdrehimpuls $J$ der
 Elektronenhülle betrachtet. Analog zur Feinstruktur kann der Gesamtdrehimpuls
 $\vec{F}=vec{J}+\vec{I}$ Werte von $|J-I|$ bis $|J+I|$ annehmen. 
-Die Etartung der zugehörigen magnetischen Quantenzahl $M_F$ bleibt
-abermals unverändert. Die Entartung in $F$ wird jedoch aufgehoben. 
+Die Entartung der zugehörigen magnetischen Quantenzahl $M_F$ bleibt
+abermals unverändert. Die Entartung in $F$ jedoch wird aufgehoben. 
 Die beiden betrachteten Isotope $\ce{^{85}Rb}$ und $\ce{^{87}Rb}$
 unterscheiden sich in dem Kernspin
 \begin{align*}
@@ -40,7 +40,7 @@ unterscheiden sich in dem Kernspin
 \end{align*}
 und dementsprechend auch im Gesamtdrehimpuls $F$.
 
-\subsubsection{Der Zeean-Effekt}
+\subsubsection{Der Zeeman-Effekt}
 Aus Symmetrieüberlegungen folgt, dass die Entartung der magnetischen 
 Quantenzahl durch die Brechung der Rotationssymmetrie aufgehoben wird.
 Beim Zeeman Effekt geschieht dies durch ein magentisches Feld. 
@@ -49,7 +49,7 @@ Die Energieniveaus werden dabei mit einer Differenz von
     \Delta E_Z=g_F\mu_B M_F B
 \end{equation}
 aufgespalten, wobei $g_F$ der Landé-Faktor, $\mu_B$ das Bohrsche Magneton
-und $B$ die Flussdichte des angelegten Magentfelds ist. Der Landé-Faktor
+und $B$ die Flussdichte des angelegten Magentfeldes ist. Der Landé-Faktor
 ist gegeben durch 
 \begin{equation*}
     g_F=g_J\frac{F(F+1)+J(J+1)-I(I+1)}{2F(F+1)}
@@ -59,6 +59,7 @@ mit
     g_J=1+\frac{J(J+1)+S(S+1)-L(L+1)}{2J(J+1)}.
 \end{equation*}
 
+\noindent
 In Abbildung \ref{fig:niveaus} ist sind die Aufspaltungen der verschiedenen
 Korrekturen für $\ce{^{85}Rb}$ qualitativ dargestellt.
 \begin{figure}[H]
@@ -89,7 +90,7 @@ Im thermischen Gleichgewicht folgen die Rubidium-Atome einer
 Boltzmann-Verteilung. Ein Großteil der Elektronen befindet sich 
 demnach im niederenergetischsten Zustand. Durch Anregung mit Photonen,
 welche genau die Energiedifferenz zwischen $\ce{^{2}S_[1/2]}$ und 
-$\ce{^{2}P_[1/2]}$ besitzen, wecheln Elektronen eben diese Energieniveaus.
+$\ce{^{2}P_[1/2]}$ besitzen, wechseln Elektronen eben diese Energieniveaus.
 Es lässt sich jedoch zeigen, dass die Übergänge durch Auswahlregeln 
 beschränkt sind. Die Differenz der magentischen Quantenzahl $\Delta M_F$
 ist dabei je nach Polarisation des Lichts, $\Delta M_F=0$ für 
@@ -103,7 +104,7 @@ Bei der Anregung mit rechts zirkular polarisiertem Licht werden nur
 Elektronen angeregt, deren magnetische Quantenzahl im angeregten 
 Zustand noch um $\num{1}$ erhöht werden kann. Existiert ein solcher
 Zustand nicht, kann das Elektron nicht mehr angeregt werden. Da bei 
-der Emission mit mittel $\Delta M_F=0$ gilt, werden nach und nach 
+der spontanen Emission mit Mittel $\Delta M_F=0$ gilt, werden nach und nach 
 Elektronen in einem Zustand mit maximalem $M_F$ gesammelt, ihre 
 Besetzung wird invertiert. Dieser Prozess wird optisches Pumpen 
 genannt und ist in Abbildung \ref{fig:pumpen} schematisch 
@@ -123,6 +124,9 @@ und Phase übereinstimmt. Dieses Photon ist dementsprechend rechts zirkular
 polarisiert. Somit ist $\Delta M_F=-1$. Dieser Effekt verzögert das 
 optische Pumpen.
 
+%Herunterspringen von dem gepumpten Niveau zu vernachlässigen, da wegen 
+%$\propto f^3$ sehr unwahrscheinlich 
+
 \noindent
 Ein Maß für die Besetzungsinversion ist die Transparenz des 
 Rubidiumgases. Ist die Besezung hoch können nur sehr wenige Photonen
@@ -131,10 +135,10 @@ durch das Gas hindurch dringen, die Transparenz ist also hoch.
 
 \noindent
 Durch ein weiteres, hochfrequentes, magnetisches Feld (RF-Feld) kann
-die stimulierte Emission angeregt werden. Entspricht die, duch das
-RF-Feld gegebene Energie, $E_{RF}=hf$ der Zeeman Energie $\Delta E_Z$
+die stimulierte Emission angeregt werden. Entspricht die duch das
+RF-Feld gegebene Energie $E_{RF}=hf$ der Zeeman Energie $\Delta E_Z$
 wird die Besetzungsinversion weitestgehend aufgehoben. Dies geschieht
-bei einem Magentfeld mit 
+bei einer magnetischen Flussdichte von
 \begin{equation}
     B_m=\frac{hf}{g_F\mu_B} .
 \end{equation}
@@ -150,7 +154,7 @@ die Transparenz als Funktion des Magnetfeldes aufgetragen.
 
 \subsection{Magnetische Eigenschaften einer Helmholtz-Spule}
 Eine Helmholtz Spule besteht aus zwei gleich großen, kreisförmigen 
-Spulen, die parallel im Abstand $R$ iheres Radius angeodnet sind. 
+Spulen mit Radius $R$, die parallel im Abstand $R$ angeodnet sind. 
 Beide Spulen werden von dem gleichen Strom $I$ druchflossen. Zwischen 
 den Spulen stellt sich ein homogenes Magnetfeld mit der Flussdichte
 \begin{equation}
