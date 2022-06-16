@@ -3,4 +3,30 @@
 
 \subsection{Kompensation des Erdmagnetfeldes}
 Das Erdmagnetfeld wurde mit einem Spulenstrom von $I = \SI{0.231}{\ampere}$
-ausgeglichen.
+ausgeglichen. Die Parameter der verwendeten Spule sind in Tabelle~\ref{tab:spulendaten}
+aufgeführt.
+\begin{table}
+  \centering
+  \caption{Spulenparameter der vertikalen Spule.}
+  \label{tab:spulendaten}
+  \sisetup{table-format=10.0}
+  \begin{tabular}{S S[table-format=3.0] S[table-format=1.5]}
+    \toprule
+    {Spule} & {Windungszahl $N$} & {Radius $r/\si{\meter}$} \\
+    \midrule
+    {\text{Sweep}}      &  11 & 0.16390 \\
+    {\text{Horizontal}} & 154 & 0.15790 \\
+    {\text{Vertikal}}   &  20 & 0.11735 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+Mit der Gleichung~\ref{eqn:helmholtz} kann die magnetische Feldstärke einer
+Helmholtzspule berechnet werden.Die vertikale Komponente des
+Erdmagnetfeldes ergibt sich demnach zu
+\begin{equation}
+  B_{v} \approx  \SI{13.9402498}{\micro\tesla}.
+  \label{eqn:erdmagnetfeld}
+\end{equation}
+Der Literaturwert beträgt $B_{v \text{lit}} = \SI{45.355}{\micro\tesla}$ \cite{gfzpotsdam}.
+
+\subsection{Bestimmung der Land\`e-Faktoren}
