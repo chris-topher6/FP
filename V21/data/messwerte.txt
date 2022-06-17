@@ -1,4 +1,4 @@
-# Frequenz [kHz] | sweep/hor. Peak l [A] | sweep/hor. Peak r [A] |
+Frequenz[kHz] sweepPeakL[A] hor.PeakL[A] sweepPeakR[A] hor.PeakR[A]
 100 0.601 0.00 0.716 0.00
 200 0.268 0.03 0.511 0.03
 300 0.351 0.04 0.655 0.04
