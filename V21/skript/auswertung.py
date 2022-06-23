@@ -3,12 +3,20 @@ import numpy as np
 import pandas as pd
 import scipy.constants as const
 import matplotlib.pyplot as plt
+from numpy.polynomial import Polynomial
+import uncertainties.unumpy as unp
 
 
 def magnetfeldstärke(I, N, R):
     """Berechnet die magnetische Feldstärke für eine gegebene Stromstärke."""
     B = const.mu_0 * (8 * I * N) / (np.sqrt(125) * R)
     return B
+
+
+def gerade(x, m, b):
+    """Gerade für die lineare Regression."""
+    y = m * x + b
+    return y
 
 
 # Messwerte einlesen
@@ -43,7 +51,20 @@ df_messung["Bges.R[T]"] = df_messung["BSweepR[T]"] + df_messung["Bhor.R[T]"]
 print(df_messung)
 
 # Regressionen berechnen
+params87, cov87 = np.polyfit(
+    df_messung["Frequenz[Hz]"], df_messung["Bges.L[T]"], deg=1, cov=True
+)
+errors87 = np.sqrt(np.diag(cov87))
+params87_err = unp.uarray(params87, errors87)
 
+params85, cov85 = np.polyfit(
+    df_messung["Frequenz[Hz]"], df_messung["Bges.R[T]"], deg=1, cov=True
+)
+errors85 = np.sqrt(np.diag(cov85))
+params85_err = unp.uarray(params85, errors85)
+
+print(f"Parameter Regression 87 Rb: m = {params87_err[0]}, b = {params87_err[1]}")
+print(f"Parameter Regression 85 Rb: m = {params85_err[0]}, b = {params85_err[1]}")
 
 # Plot Frequenz (x) -> Magnetfeldstärke (y)
 plt.plot(
@@ -62,10 +83,43 @@ plt.plot(
     marker="x",
     ls="",
 )
+
 # Regressionen
+plt.plot(
+    np.linspace(df_messung["Frequenz[Hz]"].min(), df_messung["Frequenz[Hz]"].max()),
+    gerade(
+        np.linspace(df_messung["Frequenz[Hz]"].min(), df_messung["Frequenz[Hz]"].max()),
+        params87[0],
+        params87[1],
+    ),
+    color="slateblue",
+    label="Regression",
+    ls="-",
+)
+
+plt.plot(
+    np.linspace(df_messung["Frequenz[Hz]"].min(), df_messung["Frequenz[Hz]"].max()),
+    gerade(
+        np.linspace(df_messung["Frequenz[Hz]"].min(), df_messung["Frequenz[Hz]"].max()),
+        params85[0],
+        params85[1],
+    ),
+    color="cornflowerblue",
+    label="Regression",
+    ls="-",
+)
 
 plt.xlabel(r"$f [Hz]$")
 plt.ylabel(r"$B [T]$")
 plt.legend()
 plt.tight_layout()
 plt.savefig("build/plot1.pdf")
+
+# Berechnnung der gyromagnetischen Faktoren
+mub = 13996244936.1 #Hz T^-1
+mub2 = 5.788381806*10**(-5) #eV T^-1
+g87 = const.h/(params87_err[0]*mub)
+g85 = const.h/(params85_err[0]*mub)
+
+print(f"Gyromagnetischer Faktor 87 Rb: {g87}")
+print(f"Gyromagnetischer Faktor 85 Rb: {g85}")

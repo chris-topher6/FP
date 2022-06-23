@@ -27,10 +27,41 @@ Erdmagnetfeldes ergibt sich demnach zu
   B_{v} \approx  \SI{13.9402498}{\micro\tesla}.
   \label{eqn:erdmagnetfeld}
 \end{equation}
-Der Literaturwert beträgt $B_{v \text{lit}} = \SI{45.355}{\micro\tesla}$ \cite{gfzpotsdam}.
+Der Literaturwert beträgt $B_{v \text{lit}} = \SI{45.355}{\micro\tesla}$~\cite{gfzpotsdam}.
 
 \subsection{Bestimmung der Land\`e-Faktoren}
-Nach Gleichung~\ref{eqn:helmholtz} ergeben sich aus den gemessenen Stromstärken
-die Magnetfeldstärken in Abbildung~\ref{fig:magnetfeldstärken}. Das gesamte
+Nach Gleichung~\ref{eqn:helmholtz} lassen sich aus den gemessenen Stromstärken die
+Magnetfeldstärken berechnen. Das gesamte
 Magnetfeld setzt sich zusammen aus dem Feld der \textit{Sweep}-Spule und dem Feld
-der Horizontalspule.
+der Horizontalspule. Das gesamte Magnetfeld in Abhängigkeit von der RF-Frequenz
+ist in Abbildung \ref{fig:magnetfeld1} dargestellt.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.6]{build/plot1.pdf}
+  \caption{Das gesamte Magnetfeld in Abhängigkeit von der Frequenz.}
+  \label{fig:magnetfeld1}
+\end{figure}
+\noindent
+In Abbildung \ref{fig:magnetfeld1} wurde eine lineare Regression durchgeführt.
+Aus der Steigung dieser kann nach Gleichung \ref{eqn:bf} der gyromagnetische
+Faktor bestimmt werden, indem diese zu Gleichung \ref{eqn:gyrom} umgestellt wird.
+
+\begin{equation}
+  g_{F} = \frac{\hbar}{m \mu_{B}}.
+  \label{eqn:gyrom}
+\end{equation}
+
+Es ergeben sich die Regressionsparameter
+
+\begin{align}
+  m_{87}  & =  \SI{1.422(0.029)e-10}{\tesla\per\hertz}\\
+  m_{85}  & =  \SI{2.06(0.12)e-10}{\tesla\per\hertz}.
+\end{align}
+
+Mit diesen Werten ergeben sich die gyromagnetischen Faktoren
+
+\begin{align}
+	g_{87} & = \\
+  g_{85} & =
+\end{align}
