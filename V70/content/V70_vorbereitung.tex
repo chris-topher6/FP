@@ -1,0 +1,113 @@
+\section{Vorbereitung}
+\subsection{Vakuum}
+\begin{itemize}
+    \item Druck innerhalb eines Gefäßes ist niedriger als Umgebungsdruck\\
+    \to $\SI{300}{\milli\bar}$ ist minimaler Druck auf der Erde\\
+    \to Vakuum heißt: $p<\SI{300}{\milli\bar}$
+    \item absolutes Vakuum: vollständig leerer Raum
+    \item Grobvakuum: $\num{1000}-\SI{1}{\milli\bar}$
+    \item Feinvakuum: $\num{1}-\SI{e-3}{\milli\bar}$
+    \item Hochvakuum: $\num{e-3}-\SI{e-8}{\milli\bar}$
+    \item Ultrahoch-Vakuum: ab$\SI{e-8}{\milli\bar}$
+\end{itemize}
+\subsection{Ideale Gase}
+\begin{itemize}
+    \item sehr viele punktförmige Teilchen, die sich ungeordnet bewegen
+    \item keine WW außer Stöße mit einander und mit Wand
+    \item Zustandsgleichung: $pV=Nk_BT$
+    \item für $Nk_BT=const.$ folgt Boyle-Mariottesches Gesetz: $p_1V_1=p_2V_2$
+\end{itemize}
+
+\subsection{Druck}
+\begin{itemize}
+    \item Druck: $p=-\left(\frac{\partial U}{\partial V}\right)_{S,N=const.}$
+    \item Partialdruck: der Druck, den die einzelnen Gaskomponenten bei alleinigem Vorhandensein im Volumen hätten\\
+    \to $p_{ges}=\sum_i p_i$ 
+    \item Einheiten: $\SI{1}{\pascal}=\SI{1}{\newton\per\square\metre}=\SI{e-5}{\bar}$
+    \item Teilchenzahl: $N=\frac{pV}{k_BT}$
+    \item mittlere Teilchengeschwindigkeit: $2E_{kin}=mv^2=3k_BT\Rightarrow v=\sqrt{\frac{3k_BT}{m}}$\\
+    \to Bolzmannverteilt
+    \to entspricht ungefähr der Schallgeschwindigkeit
+    \item mittlere freie Weglänge: mittlere Strecke zwischen zwei Stößen\\
+    \to ungefähr $\SI{0.1}{\micro\metre}$
+\end{itemize}
+\subsection{Strömungen}
+\begin{itemize}
+    \item Laminare Strömung: Gas strömt in Schichten ohne Wirbel
+    \item Turbolente Strömung: Gas strömt mit Wirbeln\\
+    \to Teilchen stoßen vor allem mit einander
+    \item Molekulare WW: so wenig Teilchen, dass diese kaum stoßen\\
+    \to mittlere freie Weglänge > Weite des Strömungskanals
+    \item Leitwert: $L=\frac{S_0S_{eff}}{S_0-S_{eff}}$\\
+    \to Unterschied zwischen theoretischem und effektiven Saugvermögen
+\end{itemize}
+\subsection{Saugvermögen}
+\begin{align*}
+    &pV=c\\
+    \iff& \frac{\partial p}{\partial t} V + p\frac{\partial V}{\partial t}=0\\
+    \iff& \dot{V}=-\frac{V}{p}\dot{p}\\
+    &S:=\dot{V}\\
+    \Rightarrow& p(t)=p_0\exp{\left(-\frac{S}{V_0}t\right)} 
+\end{align*}
+Unter Beachtung des Enddrucks $p_E$ der Pumpe:
+\begin{equation*}
+    p(t)=(p_0-p_E)\exp{\left(-\frac{S}{V_0}t\right)}+p_E
+\end{equation*}
+\subsection{Leckrate}
+\begin{align*}
+    Q=V_0\frac{\partial p}{\partial t}
+\end{align*}
+Im Gleichgewichtszustand $p_G=const.$ gilt 
+\begin{align*}
+    &\dot{p}_+-\dot{p}_-=0\\
+    \iff& pS=Q
+\end{align*}
+\subsection{Lecks}
+\begin{itemize}
+    \item Absorption: Stoff wird in Phase aufgenommen
+    \item Adsorption: Stoff lägert sich auf Oberfläche an 
+    \item Desorption: Teilchen verlassen Oberfläche und gehen in Gasphase
+    \item Diffusion: Gleichverteilung durch Eigenbewegung der Teilchen\\
+    \to Erhöhung der Entropie
+    \item Leck: Prozess, der Vakuum reduziert
+    \item Reale Lecks: Prozesse, die von außen messbar sind 
+    \item virtuelle Lecks: von außen nicht zu messen\\
+    \to Desorption innerhalb der Anlage
+\end{itemize}
+\subsection{Vakuumpumpen}
+\begin{itemize}
+    \item \textbf{Gastransfer-Pumpen}
+    \item Verdränger-Pumpen\\
+    \to nutzen Boyle-Mariotte aus\\
+    \to Drehschiebervakuumpumpe
+    \to hohe Druckbereiche
+    \item kinetische Pumpen\\
+    \to Teilchenbeschleunigung in Pumprichtung\\
+    \to Turbomolekularpumpe
+    \to niedrigere Druckbereiche
+    \\
+    \item \textbf{gasbindende Vakuumpumpen}\\
+    \to bindet herumfliegende Gasteilchen\\
+    \to sehr niedrige Druckbereiche
+\end{itemize}
+\subsection{Vakuummessung}
+\begin{itemize}
+    \item Piezo-Vakuummeter\\
+    \to misst Kraft pro Oberfläche durch Piezo-Kristallen\\
+    \to Piezo-Kristalle erzeugen bei Kompression elektrische Spannungen\\
+    \to im Grobvakuum
+    \item Pirani-Vakuummeter\\
+    \to Wärmeleitfähigkeit $\propto$ Druck \\
+    \to misst Wiederstand von Draht und somit Wärmeleitfähigkeit\\
+    \to Draht kühlt sich je nach Umgebungsdruck unterschiedlich schnell ab \\
+    \to im Feinvakuum
+    \item Penning-Vakuummeter\\
+    \to Kalt-Ionisations-Vakuummeter\\
+    \to durch Feldemission werden Elektronen freigesetzt und fliegen zu Anode\\ 
+    \to Gasatome werden ionisiert und fliegen zu Kathode\\
+    \to Katthodenstrom ist Maß für Vakuum\\ 
+    \to im Hoch- und Ultrahoch-Vakuum
+    \item Bayard-Alpert-Vakuummeter\\
+    \to Heiß-Ionisations-Vakuummeter\\
+    \to Unterschied zu Penning: Elektronen werden thermisch emittiert
+\end{itemize}
