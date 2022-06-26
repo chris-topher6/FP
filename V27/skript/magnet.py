@@ -1,6 +1,9 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
+#Berechnung der Dispersionsgebiete:
+
+
 def poly3(a,b,c,d,x):
     return a*x**3+b*x**2+c*x+d
 
@@ -26,4 +29,5 @@ plt.legend()
 plt.tight_layout()
 plt.savefig('build/magnet.pdf')
 
+print(f"B(3.0A)={poly3(params[0],params[1],params[2],params[3],3)}")
 print(f"B(4.5A)={poly3(params[0],params[1],params[2],params[3],4.5)}")

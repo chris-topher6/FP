@@ -25,7 +25,8 @@ B=[                 #T #Magnetfeld für verschiedene Messreihen
     577.5*10**-3,   #rot
     427.0*10**-3,     #blau sigma
     577.5*10**-3,    #blau pi
-    106.2*10**-3
+#    106.2*10**-3
+    302.9*10**-3
 ]
 lit=[1,
     1.75,
@@ -35,13 +36,13 @@ lit=[1,
 for i in range(N):
     print(f"Messreihe{i+1}:")
     x, y  = np.genfromtxt('data/mess'+str(i+1)+'.dat', unpack=True) #Daten importieren
-    ms1 = ufloat(np.mean(x), np.std(x))
+    ms1 = ufloat(np.mean(x), np.std(x)) #mittelwerte der Daten
     ms2 = ufloat(np.mean(y), np.std(y))
-    l=(ms2/ms1)*dlam[i]/2
-    g=(c.h*c.c*l)/(lam[i]**2*muB*B[i])
+    l=(ms2/ms1)*dlam[i]/2               #Breite der Aufspaltung
+    g=(c.h*c.c*l)/(lam[i]**2*muB*B[i])  #Landé Faktor: g=chl/(2*muB*lam B)
     print(f"B={B[i]}T")
     print(f"s1=({ms1:.4})px")
     print(f"s2=({ms2:.4})px")
     print(f"l =({l*10**12:.3})pm")
     print(f"g =({g:.3})")
-    print(f"p =({abw(lit[i],g):.2})%\n")
+    print(f"p =({abw(lit[i],g):.3})%\n")
