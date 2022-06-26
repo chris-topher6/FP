@@ -14,9 +14,86 @@ ideale Gasgesetz \ref{eqn:idealesGas} eine gute Näherung:
 \end{equation}
 Hier bezeichnet $V$ das Volumen, $N$ die Teilchenanzahl, $k_{B}$ die
 Boltzmann-Konstante, $T$ die Temperatur und $p$ den Druck.
+Eine isotherme Zustandsänderung eines solchen idealen Gases kann beschrieben
+werden durch das Boyle-Mariottesche Gesetz.
+Es besagt, dass bei konstanter Temperatur und konstanter Stoffmenge der Druck direkt
+proportional zum Volumen ist:
+\begin{align}
+  p & \propto \frac{1}{V} & \frac{V}{T} = \text{const}.\\
+  \label{eqn:boylemariotte}
+\end{align}
 Der Druck ist definiert als eine senkrecht auf eine Fläche $A$ wirkende Kraft $F$ \ref{eqn:druck}:
 \begin{equation}
   p = \frac{F}{A}.
   \label{eqn:druck}
 \end{equation}
-Ein
+Der Partialdruck hingegen bezeichnet den Druck einer Komponente eines Gasgemischs.
+Die Summe aller Partialdrücke ist daher bei idealen Gasen der Totaldruck. Dies
+muss bei nicht idealen Gasen nicht notwendigerweise der Fall sein, da die Partialdrücke
+sich allgemein gegenseitig stören können.\\
+In SI-Einheiten wird der Druck in $\si{\pascal}$ angegeben. Der Zusammenhang zu dem
+in Mitteleuropa gebräuchlicheren $\si{\bar}$ ist der Folgende:
+\begin{equation}
+ \SI{1}{\pascal} = \SI{0.01}{\milli\bar} = \SI{1}{\newton\per\square\meter}.
+\end{equation}
+Bei sehr geringen Drücken, wie z.B. im Weltall, ist die Angabe eines Drucks nicht
+mehr praktikabel; stattdessen wird die Teilchenzahldichte verwendet. Diese gibt an,
+wieviele Teilchen sich in einem gegebenen Raumbereich aufhalten.
+
+\subsection{Wichtige Begriffe}
+Im folgenden Abschnitt werden wichtige Begriffe im Zusammenhang mit Vakuumapparaturen
+beschrieben.
+
+\subsubsection*{Die mittlere freie Weglänge}
+Als mittlere freie Weglänge wird die Strecke bezeichnet, die ein Gasteilchen
+auf geradem Weg im Mittel zwischen zwei Stößen zurücklegen kann.
+
+\subsubsection*{Die verschiedenen Strömungsarten}
+Für eine Charakterisierung einer Strömung wird das Verhältnis aus mittlerer
+freier Weglänge und dem Durchmesser des Strömungskanals verwendet. Hierfür wird die
+Knudsen-Zahl definiert:
+\begin{equation}
+ Kn = \frac{\bar{l}}{d}.
+\end{equation}
+Hierbei bezeichnet $\bar{l}$ die mittlere freie Weglänge und $d$ den Durchmesser
+des Strömungskanals. Je nach Größe der Knudsen-Zahl wird zwischen Kontinuumsströmung,
+Knudsenströmung und Molekularer Strömung unterschieden:
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.3]{pictures/strömungen.png}
+  \label{fig:strömung}
+  \caption{Abbildung der Strömungsarten abhängig von der Knudsen-Zahl.}
+\end{figure}
+\noindent
+Innerhalb der Kontinuumsströmung wird weiter differenziert zwischen der laminaren
+und der turbulenten Strömung. Die laminare Strömung wird auch als Schichtströmung
+bezeichnet und besteht aus parallel angeordneten Schichten aus Gasteilchen. Durch
+Erhöhung der Geschwindigkeit können diese Schichten aufgelöst werden. Dies führt
+zu ungeordnet durcheinander laufenden Gasteilchen, was als turbulente Strömung
+bezeichnet wird.\\
+Innerhalb einer Vakuumapparatur kommt es nur beim schnellen Abpumpen von Atmosphärendruck
+sowie bei schnellem Belüften zu turbulenter Strömung. Turbulente Strömung erfordert
+höhere Saugvermögen der Vakuumpumpen, weshalb es günstig ist, turbulente Strömung durch
+die richtige Dimensionierung der Strömungskanäle zu vermeiden.
+
+\subsubsection*{Die Absorption und Desorption}
+Allgemein bezeichnet die Sorption einen Prozess, der zur Anreicherung eines Stoffes
+innerhalb einer Phase oder an der Grenzfläche zwischen zwei Phasen führt.
+Die Absorption bezeichnet hierbei die Anreicherung innerhalb einer Phase, während die
+Anreicherung zwischen zwei Phasen als Adsoprtion bezeichnet wird. Handelt es sich nicht
+um eine Aufnahme, sondern um eine Abnahme, wird von Desorption gesprochen.
+
+\subsubsection*{Reale und virtuelle Lecks}
+Als Lecks werden vakuummindernde Prozesse bezeichnet. Ein reales Leck ist eines,
+das außerhalb der Vakuumanlage messbar ist, z.B. eine Undichtigkeit. Ein virtuelles
+Leck hingegen ist eines, welches nicht außerhalb der Vakuumanlage erkennbar ist.
+Beispiele hierfür sind Einschlüsse innerhalb der Anlage, welche nach einer Zeit an
+die Materialoberfläche gelangen und austreten.
+
+\subsubsection*{Das Saugvermögen einer Vakuumpumpe}
+Um den obig erwähnten Lecks entgegenzuwirken, muss die Vakuumpumpe eine Saugleistung
+besitzen, welche mindestens gleich der Leckrate ist. Das Saugvermögen ist definiert
+als Volumenänderung pro Zeit:
+\begin{equation}
+ S = \frac{dV}{dt}.
+\end{equation}
