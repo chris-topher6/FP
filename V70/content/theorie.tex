@@ -48,7 +48,7 @@ beschrieben.
 Als mittlere freie Weglänge wird die Strecke bezeichnet, die ein Gasteilchen
 auf geradem Weg im Mittel zwischen zwei Stößen zurücklegen kann.
 
-\subsubsection*{Die verschiedenen Strömungsarten}
+\subsubsection*{Die verschiedenen Vakuums- und Strömungsarten}
 Für eine Charakterisierung einer Strömung wird das Verhältnis aus mittlerer
 freier Weglänge und dem Durchmesser des Strömungskanals verwendet. Hierfür wird die
 Knudsen-Zahl definiert:
@@ -56,15 +56,19 @@ Knudsen-Zahl definiert:
  Kn = \frac{\bar{l}}{d}.
 \end{equation}
 Hierbei bezeichnet $\bar{l}$ die mittlere freie Weglänge und $d$ den Durchmesser
-des Strömungskanals. Je nach Größe der Knudsen-Zahl wird zwischen Kontinuumsströmung,
-Knudsenströmung und Molekularer Strömung unterschieden:
+des Strömungskanals. Je nach Größe der Knudsen-Zahl und die Art des Vakuums wird
+zwischen Kontinuumsströmung, Knudsenströmung und Molekularer Strömung unterschieden:
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=0.3]{pictures/strömungen.png}
+  \includegraphics[scale=0.4]{pictures/strömungen.png}
   \label{fig:strömung}
   \caption{Abbildung der Strömungsarten abhängig von der Knudsen-Zahl.}
 \end{figure}
 \noindent
+Hierbei wird zwischen Grobvakuum, Feinvakuum und Hoch- bzw. Ultrahochvakuum unterschieden.
+Grobvakuum meint dabei Drücke zwischen $\SI{300}{\milli\bar}$ und $\SI{1}{\milli\bar}$.
+Hier finden hauptsächlich Stöße der Gasteilchen untereinander statt, was zu Kontinuumsströmung
+führt.
 Innerhalb der Kontinuumsströmung wird weiter differenziert zwischen der laminaren
 und der turbulenten Strömung. Die laminare Strömung wird auch als Schichtströmung
 bezeichnet und besteht aus parallel angeordneten Schichten aus Gasteilchen. Durch
@@ -74,7 +78,17 @@ bezeichnet wird.\\
 Innerhalb einer Vakuumapparatur kommt es nur beim schnellen Abpumpen von Atmosphärendruck
 sowie bei schnellem Belüften zu turbulenter Strömung. Turbulente Strömung erfordert
 höhere Saugvermögen der Vakuumpumpen, weshalb es günstig ist, turbulente Strömung durch
-die richtige Dimensionierung der Strömungskanäle zu vermeiden.
+die richtige Dimensionierung der Strömungskanäle zu vermeiden. Um dies sicherzustellen,
+reichen bei Grobvakua kleine Leiterdurchmesser, während bei Hoch- und Ultrahochvakua
+größere Durchmesser nötig sind, um turbulente Strömung zu verhindern.\\
+Das Feinvakuum ist definiert als Druckbereich von $\SI{1}{\milli\bar}$ und $\SI{1e-3}{\milli\bar}$.
+Hier ist die mittlere freie Weglänge vergleichbar groß wie der Durchmesser des Strömungskanals,
+weshalb die Gasteilchen hauptsächlich mit den Wänden des Gefäßes wechselwirken.
+Die Strömung wird als Knudsen-Strömung bezeichnet.
+Der Druckbereich von $\SI{1e-3}{\milli\bar}$ bis $\SI{1e-8}{\milli\bar}$ wird als Hochvakuum
+bezeichnet. Bereiche darüber werden Ultrahochvakuum genannt. Hier ist die mittlere freie
+Weglänge größer als der Durchmesser des Strömungskanals, weshalb hier kaum Wechselwirkung
+der Gasteilchen untereinander stattfindet. Die sich ergebende Strömung heißt Molekulare Strömung.
 
 \subsubsection*{Die Absorption und Desorption}
 Allgemein bezeichnet die Sorption einen Prozess, der zur Anreicherung eines Stoffes
@@ -89,6 +103,7 @@ das außerhalb der Vakuumanlage messbar ist, z.B. eine Undichtigkeit. Ein virtue
 Leck hingegen ist eines, welches nicht außerhalb der Vakuumanlage erkennbar ist.
 Beispiele hierfür sind Einschlüsse innerhalb der Anlage, welche nach einer Zeit an
 die Materialoberfläche gelangen und austreten.
+Eine Quelle von Lecks sind die obig erwähnten Sorptionen.
 
 \subsubsection*{Das Saugvermögen einer Vakuumpumpe}
 Um den obig erwähnten Lecks entgegenzuwirken, muss die Vakuumpumpe eine Saugleistung
@@ -97,3 +112,5 @@ als Volumenänderung pro Zeit:
 \begin{equation}
  S = \frac{dV}{dt}.
 \end{equation}
+
+\subsection{Die Methoden der Vakuumerzeugung}
