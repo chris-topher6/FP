@@ -30,6 +30,7 @@ Erdmagnetfeldes ergibt sich demnach zu
 Der Literaturwert beträgt $B_{v \text{lit}} = \SI{45.355}{\micro\tesla}$~\cite{gfzpotsdam}.
 
 \subsection{Bestimmung der Land\`e-Faktoren}
+\label{subsec:lande}
 Nach Gleichung~\ref{eqn:helmholtz} lassen sich aus den gemessenen Stromstärken die
 Magnetfeldstärken berechnen. Das gesamte
 Magnetfeld setzt sich zusammen aus dem Feld der \textit{Sweep}-Spule und dem Feld
@@ -46,22 +47,31 @@ ist in Abbildung \ref{fig:magnetfeld1} dargestellt.
 In Abbildung \ref{fig:magnetfeld1} wurde eine lineare Regression durchgeführt.
 Aus der Steigung dieser kann nach Gleichung \ref{eqn:bf} der gyromagnetische
 Faktor bestimmt werden, indem diese zu Gleichung \ref{eqn:gyrom} umgestellt wird.
-
 \begin{equation}
-  g_{F} = \frac{\hbar}{m \mu_{B}}.
+  g_{F} = \frac{h}{m \mu_{B}}.
   \label{eqn:gyrom}
 \end{equation}
-
+\noindent
 Es ergeben sich die Regressionsparameter
-
 \begin{align}
   m_{87}  & =  \SI{1.422(0.029)e-10}{\tesla\per\hertz}\\
   m_{85}  & =  \SI{2.06(0.12)e-10}{\tesla\per\hertz}.
 \end{align}
-
+\noindent
 Mit diesen Werten ergeben sich die gyromagnetischen Faktoren
-
 \begin{align}
-	g_{87} & = \\
-  g_{85} & =
+	g_{87} & = \num{0.502+-0.01}\\
+  g_{85} & = \num{0.346+-0.021}.
 \end{align}
+\noindent
+
+\subsection{Bestimmung des Kernspins der Isotope}
+\label{subsec:kernspin}
+Unter Verwendung des in Abschnitt \ref{subsec:lande} ermittelten gyromagnetischen
+Faktors kann für das jeweilige Isotop der Kernspin ermittelt werden. Da für den
+gyromagnetischen Faktor Gleichung \ref{eqn:gyrogyro} gilt, kann durch Einsetzen
+der bekannten Werte
+\begin{align}
+S =\ & \frac{1}{2}, & L =\ & 0, & J =\ & \frac{1}{2}, & F =\ & I + J
+\end{align}
+der Kernspin ermittelt werden.

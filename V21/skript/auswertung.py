@@ -116,8 +116,7 @@ plt.tight_layout()
 plt.savefig("build/plot1.pdf")
 
 # Berechnnung der gyromagnetischen Faktoren
-mub = 13996244936.1 #Hz T^-1
-mub2 = 5.788381806*10**(-5) #eV T^-1
+mub = 9.2740100783*10**(-24) #J/T
 g87 = const.h/(params87_err[0]*mub)
 g85 = const.h/(params85_err[0]*mub)
 
