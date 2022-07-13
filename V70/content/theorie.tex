@@ -19,7 +19,7 @@ werden durch das Boyle-Mariottesche Gesetz.
 Es besagt, dass bei konstanter Temperatur und konstanter Stoffmenge der Druck direkt
 proportional zum Volumen ist:
 \begin{align}
-  p & \propto \frac{1}{V} & \frac{V}{T} = \text{const}.\\
+  p & \propto \frac{1}{V} & \frac{p}{V} = \text{const}.\\
   \label{eqn:boylemariotte}
 \end{align}
 Der Druck ist definiert als eine senkrecht auf eine Fläche $A$ wirkende Kraft $F$ \ref{eqn:druck}:
@@ -103,7 +103,7 @@ das außerhalb der Vakuumanlage messbar ist, z.B. eine Undichtigkeit. Ein virtue
 Leck hingegen ist eines, welches nicht außerhalb der Vakuumanlage erkennbar ist.
 Beispiele hierfür sind Einschlüsse innerhalb der Anlage, welche nach einer Zeit an
 die Materialoberfläche gelangen und austreten.
-Eine Quelle von Lecks sind die obig erwähnten Sorptionen.
+Eine Quelle von Lecks sind die obig erwähnten Desorptionen.
 
 \subsubsection*{Das Saugvermögen einer Vakuumpumpe}
 Um den obig erwähnten Lecks entgegenzuwirken, muss die Vakuumpumpe eine Saugleistung
@@ -112,5 +112,30 @@ als Volumenänderung pro Zeit:
 \begin{equation}
  S = \frac{dV}{dt}.
 \end{equation}
+Die Bestimmung einer solchen Saugleistung kann z.B. durch die Aufnahme einer
+Evakuierungskurve erfolgen. Dabei handelt es sich um die Druckänderung pro Zeit.
 
 \subsection{Die Methoden der Vakuumerzeugung}
+
+\subsubsection*{Kinetische Pumpen}
+Das Funktionsprinzip einer kinetischen Pumpe ist die Beschleunigung der Teilchen in
+die Pumprichtung. Eine solche Pumpe benötigt ein Vorvakuum, da bei einer zu hohen
+Teilchendichte durch Kollisionen der Teilchen untereinander der Widerstand sehr hoch wird.
+Durch ein Vorvakuum kann daher auch der Verschleiß einer solchen Pumpe reduziert werden.
+Wenn das Vakuum hingegen schon recht gut ist, funktionieren kinetische Pumpen ebenfalls nicht
+ideal, da die mittlere freie Weglänge ab einer gewissen Druckschwelle zu klein ist.
+Die Teilchen ändern in diesem Fall ihre Bewegungsrichtung zu früh als dass sie in eine Richtung
+beschleunigt werden könnten.
+
+\subsubsection*{Gasfördernde Pumpen}
+Nach \ref{eqn:boylemariotte} ist (bei konstanter Temperatur) der Druck
+antiproportional zu dem Volumen. Dies wird von gasfördernden Pumpen ausgenutzt,
+indem durch Komprimation und Ausdehnung Druckunterschiede erzeugt werden, welche
+bei einem Ausgleichen der Drücke zu Teilchenströmen führen.
+
+\subsubsection*{Gasbindende Vakuumpumpen}
+Bei sehr hohen Vakua sind die obig erwähnten Pumpentypen weniger geeignet,
+während die gasbindenden Vakuumpumpen hier sinnvoll eingesetzt werden können.
+Durch Adsorption können bei einem bereits sehr hohen Vakuum immernoch effektiv
+Gasteilchen gebunden werden. Dies ist weniger effektiv wenn die Teilchenanzahl sehr hoch ist,
+in diesem Fall kann nur ein kleiner Teil der Gasteilchen gebunden werden.
