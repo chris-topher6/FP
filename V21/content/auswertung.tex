@@ -106,9 +106,50 @@ vorgenommen. Es ergeben sich die Peaktiefen
 Nach Gleichung \ref{eqn:verhältnis} lassen sich die Isotopenanteile abschätzen:
 \begin{equation}
   \label{eqn:verhältnis}
- 	A_{i} = \frac{N_{1} + N_{2}}{N_{i}}.
+ 	A_{i} = \frac{N_{i}}{N_{1} + N_{2}}.
 \end{equation}
 Es ergeben sich die Anteile
-\begin{equation}
-	A_{87} =\ &
-\end{equation}
+\begin{align}
+	A_{87} =\ & \SI{33.56}{\percent} \\
+  A_{85} =\ & \SI{66.43}{\percent}.
+\end{align}
+
+\subsection{Der Beitrag des quadratischen Zeeman-Effektes}
+\label{subsec:zeemanquadrat}
+In diesem Versuch wurde bisher angenommen, dass der quadratische Zeeman-Effekt
+keinen relevanten Beitrag liefert. Dies soll im Folgenden überprüft werden.
+Die Aufspaltung durch den quadratischen Zeeman-Effekt berechnet sich nach Gleichung
+\ref{eqn:zeemanquadrat}. Um eine Abschätzung des maximal möglichen Beitrages zu erhalten,
+wird das höchste in diesem Versuch erreichte Magnetfeld angenommen.
+Daher wird $B = \SI{225}{\micro\tesla}$ verwendet. Die weiteren Werte sind in
+Tabelle \ref{tab:wertezeeman} aufgeführt.
+\begin{table}[H]
+  \centering
+  \caption{Verwendete Werte zur Berechnung des Beitrages des quadratischen Zeeman-Effektes.}
+  \label{tab:wertezeeman}
+  \sisetup{table-format=3.1}
+  \begin{tabular}{S S S}
+    \toprule
+    {Größe} & {$^{87} Rb$} & {$^{85} Rb$} \\
+    \midrule
+    $g_{F}$ & $\num{0.502+-0.010}$ & $\num{0.346+-0.021}$ \\
+    $M_{F}$ & 2 & 3 \\
+   % $\Delta E_{\text{Hyperfein}}$ & \SI{4.53e-24}{\joule} & \SI{2.01e-24}{\joule} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+\noindent
+Für die Aufspaltungen in die Hyperfeinstruktur wurden die Werte $\Delta E_{\text{Hyperfein}}= \SI{4.53e-24}{\joule}$
+für $ ^{87}Rb $ sowie $\Delta E_{\text{Hyperfein}}= \SI{2.01e-24}{\joule}$ für $^{85}Rb$ verwendet \cite{V21}.
+Es ergeben sich für den quadratischen Zeeman-Effekt die Aufspaltungen
+\begin{align}
+	\Delta E_{Z, ^{87}Rb} =\ & \SI{-2.73+-0.11e-30}{\joule}\\
+	\Delta E_{Z, ^{85}Rb} =\ & \SI{-5.8+-0.7e-31}{\joule}.
+\end{align}
+Zum Vergleich wurden auch die Aufspaltungen aufgrund des linearen Zeeman-Effektes bestimmt:
+\begin{align}
+	\Delta E_{Z, ^{87}Rb, \text{linear}} =\ & \SI{1.049+-0.021e-27}{\joule}\\
+	\Delta E_{Z, ^{85}Rb, \text{linear}} =\ & \SI{7.2+-0.4e-28}{\joule}.
+\end{align}
+Die linearen Terme liegen also mehrere Größenordnungen über den Beiträgen des
+quadratischen Zeeman-Effektes.

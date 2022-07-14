@@ -150,8 +150,20 @@ print("Delta I85 =", AbwI85,"%")
 T87 = 524
 T85 = 1037
 
-A87 = (524+1037)/524
-A85 = (524+1037)/1037
+A87 = 524/(524+1037)
+A85 = 1037/(524+1037)
 
 print(f"Anteil 87 Rb: {A87}")
 print(f"Anteil 85 Rb: {A85}")
+
+# Berechnung des Beitrages des linearen/quadratischen Zeeman-Effektes
+Bmax = 0.225*1e-3  # T
+Ehy85 = 4.53 * 1e-24  # J
+Ehy87 = 2.01 * 1e-24  # J
+
+print("linear85:",g85*mub*Bmax, "J")
+print("linear87:",g87*mub*Bmax, "J")
+print("quadrat85:", g85*g85*mub*mub*Bmax*Bmax*(-5)/Ehy85, "J")
+print("quadrat87:", g87*g87*mub*mub*Bmax*Bmax*(-5)/Ehy87, "J")
+print("linear/quadrat85:", g85*mub*Bmax / (g85**2 * mub**2 * Bmax**2 * (-5)/Ehy85))
+print("linear/quadrat87:", g87*mub*Bmax / (g87*g87*mub*mub*Bmax*Bmax*(-3)/Ehy87))
