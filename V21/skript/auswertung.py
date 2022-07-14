@@ -122,3 +122,36 @@ g85 = const.h/(params85_err[0]*mub)
 
 print(f"Gyromagnetischer Faktor 87 Rb: {g87}")
 print(f"Gyromagnetischer Faktor 85 Rb: {g85}")
+
+# Berechnung der Kernspins
+S = 0.5
+L = 0
+J = 0.5
+
+
+def g_J(J, L, S):
+    """Funktion für die Berechnung von g_J."""
+    return 1+(J*(J+1) - L*(L+1) + S*(S+1))/(2*J*(J+1))
+
+
+gJ = g_J(S, L, J)
+I87 = 0.5 * (1 / g87 * gJ - 1)
+I85 = 0.5 * (1 / g85 * gJ - 1)
+print("Kernspin von Rb87:", I87)
+print("Kernspin von Rb85:", I85)
+I87_lit = 3/2
+I85_lit = 5/2
+AbwI87 = np.abs(I87-I87_lit)/I87_lit*100
+AbwI85 = np.abs(I85-I85_lit)/I85_lit*100
+print("Delta I87 =", AbwI87,"%")
+print("Delta I85 =", AbwI85,"%")
+
+# Isotopenateile
+T87 = 524
+T85 = 1037
+
+A87 = (524+1037)/524
+A85 = (524+1037)/1037
+
+print(f"Anteil 87 Rb: {A87}")
+print(f"Anteil 85 Rb: {A85}")
