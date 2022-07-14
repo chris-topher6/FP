@@ -11,7 +11,7 @@ import os
 from tabulate import tabulate           # falls nicht installiert "pip install tabulate"
 from uncertainties.unumpy import (nominal_values as noms, std_devs as stds)
 
-#### Drehschieber
+#Drehschieberpumpe
 t_1 =np.linspace(0,650,1000)
 plt.figure()
 plt.fill_between(t_1, 4.6, 5.5, label="Herstellerangaben")
@@ -30,18 +30,18 @@ plt.savefig("build/saug_dreh.pdf")
 
 
 
-##### Turbomolekular
+#Turbomolekularpumpe
 t_1 =np.linspace(0,650,1000)
 plt.figure()
 plt.hlines(277.2, 0, 650, label="Herstellerangaben")
-plt.errorbar(0.21, 25,   xerr = 0.05,    yerr=9,    fmt='x', label = "Leck11 hPa")
-plt.errorbar(1.07, 38,   xerr = 0.25,    yerr=16,   fmt='x', label = "Leck12 hPa")
-plt.errorbar(0.32, 25,   xerr = 0.09,    yerr=8,    fmt='x', label = "Leck21 hPa")
-plt.errorbar(1.8,  46,   xerr = 0.4,     yerr=18,   fmt='x', label = "Leck22 hPa")
-plt.errorbar(0.49, 28,   xerr = 0.13,    yerr=10,   fmt='x', label = "Leck31")
-plt.errorbar(3.5 , 67,   xerr = 0.8,     yerr=26,   fmt='x', label = "Leck32")
-plt.errorbar(4.05, 97.7, xerr = 2.88,    yerr=35.1, fmt='x', label = "Leck31")
-plt.errorbar(14.1, 96.8, xerr = 5.89,    yerr=42.3, fmt='x', label = "Leck32")
+plt.errorbar(0.21, 25,   xerr = 0.05,    yerr=9,    fmt='x', label = "Leck1: 5e-5hPa")
+plt.errorbar(1.07, 38,   xerr = 0.25,    yerr=16,   fmt='x', label = "Leck2: 5e-5hPa")
+plt.errorbar(0.32, 25,   xerr = 0.09,    yerr=8,    fmt='x', label = "Leck1: 7e-5hPa")
+plt.errorbar(1.8,  46,   xerr = 0.4,     yerr=18,   fmt='x', label = "Leck2: 7e-5hPa")
+plt.errorbar(0.49, 28,   xerr = 0.13,    yerr=10,   fmt='x', label = "Leck1: 1e-4hPa")
+plt.errorbar(3.5 , 67,   xerr = 0.8,     yerr=26,   fmt='x', label = "Leck2: 1e-4hPa")
+plt.errorbar(4.05, 97.7, xerr = 2.88,    yerr=35.1, fmt='x', label = "Leck1: 2e-4hPa")
+plt.errorbar(14.1, 96.8, xerr = 5.89,    yerr=42.3, fmt='x', label = "Leck2: 2e-4hPa")
 plt.errorbar(2.71,   58, xerr = 2.42,    yerr=13,   fmt='x', label = "Evakuierung 1")
 plt.errorbar(0.167,  22, xerr = 0.131,   yerr=6,    fmt='x', label = "Evakuierung 2")
 plt.errorbar(0.0186, 1.2,xerr = 0.00507, yerr=0.8,  fmt='x', label = "Evakuierung 3")
