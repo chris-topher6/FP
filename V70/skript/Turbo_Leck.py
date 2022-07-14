@@ -51,7 +51,7 @@ for i in range(len(data)-1):
     #Fit
     t_cut1=t[:cut1[i]]
     p_cut1=p[:cut1[i]]
-    params1,covariance_matrix1 =np.polyfit(t_cut1, noms(p_cut1), deg=1, cov=True)
+    params1,covariance_matrix1 = curve_fit(gerade, t_cut1, noms(p_cut1), sigma=stds(p_cut1), absolute_sigma=True)
     print("Die Parameter der ersten Regression sind:")
     errors1     = np.sqrt(np.diag(covariance_matrix1))
     for name, value, error in zip('ab', params1, errors1):
@@ -60,7 +60,7 @@ for i in range(len(data)-1):
 
     t_cut2=t[cut2[i]:cut3[i]]
     p_cut2=p[cut2[i]:cut3[i]]
-    params2,covariance_matrix2 =np.polyfit(t_cut2, noms(p_cut2), deg=1, cov=True)
+    params2,covariance_matrix2 = curve_fit(gerade, t_cut2, noms(p_cut2), sigma=stds(p_cut2), absolute_sigma=True)
     print("Die Parameter der zweiten Regression sind:")
     errors2     = np.sqrt(np.diag(covariance_matrix2))
     for name, value, error in zip('ab', params2, errors2):
@@ -74,20 +74,22 @@ for i in range(len(data)-1):
     x2 = np.linspace(np.min(t_cut2), np.max(t_cut2))
     plt.plot(x1, gerade(x1, *params1), "k", label="Regression")
     plt.plot(x2, gerade(x2, *params2), "k")
-    plt.errorbar(t, noms(p), xerr=0.2,     yerr=stds(p),     color='red', ecolor='grey',  markersize=3.5, elinewidth=0.5, fmt='.', label="Daten")
+    plt.errorbar(t, noms(p), xerr=0.2,     yerr=stds(p),     color='red', ecolor='red',  markersize=3.5, elinewidth=0.5, fmt='.', label="Daten")
     plt.xlabel(r"$t [s]$")
     plt.ylabel(r"$p [hPa]$")
     plt.legend(loc='best')
     plt.tight_layout()
     plt.grid()
-    plt.savefig('build/Evak_Leck_'+data[i]+'.pdf')
+    plt.savefig('build/Turbo_Leck_'+data[i]+'.pdf')
 
     #print("\nBerechnung des Saugvermögens")
     V0  = ufloat(34*10**(-3), 3.4*10**(-3))
     S1 = params1_u[0]*V0/p_g[i]
     S2 = params2_u[0]*V0/p_g[i]
+    print(f"p1={(p_cut1[0]+p_cut1[-1])/2}e-3hPa")
     print(f"S1={S1*3600}m³/h")
-    print(f"S1={S2*3600}m³/h")
+    print(f"p2={(p_cut2[0]+p_cut2[-1])/2}e-3hPa")
+    print(f"S2={S2*3600}m³/h")
 
 for i in [3]:
     print("\nMessung "+data[i])
@@ -102,7 +104,7 @@ for i in [3]:
     #Fit
     t_cut1=t[5:cut1[i]]
     p_cut1=p[5:cut1[i]]
-    params1,covariance_matrix1 =np.polyfit(t_cut1, noms(p_cut1), deg=1, cov=True)
+    params1,covariance_matrix1 = curve_fit(gerade, t_cut1, noms(p_cut1), sigma=stds(p_cut1), absolute_sigma=True)
     print("Die Parameter der ersten Regression sind:")
     errors1     = np.sqrt(np.diag(covariance_matrix1))
     for name, value, error in zip('ab', params1, errors1):
@@ -111,7 +113,7 @@ for i in [3]:
 
     t_cut2=t[cut2[i]:cut3[i]]
     p_cut2=p[cut2[i]:cut3[i]]
-    params2,covariance_matrix2 =np.polyfit(t_cut2, noms(p_cut2), deg=1, cov=True)
+    params2,covariance_matrix2 = curve_fit(gerade, t_cut2, noms(p_cut2), sigma=stds(p_cut2), absolute_sigma=True)
     print("Die Parameter der zweiten Regression sind:")
     errors2     = np.sqrt(np.diag(covariance_matrix2))
     for name, value, error in zip('ab', params2, errors2):
@@ -125,17 +127,19 @@ for i in [3]:
     x2 = np.linspace(np.min(t_cut2), np.max(t_cut2))
     plt.plot(x1, gerade(x1, *params1), "k", label="Regression")
     plt.plot(x2, gerade(x2, *params2), "k")
-    plt.errorbar(t, noms(p), xerr=0.2,     yerr=stds(p),     color='red', ecolor='grey',  markersize=3.5, elinewidth=0.5, fmt='.', label="Daten")
+    plt.errorbar(t, noms(p), xerr=0.2,     yerr=stds(p),     color='red', ecolor='red',  markersize=3.5, elinewidth=0.5, fmt='.', label="Daten")
     plt.xlabel(r"$t [s]$")
     plt.ylabel(r"$p [hPa]$")
     plt.legend(loc='best')
     plt.tight_layout()
     plt.grid()
-    plt.savefig('build/Evak_Leck_'+data[i]+'.pdf')
+    plt.savefig('build/Turbo_Leck_'+data[i]+'.pdf')
 
     #print("\nBerechnung des Saugvermögens")
     V0  = ufloat(34*10**(-3), 3.4*10**(-3))
     S1 = params1_u[0]*V0/p_g[i]
     S2 = params2_u[0]*V0/p_g[i]
-    print(f"S1={S1*3600}m³/h")
-    print(f"S1={S2*3600}m³/h")
+    print(f"S1={S1*3600:.3}m³/h")
+    print(f"p1={noms((p_cut1[0]+p_cut1[-1])/2):.3}+-{noms((p_cut1[0]-p_cut1[-1])/2):.3}e-3hPa")
+    print(f"S2={S2*3600:.3}m³/h")
+    print(f"p2={noms((p_cut2[0]+p_cut2[-1])/2):.3}+-{noms((p_cut2[0]-p_cut2[-1])/2):.3}e-3hPa")

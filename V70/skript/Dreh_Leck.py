@@ -40,7 +40,7 @@ for i in range(len(data)):
     print("\nMessung "+data[i])
     t, p1, p2, p3 = np.genfromtxt('data/Dreh_Leck_'+data[i]+'.dat', unpack=True)
     p_m = (p1+p2+p3)/3
-    p_sys = np.multiply(p_m,err[i])
+    p_sys = p_m*err[i]
     p_stat = np.sqrt(((p1-p_m)**2+(p2-p_m)**2+(p3-p_m)**2)/2)
     print(f"statistischer Fehler\n{p_stat}")
     print(f"systematischer Fehler\n{p_sys}")
@@ -49,7 +49,8 @@ for i in range(len(data)):
     #Fit
     t_cut1=t[cut[i]:]
     p_cut1=p[cut[i]:]
-    params1,covariance_matrix1 =np.polyfit(t_cut1, noms(p_cut1), deg=1, cov=True)
+#    params1,covariance_matrix1 =np.polyfit(t_cut1, noms(p_cut1), deg=1, cov=True)
+    params1,covariance_matrix1 = curve_fit(gerade, t_cut1, noms(p_cut1), sigma=stds(p_cut1), absolute_sigma=True)
     print("Die Parameter der ersten Regression sind:")
     errors1     = np.sqrt(np.diag(covariance_matrix1))
     for name, value, error in zip('ab', params1, errors1):
@@ -60,7 +61,7 @@ for i in range(len(data)):
     plt.figure()
     x1 = np.linspace(np.min(t_cut1), np.max(t_cut1))
     plt.plot(x1, gerade(x1, *params1), "k", label="Regression")
-    plt.errorbar(t, noms(p), xerr=0.2,     yerr=stds(p),     color='red', ecolor='grey',  markersize=3.5, elinewidth=0.5, fmt='.', label="Daten")
+    plt.errorbar(t, noms(p), xerr=0.2,     yerr=stds(p),     color='red', ecolor='red',  markersize=3.5, elinewidth=0.5, fmt='.', label="Daten")
     plt.xlabel(r"$t [s]$")
     plt.ylabel(r"$p [hPa]$")
     plt.legend(loc='best')
@@ -71,4 +72,5 @@ for i in range(len(data)):
     #print("\nBerechnung des Saugvermögens")
     V0  = ufloat(34*10**(-3), 3.4*10**(-3))
     S1 = params1_u[0]*V0/p_g[i]
+    print(f"p1={noms((p_cut1[0]+p_cut1[-1])/2):.4}+-{noms((p_cut1[0]-p_cut1[-1])/2):.4}hPa")
     print(f"S1={S1*3600}m³/h")
