@@ -16,10 +16,11 @@ err = 0.1 #10% Fehler
 p_m = (p1+p2+p3)/3
 p_sys = np.multiply(p_m,err)
 p_stat = np.sqrt(((p1-p_m)**2+(p2-p_m)**2+(p3-p_m)**2)/2)
-print(f"statistischer Fehler\n{p_stat}")
-print(f"systematischer Fehler\n{p_sys}")
+#np.savetxt('build/Dreh_Evak_Daten.txt', np.column_stack([t, p_m, p_stat, p_sys]), fmt='%6.5f', delimiter=' & ', header='p, p_stat, p_sys', newline='\\\\\n' )
 p = unp.uarray(p_m, p_sys)
 ln_p=unp.log((p-p_E)/(p_0-p_E))
+np.savetxt('build/Dreh_Evak_Daten.txt', np.column_stack([t, p_m, p_stat, p_sys, noms(ln_p), stds(ln_p)]), fmt='%6.5f', delimiter=' & ', header='t, p, p_stat, p_sys, ln, dln', newline='\\\\\n' )
+
 
 #Fit
 t_cut1=t[1:20]
