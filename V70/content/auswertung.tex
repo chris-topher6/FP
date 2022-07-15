@@ -4,7 +4,7 @@
 \subsubsection{Evakuierungsmessung}
 \begin{table}[H]
     \centering
-      \caption{Mitttelwerte der Druckmessung mit statistischen und systematischen Unsicherheiten.}
+      \caption{Mitttelwerte der Drücke für die Evakuierungsmessung mit statistischen und systematischen Unsicherheiten.}
       \label{tab:Dreh_Evak}
       \sisetup{table-format=1.2}
       \begin{tabular}{
@@ -65,7 +65,55 @@
 \end{figure}
 \noindent
 \subsection{Leckratenmessung}
-\begin{table}[H]
+\begin{landscape}
+  \begin{table}[H]
+      \centering
+        \caption{Mitttelwerte der gemessenen Drücke bei der Leckratenmessungen mit statistischen und systematischen Unsicherheiten.}
+        \label{tab:Dreh_Leck1}
+        \sisetup{table-format=1.2}
+        \begin{tabular}{
+          S[table-format=3.0] 
+          S[table-format=1.3] S[table-format=1.3] S[table-format=1.2]
+          S[table-format=2.2] S[table-format=1.2] S[table-format=1.2]
+          S[table-format=1.2] S[table-format=1.3] S[table-format=3.2]
+          S[table-format=3.2] S[table-format=1.2] S[table-format=2.0]
+          }
+          \toprule
+          & \multicolumn{3}{c}{$p_g=\SI{0.5}{\hecto\pascal}$} & \multicolumn{3}{c}{$p_g=\SI{10}{\hecto\pascal}$} & \multicolumn{3}{c}{$p_g=\SI{50}{\hecto\pascal}$} & \multicolumn{3}{c}{$p_g=\SI{100}{\hecto\pascal}$}\\ 
+          \cmidrule(lr){2-4}\cmidrule(lr){5-7}\cmidrule(lr){8-10}\cmidrule(lr){11-13}
+          {$t [\si{\second}$]} &
+          {$p [\si{\hecto\pascal}]$} & {$\Delta p_\text{st} [\si{\hecto\pascal}]$} & {$\Delta p_\text{sy} [\si{\hecto\pascal}]$}&
+          {$p [\si{\hecto\pascal}]$} & {$\Delta p_\text{st} [\si{\hecto\pascal}]$} & {$\Delta p_\text{sy} [\si{\hecto\pascal}]$}&
+          {$p [\si{\hecto\pascal}]$} & {$\Delta p_\text{st} [\si{\hecto\pascal}]$} & {$\Delta p_\text{sy} [\si{\hecto\pascal}]$}&
+          {$p [\si{\hecto\pascal}]$} & {$\Delta p_\text{st} [\si{\hecto\pascal}]$} & {$\Delta p_\text{sy} [\si{\hecto\pascal}]$}\\
+          \midrule
+          0   & 0.497 & 0.006 & 0.05    & 10.07 & 0.06 & 0.30   & 49.93  & 0.06  & 1.5    & 100.10 & 0.10 & 3\\
+          5   & 1.47  & 0.06  & 0.15    & 17.77 & 0.06 & 0.5    & 66.6   & 0.8   & 2.0    & 129.9  & 1.3 & 4 \\
+          10  & 1.70  & 0     & 0.17    & 19.53 & 0.29 & 0.6    & 75.4   & 0.7   & 2.3    & 147.0  & 1.2 & 4 \\
+          20  & 1.83  & 0.06  & 0.18    & 23.43 & 0.06 & 0.7    & 92.9   & 0.7   & 2.8    & 181.0  & 1.2 & 5 \\
+          30  & 1.93  & 0.06  & 0.19    & 27.03 & 0.21 & 0.8    & 110.5  & 0.7   & 3.3    & 213.5  & 1.2 & 6 \\
+          40  & 2.00  & 0     & 0.20    & 30.80 & 0.20 & 0.9    & 128.0  & 0.7   & 3.8    & 247.3  & 0.9 & 7 \\
+          50  & 2.10  & 0     & 0.21    & 34.53 & 0.21 & 1.0    & 145.5  & 0.7   & 4      & 281.4  & 1.1 & 8 \\
+          60  & 2.20  & 0     & 0.22    & 38.30 & 0.17 & 1.1    & 162.9  & 0.7   & 5      & 315.3  & 1.2 & 9 \\
+          70  & 2.30  & 0     & 0.23    & 42.13 & 0.06 & 1.3    & 180.5  & 0.7   & 5      & 349.3  & 1.2 & 10\\
+          80  & 2.43  & 0.06  & 0.24    & 45.77 & 0.23 & 1.4    & 197.9  & 0.8   & 6      & 383.2  & 1.2 & 11\\
+          90  & 2.57  & 0.06  & 0.26    & 49.60 & 0.26 & 1.5    & 214.6  & 0.8   & 6      & 416.8  & 1.1 & 13\\
+          100 & 2.67  & 0.06  & 0.27    & 53.50 & 0.17 & 1.6    & 234.1  & 3.2   & 7      & 450.2  & 1.1 & 14\\
+          110 & 2.77  & 0.06  & 0.28    & 57.00 & 0.17 & 1.7    & 250.93 & 0.29  & 8      \\
+          120 & 2.87  & 0.06  & 0.29    & 60.73 & 0.29 & 1.8    & 267.8  & 0.9   & 8      \\
+          130 & 2.93  & 0.06  & 0.29    & 64.47 & 0.23 & 1.9    & 286.6  & 0.8   & 9      \\
+          140 & 3.03  & 0.06  & 0.30    & 68.43 & 0.06 & 2.1    & 303.47 & 0.23  & 9      \\
+          150 & 3.10  & 0     & 0.31    & 72.00 & 0.26 & 2.2    & 320.40 & 0.9   & 10     \\
+          160 & 3.20  & 0     & 0.32    & 75.87 & 0.06 & 2.3    & 338.60 & 0.17  & 10     \\
+          170 & 3.30  & 0     & 0.33    & 79.63 & 0.06 & 2.4    & 356.07 & 0.23  & 11     \\
+          180 & 3.43  & 0.06  & 0.34    & 83.43 & 0.06 & 2.5    & 373.57 & 0.23  & 11     \\
+          190 & 3.57  & 0.06  & 0.4     & 87.07 & 0.06 & 2.6    & 390.93 & 0.21  & 12     \\
+          200 & 3.67  & 0.06  & 0.4     & 90.70 & 0.20 & 2.7    & 408.33 & 0.29  & 12     \\
+          \bottomrule
+        \end{tabular}
+  \end{table}
+\end{landscape}
+\begin{table}
     \centering
       \caption{Regressionsparameter für die Leckratenmessung für die Drehschieberpumpe.}
       \label{tab:Dreh_Leck_para}
@@ -175,6 +223,66 @@
 \end{figure}
 \noindent
 \subsection{Leckratenmessung}
+\begin{landscape}
+  \begin{table}[H]
+      \centering
+        \caption{Mitttelwerte der gemessenen Drücke bei der Leckratenmessungen mit statistischen und systematischen Unsicherheiten.}
+        \label{tab:Turbo_Leck1}
+        \sisetup{table-format=1.2}
+        \begin{tabular}{
+          S[table-format=3.0] 
+          S[table-format=1.4] S[table-format=1.4] S[table-format=1.3]
+          S[table-format=1.4] S[table-format=1.4] S[table-format=1.3]
+          S[table-format=1.4] S[table-format=1.4] S[table-format=1.3]
+          S[table-format=1.3] S[table-format=1.3] S[table-format=1.2]
+          }
+          \toprule
+          & \multicolumn{3}{c}{$p_g=\SI{5e-5}{\hecto\pascal}$} & \multicolumn{3}{c}{$p_g=\SI{7e-5}{\hecto\pascal}$} & \multicolumn{3}{c}{$p_g=\SI{1e-4}{\hecto\pascal}$} & \multicolumn{3}{c}{$p_g=\SI{2e-4}{\hecto\pascal}$}\\ 
+          \cmidrule(lr){2-4}\cmidrule(lr){5-7}\cmidrule(lr){8-10}\cmidrule(lr){11-13}
+          {$t [\si{\second}$]} &
+          {$p [\si{\hecto\pascal}]$} & {$\Delta p_\text{st} [\si{\hecto\pascal}]$} & {$\Delta p_\text{sy} [\si{\hecto\pascal}]$}&
+          {$p [\si{\hecto\pascal}]$} & {$\Delta p_\text{st} [\si{\hecto\pascal}]$} & {$\Delta p_\text{sy} [\si{\hecto\pascal}]$}&
+          {$p [\si{\hecto\pascal}]$} & {$\Delta p_\text{st} [\si{\hecto\pascal}]$} & {$\Delta p_\text{sy} [\si{\hecto\pascal}]$}&
+          {$p [\si{\hecto\pascal}]$} & {$\Delta p_\text{st} [\si{\hecto\pascal}]$} & {$\Delta p_\text{sy} [\si{\hecto\pascal}]$}\\
+          \midrule
+          0   & 0.059  & 0.008  & 0.018    &    0.079  & 0.013  & 0.024     & 0.113  & 0.005 & 0.034     & 0.24  & 0.05   & 0.07\\
+          2   & 0.0965 & 0.0023 & 0.029    &    0.118  & 0.001  & 0.04      & 0.158  & 0.005 & 0.05      & 0.398 & 0.022  & 0.12\\
+          4   & 0.1113 & 0.0021 & 0.033    &    0.142  & 0.001  & 0.04      & 0.207  & 0.006 & 0.06      & 0.528 & 0.034  & 0.16\\
+          6   & 0.1273 & 0.0012 & 0.04     &    0.18   & 0      & 0.05      & 0.256  & 0.005 & 0.08      & 0.71  & 0.04   & 0.21\\
+          8   & 0.1463 & 0.0023 & 0.04     &    0.209  & 0.006  & 0.06      & 0.299  & 0.004 & 0.09      & 0.86  & 0.04   & 0.26\\
+          10  & 0.1683 & 0.0025 & 0.05     &    0.2340 & 0.0020 & 0.07      & 0.342  & 0.004 & 0.10      & 1.18  & 0.05   & 0.35\\
+          12  & 0.196  & 0.010  & 0.06     &    0.266  & 0.004  & 0.08      & 0.385  & 0.005 & 0.12      & 1.42  & 0.05   & 0.4\\
+          14  & 0.214  & 0.014  & 0.06     &    0.291  & 0.004  & 0.09      & 0.419  & 0.004 & 0.13      & 1.64  & 0.10   & 0.5\\
+          16  & 0.238  & 0.014  & 0.07     &    0.3157 & 0.0012 & 0.09      & 0.470  & 0.005 & 0.14      & 1.93  & 0.014  & 0.6\\
+          18  & 0.258  & 0.020  & 0.08     &    0.336  & 0.006  & 0.10      & 0.512  & 0.0030& 0.15      & 2.27  & 0.07   & 0.7\\
+          20  & 0.277  & 0.017  & 0.08     &    0.3613 & 0.0012 & 0.11      & 0.5600 & 0.0035& 0.17      & 2.505 & 0.021  & 0.8\\
+          22  & 0.290  & 0.015  & 0.09     &    0.3880 & 0.0010 & 0.12      & 0.605  & 0.005 & 0.18      & 2.935 & 0.021  & 0.9\\
+          24  & 0.306  & 0.015  & 0.09     &    0.412  & 0.005  & 0.12      & 0.651  & 0.005 & 0.20      & 3.335 & 0.092  & 1.0\\
+          26  & 0.319  & 0.019  & 0.10     &    0.4393 & 0.0025 & 0.13      & 0.713  & 0.016 & 0.21      & 3.675 & 0.078  & 1.1\\
+          28  & 0.334  & 0.023  & 0.10     &    0.4627 & 0.0012 & 0.14      & 0.775  & 0.008 & 0.23      & 3.98  & 0.16   & 1.2\\
+          30  & 0.352  & 0.022  & 0.11     &    0.496  & 0.005  & 0.15      & 0.858  & 0.011 & 0.26      & 4.42  & 0.17   & 1.3\\
+          35  & 0.387  & 0.005  & 0.12     &    0.561  & 0.004  & 0.17      & 1.0667 & 0.015 & 0.32      & 5.28  & 0.04   & 1.6\\
+          40  & 0.4283 & 0.0012 & 0.13     &    0.632  & 0.008  & 0.19      & 1.240  & 0.010 & 0.4       & 6.01  & 0.18   & 1.8\\
+          45  & 0.471  & 0.005  & 0.14     &    0.731  & 0.005  & 0.22      & 1.437  & 0.012 & 0.4       & 6.94  & 0.13   & 2.1\\
+          50  & 0.5163 & 0.0032 & 0.15     &    0.844  & 0.008  & 0.25      & 1.637  & 0.015 & 0.5       & 8.16  & 0.27   & 2.4\\
+          55  & 0.5593 & 0.0078 & 0.16     &    0.971  & 0.011  & 0.29      & 1.847  & 0.012 & 0.6       & 9.19  & 0.33   & 2.8\\
+          60  & 0.609  & 0.004  & 0.18     &    1.10   & 0      & 0.33      & 2.063  & 0.023 & 0.6       & 10.2  & 0      & 3.1\\
+          65  & 0.678  & 0.005  & 0.20     &    1.197  & 0.011  & 0.4       & 2.323  & 0.021 & 0.7       & 10.80 & 0.14   & 3.2\\
+          70  & 0.741  & 0.006  & 0.22     &    1.320  & 0.010  & 0.4       & 2.610  & 0.020 & 0.8       & 11.45 & 0.07   & 3.4\\
+          75  & 0.813  & 0.008  & 0.24     &    1.447  & 0.006  & 0.4       & 2.907  & 0.012 & 0.9       & 12.05 & 0.07   & 4\\
+          80  & 0.895  & 0.011  & 0.27     &    1.573  & 0.006  & 0.5       & 3.200  & 0.026 & 1.0       & 12.70 & 0.14   & 4\\
+          85  & 0.988  & 0.008  & 0.30     &    1.700  & 0.010  & 0.5       & 3.453  & 0.015 & 1.0       & 13.55 & 0.07   & 4\\
+          90  & 1.06   & 0      & 0.32     &    1.840  & 0.017  & 0.6       & 3.727  & 0.021 & 1.1       & 14.30 & 0.14   & 4\\
+          95  & 1.13   & 0      & 0.34     &    1.960  & 0.010  & 0.6       & 4.017  & 0.031 & 1.2       & 15.10 & 0.14   & 5\\
+          100 & 1.200  & 0.010  & 0.4      &    2.127  & 0.015  & 0.6       & 4.353  & 0.023 & 1.3       & 16.15 & 0.21   & 5\\
+          105 & 1.283  & 0.015  & 0.4      &    2.277  & 0.006  & 0.7       & 4.687  & 0.015 & 1.4       & 16.95 & 0.21   & 5\\
+          110 & 1.373  & 0.006  & 0.4      &    2.470  & 0.017  & 0.7       & 4.997  & 0.031 & 1.5       & 18.00 & 0.14   & 5\\
+          115 & 1.5    & 0      & 0.4      &    2.677  & 0.023  & 0.8       & 5.257  & 0.012 & 1.6       & 18.85 & 0.07   & 6\\
+          120 & 1.537  & 0.006  & 0.5      &    2.847  & 0.012  & 0.9       & 5.360  & 0.010 & 1.6       & 19.95 & 0.07   & 6\\
+          \bottomrule 
+        \end{tabular}
+  \end{table}
+\end{landscape}
 \begin{table}[H]
     \centering
       \caption{Regressionsparameter für die Leckratenmessung für die Turbomolekularpumpe.}
