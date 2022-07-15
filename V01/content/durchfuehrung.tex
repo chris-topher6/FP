@@ -27,28 +27,28 @@ einer gewissen Schwelle hindurch. Diese Schwelle lässt sich einstellen, wodurch
 minimiert werden kann. Das elektrische Signal, welches von dem Diskriminator ausgegeben wird,
 kann auf verschiedene Breiten eingestellt werden. Hiernach folgt die bereits erwähnte Koinzidenz.
 Die nun folgende Schaltung funktioniert wie eine Stoppuhr, welche das Warten auf ein Zerfallssignal
-nach einer Suchzeit $T_{\text{S}}$ abbricht, was nötig wird, wenn das Myon nicht innerhalb des Detektors
+nach einer Suchzeit $T_{S}$ abbricht, was nötig wird, wenn das Myon nicht innerhalb des Detektors
 zerfällt. Dies ist realisiert mittels zweier AND-Gatter, welche beide das Signal erhalten. Zusätzlich
 wird das Signal auch über eine Verzögerungsleitung in einen Monoflop gesendet, welcher einen negierten
 Ausgang zum linken AND-Gatter und einen normalen Ausgang zum rechten AND-Gatter besitzt. Erhält der
 Monoflop das erste Signal, wird über den negierten Ausgang in das linke AND-Gatter ein Start-Signal zum
-Time-to-Amplitude Converter (TAC) gesendet. Dies startet die Suchzeit. Nach Ablauf selbiger oder
+Time-to-Amplitude Converter (TAC) gesendet, wodurch die Suchzeit gestartet wird. Nach Ablauf selbiger oder
 nach Erhalt eines weiteren Signals sendet der Monoflop ein Signal über den normalen Ausgang in
 das rechte AND-Gatter, welches ein Stop-Signal an den TAC sendet.
-Der TAC wandelt die Zeitspanne zwischen Start-Signal und Stop-Signal in eine Amplitude, dessen Höhe der
-Länge der Zeitspanne entspricht, um.
+Der TAC wandelt die Zeitspanne zwischen Start-Signal und Stop-Signal in eine Amplitude, dessen Höhe porportional zu der
+Länge der Zeitspanne ist, um.
 Der TAC ist verbunden mit einem Vielkanalanalysator (im englischen Sprachraum: Multi-Channel Analyser, daher abgekürzt als MCA).
-Der MCA sortiert die erhaltenen Amplituden nach ihrer Höhe in ein Histogramm, welches von einem
-angeschlossenen Computer ausgelesen und gespeichert werden kann.
-Zusätzlich sind an Start- und Stop-Eingang des MCAs Impulszähler verbunden, sodass für eine Abschätzung
+Der MCA sortiert die erhaltenen Amplituden in ein Histogramm, welches von einem
+Computer ausgelesen und gespeichert werden kann.
+Zusätzlich sind an den Ausgängen der AND-Gatter Impulszähler angschlossen, sodass für eine Abschätzung
 des Untergrundes auch die Myonen gezählt werden, welche nicht im Detektor zerfallen.
 \subsection{Justage des Versuchsaufbaus}
 \label{JustageVersuchsaufbau}
 Bevor die Messung durchgeführt werden kann, muss die nach Abbildung~\ref{fig:Schaltbild} aufgebaute Schaltung justiert
-werden. Die Diskriminatoren werden so eingestellt, das in etwa $30$ Impulse pro Sekunde gemessen werden können.
+werden. Die Diskriminatoren werden so eingestellt, das in etwa $30$ Impulse pro Sekunde gemessen werden.
 Die Breite eines Pulses der Diskriminatoren wird einmal auf $\Delta t_\text{Puls} = \SI{15}{\nano\second}$ und einmal auf $\Delta t_\text{Puls} = \SI{10}{\nano\second}$
 eingestellt, womit später auch die eigentliche Messung durchgeführt wird. Die Verzögerungsleitungen werden separat
-variiert, um die Ereignisrate zu maximieren. Die Suchzeit des Monoflops muss auf $T_{\text{S}} = \SI{10}{\micro\second} $ eingestellt werden.
+variiert, um die Ereignisrate zu maximieren. Die Suchzeit des Monoflops wird auf $T_{S} = \SI{10}{\micro\second} $ eingestellt werden.
 Unter Verwendung des Doppelimpulsgenerators wird der TAC kalibriert. Es werden verschiedene Impulsabstände eingestellt
-und diese dann den einzelnen Kanälen zugeordnet. Dies wird mit mindestens $10$ Werten zwischen $\SI{0.3}{\micro\second}$
+und diese dann den einzelnen Kanälen zugeordnet. Dies wird mit $10$ Werten zwischen $\SI{0.3}{\micro\second}$
 und $\SI{9.9}{\micro\second}$ durchgeführt.
