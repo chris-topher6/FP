@@ -60,7 +60,7 @@ for i in range(len(data)):
     plt.figure()
     x1 = np.linspace(np.min(t_cut1), np.max(t_cut1))
     plt.plot(x1, gerade(x1, *params1), "k", label="Regression")
-    plt.errorbar(t, noms(p), xerr=0.2,     yerr=stds(p),     color='red', ecolor='red',  markersize=3.5, elinewidth=0.5, fmt='.', label="Daten")
+    plt.errorbar(t, noms(p), xerr=0.2,     yerr=stds(p),     color='blue', ecolor='red',  markersize=3.5, elinewidth=1, fmt='x', label="Daten")
     plt.xlabel(r"$t [s]$")
     plt.ylabel(r"$p [hPa]$")
     plt.legend(loc='best')
