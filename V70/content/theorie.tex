@@ -215,3 +215,55 @@ gemessenen Strom kann auf den Druck geschlossen werden.
 Das Bayard-Alpert-Vakuummeter ist ein Heißionisations-Vakuummeter. Die prinzipielle Funktionsweise ähnelt
 stark dem Penning-Vakuummeter, mit dem Unterschied dass die Erzeugung der Elektronenemissionen hier auf durch
 thermische Emission geschieht.
+
+\subsection{Die Evauierungskurve}
+\label{subsec:evakutheorie}
+Die $p(t)$-Kurve wird auch als Evakuierungskurve bezeichnet. Wird von einem idealen Gas ausgegangen,
+gilt $p \cdot V = \text{const}$. Durch Ableiten nach der Zeit und nachfolgendes Umstellen ergibt sich:
+\begin{equation}
+ \frac{\text{d}V}{\text{d}t} = S = - \frac{V}{p} \frac{\text{d}p}{\text{d}t}.
+ \label{eqn:evakkrams}
+\end{equation}
+Für die Lösung der Differentialgleichung \ref{eqn:evakkrams} gilt
+\begin{equation}
+ p(t) = p_{0} \exp{\frac{-S}{V_{0}}t}.
+\end{equation}
+Herbei bezeichnet $S$ das Saugvermögen, $V_{0}$ das Volumen der Apparatur, $p_{0}$ den Startdruck und
+$t$ die Zeit. Dies beschreibt jedoch keine reale Vakuumpumpe, da eine solche immer durch Lecks und Desorptionen
+einen begrenzt niedrigen Enddruck besitzt. Dieser Enddruck ist von Null verschieden und kann durch Skalieren
+und Verschieben in der Gleichung berücksichtigt werden:
+\begin{equation}
+ p(t) = (p_{0} - p_{E}) \exp{\frac{-S}{V_{0}}t} + p_{E}.
+ \label{eqn:evakuierungskurve}
+\end{equation}
+Da die Evakuierungskurve \ref{eqn:evakuierungskurve} von der Saugleistung $S$ der Vakuumpumpe abhängig ist,
+kann durch Messung der Evakuierungskurve die Saugleistung bestimmt werden. Das Saugvermögen ist jedoch
+im allgemeinen keine Konstante, da sie sich für verschiedene Strömungsarten unterscheidet.
+
+\subsection{Definition der Leckrate}
+\label{subsec:leckratetheorie}
+Das Saugvermögen einer Vakuumpumpe kann nicht nur über die Messung einer Evakuierungskurve, sondern auch
+durch eine Leckratenmessung bestimmt werden. Die Leckrate $Q$ ist definiert als das Saugvermögen $S$ geteilt durch
+den Gleichgewichtsdruck $p_{G}$:
+\begin{equation}
+ S = \frac{Q}{p_{G}}.
+\end{equation}
+Es gilt aber auch
+\begin{equation}
+ Q = V_{0} \frac{\Delta p}{\Delta t}.
+\end{equation}
+Daher ergibt sich für das Saugvermögen einer Vakuumpumpe der Ausdruck
+\begin{equation}
+ S = \frac{V_{0}}{p_{G}} \frac{\Delta p}{\Delta t}.
+ \label{eqn:leckratesaugvermögen}
+\end{equation}
+Durch Variieren der Gleichgewichtsdrücke $p_{G}$ und Bestimmung der Steigung $\frac{\Delta p}{\Delta t}$
+kann daher das Saugvermögen einer Vakuumpumpe bestimmt werden. Es muss jedoch ebenfalls beachtet
+werden, dass das Saugvermögen durch die restlichen Bestandteile der Apparatur verringert wird und
+Gleichung \ref{eqn:leckratesaugvermögen} eine Idealiserung darstellt. Die Reduzierung des idealen
+Saugvermögens $S_{\text{Ideal}}$ durch die Apparatur wird durch den Leitwert $L$ beschrieben. Das reale Saugvermögen
+berechnet sich dann nach
+\begin{equation}
+ S_{\text{Effektiv}} = \frac{S_{\text{Ideal}} \cdot L}{S_{\text{Ideal}} + L}.
+ \label{eqn:saugvermögenleitwert}
+\end{equation}
