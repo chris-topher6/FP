@@ -154,7 +154,7 @@ Aufbau einer solchen Pumpe ist in Abbildung \ref{fig:drehschieber} gegeben.
 \noindent
 Der Arbeitsraum [5] einer Drehschieberpumpe wird durch die Schieber [3] des
 Rotors [2] aufgeteilt und durch den Stator nach außen abgegrenzt.
-Das Einlassventil [4] (rechte Seite) lässt im Betrieb Gas herinströmen.
+Das Einlassventil [4] (rechte Seite) lässt im Betrieb Gas hereinströmen.
 Durch Drehen des Rotors [2] vergrößert sich das Volumen des Arbeitsraumes [5], bis der zweite Schieber
 das Einlassventil abdeckt. Durch die exzentrische Rotation wird der Arbeitsbereich [5] durch die
 weitere Drehung verkleinert, was eine Komprimation des Gases zur Folge hat. Das Auslassventil [4] (linke Seite)
@@ -173,7 +173,45 @@ aus einem Rotor, welcher mit Schaufeln besetzt ist. Zwischen den Rotorschaufeln 
 spiegelsymmetrische Statorschaufeln. Der Rotor dreht sich bei dem in diesem Versuch verwendeten
 Exemplar mit bis zu $\SI{1350}{\hertz}$. Damit die Gasteilchen mit den Rotorschaufeln wechselwirken,
 muss der Abstand der Rotorschaufeln ähnlich dimensioniert sein wie die mittlere freie Weglänge der
-Gasteilchen. Zusätzlich sollte die Geschwindigkeit der Rotorblätter größer ist als die mittlere
-Molekülgeschwindigkeit des Gases. Durch diese Wechselwirkung werden die Gasteilchen in die
-gewünschte Pumprichtung beschleunigt. Der Rotor ist einseitig magnetgelagert, da
-so eine Verwendung eines Öllagers vermieden werden kann.
+Gasteilchen. Durch diese Wechselwirkung werden die Gasteilchen in die
+gewünschte Pumprichtung beschleunigt. In einer Turbomolekularpumpe sollte molekulare Strömung vorliegen, die Teilchen
+sollten also fast nicht miteinander und stattdessen hauptsächlich mit dem Rotor wechselwirken.
+Der Rotor ist einseitig magnetgelagert, da so eine Verwendung eines Öllagers vermieden werden kann.
+Eine Abbildung einer Turbomolekularpumpe ist in \ref{fig:turbomolekular} gegeben.
+\begin{figure}
+ \centering
+ \caption{Eine aufgeschnittene Turbomolekurlarpumpe \cite{turbopumpenbild}.}
+ \label{fig:turbomolekular}
+ \includegraphics[scale=0.3]{pictures/Cut_through_turbomolecular_pump.jpg}
+\end{figure}
+\noindent
+
+\subsection{Die Methoden der Vakuummessung}
+Soll mithilfe der obig aufgeführten Pumpen ein Vakuum erzeugt werden, ist eine
+Quantifizierung des erreichten Druckes möglich mit einen Vakuummeter. Im Folgenden
+werden verschiedene Methoden der Vakuummessung beschrieben.
+
+\subsubsection*{Piezo-Vakuummeter}
+Ein Piezo-Vakuummeter besteht aus einem Piezo-elektrischen Kristall, welcher bei einem auf ihn wirkenden
+Druck eine elektrische Spannung erzeugt. Diese kann gemessen und daraus auf den herrschenden Druck geschlossen
+werden. Da der auf den Kristall wirkende Druck antiproportional zu der Vakuumsqualität ist, funktioniert ein
+Piezo-Vakuummeter am besten im Grobvakuum.
+\subsubsection*{Pirani-Vakuummeter}
+Das Pirani-Vakuummeter nutzt aus, das (in einem gewissen Druckbereich) die Wärmeleitfähgkeit
+eines Gases druckabhängig ist. Ein in dem zu vermessenden Vakuum befindlicher Draht wird elektrisch geheizt.
+Die Wärmeabgabe des Drahtes ist nun umso höher, desto mehr Gasteilchen die Wärme des Drahtes
+aufnehmen können. Der elektrische Widerstand des Drahtes ist abhängig von der Temperatur, weshalb
+durch die Widerstandsbestimmung mittels einer Wheatstone-Brücke die Temperatur des Drahtes und darüber der Druck
+innerhalb der Kammer ermittelt werden. Wenn andere Formen der Wärmeübertragung (z.B. radiativ durch Wärmestrahlung)
+vernachlässigbar sind, kann ein Pirani-Vakuummeter eingesetzt werden. Dies ist im Bereich des Feinvakuums der Fall.
+
+\subsubsection*{Penning-Vakuummeter}
+Das Penning-Vakuummeter gehört zu den Kaltionisations-Vakuummetern. Durch elektrische Feldemission werden
+Elektronen von einer Kathode freigesetzt und dann auf eine Anode beschleunigt. Auf dem zurückgelegten Weg
+ionisieren die Elektronen Gasteilchen, welche dann zur Kathode beschleunigt werden. Aus dem an der Kathode
+gemessenen Strom kann auf den Druck geschlossen werden.
+
+\subsubsection*{Bayard-Alpert-Vakuummeter}
+Das Bayard-Alpert-Vakuummeter ist ein Heißionisations-Vakuummeter. Die prinzipielle Funktionsweise ähnelt
+stark dem Penning-Vakuummeter, mit dem Unterschied dass die Erzeugung der Elektronenemissionen hier auf durch
+thermische Emission geschieht.
