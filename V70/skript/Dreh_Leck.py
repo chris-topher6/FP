@@ -44,12 +44,12 @@ for i in range(len(data)):
     p_stat = np.sqrt(((p1-p_m)**2+(p2-p_m)**2+(p3-p_m)**2)/6)
     np.savetxt('build/Dreh_Leck_'+data[i]+'_Daten.txt', np.column_stack([t, p1,p2,p3, p_m, p_stat, p_sys]), fmt='%6.5f', delimiter=' & ', header='t, p1,p2,p3, p, p_stat, p_sys', newline='\\\\\n' )
     p = unp.uarray(p_m, p_sys)
-    print("t, p1, p2, p3, p, p_stat, p_sys, p_stat, lnp")
+    print("t, p1, p2, p3, p, p_stat, p_sys, p_stat")
     p_stat_ufloat=unp.uarray(p_m,p_stat)
     p_sys_ufloat=unp.uarray(p_sys,p_stat)
-    for i in range(len(p_stat_ufloat)):
-    print(f"{t[i]} & {p1[i]} & {p2[i]} & {p3[i]} & {p_stat_ufloat[i]} & {p_sys_ufloat[i]}")
-
+    for j in range(len(p_stat_ufloat)):
+        print(f"{t[j]} & {p1[j]} & {p2[j]} & {p3[j]} & {p_stat_ufloat[j]} & {p_sys_ufloat[j]} \\\\")
+    print("test")
     #Fit
     t_cut1=t[cut[i]:]
     p_cut1=p[cut[i]:]
