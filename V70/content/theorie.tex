@@ -1,7 +1,8 @@
 \section{Theoretischer Hintergrund des Versuches}
 \label{sec:Theorie}
 In den folgenden Abschnitten werden die Grundlagen der Vakuumerzeugung beschrieben
-sowie einige wichtige Begriffe definiert.
+sowie einige wichtige Begriffe definiert. Die Grundlage hierfür ist, wenn nicht anders
+angegeben, Pfeiffer Vacuum \cite{pfeiffer}.
 
 \subsection{Das Vakuum}
 Der Begriff Vakuum ist definiert als der Zustand eines Gases, wenn der Druck
@@ -147,7 +148,7 @@ Drehschieberpumpen gehören zu den obig erwähnten gasfördernden Pumpen. Der sc
 Aufbau einer solchen Pumpe ist in Abbildung \ref{fig:drehschieber} gegeben.
 \begin{figure}[H]
   \centering
-  \caption{Der schematische Aufbau einer Drehschieberpumpe.}
+  \caption{Der schematische Aufbau einer Drehschieberpumpe \cite{pfeiffer}.}
   \label{fig:drehschieber}
   \includegraphics[scale=0.3]{pictures/drehschieber.png}
 \end{figure}
@@ -216,7 +217,7 @@ Das Bayard-Alpert-Vakuummeter ist ein Heißionisations-Vakuummeter. Die prinzipi
 stark dem Penning-Vakuummeter, mit dem Unterschied dass die Erzeugung der Elektronenemissionen hier auf durch
 thermische Emission geschieht.
 
-\subsection{Die Evauierungskurve}
+\subsection{Die Evakuierungskurve}
 \label{subsec:evakutheorie}
 Die $p(t)$-Kurve wird auch als Evakuierungskurve bezeichnet. Wird von einem idealen Gas ausgegangen,
 gilt $p \cdot V = \text{const}$. Durch Ableiten nach der Zeit und nachfolgendes Umstellen ergibt sich:
@@ -260,10 +261,40 @@ Daher ergibt sich für das Saugvermögen einer Vakuumpumpe der Ausdruck
 Durch Variieren der Gleichgewichtsdrücke $p_{G}$ und Bestimmung der Steigung $\frac{\Delta p}{\Delta t}$
 kann daher das Saugvermögen einer Vakuumpumpe bestimmt werden. Es muss jedoch ebenfalls beachtet
 werden, dass das Saugvermögen durch die restlichen Bestandteile der Apparatur verringert wird und
-Gleichung \ref{eqn:leckratesaugvermögen} eine Idealiserung darstellt. Die Reduzierung des idealen
+Gleichung \ref{eqn:leckratesaugvermögen} eine Idealisierung darstellt. Die Reduzierung des idealen
 Saugvermögens $S_{\text{Ideal}}$ durch die Apparatur wird durch den Leitwert $L$ beschrieben. Das reale Saugvermögen
 berechnet sich dann nach
 \begin{equation}
  S_{\text{Effektiv}} = \frac{S_{\text{Ideal}} \cdot L}{S_{\text{Ideal}} + L}.
  \label{eqn:saugvermögenleitwert}
 \end{equation}
+
+\section{Berechnung der Unsicherheiten}
+\label{sec:unsicherheiten}
+Bei den obig beschriebenen Messungen der Evakuierungskurve und der Leckrate handelt es sich
+im allgemeinen um Messwerte, welche mit einer Unsicherheit behaftet sind. In den in der
+Auswertung durchgeführten Berechnungen müssen diese beachtet werden. Messungenauigkeiten
+pflanzen sich in Berechnungen nach der Gaußschen Fehlerfortpflanzung fort. Für den Fall mehrerer
+nicht-korrelierter Unsicherheiten ist die resultierende Unsicherheit durch Gleichung \ref{eqn:gaußfort}
+gegeben.
+\begin{equation}
+  \Delta f = \sqrt{\sum_{i=1}^{n} \left( \frac{\partial f}{\partial x_{i}} \Delta x_{i} \right)^{2}}
+ \label{eqn:gaußfort}
+\end{equation}
+Durch Anwenden der Gleichung \ref{eqn:gaußfort} ergibt sich für den Fehler der logarithmischen Fits
+\begin{equation*}
+  \sigma_{log} = \sqrt{\frac{\sigma_p^2}{(p-p_E)^2}+\frac{\sigma_{p_{0}}^2}{(p_0-p_E)^2}+\sigma_{p_E}^2 \left(\frac{1}{p_0-p_E}-\frac{1}{p-p_E}\right)^2}.
+\end{equation*}
+Für die Unsicherheiten der Saugleistungsberechnung und der Berechnung des Leitwertes ergibt sich nach
+\ref{eqn:gaußfort} jeweils
+\begin{align*}
+  \sigma_{S} = & \sqrt{\left(\frac{m^2}{p_g^2}\right) \cdot \sigma_{V}^2 + \left(\frac{V^2}{p_g^2}\right) \cdot \sigma_m^2 + \left(\frac{m^2 V^2}{p_g^4}\right) \cdot \sigma_p^2} \\
+  \sigma_{L} = & \sqrt{\left( \frac{ S_0^2}{(S_{eff}- S_0)^2} \right) \cdot \sigma_{Seff}^2 + \left( \frac{S_{eff}^2}{(S_{eff}- S_0)^2} \right) \cdot \sigma_{S_{0}}^2} \quad.
+\end{align*}
+Bei der Berechnung der arithmetischen Mittelwerte ergibt sich für die Unsicherheit der resultierenden
+Größen
+\begin{equation}
+ \Delta x = \sqrt{\frac{1}{n(n-1)} \sum_{i=1}^{n} (\bar{x} - x_{i})^{2}}.
+\end{equation}
+Hierbei bezeichnet $n$ die Anzahl der (nicht-korrelierten) Messwerte, $\bar{x}$ den arithmetischen Mittelwert
+und $x$ den jeweiligen Messwert.
