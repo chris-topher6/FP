@@ -43,8 +43,8 @@ for i in range(len(data)-1):
     t, p1, p2, p3 = np.genfromtxt('data/Turbo_Leck_'+data[i]+'.dat', unpack=True)
     p_m = (p1+p2+p3)/3
     p_sys = np.multiply(p_m,err)
-    p_stat = np.sqrt(((p1-p_m)**2+(p2-p_m)**2+(p3-p_m)**2)/2)
-    np.savetxt('build/Turbo_Leck_'+data[i]+'_Daten.txt', np.column_stack([t, p_m, p_stat, p_sys]), fmt='%6.5f', delimiter=' & ', header='p, p_stat, p_sys', newline='\\\\\n' )
+    p_stat = np.sqrt(((p1-p_m)**2+(p2-p_m)**2+(p3-p_m)**2)/6)
+    np.savetxt('build/Turbo_Leck_'+data[i]+'_Daten.txt', np.column_stack([t, p1,p2,p3, p_m, p_stat, p_sys]), fmt='%6.5f', delimiter=' & ', header='t, p1, p2, p3, p, p_stat, p_sys', newline='\\\\\n' )
     p = unp.uarray(p_m, p_sys)
 
     #Fit
@@ -95,8 +95,8 @@ for i in [3]:
     t, p1, p2 = np.genfromtxt('data/Turbo_Leck_'+data[i]+'.dat', unpack=True)
     p_m = (p1+p2)/2
     p_sys = np.multiply(p_m,err)
-    p_stat = np.sqrt(((p1-p_m)**2+(p2-p_m)**2))
-    np.savetxt('build/Turbo_Leck_4_Daten.txt', np.column_stack([t, p_m, p_stat, p_sys]), fmt='%6.5f', delimiter=' & ', header='p, p_stat, p_sys', newline='\\\\\n' )
+    p_stat = np.sqrt(((p1-p_m)**2+(p2-p_m)**2)/2)
+    np.savetxt('build/Turbo_Leck_4_Daten.txt', np.column_stack([t, p1, p2, p3, p_m, p_stat, p_sys]), fmt='%6.5f', delimiter=' & ', header='t, p1, p2, p3, p, p_stat, p_sys', newline='\\\\\n' )
     p = unp.uarray(p_m, p_sys)
 
     #Fit

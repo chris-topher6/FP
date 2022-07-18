@@ -15,12 +15,16 @@ p_E = ufloat(7.1*10**(-3),7.1*0.03*10**(-3))
 err = 0.1 #10% Fehler
 p_m = (p1+p2+p3)/3
 p_sys = np.multiply(p_m,err)
-p_stat = np.sqrt(((p1-p_m)**2+(p2-p_m)**2+(p3-p_m)**2)/2)
+p_stat = np.sqrt(((p1-p_m)**2+(p2-p_m)**2+(p3-p_m)**2)/6)
 #np.savetxt('build/Dreh_Evak_Daten.txt', np.column_stack([t, p_m, p_stat, p_sys]), fmt='%6.5f', delimiter=' & ', header='p, p_stat, p_sys', newline='\\\\\n' )
 p = unp.uarray(p_m, p_sys)
 ln_p=unp.log((p-p_E)/(p_0-p_E))
-np.savetxt('build/Dreh_Evak_Daten.txt', np.column_stack([t, p_m, p_stat, p_sys, noms(ln_p), stds(ln_p)]), fmt='%6.5f', delimiter=' & ', header='t, p, p_stat, p_sys, ln, dln', newline='\\\\\n' )
-
+np.savetxt('build/Dreh_Evak_Daten.txt', np.column_stack([t, p1,p2,p3, p_m, p_stat, p_sys, noms(ln_p), stds(ln_p)]), fmt='%6.5f', delimiter=' & ', header='t, p1,p2,p3, p, p_stat, p_sys, ln, dln', newline='\\\\\n' )
+print("t, p1, p2, p3, p, p_stat, p_sys, p_stat, lnp")
+p_stat_ufloat=unp.uarray(p_m,p_stat)
+p_sys_ufloat=unp.uarray(p_sys,p_stat)
+for i in range(len(p_stat_ufloat)):
+    print(f"{t[i]} & {p1[i]} & {p2[i]} & {p3[i]} & {p_stat_ufloat[i]} & {p_sys_ufloat[i]} & {ln_p[i]}")
 
 #Fit
 t_cut1=t[1:20]
