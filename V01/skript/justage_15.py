@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from uncertainties import ufloat
 import uncertainties.unumpy as unp
+from uncertainties.unumpy import (nominal_values as noms, std_devs as stds)
 
 def gerade(x, m, b):
     return m*x+b
@@ -43,17 +44,24 @@ for name, value, error in zip('ab', params2, errors2):
     print(f'{name} = {value:.8f} ± {error:.8f}')
 
 halfmax = params2[0]/2
-h1 = (halfmax-params1[1])/params1[0]
-h3 = (halfmax-params3[1])/params3[0]
+params1_err= unp.uarray(params1,errors1)
+params2_err= unp.uarray(params2,errors2)
+params3_err= unp.uarray(params3,errors3)
+h1 = (halfmax-params1_err[1])/params1_err[0]
+h3 = (halfmax-params3_err[1])/params3_err[0]
 
 x1 = np.linspace(np.min(dt_cut1), np.max(dt_cut1))
 x2 = np.linspace(np.min(dt_cut2), np.max(dt_cut2))
 y2 = np.ones(len(x2))
 x3 = np.linspace(np.min(dt_cut3), np.max(dt_cut3))
-xhalf = np.linspace(h1, h3)
+xhalf = np.linspace(noms(h1), noms(h3))
 yhalf = np.ones(len(xhalf))
+h_theo=ufloat(30,0)
+p=(h_theo-h3+h1)/(30)*100
 print(f"h1={h1}")
 print(f"h3={h3}")
+print(f"Halbwertsbreite={h3-h1}")
+print(f"Abweichung p={p}%")
 plt.plot(x1, params1[0]*x1+params1[1], "orange", linewidth=1, label="Regression")
 plt.plot(x2, params2[0]*y2, "darkgreen", linewidth=1, label="Plateau")
 plt.plot(xhalf, halfmax*yhalf, "r--", linewidth=1, label="halber Plateauwert")

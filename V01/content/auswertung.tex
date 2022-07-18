@@ -7,7 +7,6 @@ für die Unsicherheit $\sqrt{N}$ angenommen.
 \label{sec:justage}
 Um die durch die PMTs, die Kabel und die Diskriminatoren entstehende Verzögerung auszugleichen, wird die Verzögerung systematisch verändert und dabei die Impulszahl innerhalb von \SI{10}{\second} 
 notiert. Die Messwerte sind in Tabelle \ref{tab:justage} gelistet. 
-
 \begin{table}[H]
     \centering
       \caption{Impulszahl unter Variation der Verzögerungsleitung für eine Pulsdauer von $\Delta t_{\text{Puls}}=\SI{10}{\nano\second}$ und $\Delta t_{\text{Puls}}=\SI{15}{\nano\second}$.}
@@ -56,22 +55,23 @@ notiert. Die Messwerte sind in Tabelle \ref{tab:justage} gelistet.
       \end{tabular}
     \end{table}
 \noindent 
-Zur Bestimmung des Plateaus wurde eine lineare Regression der Form 
+Für die Bestimmung der Halbwertsbreite wird im Plateaubereich eine Konstante $d$ und in den ansteigenden 
+bzw. abfallenden Bereichen eine Funktion der Form
 \begin{equation}
     y=ax+b \label{eqn:gerade}
 \end{equation}
-durchgeführt, wobei $y$ der Impulszahl $N$ und $x$ der Verzögerungszeit $\Delta t_\text{Delay}$ entspricht. Dabei wurden für die Ausgleichsrechnung für  
-$\Delta t_{\text{Puls}}=\SI{10}{\nano\second}$ die Messwerte von $\Delta t_\text{Delay}=\SI{0}{\nano\second}$ bis $\Delta t_\text{Delay}=\SI{19}{\nano\second}$ und für 
-$\Delta t_{\text{Puls}}=\SI{15}{\nano\second}$ die Messwerte von $\Delta t_\text{Delay}=\SI{0}{\nano\second}$ bis $\Delta t_\text{Delay}=\SI{21}{\nano\second}$ verwendet. 
+angepasst, wobei $y$ der Impulszahl $N$ und $x$ der Verzögerungszeit $\Delta t_\text{Delay}$ entspricht. 
+Dabei wurden der Plateaubereiches für $\Delta t_{\text{Puls}}=\SI{10}{\nano\second}$ 
+von $\Delta t_\text{Delay}=\SI{-11}{\nano\second}$ bis $\Delta t_\text{Delay}=\SI{19}{\nano\second}$ 
+und für $\Delta t_{\text{Puls}}=\SI{15}{\nano\second}$ von $\Delta t_\text{Delay}=\SI{-0.5}{\nano\second}$ 
+bis $\Delta t_\text{Delay}=\SI{21}{\nano\second}$ abgeschätzt. 
 Die Messdaten aus Tabelle \ref{tab:justage} samt Regression sind in den Abbildungen \ref{fig:justage10} und \ref{fig:justage15} dargestellt.
-
 \begin{figure}[H]
     \centering
     \includegraphics[scale= 0.8]{build/justage_10.pdf}
     \caption{Messwerte aus Tabelle \ref{tab:justage} mit linearer Regression im Plateaubereich für $\Delta t_{\text{Puls}}=\SI{10}{\nano\second}$.}
     \label{fig:justage10}
   \end{figure}
-
 \begin{figure}[H]
     \centering
     \includegraphics[scale= 0.8]{build/justage_15.pdf}
@@ -79,25 +79,43 @@ Die Messdaten aus Tabelle \ref{tab:justage} samt Regression sind in den Abbildun
     \label{fig:justage15}
   \end{figure}
 \noindent
-Die Regressionsparameter sowie das arithmetische Mittel des Wertebereichs sind in Tabelle \ref{tab:parameter} aufgeführt. Für ein Plateau sollte dabei idealerweise $a\approx 0$ und
-$b\approx N$ gelten.
-
+Die Parameter der Regressionen sind in Tabelle \ref{tab:parameter} aufgeführt. 
 \begin{table}[H]
     \centering
-      \caption{Regressionsparameter $a$ und $b$ und arithmetisches Mittel $\bar{N}$ für eine Pulsdauer von $\Delta t_{\text{Puls}}=\SI{10}{\nano\second}$ und $\Delta t_{\text{Puls}}=\SI{15}{\nano\second}$.}
+      \caption{Regressionsparameter $a$ und $b$ für die linearen Regressionen und $d$ für die konstante Regression für eine Pulsdauer von $\Delta t_{\text{Puls}}=\SI{10}{\nano\second}$ und $\Delta t_{\text{Puls}}=\SI{15}{\nano\second}$.}
       \label{tab:parameter}
       \sisetup{table-format=2.2}
       \begin{tabular}{c S @{${}\pm{}$} S[table-format=1.2] S @{${}\pm{}$} S[table-format=1.2]}
         \toprule
         {Parameter} & \multicolumn{2}{c}{$\Delta t_{\text{Puls}}=\SI{10}{\nano\second}$} & \multicolumn{2}{c}{$\Delta t_{\text{Puls}}=\SI{15}{\nano\second}$} \\
         \midrule
-        $a      $ & -0.24 & 0.06 & 0.19  & 0.06\\
-        $b      $ & 21.18 & 0.61 & 17.04 & 0.70\\
-        $\bar{N}$ & 18.98 & 1.82 & 18.72 & 2.03\\
+        $d                   $ & 21.8& 1.1 &  18.5 & 0.5\\
+        \midrule
+        $a_\text{links}      $ & 2.2 & 2.8 & 0.19  & 0.06\\
+        $b_\text{links}      $ & 43  & 4   & 17.04 & 0.70\\
+        \midrule
+        $a_\text{rechts}     $ & -1.53 & 0.07 & 0.19  & 0.06\\
+        $b_\text{rechts}     $ & 46.7  & 1.75 & 17.04 & 0.70\\
         \bottomrule
       \end{tabular}
     \end{table}
 \noindent
+Die Halbwertsbreiten des Plateaus werden über die Schnittstellen der Geraden mit der halben Höhe des Plateaus
+bestimmt. Für die Schnittstellen ergibt sich für $\Delta t_{\text{Puls}}=\SI{10}{\nano\second}$
+\begin{align*}
+  t_\text{links} &=\SI{-14.9\pm 2.7}{\nano\second}\\
+  t_\text{rechts}&=\SI{23.4\pm 1.6}{\nano\second}
+\end{align*}
+und für $\Delta t_{\text{Puls}}=\SI{15}{\nano\second}$
+\begin{align*}
+  t_\text{links} &=\SI{-4.8\pm 0.8}{\nano\second}\\
+  t_\text{rechts}&=\SI{28.1\pm 2.4}{\nano\second}.
+\end{align*}
+Durch Bilden der Differenz ergeben sich die Halbwertsbreiten
+\begin{align*}
+  t_{1/2}(\text{Puls}=\SI{10}{\nano\second})=\SI{38.3\pm 3.1}{\nano\second}\\
+  t_{1/2}(\text{Puls}=\SI{15}{\nano\second})=\SI{32.9\pm 2.5}{\nano\second}.
+\end{align*}
 Für die weitere Messung wurde $\Delta t_{\text{Puls}}=\SI{10}{\nano\second}$ und $\Delta t_{\text{Delay}}=\SI{5}{\nano\second}$ verwendet, da sich dieser Wert hinreichend zentral
 auf dem Plateau befindet (vgl. Abb.\ref{fig:justage10}).
 
@@ -126,9 +144,8 @@ Die mittels Doppelimpulsgenerator generierten Messwerte zur Kalibration des Muli
       \end{tabular}
     \end{table}
 \noindent
-Um bei der Auswertung die Kanalnummern den jeweiligen Zeiten zuzuordnen, wurde eine Regression der Form \ref{eqn:gerade} erstellt, welche in Abbildung
-\ref{fig:MCA} dargestellt ist. 
-
+Um bei der Auswertung die Kanalnummern den jeweiligen Zeiten zuzuordnen, wurde eine Regression nach Gleichung \ref{eqn:gerade} erstellt. 
+Diese ist in Abbildung \ref{fig:MCA} dargestellt. 
 \begin{figure}[H]
   \centering
   \includegraphics[scale= 0.8]{build/kalibration.pdf}

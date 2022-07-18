@@ -2,16 +2,20 @@
 \label{sec:Diskussion}
 
 \subsection{Probleme bei der Justage der Verzögerungsleitung}
-Wie bereits in Kapitel \ref{sec:justage} angedeutet, sollte die Zählrate in Abhängigkeit der Verzögerungszeit (vgl. Abb. \ref{fig:justage10}, \ref{fig:justage15})
-ein Plateau aufweisen. Die Regression ergab jedoch eine Steigung von 
-\begin{align*}
-    a&=\SI{-0.242 \pm 0.056}{\per\nano\second} \quad &\text{für $\Delta t_{\text{Puls}}=\SI{10}{\nano\second}$}\\
-    b&=\SI{0.191 \pm 0.062 }{\per\nano\second} \quad &\text{für $\Delta t_{\text{Puls}}=\SI{15}{\nano\second}$}
-\end{align*}
-und damit eine Steigung ungleich null. Insbesondere ist in der Verteilung für $\Delta t_{\text{Puls}}=\SI{15}{\nano\second}$ \ref{fig:justage15} eine 
-Unstetigkeit bei $\Delta t_\text{Delay}=0$ zu erkennen. Schon während der Aufnahme der Daten ist aufgefallen, dass einige Schalter für das Einstellen der Verzögerungs
-blockierten, sodass diese teilweise kein Signal mehr durchließen oder unklar war, ob das Umschalten erfolgreich war oder nicht. Eine nicht richtig zurückgesetzte Verzögerung könnte genau so eine Unstetigkeit wie beobachtet hervorrufen. Um die weitere Messung nicht zu sehr durch diese Problematik zu beeinflussen,
-wurde eine Verzögerung gewählt, die nicht nur zentral auf dem Plateau liegt, sondern auch eine möglichst unproblematische Einstellung an den Schaltern aufwies.
+Die in Kapitel \ref{sec:justage} berechnete Halbwertsbreite entspricht nach der Theorie 
+der doppelten Breite der Rechtsecksimpulse. Für $\text{Puls}=\SI{15}{\nano\second}$ beträgt
+die Abweichung von $t_{1/2}$ dabei $\SI{10\pm 8}{\percent}$ und ist somit mit dem Theoriewert
+verträglich. Für $\text{Puls}=\SI{10}{\nano\second}$ ist die Halbwertsbreite mit einer Abweichung
+von $\SI{92\pm 16}{\percent}$ deutlich ungleich null.
+Insbesondere ist in der Verteilung für $\Delta t_{\text{Puls}}=\SI{10}{\nano\second}$ \ref{fig:justage10} eine 
+Unstetigkeit bei $\Delta t_\text{Delay}=0$ zu erkennen. Schon während der Aufnahme der Daten ist aufgefallen, 
+dass einige Schalter für das Einstellen der Verzögerungs blockierten, sodass diese teilweise kein Signal mehr 
+durchließen oder unklar war, ob das Umschalten erfolgreich war oder nicht. Eine nicht richtig zurückgesetzte 
+Verzögerung könnte genau so eine Unstetigkeit wie beobachtet hervorrufen und somit auch die Halbwertsbreite
+beeinflussen.
+%Um die weitere Messung nicht zu sehr 
+%durch diese Problematik zu beeinflussen, wurde eine Verzögerung gewählt, die nicht nur zentral auf dem Plateau 
+%liegt, sondern auch eine möglichst unproblematische Einstellung an den Schaltern aufwies.
 
 \subsection{Diskussion der Kalibration des MCA}
 Die für den Zusammenhang zwischen Zeit und Kanal berechneten Regressionsparameter 
