@@ -6,6 +6,12 @@ import scipy.constants as c
 def abw(lit, exp): #Abweichung in %
     return (np.abs(lit-exp)/lit*100)
 
+Messreihe = [
+    "rot",
+    "blau sigma",
+    "blau pi",
+    "blau sigma"
+]
 #Konstanten
 N=4 #Anzahl an .data files
 muB=9.2740100783*10**(-24) #Bohrsches Magneton
@@ -23,9 +29,8 @@ lam=[               #m #Wellenlänge des Lichts
 ]
 B=[                 #T #Magnetfeld für verschiedene Messreihen
     577.5*10**-3,   #rot
-    427.0*10**-3,     #blau sigma
-    577.5*10**-3,    #blau pi
-#    106.2*10**-3
+    427.0*10**-3,   #blau sigma
+    577.5*10**-3,   #blau pi
     302.9*10**-3
 ]
 lit=[1,
