@@ -300,19 +300,25 @@ gegeben.
  \label{eqn:gaußfort}
 \end{equation}
 Durch Anwenden der Gleichung \ref{eqn:gaußfort} ergibt sich für den Fehler der logarithmischen Fits
-\begin{equation*}
+\begin{equation}
   \sigma_{log} = \sqrt{\frac{\sigma_p^2}{(p-p_E)^2}+\frac{\sigma_{p_{0}}^2}{(p_0-p_E)^2}+\sigma_{p_E}^2 \left(\frac{1}{p_0-p_E}-\frac{1}{p-p_E}\right)^2}.
-\end{equation*}
+  \label{eqn:fehlerlog}
+\end{equation}
+Hierbei beschreiben $\sigma_{p}$, $\sigma_{p_{0}}$ sowie $\sigma_{p_{E}}$ die Unsicherheit der jeweiligen Größe.
 Für die Unsicherheiten der Saugvermögensberechnung und der Berechnung des Leitwertes ergibt sich nach
 \ref{eqn:gaußfort} jeweils
-\begin{align*}
+\begin{align}
   \sigma_{S} = & \sqrt{\left(\frac{m^2}{p_g^2}\right) \cdot \sigma_{V}^2 + \left(\frac{V^2}{p_g^2}\right) \cdot \sigma_m^2 + \left(\frac{m^2 V^2}{p_g^4}\right) \cdot \sigma_p^2} \\
-  \sigma_{L} = & \sqrt{\left( \frac{ S_0^2}{(S_{eff}- S_0)^2} \right) \cdot \sigma_{Seff}^2 + \left( \frac{S_{eff}^2}{(S_{eff}- S_0)^2} \right) \cdot \sigma_{S_{0}}^2} \quad.
-\end{align*}
+  \sigma_{L} = & \sqrt{\left( \frac{ S_{\text{Ideal}}^2}{(S_{\text{Effektiv}}- S_{\text{Ideal}})^2} \right) \cdot \sigma_{S_{\text{Effektiv}}}^2 + \left( \frac{S_{\text{Effektiv}}^2}{(S_{\text{Effektiv}}- S_{\text{Ideal}})^2} \right) \cdot \sigma_{S_{\text{Ideal}}}^2} \quad.
+  \label{eqn:fehlersaugleit}
+\end{align}
+Hier bezeichnen $\sigma_{m}$ und $\sigma_{V}$ die Unsicherheit der jeweiligen Größe.
 Bei der Berechnung der arithmetischen Mittelwerte ergibt sich für die Unsicherheit der resultierenden
-Größen
+Größen $\Delta x$
 \begin{equation}
  \Delta x = \sqrt{\frac{1}{n(n-1)} \sum_{i=1}^{n} (\bar{x} - x_{i})^{2}}.
 \end{equation}
 Hierbei bezeichnet $n$ die Anzahl der (nicht-korrelierten) Messwerte, $\bar{x}$ den arithmetischen Mittelwert
-und $x$ den jeweiligen Messwert.
+und $x$ den jeweiligen Messwert. Die Berechnung der Unsicherheiten wird mithilfe des Paketes
+\textit{Uncertainties}\cite{uncertainties}
+der Sprache \textit{Python}\cite{python} durchgeführt.
