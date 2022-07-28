@@ -47,7 +47,7 @@ plt.errorbar(0.167,  22, xerr = np.sqrt(2)*0.131,   yerr=6,    fmt='.', label = 
 plt.errorbar(0.0186, 1.2,xerr = np.sqrt(2)*0.00507, yerr=0.8,  fmt='.', label = "Evakuierung 3")
 
 plt.xscale('log')
-plt.xlabel(r"$p$ $ [mhPa]$")
+plt.xlabel(r"$p$ $ [10^{-3}hPa]$")
 plt.ylabel(r"$S$ $ [\frac{m³}{h}]$")
 plt.tight_layout()
 plt.legend(loc = 'best')
