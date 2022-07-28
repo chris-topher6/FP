@@ -8,7 +8,12 @@ angegeben, Pfeiffer Vacuum \cite{pfeiffer}.
 Der Begriff Vakuum ist definiert als der Zustand eines Gases, wenn der Druck
 innerhalb eines Behälters geringer ist als außerhalb oder der Druck geringer
 ist als $\SI{300}{\milli\bar}$, was der geringste auf der Erdoberfläche
-vorkommende Druck ist.\\
+vorkommende Atmosphärendruck ist. Dieser herrscht auf dem höchsten Punkt der Erdoberfläche,
+dem Mount Everest.\\
+Das ideale Gasgesetz ist ein Modell, welches ein Gas beschreibt, in dem Gasteilchen
+keine Anziehungs- und Abstoßungskräfte aufeinander ausüben. Ebenfalls wird das Volumen
+als verschwindend angenommen und ihre Energie nur durch ihre kinetische Energie der Translation
+beschrieben. Ideale Gasteilchen stoßen jedoch elastisch mit den Behälterwänden.
 Wenn Gase sich im Grenzfall einer verschwindenden Dichte befinden, ist das
 ideale Gasgesetz \ref{eqn:idealesGas} eine gute Näherung:
 \begin{equation}
@@ -49,14 +54,22 @@ erklärt.
 
 \subsubsection*{Die mittlere freie Weglänge}
 Als mittlere freie Weglänge wird die Strecke bezeichnet, die ein Gasteilchen
-auf geradem Weg im Mittel zwischen zwei Stößen zurücklegen kann.
+auf geradem Weg im Mittel zwischen zwei Stößen zurücklegen kann. Wenn die Gasteilchendichte
+sinkt, steigt die mittlere freie Weglänge an, da sich weniger Teilchen in einem Volumen befinden
+und daher die Stoßwahrscheinlichkeit geringer ist. Der Zusammenhang der mittleren freien
+Weglänge mit dem Druck unter Annahme des idealen Gasgesetzes ist gegeben durch
+\begin{equation}
+ \bar{l} = \frac{k_{\text{B}}T}{\sqrt{2}\pi d^{2} p}.
+\end{equation}
+Hierbei bezeichnet $k_{\text{B}}$ die Boltzmann-Konstante, $T$ die Temperatur, $d$ den
+Durchmesser der Gasteilchen und $p$ den herrschenden Druck.
 
 \subsubsection*{Die verschiedenen Vakuums- und Strömungsarten}
 Für eine Charakterisierung einer Strömung wird das Verhältnis aus mittlerer
 freier Weglänge und dem Durchmesser des Strömungskanals verwendet. Hierfür wird die
 Knudsen-Zahl definiert:
 \begin{equation}
- Kn = \frac{\bar{l}}{d}.
+ K = \frac{\bar{l}}{d}.
 \end{equation}
 Hierbei bezeichnet $\bar{l}$ die mittlere freie Weglänge und $d$ den Durchmesser
 des Strömungskanals. Je nach Größe der Knudsen-Zahl und die Art des Vakuums wird
@@ -90,15 +103,16 @@ weshalb die Gasteilchen hauptsächlich mit den Wänden des Gefäßes wechselwirk
 Die Strömung wird als Knudsen-Strömung bezeichnet.
 Der Druckbereich von $\SI{1e-3}{\milli\bar}$ bis $\SI{1e-8}{\milli\bar}$ wird als Hochvakuum
 bezeichnet. Bereiche darüber werden Ultrahochvakuum genannt. Hier ist die mittlere freie
-Weglänge größer als der Durchmesser des Strömungskanals, weshalb hier kaum Wechselwirkung
+Weglänge größer als der Durchmesser des Strömungskanals, weshalb hier kaum Wechselwirkungen
 der Gasteilchen untereinander stattfindet. Die sich ergebende Strömung heißt molekulare Strömung.
 
 \subsubsection*{Die Absorption und Desorption}
 Allgemein bezeichnet die Sorption einen Prozess, der zur Anreicherung eines Stoffes
 innerhalb einer Phase oder an der Grenzfläche zwischen zwei Phasen führt.
 Die Absorption bezeichnet hierbei die Anreicherung innerhalb einer Phase, während die
-Anreicherung zwischen zwei Phasen als Adsoprtion bezeichnet wird. Handelt es sich nicht
-um eine Aufnahme, sondern um eine Abnahme, wird von Desorption gesprochen.
+Anreicherung zwischen zwei Phasen als Adsoprtion bezeichnet wird. Hierbei meint die Phase
+einen räumlichen Bereich, innerhalb dessen die Materialeigenschaften homogen sind.
+Handelt es sich nicht um eine Aufnahme, sondern um eine Abnahme, wird von Desorption gesprochen.
 
 \subsubsection*{Reale und virtuelle Lecks}
 Als Lecks werden vakuummindernde Prozesse bezeichnet. Ein reales Leck ist eines,
@@ -106,16 +120,16 @@ das außerhalb der Vakuumanlage messbar ist, z.B. eine Undichtigkeit. Ein virtue
 Leck hingegen ist eines, welches nicht außerhalb der Vakuumanlage erkennbar ist.
 Beispiele hierfür sind Einschlüsse innerhalb der Anlage, welche nach einer Zeit an
 die Materialoberfläche gelangen und austreten.
-Eine Quelle von Lecks sind die obig erwähnten Desorptionen.
+Eine Quelle von virtuellen Lecks sind die obig erwähnten Desorptionen.
 
 \subsubsection*{Das Saugvermögen einer Vakuumpumpe}
-Um den obig erwähnten Lecks entgegenzuwirken, muss die Vakuumpumpe eine Saugleistung
+Um den obig erwähnten Lecks entgegenzuwirken, muss die Vakuumpumpe eine Saugvermögen
 besitzen, welche mindestens gleich der Leckrate ist. Das Saugvermögen ist definiert
 als Volumenänderung pro Zeit:
 \begin{equation}
  S = \frac{dV}{dt}.
 \end{equation}
-Die Bestimmung einer solchen Saugleistung kann z.B. durch die Aufnahme einer
+Die Bestimmung eines solchen Saugvermögens kann z.B. durch die Aufnahme einer
 Evakuierungskurve erfolgen. Dabei handelt es sich um die Druckänderung pro Zeit.
 
 \subsection{Die Methoden der Vakuumerzeugung}
@@ -133,13 +147,13 @@ beschleunigt werden könnten.
 \subsubsection*{Gasfördernde Pumpen}
 Nach \ref{eqn:boylemariotte} ist (bei konstanter Temperatur) der Druck
 antiproportional zu dem Volumen. Dies wird von gasfördernden Pumpen ausgenutzt,
-indem durch Komprimation und Ausdehnung Druckunterschiede erzeugt werden, welche
+indem durch Komprimierung und Ausdehnung Druckunterschiede erzeugt werden, welche
 bei einem Ausgleichen der Drücke zu Teilchenströmen führen.
 
 \subsubsection*{Gasbindende Vakuumpumpen}
 Bei sehr hohen Vakua sind die obig erwähnten Pumpentypen weniger geeignet,
 während die gasbindenden Vakuumpumpen hier sinnvoll eingesetzt werden können.
-Durch Adsorption können bei einem bereits sehr hohen Vakuum immernoch effektiv
+Durch Adsorption können bei einem bereits sehr hohen Vakuum weiterhin effektiv
 Gasteilchen gebunden werden. Dies ist weniger effektiv wenn die Teilchenanzahl sehr hoch ist,
 in diesem Fall kann nur ein kleiner Teil der Gasteilchen gebunden werden.
 
@@ -158,8 +172,8 @@ Rotors [2] aufgeteilt und durch den Stator nach außen abgegrenzt.
 Das Einlassventil [4] (rechte Seite) lässt im Betrieb Gas hereinströmen.
 Durch Drehen des Rotors [2] vergrößert sich das Volumen des Arbeitsraumes [5], bis der zweite Schieber
 das Einlassventil abdeckt. Durch die exzentrische Rotation wird der Arbeitsbereich [5] durch die
-weitere Drehung verkleinert, was eine Komprimation des Gases zur Folge hat. Das Auslassventil [4] (linke Seite)
-öffnet sich bei genügend hoher Komprimation gegen den Atmosphärendruck, was ein Herausströmen des Gases zur
+weitere Drehung verkleinert, was eine Komprimierung des Gases zur Folge hat. Das Auslassventil [4] (linke Seite)
+öffnet sich bei genügend hoher Komprimierung gegen den Atmosphärendruck, was ein Herausströmen des Gases zur
 Folge hat. Durch die Ölschmierung des Auslassventils gerät bei jedem Öffnungsprozess eine
 kleine Menge Öl in den Arbeitsraum, welches die Schieber gegen den Stator abdichtet. Daher haben
 Drehschieberpumpen den Nachteil, dass durch Desorption von Teilchen aus dem verwendeten Schmieröl Lecks
@@ -172,35 +186,37 @@ von bis zu $p = \SI{2.1 e-2}{\milli\bar}$.
 Die Turbomolekurlarpumpe gehört zu den kinetischen Pumpen. Eine Turbomolekularpumpe besteht
 aus einem Rotor, welcher mit Schaufeln besetzt ist. Zwischen den Rotorschaufeln befinden sich
 spiegelsymmetrische Statorschaufeln. Der Rotor dreht sich bei dem in diesem Versuch verwendeten
-Exemplar mit bis zu $\SI{1350}{\hertz}$. Damit die Gasteilchen mit den Rotorschaufeln wechselwirken,
+Exemplar mit bis zu $\SI{1350}{\hertz}$. Die sich drehenden Rotorschaufeln stoßen mit den Gasteilchen,
+was eine Beschleunigung der Teilchen in Pumprichtung zur Folge hat. Damit die Gasteilchen so mit den Rotorschaufeln wechselwirken,
 muss der Abstand der Rotorschaufeln ähnlich dimensioniert sein wie die mittlere freie Weglänge der
-Gasteilchen. Durch diese Wechselwirkung werden die Gasteilchen in die
-gewünschte Pumprichtung beschleunigt. In einer Turbomolekularpumpe sollte molekulare Strömung vorliegen, die Teilchen
+Gasteilchen. In einer Turbomolekularpumpe sollte molekulare Strömung vorliegen, die Teilchen
 sollten also fast nicht miteinander und stattdessen hauptsächlich mit dem Rotor wechselwirken.
 Der Rotor ist einseitig magnetgelagert, da so eine Verwendung eines Öllagers vermieden werden kann.
 Eine Abbildung einer Turbomolekularpumpe ist in \ref{fig:turbomolekular} gegeben.
 \begin{figure}
  \centering
- \caption{Eine aufgeschnittene Turbomolekurlarpumpe \cite{turbopumpenbild}.}
+ \caption{Eine aufgeschnittene Turbomolekurlarpumpe \cite{turbopumpenbild}. Vertikal verläuft die Achse, auf der derer die Rotor- und Statorscheiben
+ befestigt sind. Oben und unten sind die Lager zu erkennen.}
  \label{fig:turbomolekular}
  \includegraphics[scale=0.3]{pictures/Cut_through_turbomolecular_pump.jpg}
 \end{figure}
 \noindent
 
 \subsection{Die Methoden der Vakuummessung}
-Soll mithilfe der obig aufgeführten Pumpen ein Vakuum erzeugt werden, ist eine
-Quantifizierung des erreichten Druckes möglich mit einen Vakuummeter. Im Folgenden
-werden verschiedene Methoden der Vakuummessung beschrieben.
+Die Quantifizierung der Qualität eines Vakuums kann mit einem Vakuummeter durchgeführt werden.
+Im Folgenden werden verschiedene Methoden der Vakuummessung beschrieben.
 
 \subsubsection*{Piezo-Vakuummeter}
 Ein Piezo-Vakuummeter besteht aus einem Piezo-elektrischen Kristall, welcher bei einem auf ihn wirkenden
 Druck eine elektrische Spannung erzeugt. Diese kann gemessen und daraus auf den herrschenden Druck geschlossen
-werden. Da der auf den Kristall wirkende Druck antiproportional zu der Vakuumsqualität ist, funktioniert ein
-Piezo-Vakuummeter am besten im Grobvakuum.
+werden. Da der auf den Kristall wirkende Druck antiproportional zu der Vakuumsqualität ist, sinkt der Druck bei
+höherer Vakuumqualität ab und kann daher weniger gut gemessen werden. Daher funktioniert ein
+Piezo-Vakuummeter am besten im Grobvakuum, da hier die Drücke auf den Kristall höher sind und daher besser
+gemessen werden können.
 \subsubsection*{Pirani-Vakuummeter}
-Das Pirani-Vakuummeter nutzt aus, das (in einem gewissen Druckbereich) die Wärmeleitfähgkeit
-eines Gases druckabhängig ist. Ein in dem zu vermessenden Vakuum befindlicher Draht wird elektrisch geheizt.
-Die Wärmeabgabe des Drahtes ist nun umso höher, desto mehr Gasteilchen die Wärme des Drahtes
+Das Pirani-Vakuummeter nutzt aus, das (innerhalb eines Druckbereiches von ca. $\SI{1e-4}{\milli\bar}$ bis $\SI{1}{\milli\bar}$)
+die Wärmeleitfähgkeit eines Gases druckabhängig ist. Ein in dem zu vermessenden Vakuum befindlicher Draht wird elektrisch geheizt.
+Die Wärmeabgabe des Drahtes ist umso höher, desto mehr Gasteilchen die Wärme des Drahtes
 aufnehmen können. Der elektrische Widerstand des Drahtes ist abhängig von der Temperatur, weshalb
 durch die Widerstandsbestimmung mittels einer Wheatstone-Brücke die Temperatur des Drahtes und darüber der Druck
 innerhalb der Kammer ermittelt werden. Wenn andere Formen der Wärmeübertragung (z.B. radiativ durch Wärmestrahlung)
@@ -220,7 +236,7 @@ thermische Emission geschieht.
 \subsection{Die Evakuierungskurve}
 \label{subsec:evakutheorie}
 Die $p(t)$-Kurve wird auch als Evakuierungskurve bezeichnet. Wird von einem idealen Gas ausgegangen,
-gilt $p \cdot V = \text{const}$. Durch Ableiten nach der Zeit und nachfolgendes Umstellen ergibt sich:
+gilt $p \cdot V = \text{const}$ bei konstanter Temperatur $T$. Durch Ableiten nach der Zeit und nachfolgendes Umstellen ergibt sich:
 \begin{equation}
  \frac{\text{d}V}{\text{d}t} = S = - \frac{V}{p} \frac{\text{d}p}{\text{d}t}.
  \label{eqn:evakkrams}
@@ -231,14 +247,14 @@ Für die Lösung der Differentialgleichung \ref{eqn:evakkrams} gilt
 \end{equation}
 Herbei bezeichnet $S$ das Saugvermögen, $V_{0}$ das Volumen der Apparatur, $p_{0}$ den Startdruck und
 $t$ die Zeit. Dies beschreibt jedoch keine reale Vakuumpumpe, da eine solche immer durch Lecks und Desorptionen
-einen begrenzt niedrigen Enddruck besitzt. Dieser Enddruck ist von Null verschieden und kann durch Skalieren
+einen begrenzt niedrigen Enddruck $p_{E}$ besitzt. Dieser Enddruck ist von Null verschieden und kann durch Skalieren
 und Verschieben in der Gleichung berücksichtigt werden:
 \begin{equation}
  p(t) = (p_{0} - p_{E}) \exp{\frac{-S}{V_{0}}t} + p_{E}.
  \label{eqn:evakuierungskurve}
 \end{equation}
-Da die Evakuierungskurve \ref{eqn:evakuierungskurve} von der Saugleistung $S$ der Vakuumpumpe abhängig ist,
-kann durch Messung der Evakuierungskurve die Saugleistung bestimmt werden. Das Saugvermögen ist jedoch
+Da die Evakuierungskurve \ref{eqn:evakuierungskurve} von dem Saugvermögen $S$ der Vakuumpumpe abhängig ist,
+kann durch Messung der Evakuierungskurve das Saugvermögen bestimmt werden. Das Saugvermögen ist jedoch
 im allgemeinen keine Konstante, da sie sich für verschiedene Strömungsarten unterscheidet.
 
 \subsection{Definition der Leckrate}
@@ -268,6 +284,8 @@ berechnet sich dann nach
  S_{\text{Effektiv}} = \frac{S_{\text{Ideal}} \cdot L}{S_{\text{Ideal}} + L}.
  \label{eqn:saugvermögenleitwert}
 \end{equation}
+Der Leitwert beschreibt hierbei die Strömungswiderstände innerhalb der Apparatur, welche durch Reibung der
+Gasteilchen untereinander und mit den Wänden hervorgerufen werden.
 
 \section{Berechnung der Unsicherheiten}
 \label{sec:unsicherheiten}
@@ -285,7 +303,7 @@ Durch Anwenden der Gleichung \ref{eqn:gaußfort} ergibt sich für den Fehler der
 \begin{equation*}
   \sigma_{log} = \sqrt{\frac{\sigma_p^2}{(p-p_E)^2}+\frac{\sigma_{p_{0}}^2}{(p_0-p_E)^2}+\sigma_{p_E}^2 \left(\frac{1}{p_0-p_E}-\frac{1}{p-p_E}\right)^2}.
 \end{equation*}
-Für die Unsicherheiten der Saugleistungsberechnung und der Berechnung des Leitwertes ergibt sich nach
+Für die Unsicherheiten der Saugvermögensberechnung und der Berechnung des Leitwertes ergibt sich nach
 \ref{eqn:gaußfort} jeweils
 \begin{align*}
   \sigma_{S} = & \sqrt{\left(\frac{m^2}{p_g^2}\right) \cdot \sigma_{V}^2 + \left(\frac{V^2}{p_g^2}\right) \cdot \sigma_m^2 + \left(\frac{m^2 V^2}{p_g^4}\right) \cdot \sigma_p^2} \\
