@@ -1,6 +1,6 @@
 \section{Auswertung der Messdaten}
 \label{sec:Auswertung}
-Im Folgenen werden die aufgenommenen Messdaten mit \textit{numpy} und \textit{scipy.optimize} ausgewertet. Da die Zählrate $N$ einer Poisson-Verteilung folgt, wird
+Im Folgenden werden die aufgenommenen Messdaten mit \textit{numpy} und \textit{scipy.optimize} ausgewertet. Da die Zählrate $N$ einer Poisson-Verteilung folgt, wird
 für die Unsicherheit $\sqrt{N}$ angenommen. 
 
 \subsection{Justage der Verzögerungsleitung}
@@ -120,7 +120,7 @@ Für die weitere Messung wurde $\Delta t_{\text{Puls}}=\SI{10}{\nano\second}$ un
 auf dem Plateau befindet (vgl. Abb.\ref{fig:justage10}).
 
 \subsection{Kalibration des MCA}
-Die mittels Doppelimpulsgenerator generierten Messwerte zur Kalibration des Mulitchannel-Analyzers sind in Tabelle \ref{tab:MCA} enumeriert. 
+Die mittels Doppelimpulsgenerator generierten Messwerte zur Kalibration des Multichannel-Analyzers sind in Tabelle \ref{tab:MCA} enumeriert.
 \begin{table}[H]
     \centering
       \caption{Am Doppelimpulsgenerator eingestellter zeitlicher Abstand $\Delta t$ und zugehörige Kanäle $K$ im MCA.}
@@ -180,7 +180,7 @@ von $U=\num{121.7}/\num{512}=\num{0.248}$ pro Kanal folgt.
 \subsection{Bestimmung der mittleren Lebensdauer der kosmischen Myonen}
 \label{sec:lebensdauer}
 Die Messung der Lebensdauer erfolgte über eine Zeit von $t_\text{ges}=\SI{174986}{\second}$. Dabei sind $N_\text{Start}=\num{4615018}$ Start- und  $N_\text{Stop}=\num{15899}$
-Stopimpulse gemessen worden. 
+Stoppimpulse gemessen worden.
 \noindent
 Da der Zerfall der Myonen dem Zerfallsgesetz folgt, wurden die gemessenen Werte mittels \textit{sciypy.optimize.curve\_fit} an eine Funktion der Form 
 \begin{equation}
