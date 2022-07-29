@@ -195,7 +195,7 @@ Der Rotor ist einseitig magnetgelagert, da so eine Verwendung eines Öllagers ve
 Eine Abbildung einer Turbomolekularpumpe ist in \ref{fig:turbomolekular} gegeben.
 \begin{figure}
  \centering
- \caption{Eine aufgeschnittene Turbomolekurlarpumpe \cite{turbopumpenbild}. Vertikal verläuft die Achse, auf der derer die Rotor- und Statorscheiben
+ \caption{Eine aufgeschnittene Turbomolekurlarpumpe \cite{turbopumpenbild}. Vertikal verläuft die Achse, auf der die Rotor- und Statorscheiben
  befestigt sind. Oben und unten sind die Lager zu erkennen.}
  \label{fig:turbomolekular}
  \includegraphics[scale=0.3]{pictures/Cut_through_turbomolecular_pump.jpg}
@@ -323,3 +323,12 @@ Hierbei bezeichnet $n$ die Anzahl der (nicht-korrelierten) Messwerte, $\bar{x}$ 
 und $x$ den jeweiligen Messwert. Die Berechnung der Unsicherheiten wird mithilfe des Paketes
 \textit{Uncertainties}\cite{uncertainties}
 der Sprache \textit{Python}\cite{python} durchgeführt.
+
+\subsection{Ungenauigkeiten der verwendeten Geräte}
+\label{subsec:ungenauigkeiten}
+Die verwendeten Vakuummeter Pfeiffer Vacuum PKR 360 haben in dem Messbereich von $\SI{1e-8}{\milli\bar}$ bis
+$\SI{100}{\milli\bar}$ eine Messungenauigkeit von $\SI{30}{\percent}$ des jeweiligen Messwertes.
+Das Vakuummeter Pfeiffer Vacuum TPG202 besitzt eine Messunsicherheit von $\SI{0.3}{\percent}$
+des Vollausschlages in einem Messbereich von $\SI{1200}{\milli\bar}$ bis $\SI{10}{\milli\bar}$
+sowie $\SI{10}{\percent}$ des Messwertes in einem Messbereich von $\SI{10}{\milli\bar}$ bis
+$\SI{2e-3}{\milli\bar}$.
