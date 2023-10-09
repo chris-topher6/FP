@@ -1,0 +1,16 @@
+#+title: Vorbereitung Kolloqium V61: He-Ne-Laser
+
+* Vorbereitungsfragen
+
+** What are the three basic components of the laser? :drill:
+
+*** Antwort
+
+Ein Laser besteht konzeptionell aus den folgenden drei Bestandteilen:
+1. Aktives Medium
+2. Pumpe
+3. Resonator
+
+
+** What defines the wavelength of the laser?
+** Discuss the most important processes in the active medium.
