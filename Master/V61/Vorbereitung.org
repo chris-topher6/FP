@@ -4,13 +4,101 @@
 
 ** What are the three basic components of the laser? :drill:
 
-*** Antwort
+*** Antwort :ATTACH:
+:PROPERTIES:
+:ID:       7376a453-670c-4f78-86a3-2eca276c33f8
+:END:
 
 Ein Laser besteht konzeptionell aus den folgenden drei Bestandteilen:
 1. Aktives Medium
+   + Verstärkt die einfallende elektromagnetische Welle
 2. Pumpe
+   + Pumpt Energie in ausgewählte Niveaus um die Besetzungsinversion zu erhalten
 3. Resonator
+   + Speichert Teile der induzierten Emission, die auf wenige Resonatormoden konzentriert sind
+   + Kann z.B. durch zwei gegenüberstehende Spiegel umgesetzt werden
+
+#+attr_html: :width 400px
+[[attachment:_20231016_205423Bildschirmfoto vom 2023-10-16 20-53-30.png]]
 
 
-** What defines the wavelength of the laser?
-** Discuss the most important processes in the active medium.
+
+** What defines the wavelength of the laser? :drill:
+
+*** Antwort
+
+Die Wellenlänge ist abhängig von dem Unterschied der Energieniveaus der Elektronen im Medium:
+
+\begin{equation*}
+   \nu = \frac{E_{k}-E_{i}}{h}.
+\end{equation*}
+
+** Discuss the most important processes in the active medium. :drill:
+
+Welche Prozesse finden im aktiven Medium statt?
+
+*** Antwort :ATTACH:
+:PROPERTIES:
+:ID:       441ac2c6-9f39-446e-a80e-403a21bd4138
+:END:
+
+1. Absorption eines Photons
+   + Elektron absorbiert ein Photon und wechselt auf *höheres Energieniveau*
+
+2. Spontane Emission eines Photons
+   + Elektron sinkt unter Emission eines Photons auf ein *niedrigeres Niveau* ab
+   + Das Photon wird in eine *zufällige Richtung* und mit einer *zufälligen Phase* emittiert
+     + Photonen sind also *inkohärent*
+   + Die Energie des Photons entspricht auch hier der Differenz der beiden Niveaus
+
+3. Stimulierte Emission eines Photons
+   + Ein Photon regt ein Elektron dazu an, in den Grundzustand zurückzufallen
+   + Das Elektron emittiert dabei ein weiteres Photon
+   + Das emittierte Photon ist kohärent zu dem einfallenden Photon, besitzt diesselbe Energie und Richtung
+
+#+attr_html: :width 400px
+[[attachment:_20231016_205659Bildschirmfoto vom 2023-10-16 20-56-47.png]]
+
+
+** Discuss the relationship between the amplification of the light and the population inversion in the active medium. :drill:
+
+*** Antwort :ATTACH:
+:PROPERTIES:
+:ID:       9d0913c5-12c7-46c9-8958-351771fdf34b
+:END:
+
+*Besetzungsinversion*: mehr Teilchen befinden sich in einem angeregten Zustand als sich im Grundzustand befinden. (Also entgegen einer Besetzung
+nach einer Boltzmann-Verteilung)
+
+#+attr_html: :width 400px
+[[attachment:_20231016_205607Bildschirmfoto vom 2023-10-16 20-55-29.png]]
+
+Damit die stimulierte Emission der dominierende Prozess im aktiven Medium ist (und nicht die Absorption), muss eine Besetzungsinversion
+gegeben sein.
+
+Da nur durch die stimulierte Emission kohärente Photonen erzeugt werden können, kann nur so die elektromagnetische Welle
+verstärkt statt abgeschwächt werden.
+
+** Why is a two-level laser not possible? :drill:
+
+*** Antwort
+
+In einem stabilen zwei-Niveau System ist es nicht möglich, eine Besetzungsinversion zu erzeugen. Daher kann so auch kein Laser konstruiert werden.
+
+Sobald die Hälfte aller Teilchen im Lasermedium im oberen Laserniveau sind, ist die Wahrscheinlichkeit, dass ein Atom im unteren Laserniveau
+ein Photon *absorbiert*, genauso hoch wie die Wahrscheinlichkeit, dass ein Atom im oberen Laserniveau ein Photon durch *stimulierte Emission abgibt*.
+Die zusätzliche spontane Emission sorgt weiterhin dafür, dass nicht einmal diese theoretische Grenze erreicht wird.
+
+** Which transition is responsible for the red line of the He-Ne-laser? :drill:
+
+*** Antwort :ATTACH:
+:PROPERTIES:
+:ID:       1f64acdb-dfc6-47ec-95f3-9c9c78371280
+:END:
+
+Mehrere Übergänge des angeregten Neon-Atoms sehen rötlich aus:
+
+#+attr_html: :width 400px
+[[attachment:_20231016_212537Bildschirmfoto vom 2023-10-16 21-24-54.png]]
+
+** How is the population inversion achieved? :drill:
