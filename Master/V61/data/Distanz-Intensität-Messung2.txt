@@ -1,4 +1,5 @@
 # Distanz/cm   Intensität/mW mit der Spiegelkonfiguration Flat/Flat <-> Flat/1400mm
+d       I
 55.0    2.36
 60.0    2.14
 60.7    1.96
