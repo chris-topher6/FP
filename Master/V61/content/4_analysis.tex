@@ -58,6 +58,27 @@ optical bench was reached.
 \noindent
 
 \subsection{TEM Modes}
+In this section, the $\text{TEM}_{00}$ and $\text{TEM}_{10}$ modes described in~\ref{sec:theory} are
+observed by measuring the laser intensity perpendicular to the optical axis.
+The amplitudes of the Modes are given by Equation~\ref{eqn:TEM}. Therefore the intensity of the $\text{TEM}_{00}$ mode
+is described by
+\begin{equation}
+ I = I_{\text{max}} \cdot \exp{(\frac{-(r-r_{0})^{2}}{2 \omega^{2}})} + I_{0}.
+ \label{eqn:TEM00-Fit}
+\end{equation}
+\noindent
+Using \texttt{scipy.optimize.curve_fit}, the exponential~\ref{eqn:TEM00-Fit} is fitted to the measured data.
+
+
+This is displayed in Figure~\ref{fig:TEM-Messung}.
+\begin{figure}
+  \centering
+  \includegraphics[scale=0.8]{./build/TEM-Moden.pdf}
+  \caption{Intensity measurement for two TEM Modes.}
+  \label{fig:TEM-Messung}
+\end{figure}
+\noindent
+
 \subsubsection{\texorpdfstring{$\text{TEM}_{00}$}{TEM} Mode}
 \subsubsection{\texorpdfstring{$\text{TEM}_{01}$}{TEM} Mode}
 \subsection{Polarisation of the laser}

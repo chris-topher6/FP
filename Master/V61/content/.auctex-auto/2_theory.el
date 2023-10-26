@@ -7,6 +7,7 @@
     "fig:level"
     "eqn:stability"
     "fig:resonator"
-    "fig:TEM"))
+    "fig:TEM"
+    "eqn:TEM"))
  :latex)
 

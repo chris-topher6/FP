@@ -3,6 +3,8 @@
  (lambda ()
    (LaTeX-add-labels
     "fig:distance-intesity"
-    "tab:distance-intensity"))
+    "tab:distance-intensity"
+    "eqn:TEM00-Fit"
+    "fig:TEM-Messung"))
  :latex)
 
