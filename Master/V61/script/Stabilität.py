@@ -15,20 +15,20 @@ plt.plot(
     messung1["I"],
     marker="x",
     color="r",
-    label=("Flat/1400mm - Flat/1400mm"),
+    label=(r"$\mathrm{Flat}/1400\mathrm{mm} - \mathrm{Flat}/1400\mathrm{mm}$"),
 )
 plt.plot(
     messung2["d"],
     messung2["I"],
     marker="x",
     color="b",
-    label=("Flat/Flat - Flat/1400mm"),
+    label=(r"$\mathrm{Flat}/\mathrm{Flat} - \mathrm{Flat}/1400\mathrm{mm}$"),
 )
-plt.axvline(x=280, color="r", linestyle="--", label="Theoretical maximum")
-plt.axvline(x=140, color="b", linestyle="--", label="Theoretical maximum")
-plt.xlabel("Distance/cm")
-plt.ylabel("Intensity/mW")
+plt.axvline(x=280, color="r", linestyle="--", label=r"$\mathrm{Theoretical\ maximum}$")
+plt.axvline(x=140, color="b", linestyle="--", label=r"$\mathrm{Theoretical\ maximum}$")
+plt.xlabel(r"$\mathrm{Distance/cm}$")
+plt.ylabel(r"$\mathrm{Intensity/mW}$")
 plt.legend()
 plt.grid(True)
-plt.savefig("./pictures/Distanz-Intensität.pdf")
+plt.savefig("./build/Distanz-Intensität.pdf")
 plt.clf()
