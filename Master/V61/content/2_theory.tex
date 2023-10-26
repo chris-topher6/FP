@@ -1,18 +1,21 @@
 \section{Theoretical Describtion of the functionality of a Laser}
 \label{sec:theory}
 
+\noindent
 A laser (Light Amplification by Emission of Radiation) comprises
 three essential components. These components include a laser medium, 
 which in this instance is a gas mixture of helium and neon, a pump
 source, specifically an electric discharger and an optical resonator, 
 in this case one partially and one fully reflecting mirror.
 
+\noindent
 The laser medium is responsible for the laser's radiation spectrum, 
 primarily due to its specific excitation energy. In the case 
 of a HeNe laser, the active laser medium is the noble gas neon. 
 This laser medium possesses various energy states, enabling three 
 fundamental processes, as illustrated in Figure~\ref{fig:emission}.
 
+\noindent
 If the atom is in the ground state, it can absorb a photon with
 the requiered energy for excitation, resulting in the atom having 
 one electron at a higher energy level. This process is known as 
@@ -34,6 +37,7 @@ phase, making them coherent.
     \label{fig:emission}
 \end{figure}
 
+\noindent
 In contrast to the illustration in Figure \ref{fig:emission}, a laser 
 requieres a laser medium with more than two energy levels. In a two 
 level system, the Einstein coefficients $B_{12}$ and $B_{21}$, which 
@@ -41,6 +45,7 @@ describe the transition probability between states, are equal. Due to
 this, the population inversion necessary for the laser is not achievable
 in a tow-level system.
 
+\noindent
 To archieve population inversion, a pump source must input energy 
 into the system. In the case of a HeNe laser, an electric discharger 
 pumps energy into the pump gas helium. The excited helium atoms 
@@ -57,17 +62,20 @@ The transition from the 3s to the p2 state predominates the process,
 resulting in the production of red laserlight with a wavelength of 
 $\lambda = \SI{632.8}{\nano\meter}$.
 
+\noindent
 As amplification is dependent on the distence traveled, a resonator is 
 employed to increase the pathlength. This is implemented using two 
 mirrors, one fully reflecting and one partically reflecting, enabling
 the beam to exit the laser tube in one direction.
 
+\noindent
 To control the laser, the resonator must satisfy the stability relation
 \begin{equation}
     0 < g_1g_2 \leq 1
     \label{eqn:stability}
 \end{equation}
 
+\noindent
 where $g_i=1-\frac{L}{r_i}$ is defined with the length $L$ and the 
 curvature radius $r_i$ of the mirror $i$. If condition \eqref{eqn:stability}
 is not met, the laser beam may grow until it becomes larger than the mirror,
@@ -81,6 +89,7 @@ one stable and one unstable.
     \label{fig:resonator}
 \end{figure}
 
+\noindent
 The light forms standing waves between the mirrors, denoted as $\text{TEM}_{pl}$,
 where $p$ and $l$ describe the radial and angular mode orders. Figure 
 \ref{fig:TEM} shows the patterns of the first orders.
@@ -98,9 +107,12 @@ where $p$ and $l$ describe the radial and angular mode orders. Figure
     \label{fig:TEM}
 \end{figure}
 
-It can be observed that the ground mode $\text{TEM}_{00}$ follows a 
-Gaussian distribution, which can be described in polar corrdonates by:
-
+\noindent
+The amplitude of the mode $\text{TEM}_{pl}$ is described by 
 \begin{equation}
-    I(r)=I_0 \exp{\left(\frac{-2r^2}{\omega^2}\right)}.
+    A_{pl}(x,y)=\text{H}_l(x)\text{H}_m(y)\exp{-(x^2+y^2)}
+    \label{eqn:TEM}
 \end{equation}
+where $\text{H}_i$ represents the Hermite polynomial of order $i$. 
+The absolute square $|A_{pl}(x,y)|^2$ corresponds to the intensity
+$I_{pl}(x,y)$. 
