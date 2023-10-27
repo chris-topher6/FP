@@ -11,9 +11,9 @@ rcParams["text.usetex"] = True
 
 # Daten einlesen und Fehler berechnen (unter der Annahme, dass die Daten Poisson-verteilt sind)
 TEM00 = pd.read_csv("./data/TEM00.txt", sep="\s+", header=1)
-TEM00["Fehler"] = 0.01
+TEM00["Fehler"] = 0.09
 TEM10 = pd.read_csv("./data/TEM10.txt", sep="\s+", header=1)
-TEM10["Fehler"] = 0.01
+TEM10["Fehler"] = 0.09
 
 
 def expTEM00(r, Imax, r0, omega):
@@ -72,8 +72,8 @@ axs00[0].grid(True)
 axs00[1].bar(TEM00["r"], pulls00, width=1.5, color="lightsteelblue")
 axs00[1].axhline(0, color="orangered", linewidth=0.8) # Linie bei Pull 0
 axs00[1].set_xlabel(r"$r/\mathrm{cm}$")
-axs00[1].set_ylabel(r"$\mathrm{Pull}/\sigma$")
-axs00[1].set_yticks(np.linspace(-50,50,5))
+axs00[1].set_ylabel(r"$\mathrm{Pull}/\Delta I$")
+axs00[1].set_yticks(np.linspace(-10,10,5))
 axs00[1].grid(True)
 
 plt.tight_layout()
@@ -91,10 +91,39 @@ axs10[0].grid(True)
 axs10[1].bar(TEM10["r"], pulls10, width=1.5, color="lightsteelblue")
 axs10[1].axhline(0, color="orangered", linewidth=0.8) # Linie bei Pull 0
 axs10[1].set_xlabel(r"$r/\mathrm{cm}$")
-axs10[1].set_ylabel(r"$\mathrm{Pull}/\sigma$")
-axs10[1].set_yticks(np.linspace(-25,25,5))
+axs10[1].set_ylabel(r"$\mathrm{Pull}/\Delta I$")
+axs10[1].set_yticks(np.linspace(-5,5,5))
 axs10[1].grid(True)
 
 plt.tight_layout()
 plt.savefig("./build/TEM10-Mode+Pull.pdf")
 plt.clf()
+
+# Parameter des Fits speichern
+
+# Extrahiere Fehler aus der Kovarianzmatrix
+fit00_errors = np.sqrt(np.diag(fit00_covariance))
+fit10_errors = np.sqrt(np.diag(fit10_covariance))
+
+# Schreibe in Datei
+with open('./build/fit_parameters.txt', 'w') as file:
+    file.write("Fitparameter für TEM00:\n")
+    file.write(f"Imax: {fit00_params[0]} ± {fit00_errors[0]}\n")
+    file.write(f"r0: {fit00_params[1]} ± {fit00_errors[1]}\n")
+    file.write(f"omega: {fit00_params[2]} ± {fit00_errors[2]}\n")
+
+    file.write("\nFitparameter für TEM10:\n")
+    file.write(f"Imax: {fit10_params[0]} ± {fit10_errors[0]}\n")
+    file.write(f"r0: {fit10_params[1]} ± {fit10_errors[1]}\n")
+    file.write(f"omega: {fit10_params[2]} ± {fit10_errors[2]}\n")
+
+    file.write("\nGerundet auf zwei Nachkommastellen ergibt sich:\n")
+    file.write("Fitparameter für TEM00:\n")
+    file.write(f"Imax: {fit00_params[0]:.2f} ± {fit00_errors[0]:.2f}\n")
+    file.write(f"r0: {fit00_params[1]:.2f} ± {fit00_errors[1]:.2f}\n")
+    file.write(f"omega: {fit00_params[2]:.2f} ± {fit00_errors[2]:.2f}\n")
+
+    file.write("\nFitparameter für TEM10:\n")
+    file.write(f"Imax: {fit10_params[0]:.2f} ± {fit10_errors[0]:.2f}\n")
+    file.write(f"r0: {fit10_params[1]:.2f} ± {fit10_errors[1]:.2f}\n")
+    file.write(f"omega: {fit10_params[2]:.2f} ± {fit10_errors[2]:.2f}\n")
