@@ -7,6 +7,7 @@
     "eqn:TEM00-Fit"
     "fig:TEM-Messung1"
     "eqn:TEM10-Fit"
-    "fig:TEM-Messung2"))
+    "fig:TEM-Messung2"
+    "eqn:intensity-angle"))
  :latex)
 

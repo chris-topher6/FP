@@ -113,5 +113,16 @@ The resulting curve is depicted in Figure~\ref{fig:TEM-Messung2}.
 \end{figure}
 \noindent
 \subsection{Polarisation of the laser}
+The Brewster windows mentioned in~\ref{sec:procedure} ensure that most light passing through is p-polarised. To verify this,
+a measurement of the intensity dependence on the polarisation angle is caried out. The resulting data is given in
+Table~\ref{tab:polarisation}.
+
+The theoretical intensity curve is given by Equation~\ref{eqn:intensity-angle}
+\begin{equation}
+ I = I_{\text{max}} \cdot \sin{(\alpha + \alpha_{0})^{2}} + I_{0},
+ \label{eqn:intensity-angle}
+\end{equation}
+where $I_{\text{max}}$ describes the maximum intensity, $\alpha_{0}$ the zero angle and $I_{0}$ again describes the intensity
+contribution by background light. Using \texttt{scipy.optimize.curve\_fit}, this function is fitted to the measured data.
 \subsection{Examination of the frequency spectrum of the laser}
 \subsection{Laser wavelength}
