@@ -2,7 +2,11 @@
 \subsection{Measurement of the stability condition}
 As described in chapter~\ref{sec:theory}, in order to achieve a stable resonator
 for laser emission, the stability condition~\ref{eqn:stability} must hold true.
-To test the theoretical calculations, the achieved laser intensity in different
+The two mirror configurations available are Flat/Flat - Flat/$\SI{1400}{\milli\meter}$ and
+Flat/$\SI{1400}{\milli\meter}$ - Flat/$\SI{1400}{\milli\meter}$. The stability condition~\ref{eqn:stability}
+yields a maximum resonator length of $L_{1} = r_{2} = \SI{1400}{\milli\meter}$ for the former and
+$L_{2} = r_{1} + r_{2} = \SI{2800}{\milli\meter}$ for the later configuration.
+To test these theoretical calculations, the achieved laser intensity in different
 mirror and length configurations is measured. The resulting data is displayed in figure~\ref{fig:distance-intesity}.
 \begin{figure}[H]
  \centering
@@ -60,6 +64,7 @@ optical bench was reached.
 \subsection{TEM Modes}
 In this section, the $\text{TEM}_{00}$ and $\text{TEM}_{10}$ modes described in~\ref{sec:theory} are
 observed by measuring the laser intensity perpendicular to the optical axis.
+\subsubsection{\texorpdfstring{$\text{TEM}_{00}$}{TEM} Mode}
 The amplitudes of the Modes are given by Equation~\ref{eqn:TEM}. Therefore the intensity of the $\text{TEM}_{00}$ mode
 is described by
 \begin{equation}
@@ -67,20 +72,46 @@ is described by
  \label{eqn:TEM00-Fit}
 \end{equation}
 \noindent
-% Using \texttt{scipy.optimize.curve_fit}, the exponential~\ref{eqn:TEM} is fitted to the measured data.
-
-
-This is displayed in Figure~\ref{fig:TEM-Messung}.
+Here, $I_{\text{max}}$ denotes the maximum intensity, $I_{0}$ the intensity contribution by background light, $r_{0}$ the
+centre of the laser beam and $\omega$ describes the width of the gaussian curve. Measurement of the background light with the laser
+being deactivated yielded an intensity of $\SI{0.0001}{\micro\ampere}$.
+The parameters of \ref{eqn:TEM00-Fit} are fitted to the measurements using \texttt{scipy.optimize.curve\_fit};
+the resulting values are shown below.
+\begin{align*}
+  I_{\text{max}} = & \SI{9.04 \pm 0.22}{\micro\ampere} \\
+  r_{0} = & \SI{8.67 \pm 0.13}{\centi\meter} \\
+  \omega = & \SI{4.71 \pm 0.07}{\centi\meter}.
+\end{align*}
+\noindent
+The fitted curve and the data is displayed in Figure~\ref{fig:TEM-Messung1}.
 \begin{figure}
   \centering
-  \includegraphics[scale=0.8]{./build/TEM-Moden.pdf}
-  \caption{Intensity measurement for two TEM Modes.}
-  \label{fig:TEM-Messung}
+  \includegraphics[scale=0.8]{./build/TEM00-Mode+Pull.pdf}
+  \caption{Intensity measurement of the $\text{TEM}_{00}$ mode.}
+  \label{fig:TEM-Messung1}
 \end{figure}
 \noindent
-
-\subsubsection{\texorpdfstring{$\text{TEM}_{00}$}{TEM} Mode}
 \subsubsection{\texorpdfstring{$\text{TEM}_{01}$}{TEM} Mode}
+The intensity of the $\text{TEM}_{10}$ is given by equation~\ref{eqn:TEM10-Fit}
+\begin{equation}
+ I = I_{\text{max}} \cdot \frac{4(r-r_{0})^{2}}{\omega^{2}} \cdot \exp{\bigl( \frac{-(r-r_{0})^{2}}{2\omega^{2}} \bigr)} + I_{0}.
+ \label{eqn:TEM10-Fit}
+\end{equation}
+Equation \ref{eqn:TEM10-Fit} is again fitted to the measured data using \texttt{scipy.optimize.curve\_fit}, which yields the
+parameters
+\begin{align*}
+  I_{\text{max}} = & \SI{0.91 \pm 0.02}{\micro\ampere} \\
+  r_{0} = & \SI{6.54 \pm 0.10}{\centi\meter} \\
+  \omega = & \SI{4.71 \pm 0.07}{\centi\meter}.
+\end{align*}
+The resulting curve is depicted in Figure~\ref{fig:TEM-Messung2}.
+\begin{figure}
+  \centering
+  \includegraphics[scale=0.8]{./build/TEM10-Mode+Pull.pdf}
+  \caption{Intensity measurement of the $\text{TEM}_{10}$ mode.}
+  \label{fig:TEM-Messung2}
+\end{figure}
+\noindent
 \subsection{Polarisation of the laser}
 \subsection{Examination of the frequency spectrum of the laser}
 \subsection{Laser wavelength}

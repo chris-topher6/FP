@@ -5,6 +5,8 @@
     "fig:distance-intesity"
     "tab:distance-intensity"
     "eqn:TEM00-Fit"
-    "fig:TEM-Messung"))
+    "fig:TEM-Messung1"
+    "eqn:TEM10-Fit"
+    "fig:TEM-Messung2"))
  :latex)
 
