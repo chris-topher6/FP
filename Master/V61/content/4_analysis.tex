@@ -124,5 +124,48 @@ The theoretical intensity curve is given by Equation~\ref{eqn:intensity-angle}
 \end{equation}
 where $I_{\text{max}}$ describes the maximum intensity, $\alpha_{0}$ the zero angle and $I_{0}$ again describes the intensity
 contribution by background light. Using \texttt{scipy.optimize.curve\_fit}, this function is fitted to the measured data.
+% \begin{table}[H]
+%     \centering
+%     \caption{Measurements of the Laser intensity for different angles.}
+%     \label{tab:intensity-angles}
+%     \sisetup{table-format=3.2}
+%     \begin{tabular}{S S | S S}
+%         \toprule
+%         \multicolumn{2}{c|}{Flat/1400mm-Flat/1400mm} & \multicolumn{2}{c}{Flat/Flat-Flat/1400mm} \\
+%         {$d/\si{\centi\meter}$} & {$I/\si{\milli\watt}$} & {$d/\si{\centi\meter}$} & {$I/\si{\milli\watt}$} \\
+%         \midrule
+%         63.5 &  1.41    & 55.0 &   2.36 \\
+%         69.0 &  3.50    & 60.0 &   2.14 \\
+%         73.4 &  2.30    & 60.7 &   1.96 \\
+%         76.9 &  4.75    & 65.0 &   2.32 \\
+%         81.7 &  4.5     &  66.0 &   2.02 \\
+%         87.1 &  5.67    & 71.0 &   1.45 \\
+%         92.0 &  5.3     & 72.0 &   1.45 \\
+%         96.7 &  4.4     & 74.5 &   1.16 \\
+%         101.4 & 4.5     & 78.0 &   1.32 \\
+%         105.5 & 2.68    & 79.2 &   1.13 \\
+%         109.9 & 3.21    & 83.1 &   1.65 \\
+%         113.5 & 3.08    & 85.8 &   0.78 \\
+%         117.1 & 2.05    & 90.0 &   1.57 \\
+%         121.2 & 2.3     & 91.3 &   0.1 \\
+%         125.1 & 1.98    & 92.4 &   0 \\
+%         127.9 & 0.68    & 96.5 &   0 \\
+%         131.2 & 0.9     & 126.3 &  1.3  \\
+%         136.6 & 0.7     &       &       \\
+%         141.8 & 1.43        &       &       \\
+%         147.1 & 1.9     &       &       \\
+%         152.4 & 1.87        &       &       \\
+%         161.0 & 1.4     &       &       \\
+%         165.8 & 0.55        &       &       \\
+%         177.7 & 2.1     &       &       \\
+%         185.3 & 2.75        &       &       \\
+%         191.2 & 2.1     &       &       \\
+%         198.0 & 2.15        &       &       \\
+%         202.2 & 2.35        &       &       \\
+%         \bottomrule
+%     \end{tabular}
+% \end{table}
+% \noindent
+
 \subsection{Examination of the frequency spectrum of the laser}
 \subsection{Laser wavelength}
