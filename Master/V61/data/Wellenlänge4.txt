@@ -1,0 +1,3 @@
+# 2k    alpha_k     für 1200l/mm, d=29.4cm
+2k      ak
+1       68.5

@@ -1,0 +1,6 @@
+# Nummer des Peaks      Frequenz f/MHz
+n       f
+1       255
+2       518
+3       773
+4       1031

@@ -14,15 +14,15 @@ Pol = pd.read_csv("./data/Intensität-Winkel-Messung.txt", sep="\s+", header=1)
 Pol["Fehler"] = 0.04  # Schätzung
 
 
-def I(alpha, Imax, alpha0):
+def I(alpha, Imax, alpha0, I0):
     """Funktion für den Fit der Winkelabhängigkeit der Intensität"""
-    I = Imax * (np.sin(np.radians(alpha) + np.radians(alpha0))) ** 2
+    I = Imax * (np.sin(np.radians(alpha) + np.radians(alpha0))) ** 2 + I0
     return I
 
 
 # Fit durchführen
 # Startwerte
-initial_params = [0.86, 160]
+initial_params = [0.86, 160, 0]
 fit_params, fit_covariance = curve_fit(I, Pol["a"], Pol["I"], p0=initial_params)
 
 # Linspace zum Plotten
@@ -73,8 +73,9 @@ with open("./build/fit_parameters_polarisation.txt", "w") as file:
     file.write("Fitparameter für die Polarisationsmessung:\n")
     file.write(f"Imax: {fit_params[0]} ± {fit_errors[0]}\n")
     file.write(f"alpha_0: {fit_params[1]} ± {fit_errors[1]}\n")
+    file.write(f"I_0: {fit_params[2]} ± {fit_errors[2]}\n")
 
     file.write("\nGerundet auf zwei Nachkommastellen ergibt sich:\n")
-    file.write("Fitparameter für die Polarisationsmessung:\n")
     file.write(f"Imax: {fit_params[0]:.2f} ± {fit_errors[0]:.2f}\n")
     file.write(f"alpha_0: {fit_params[1]:.2f} ± {fit_errors[1]:.2f}\n")
+    file.write(f"I_0: {fit_params[2]:.2f} ± {fit_errors[2]:.2f}\n")
