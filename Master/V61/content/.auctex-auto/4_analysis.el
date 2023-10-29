@@ -8,6 +8,7 @@
     "fig:TEM-Messung1"
     "eqn:TEM10-Fit"
     "fig:TEM-Messung2"
-    "eqn:intensity-angle"))
+    "eqn:intensity-angle"
+    "tab:intensity-angles"))
  :latex)
 
