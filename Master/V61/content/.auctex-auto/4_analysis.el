@@ -2,6 +2,7 @@
  "4_analysis"
  (lambda ()
    (LaTeX-add-labels
+    "fig:distance-intensity"
     "tab:distance-intensity"
     "eqn:TEM00-Fit"
     "fig:TEM-Messung1"
