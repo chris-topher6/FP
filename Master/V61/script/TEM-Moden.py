@@ -86,7 +86,7 @@ axs00[0].grid(True)
 axs00[1].bar(TEM00["r"], pulls00, width=1.5, color="lightsteelblue")
 axs00[1].axhline(0, color="orangered", linewidth=0.8)  # Linie bei Pull 0
 axs00[1].set_xlabel(r"$r/\mathrm{cm}$")
-axs00[1].set_ylabel(r"$\mathrm{Pull}/\Delta I$")
+axs00[1].set_ylabel(r"$\mathrm{Pull}/\sigma_{I}$")
 axs00[1].set_yticks(np.linspace(-10, 10, 5))
 axs00[1].grid(True)
 
@@ -116,7 +116,7 @@ axs10[0].grid(True)
 axs10[1].bar(TEM10["r"], pulls10, width=1.5, color="lightsteelblue")
 axs10[1].axhline(0, color="orangered", linewidth=0.8)  # Linie bei Pull 0
 axs10[1].set_xlabel(r"$r/\mathrm{cm}$")
-axs10[1].set_ylabel(r"$\mathrm{Pull}/\Delta I$")
+axs10[1].set_ylabel(r"$\mathrm{Pull}/\sigma_{I}$")
 axs10[1].set_yticks(np.linspace(-5, 5, 5))
 axs10[1].grid(True)
 

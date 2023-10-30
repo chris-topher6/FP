@@ -40,10 +40,10 @@ def wavg(a,b):
     return wavg
 
 
-a1["lambdaa"] = lambdaa(800, a1["k"], a1["ak"], 70) * 10  # in nm umrechnen;   80mm^-1 = 800cm^-1
-a2["lambdaa"] = lambdaa(1000, a2["k"], a2["ak"], 70) *10
-a3["lambdaa"] = lambdaa(6000, a3["k"], a3["ak"], 29.4) *10
-a4["lambdaa"] = lambdaa(12000, a4["k"], a4["ak"], 29.4)*10
+a1["lambdaa"] = lambdaa(1/800, a1["k"], a1["ak"], 70) * 10**7  # in nm umrechnen;   80mm^-1 = 800cm^-1
+a2["lambdaa"] = lambdaa(1/1000, a2["k"], a2["ak"], 70) *10**7
+a3["lambdaa"] = lambdaa(1/6000, a3["k"], a3["ak"], 29.4) *10**7
+a4["lambdaa"] = lambdaa(1/12000, a4["k"], a4["ak"], 29.4)*10**7
 
 a1mean = wavg(wavg(wavg(a1["lambdaa"][0], a1["lambdaa"][1]), wavg(a1["lambdaa"][2], a1["lambdaa"][3])), wavg(a1["lambdaa"][4], a1["lambdaa"][5]))
 a2mean = wavg(wavg(wavg(a2["lambdaa"][0], a2["lambdaa"][1]), wavg(a2["lambdaa"][2], a2["lambdaa"][3])), wavg(a2["lambdaa"][4], a2["lambdaa"][5]))
