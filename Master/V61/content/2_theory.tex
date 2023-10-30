@@ -1,20 +1,17 @@
 \section{Theoretical Description of the functionality of a Laser}
 \label{sec:theory}
-
 \noindent
 A laser (Light Amplification by Emission of Radiation) comprises
 three essential components. These components include a laser medium, 
 which in this instance is a gas mixture of helium and neon, a pump
 source, specifically an electric discharger and an optical resonator, 
 in this case one partially and one fully reflecting mirror.
-
 \noindent
 The laser medium is responsible for the laser's radiation spectrum, 
 primarily due to its specific excitation energy. In the case 
 of a HeNe laser, the active laser medium is the noble gas neon. 
 This laser medium possesses various energy states, enabling three 
 fundamental processes, as illustrated in Figure~\ref{fig:emission}.
-
 \noindent
 If the atom is in the ground state, it can absorb a photon with
 the required energy for excitation, resulting in the atom having
@@ -29,29 +26,25 @@ energy as the difference between the excited and ground state.
 This causes the atom to emit a photon and return to the ground state.
 The incoming and emitted photons have the same energy, direction and 
 phase, making them coherent.
-
 \begin{figure}
     \centering
     \includegraphics[width=0.8\linewidth]{pictures/emission.png} %https://www.researchgate.net/figure/a-Spontaneous-Emission-b-Stimulated-Absorption-c-Stimulated-Emission_fig2_335822340
-    \caption{Diagrammatic representation of absorption (a), spontaneous emission (b), and stimulated emission (c) for a two-state system. \cite{emission}}
+    \caption{Diagrammatic representation of absorption (a), spontaneous emission (b), and stimulated emission (c) for a two-state system.~\cite{emission}}
     \label{fig:emission}
 \end{figure}
-
 \noindent
-In contrast to the illustration in Figure \ref{fig:emission}, a laser 
+In contrast to the illustration in Figure~\ref{fig:emission}, a laser
 requires a laser medium with more than two energy levels. In a two
 level system, the Einstein coefficients $B_{12}$ and $B_{21}$, which 
 describe the transition probability between states, are equal. Due to 
 this, the population inversion necessary for the laser is not achievable
 in a tow-level system.
-
 \noindent
 To achieve population inversion, a pump source must input energy
 into the system. In the case of a HeNe laser, an electric discharger 
 pumps energy into the pump gas helium. The excited helium atoms 
 collide with neon atoms, transferring their energy. The level diagram is
-illustrated in Figure \ref{fig:level}.
-
+illustrated in Figure~\ref{fig:level}.
 \begin{figure}
     \centering
     \includegraphics[width=0.7\linewidth]{pictures/level.png} %https://en.wikipedia.org/wiki/Helium%E2%80%93neon_laser
@@ -61,39 +54,33 @@ illustrated in Figure \ref{fig:level}.
 The transition from the 3s to the p2 state predominates the process, 
 resulting in the production of red laser light with a wavelength of
 $\lambda = \SI{632.8}{\nano\meter}$.
-
 \noindent
 As amplification is dependent on the distance travelled, a resonator is
 employed to increase the path length. This is implemented using two
 mirrors, one fully reflecting and one partially reflecting, enabling
 the beam to exit the laser tube in one direction.
-
 \noindent
 To control the laser, the resonator must satisfy the stability relation
 \begin{equation}
     0 < g_1g_2 \leq 1
     \label{eqn:stability}
 \end{equation}
-
 \noindent
 where $g_i=1-\frac{L}{r_i}$ is defined with the length $L$ and the 
-curvature radius $r_i$ of the mirror $i$. If condition \eqref{eqn:stability}
+curvature radius $r_i$ of the mirror $i$. If condition~\eqref{eqn:stability}
 is not met, the laser beam may grow until it becomes larger than the mirror,
-resulting in its loss. Figure \ref{fig:resonator} displays two resonators,
+resulting in its loss. Figure~\ref{fig:resonator} displays two resonators,
 one stable and one unstable.
-
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.5]{pictures/resonator.png} %https://www.edmundoptics.de/knowledge-center/application-notes/lasers/laser-resonator-modes/
-    \caption{Graphical illustration of the beam path in one resonator that fulfils the stability condition \eqref{eqn:stability} (left) and an unstable resonator (right). \cite{resonator}}
+    \caption{Graphical illustration of the beam path in one resonator that fulfils the stability condition~\eqref{eqn:stability} (left) and an unstable resonator (right).~\cite{resonator}}
     \label{fig:resonator}
 \end{figure}
-
 \noindent
 The light forms standing waves between the mirrors, denoted as $\text{TEM}_{pl}$,
 where $p$ and $l$ describe the radial and angular mode orders. Figure 
 \ref{fig:TEM} shows the patterns of the first orders.
-
 %\begin{figure}[H]
 %    \centering
 %    \includegraphics[scale=0.3]{pictures/modes.png} %https://www.researchgate.net/figure/Different-Transverse-electromagnetic-mode-for-lasers-19_fig8_321225714
@@ -103,10 +90,9 @@ where $p$ and $l$ describe the radial and angular mode orders. Figure
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.8]{pictures/modes2.jpg} %https://www.researchgate.net/figure/Different-Transverse-electromagnetic-mode-for-lasers-19_fig8_321225714
-    \caption{The intensity distribution of the laser modes $\text{TEM}_{00}$, $\text{TEM}_{01}$, $\text{TEM}_{10}$, $\text{TEM}_{11}$ and $\text{TEM}_{02}$. \cite{TEM2}}
+    \caption{The intensity distribution of the laser modes $\text{TEM}_{00}$, $\text{TEM}_{01}$, $\text{TEM}_{10}$, $\text{TEM}_{11}$ and $\text{TEM}_{02}$.~\cite{TEM2}}
     \label{fig:TEM}
 \end{figure}
-
 \noindent
 The amplitude of the mode $\text{TEM}_{pl}$ is described by 
 \begin{equation}

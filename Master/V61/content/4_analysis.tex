@@ -221,14 +221,14 @@ to the closest theoretical mode distance.
     \caption{Comparison between the mean measured frequency deltas and the theoretical values for different resonator lengths.}
     \label{tab:deltaf}
     \sisetup{table-format=3.2}
-    \begin{tabular}{S[table-format=3.1] S S S}
+    \begin{tabular}{S[table-format=3.1] S S S S}
         \toprule
-      {$L/\si{\centi\meter}$} & {$\bar{\Delta} f/\si{\mega\hertz}$} &  {$\Delta f_{\text{Theory}}$}  & {$\bar{\Delta} f - \Delta f_{\text{Theory}}$} \\
+      {$L/\si{\centi\meter}$} & {$\bar{\Delta} f/\si{\mega\hertz}$} &  {$\Delta f_{\text{Theory}}$}  & {$\bar{\Delta} f - \Delta f_{\text{Theory}}$} & {$(\bar{\Delta} f - \Delta f_{\text{Theory}}) /\si{\percent}$}\\
         \midrule
-      87.5    &   190.40    &   171.3   &  19.1 \\
-      66.8    &   258.67    &   224.4   & 34.27 \\
-      156.5   &   101.25    &   95.78   & 5.47 \\
-      215.8   &   216.80    &   69.46   & 147.34 \\
+      87.5    &   190.40    &   171.3   &  19.1  & 11.15\\
+      66.8    &   258.67    &   224.4   & 34.27  & 15.27\\
+      156.5   &   101.25    &   95.78   & 5.47   &  5.71\\
+      215.8   &   216.80    &   69.46   & 147.34 &  212.12\\
         \bottomrule
     \end{tabular}
 \end{table}
@@ -272,8 +272,12 @@ on the other side of the optical axis and then halfed in the computation of $\la
 The remaining measurement uncertainty is estimated to be $\sigma_{a_{k}} = \SI{0.2}{\centi\meter}$.
 Using Equation~\ref{eqn:wavelength}, the following wavelengths were obtained:
 \begin{align*}
-\lambda_{1} = &  \SI{420.3637}{\nano\meter} \\
-\lambda_{2} = &  \SI{648.2509}{\nano\meter} \\
-\lambda_{3} = & \SI{20401.8174}{\nano\meter} \\
-\lambda_{4} = & \SI{91054.4704}{\nano\meter}.
+\lambda_{1} = &  \SI{422.8356 \pm 2.3245}{\nano\meter} \\
+\lambda_{2} = &  \SI{664.8679 \pm 2.6663}{\nano\meter} \\
+\lambda_{3} = & \SI{18548.6406 \pm 69.5400}{\nano\meter} \\
+\lambda_{4} = & \SI{91054.4704 \pm 112.7858}{\nano\meter}.
 \end{align*}
+The average wavelength resulting of all four measurements weighted by their respective uncertainty is given by
+\begin{equation}
+ \bar{\lambda} = \SI{560.6150 \pm 3.5028}{\nano\meter}.
+\end{equation}
