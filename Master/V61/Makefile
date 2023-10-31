@@ -1,7 +1,8 @@
 # Variablen
 LATEX_COMPILER = lualatex
 BIB_COMPILER = biber
-PYTHON = python3
+PYTHON = python # Sonst wählt er nicht die von conda verwaltete Umgebung
+# PYTHON = python3
 LATEX_FLAGS = -output-directory=build
 BIB_FLAGS = --output-directory build
 
