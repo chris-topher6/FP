@@ -1,0 +1,335 @@
+#+title: Vorbereitung Kolloqium V61: He-Ne-Laser
+#+startup: inlineimages latexpreview
+
+* Vorbereitungsfragen
+
+** What are the three basic components of the laser? :drill:
+
+*** Antwort :ATTACH:
+:PROPERTIES:
+:ID:       7376a453-670c-4f78-86a3-2eca276c33f8
+:END:
+
+Ein Laser besteht konzeptionell aus den folgenden drei Bestandteilen:
+1. Aktives Medium
+   + Verstärkt die einfallende elektromagnetische Welle
+2. Pumpe
+   + Pumpt Energie in ausgewählte Niveaus um die Besetzungsinversion zu erhalten
+3. Resonator
+   + Speichert Teile der induzierten Emission, die auf wenige Resonatormoden konzentriert sind
+   + Kann z.B. durch zwei gegenüberstehende Spiegel umgesetzt werden
+
+#+attr_html: :width 400px
+[[attachment:_20231016_205423Bildschirmfoto vom 2023-10-16 20-53-30.png]]
+
+
+
+** What defines the wavelength of the laser? :drill:
+
+*** Antwort
+
+Die Wellenlänge ist abhängig von dem Unterschied der Energieniveaus der Elektronen im Medium:
+
+\begin{equation*}
+   \nu = \frac{E_{k}-E_{i}}{h}.
+\end{equation*}
+
+** Discuss the most important processes in the active medium. :drill:
+
+Welche Prozesse finden im aktiven Medium statt?
+
+*** Antwort :ATTACH:
+:PROPERTIES:
+:ID:       441ac2c6-9f39-446e-a80e-403a21bd4138
+:END:
+
+1. Absorption eines Photons
+   + Elektron absorbiert ein Photon und wechselt auf *höheres Energieniveau*
+
+2. Spontane Emission eines Photons
+   + Elektron sinkt unter Emission eines Photons auf ein *niedrigeres Niveau* ab
+   + Das Photon wird in eine *zufällige Richtung* und mit einer *zufälligen Phase* emittiert
+     + Photonen sind also *inkohärent*
+   + Die Energie des Photons entspricht auch hier der Differenz der beiden Niveaus
+
+3. Stimulierte Emission eines Photons
+   + Ein Photon regt ein Elektron dazu an, in den Grundzustand zurückzufallen
+   + Das Elektron emittiert dabei ein weiteres Photon
+   + Das emittierte Photon ist kohärent zu dem einfallenden Photon, besitzt diesselbe Energie und Richtung
+
+#+attr_html: :width 400px
+[[attachment:_20231016_205659Bildschirmfoto vom 2023-10-16 20-56-47.png]]
+
+
+** Discuss the relationship between the amplification of the light and the population inversion in the active medium. :drill:
+
+*** Antwort :ATTACH:
+:PROPERTIES:
+:ID:       9d0913c5-12c7-46c9-8958-351771fdf34b
+:END:
+
+*Besetzungsinversion*: mehr Teilchen befinden sich in einem angeregten Zustand als sich im Grundzustand befinden. (Also entgegen einer Besetzung
+nach einer Boltzmann-Verteilung)
+
+#+attr_html: :width 400px
+[[attachment:_20231016_205607Bildschirmfoto vom 2023-10-16 20-55-29.png]]
+
+Damit die stimulierte Emission der dominierende Prozess im aktiven Medium ist (und nicht die Absorption), muss eine Besetzungsinversion
+gegeben sein.
+
+Da nur durch die stimulierte Emission kohärente Photonen erzeugt werden können, kann nur so die elektromagnetische Welle
+verstärkt statt abgeschwächt werden.
+
+** Why is a two-level laser not possible? :drill:
+
+*** Antwort
+
+In einem stabilen zwei-Niveau System ist es nicht möglich, eine Besetzungsinversion zu erzeugen. Daher kann so auch kein Laser konstruiert werden.
+
+Sobald die Hälfte aller Teilchen im Lasermedium im oberen Laserniveau sind, ist die Wahrscheinlichkeit, dass ein Atom im unteren Laserniveau
+ein Photon *absorbiert*, genauso hoch wie die Wahrscheinlichkeit, dass ein Atom im oberen Laserniveau ein Photon durch *stimulierte Emission abgibt*.
+Die zusätzliche spontane Emission sorgt weiterhin dafür, dass nicht einmal diese theoretische Grenze erreicht wird.
+
+** Which transition is responsible for the red line of the He-Ne-laser? :drill:
+
+*** Antwort :ATTACH:
+:PROPERTIES:
+:ID:       1f64acdb-dfc6-47ec-95f3-9c9c78371280
+:END:
+
+Mehrere Übergänge des angeregten Neon-Atoms sehen rötlich aus:
+
+#+attr_html: :width 400px
+[[attachment:_20231016_212537Bildschirmfoto vom 2023-10-16 21-24-54.png]]
+
+** How is the population inversion achieved? :drill:
+
+Wie erzeugt man eine *Besetzungsinversion*? Welches Material wird hier verwendet?
+
+Was ist eine *Gasentladung*? Was ist ein *Stoß zweiter Art*?
+
+*** Antwort
+
+Als Pumpmaterial wird Helium verwendet. In dem Gasbehälter befinden sich zwei Elektroden, zwischen denen eine
+Spannung angelegt wird.
+
+Es findet eine *Gasentladung* statt:
+Durch die an das Gas (hier Helium) angelegte Spannung fließt ein Strom durch das Gas, was dazu führt,
+das dieses ionisiert wird. Die Heliumatome werden dabei in einen angeregten Zustand gehoben.
+
+Die Heliumatome übertragen ihre Energie durch *Stöße zweiter Art* auf das Lasermedium (hier Neon).
+
+Bei *Stößen zweiter Art* handelt es sich um einen Stoß zwischen Atomen/Molekülen um Grundzustand und im
+angeregten Zustand. Dabei wird die Energie des angeregten Teilchens auf das im Grundzustand übertragen,
+wodurch letzteres angeregt wird, während ersteres in den Grundzustand zurückfällt.
+
+So kann im Neon eine Besetzungsinversion erzeugt werden.
+
+** Calculate the stability parameters $g_1 \cdot g_2$ as a function of the resonator length $L$ for at least two resonator  configurations and plot the result.
+
+Was geben die Stabilitätsparameter an? Wie geht man hier vor? Wie sieht der Plot aus?
+
+*** Antwort :ATTACH:
+:PROPERTIES:
+:ID:       f6794223-f6d4-42d2-8378-4a1fa8367bd6
+:END:
+
+Der Stabilitätsparameter ist ein Maß dafür, ob der Radius des verwendeten Spiegels und die Resonatorlänge
+einen stabilen Resonator bilden:
+
+#+attr_html: :width 400px
+[[attachment:_20231018_125652resonator.png]]
+
+
+Für die Stabilitätsparameter gilt
+
+\begin{equation*}
+   g_{i} = 1 - \frac{L}{r_{i}}
+\end{equation*}
+
+mit der Resonatorlänge $L$ und dem Radius $r_i$ der verwendeten Spiegel.
+
+#+caption: Verschiedene Stabilitätsparameterkombinationen für verschiedene Radii.
+#+attr_html: :width 400px
+[[attachment:_20231018_125952Bildschirmfoto 2023-10-18 um 12.59.41.png]]
+
+** The available mirror configurations can be found in Table 1. What is the maximum resonator length that can be achieved?
+
+Table 1:
+| Spiegel | Design        |
+|---------+---------------|
+|       1 | flat/flat     |
+|       2 | r=1000mm/flat |
+|       3 | r=1400mm/flat |
+|       4 | r=1400mm/flat |
+
+
+*** Antwort
+
+Aus der Berechnung der Stabilitätsparameter ist bekannt: stabil wenn $0 \leq g_1 \cdot g_2 \leq 1$.
+
+Für den Zusammenhang zwischen Stabilitätsparameter und Resonatorlänge gilt $g_i = 1 - \frac{L}{r_{i}}$.
+
+Setze ineinander ein:
+
+\begin{equation*}
+   0 \leq (1 - \frac{L}{r_{1}})\cdot (1 - \frac{L}{r_{2}}) \leq 1
+\end{equation*}
+
+und probiere alle Radii aus der Tabelle aus.
+
+** Describe the intensity curve in the plane perpendicular to the propagation direction for $\text{TEM}_{00}$ and  $\text{TEM}_{01}$ modes.
+
+Worfür steht TEM?
+
+*** Antwort :ATTACH:
+:PROPERTIES:
+:ID:       909dd7e9-8a90-41a1-bc95-c2b0eda6cc5c
+:END:
+
+TEM steht für transversal electromagnetic. $\text{TEM}_{00}$ hat als Intensitätsverteilung hat die Form einer
+(zweidimensionalen) Gauß-Kurve. $\text{TEM}_01$ hat als Intensitätsverteilung zwei Maxima, die jeweils einer
+Gauß-Kurve ähneln.
+
+#+attr_html: :width 400px
+[[attachment:_20231018_162943Laguerre-gaussian.png]]
+
+
+** Explain the term “intracavity aperture for mode selection”.
+
+*** Antwort
+
+Vorrichtung um die Brennweite des Resonators so zu variieren, dass verschiedene Moden
+ausgewählt weden können.
+
+** What is the difference between longitudinal and transversal modes?
+
+*** Antwort
+
+1. Longitudinale Modi: Unterschiede in der Wellenlänge, die sich entlang der Ausbreitungsrichtung der Wellen in
+   dem Resonator ausbilden
+
+2. Transversale Modi: Lichtintensitätsunterschiede, die sich senkrecht zur Ausbreitungsrichtung der Wellen im
+   Resonator ausbilden
+
+** Describe the broadenning of the optical transition in gas due to the Doppler effect. :drill:
+
+*** Antwort
+
+Dadurch, dass die Gas-Atome thermische Energie besitzen, bewegen sie sich. Durch diese Bewegung tritt der
+Doppler-Effekt auf, der das Spektrum ausschmiert.
+
+** How large is the spectral broadening for the optical transition in Neon gas at room temperature? :drill:
+
+*** Antwort
+
+Für die Frequenzänderung augrund des Doppler-Effekts gilt nach dem Demtröder die Formel
+
+\begin{equation*}
+   \delta f_{D} = \frac{f_{0}}{c} \cdot \sqrt{\frac{8 k_{B} T \log(2)}{m}}.
+\end{equation*}
+
+Mit einer Raumtemperatur von $T = 19° \text{C} = 292.2 K$ und eines Atomgewichtes des Neongases
+$m = 3.3509 \cdot 10^{-26} \text{kg}$ ergibt sich ein Verbreiterungsfaktor von
+
+\begin{equation*}
+   \delta f_{D} = \frac{f_{0}}{c} \cdot 2.7254 \cdot 10^{-6}.
+\end{equation*}
+
+** Describe the mode spectrum (frequency spectrum) for the laser with typical resonator length L = 1.5m. :drill:
+
+*** Antwort
+
+Für den theoretischen Anstand zweier Moden gilt
+
+\begin{equation*}
+   \Delta f = \frac{c}{2L}.
+\end{equation*}
+
+Ein kurzer Resonator lässt daher weniger Moden zu als ein längerer.
+
+Für $L=1.5 \text{m}$ ergibt sich
+
+\begin{equation*}
+   \Delta f = \frac{c}{2*1.5 \text{m}} = 9.993 \times 10^{7} \frac{1}{\text{s}} = 99.93 \text{MHz}.
+\end{equation*}
+
+Resonante Moden sollten also bei vielfachen von $\Delta f$ gefunden werden können.
+
+** How does mode selection work with the help of a Fabry-Perot etalon? :drill:
+
+*** Antwort
+
+Ohne das Interferometer befindet sich der He-Ne-Laser im Multimoden-Betrieb; mehrere
+longitudinale Moden überlagern sich gegenseitig. Diese führen zu Schwebungen in der zeitlichen Abhängigkeit der Intensität.
+
+Das Fabry-Perot Interferometer kann verwendet werden, um spezielle Moden auszuwählen und nur für diese eine Resonanz
+zuzulassen.
+
+** The laser under investigation is equipped with Brewster windows fitted to the end of the laser tubes. What is the role of the Brewster windows? What is the resulting polarisation of the laser? :drill:
+
+*** Antwort
+
+Mit den Brewster-Fenstern kann die Polarisation des Laserstrahls kontrolliert werden. Die Fenster werden so ausgerichtet,
+dass der reflektierte (und damit herausgefilterte) Strahl vollständig s-polarisert (senkrecht) und der transmittierte
+Anteil vollständig p-polarisiert (parallel) ist.
+
+So ist der Laserstrahl letztlich parallel polarisiert.
+
+* Versuchsaufbau und Durchführung
+
+** Aufbau :drill:
+
+Wie sieht der grobe Versuchsaufbau aus?
+
+*** Antwort :ATTACH:
+:PROPERTIES:
+:ID:       a84f260c-d260-4bec-a283-52ac73a1cd65
+:END:
+
+#+attr_html: :width 500px
+[[attachment:_20231020_133818Bildschirmfoto 2023-10-20 um 13.38.12.png]]
+
+Bestandteile:
+1. Laserrohr (mit Gasgemisch gefüllt)
+2. Brewsterfenster an den Enden des Laserrohrs
+3. Resonatorspiegel auf jeder Seite des Laserrohrs
+4. Justierlaser und Blende auf der rechten Seite des Lasers
+5. Auf der anderen Seite: Photodiode zur Messung der Intensität des Lasers
+
+Alle Bauteile fußen auf einer optischen Bank.
+
+** Justage :drill:
+
+Wie muss der Versuchsaufbau justiert werden, um mit dem Versuch beginnen zu können?
+
+*** Antwort
+
+Zur Justierung des He-Ne Lasers wird der grüne Justierlaser verwendet. Vor diesem befindet sich eine Lochblende,
+auf dem ein Fadenkreuz aufgezeichnet ist.
+Die beiden Resonatorspiegel werden so positioniert, dass der von ihnen reflektierte Strahl des Justierlasers
+präzise auf das Fadenkreuz fällt.
+Wenn die Spiegel richtig eingestellt sind, beginnt der He-Ne Laser zu leuchten und der Justierlaser kann
+abgeschaltet werden.
+
+** Messprozess :drill:
+
+Welche Eigenschaften des Lasers werden in diesem Versuch gemessen?
+
+*** Antwort
+
+1. Messung der Wellenlänge des Lasers
+2. Polarisation des Lasers
+3. Überprüfung der Stabilitätsbedingung und Messung sovieler Moden wie möglich
+
+** Brewster-Fenster :drill:
+
+Was ist ein Brewster-Fenster?
+
+*** Antwort :ATTACH:
+:PROPERTIES:
+:ID:       9fe35369-889b-4f79-a864-79c3f0faf52c
+:END:
+
+#+attr_html: :width 400px
+[[attachment:_20231020_140216Brewster-polarizer-de.svg.png]]
