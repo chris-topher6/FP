@@ -15,6 +15,8 @@
     "eqn:modetheomultiple"
     "tab:multimode"
     "tab:deltaf"
+    "eqn:doppler"
+    "eqn:doppler2"
     "eqn:wavelength"
     "tab:opticalgr"))
  :latex)
