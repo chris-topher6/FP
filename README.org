@@ -1,0 +1,15 @@
+#+title: Fortgeschrittenenpraktikum an der TU Dortmund
+Repository für die Auswertung des Fortgeschrittenenpraktikums der TU Dortmund im SS 2022 (Bachelor)
+sowie dem WS 2023 (Master).
+
+** Durchgeführte Versuche
+*** Bachelor
+1. V01 - Lebensdauer kosmischer Myonen [Status: Fertig]
+2. V21 - Optisches Pumpen [Status: Fertig]
+3. V27 - Der Zeeman-Effekt [Status: Fertig]
+4. V46 - Der Faraday-Effekt [Status: Fertig]
+5. V70 - Der Vakuumversuch [Status: Fertig]
+
+*** Master
+1. V60 - Der Diodenlaser [Satus: In Vorbereitung]
+2. V61 - Der Helium-Neon Laser [Status: In Korrektur]
