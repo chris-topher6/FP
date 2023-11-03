@@ -3,6 +3,8 @@
  (lambda ()
    (LaTeX-add-labels
     "sec:theory"
-    "sec:diodelaser"))
+    "sec:diodelaser"
+    "fig:diode"
+    "fig:laser-system"))
  :latex)
 
