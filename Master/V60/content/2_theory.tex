@@ -59,3 +59,51 @@ smaller than the atomic transitions linewidths.
 After the lasing process has started, the beam mostly consists of light with the frequency that offers the highest
 net optical gain. The exact frequency depends on several factors, which are displayed in
 Figure~\ref{fig:diode-frequency}.
+\begin{figure}
+  \centering
+  \includegraphics[scale=0.4]{./pictures/Diode-frequency.png}
+  \caption{Schematic display of different sources of amplification for different wavelengths~\cite{teachspin}.}
+  \label{fig:diode-frequency}
+\end{figure}
+\subsubsection{The Medium Gain}
+\label{sec:mediumgain}
+The medium gain pictured in Figure~\ref{fig:diode-frequency} is defined by the semiconductors material. It is
+quite broad and is only influenced by the materials temperature, which can be used to shift the medium gain.
+It is the least precise tuning parameter of a diode laser and should therefore be tuned at first.
+\subsubsection{The Internal Cavity Gain}
+\label{sec:internalcavitgain}
+The gain caused by the internal cavity of the laser diode chip depends on the length of the cavity and the
+injection current. Its periodic frequency is a result of the normal mode structure of the optical cavity; the
+period length is defined by the length of the cavity, which is influenced by the temperature. \\
+The temperature is then again influenced by the injection current; its strength changes both the cavity length
+through temperature change as well as influencing the amount of charge carriers in the active layer.
+\subsubsection{The optical Grating Gain}
+\label{sec:opticalgratinggain}
+The optical grating routes a small amount of radiation within a specific portion of the frequency band back
+into the laser diode chip. The resulting singular peak can be seen in Figure~\ref{fig:diode-frequency}.
+The position of this peak in the spectrum can be ajusted through a change in the angle of the optical grating.
+Said adjustment can be done manually (e.g. with a screw) or though utilising a Piezo-electric crystal;
+applying different voltages on such a crystal causes a proportional volume change, which can be converted into
+a change of angle.
+\subsubsection{The external Cavity Gain}
+\label{sec:externalcavitygain}
+The external cavity works similarly to the internal cavity gain, except its much larger cavity length: it is
+confined by the reflective facet of the laser diode chip on one side and by the optical grating on the other.
+As with the internal cavity gain, the length of the cavity determines the periodicity of the resulting
+amplification. Because of its larger size, the external cavity gain is much shorter in its period length, as
+can be seen in Figure~\ref{fig:diode-frequency}.
+\subsubsection{Mode Hops}
+\label{sec:modehops}
+As mentioned before, after the lasing process has begun, the laser mostly emits radiation with the wavelength
+that maximises the optical amplification. Adjusting the laser to a frequency where it emits the most radiation
+continuously is complicated by mode hops, meaning a jump between different maxima in different gains.
+When the angle of the optical grating is changed and therefore its gain is shifted, the total net gain also
+depends on the other gain factors, like the internal cavity gain. The emitted frequency will then hop between
+the maxima of the different gain factors. This can be seen in Figure~\ref{fig:hophop}.
+\begin{figure}
+  \centering
+  \includegraphics[scale=0.4]{./pictures/hophop.png}
+  \caption{Several plots of the gain by the external cavity and the optical grating for different wavelengths~\cite{teachspin}.}
+  \label{fig:hophop}
+\end{figure}
+To prevent mode hops, the gain factors have to be adjusted simultaneously.

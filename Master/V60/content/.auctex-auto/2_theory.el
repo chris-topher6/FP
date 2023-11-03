@@ -6,6 +6,13 @@
     "sec:diodelaser"
     "fig:diode"
     "fig:laser-system"
-    "sec:tuning"))
+    "sec:tuning"
+    "fig:diode-frequency"
+    "sec:mediumgain"
+    "sec:internalcavitgain"
+    "sec:opticalgratinggain"
+    "sec:externalcavitygain"
+    "sec:modehops"
+    "fig:hophop"))
  :latex)
 
