@@ -5,6 +5,7 @@
     "sec:theory"
     "sec:diodelaser"
     "fig:diode"
-    "fig:laser-system"))
+    "fig:laser-system"
+    "sec:tuning"))
  :latex)
 
