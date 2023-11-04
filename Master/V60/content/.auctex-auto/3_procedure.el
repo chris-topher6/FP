@@ -3,6 +3,11 @@
  (lambda ()
    (LaTeX-add-labels
     "sec:procedure"
-    "fig:brewster"))
+    "sec:lasersetup"
+    "fig:laserhead"
+    "sec:measurements"
+    "sec:threshold"
+    "sec:rubidium"
+    "fig:structure"))
  :latex)
 
