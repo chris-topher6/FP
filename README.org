@@ -11,5 +11,5 @@ sowie dem WS 2023 (Master).
 5. V70 - Der Vakuumversuch [Status: Fertig]
 
 *** Master
-1. V60 - Der Diodenlaser [Status: In Vorbereitung]
-2. V61 - Der Helium-Neon Laser [Status: In Korrektur]
+1. V60 - Der Diodenlaser [Status: In Korrektur]
+2. V61 - Der Helium-Neon Laser [Status: Fertig]
