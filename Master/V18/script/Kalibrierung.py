@@ -18,10 +18,13 @@ europium["index"] = europium.index
 # Sicherstellen, dass die Spalte "data" numerische Werte enthält
 europium["data"] = pd.to_numeric(europium["data"], errors="coerce")
 
+peaks, _ = find_peaks(europium["data"], height=20, prominence=20, distance=30)
+
 # Plot der Kalibrationsmessung
 plt.figure(figsize=(21, 9))
 
 plt.bar(europium["index"], europium["data"], linewidth=2, width=1.1)
+plt.plot(peaks, europium["data"][peaks], "x", color="orange")
 
 plt.xticks(np.linspace(0, 8191, 10))
 plt.yticks(np.linspace(europium["data"].min(), europium["data"].max(), 10))
