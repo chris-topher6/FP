@@ -58,6 +58,27 @@ print(len(europium_lit))
 print(europium_lit.info())
 print(europium_lit)
 
+plt.errorbar(
+    peaks,
+    europium_lit["Energie"],
+    europium_lit["Unsicherheit(E)"],
+    fmt="ok",
+    label="data",
+)
+plt.plot(peaks, linear(peaks, *m.values), label="fit")
+
+# display legend with some fit info
+fit_info = [
+    f"$\\chi^2$/$n_\\mathrm{{dof}}$ = {m.fval:.1f} / {m.ndof:.0f} = {m.fmin.reduced_chi2:.1f}",
+]
+for p, v, e in zip(m.parameters, m.values, m.errors):
+    fit_info.append(f"{p} = ${v:.3f} \\pm {e:.3f}$")
+
+plt.legend(title="\n".join(fit_info), frameon=False)
+plt.xlabel(r"$\mathrm{Channels}$")
+plt.ylabel(r"$\mathrm{Energy}/\mathrm{keV}$")
+plt.savefig("./build/Europium-Fit.pdf")
+plt.clf()
 
 if MAKE_PLOT == True:
     # Plot der Kalibrationsmessung
