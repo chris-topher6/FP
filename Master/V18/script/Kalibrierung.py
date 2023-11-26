@@ -8,7 +8,7 @@ import iminuit
 from iminuit import Minuit
 from iminuit.cost import LeastSquares
 
-MAKE_PLOT = False
+MAKE_PLOT = True
 
 
 # Einlesen der Kalibrationsmessung
@@ -38,6 +38,9 @@ peaks = pd.Series(peaks)
 
 # Peaks die eher dem Untergrundrauschen zuzuordnen sind entfernen
 peaks = peaks.drop([0, 1, 2, 3, 6, 7, 8, 9, 10, 12, 13, 14, 15, 16])
+
+# Reihenfolge invertieren, damit es zu den Literaturwerten passt
+peaks = peaks[::-1]
 
 
 def linear(K, alpha, beta):
@@ -79,22 +82,3 @@ plt.xlabel(r"$\mathrm{Channels}$")
 plt.ylabel(r"$\mathrm{Energy}/\mathrm{keV}$")
 plt.savefig("./build/Europium-Fit.pdf")
 plt.clf()
-
-if MAKE_PLOT == True:
-    # Plot der Kalibrationsmessung
-    plt.figure(figsize=(21, 9))
-
-    plt.bar(europium["index"], europium["Daten"], linewidth=2, width=1.1)
-    plt.plot(peaks, europium["Daten"][peaks], "x", color="orange")
-
-    plt.xticks(np.linspace(0, 8191, 10))
-    plt.yticks(np.linspace(europium["Daten"].min(), europium["Daten"].max(), 10))
-
-    plt.ylim(europium["Daten"].min() - 30)
-
-    plt.xlabel(r"Kanäle")
-    plt.ylabel(r"Signale")
-
-    plt.grid(True, linewidth=0.1)
-
-    plt.savefig("./build/Europium-Test.pdf")
