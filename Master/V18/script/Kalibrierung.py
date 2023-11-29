@@ -33,42 +33,43 @@ europium_lit = pd.read_csv(
 europium_lit.columns = ["Energie", "Unsicherheit(E)", "Intensität", "Unsicherheit(I)"]
 europium_lit = europium_lit.drop([13])  # Ein Wert zuviel
 
-peaks, _ = find_peaks(europium["Daten"], height=20, prominence=20, distance=10)
-peaks = pd.Series(peaks)
+# Peaks bestimmen und mit den zugehörigen Parametern in Dataframe speichern
+peaks_array, peaks_params = find_peaks(
+    europium["Daten"], height=20, prominence=20, distance=10
+)
+peaks = pd.DataFrame(peaks_params)
+peaks["peaks"] = peaks_array
 
 # Peaks die eher dem Untergrundrauschen zuzuordnen sind entfernen
 peaks = peaks.drop([0, 1, 2, 3, 6, 7, 8, 9, 10, 12, 13, 14, 15, 16])
 
-# Reihenfolge invertieren, damit es zu den Literaturwerten passt
-peaks = peaks[::-1]
+# Nach der Höhe des Peaks absteigend sortieren
+peaks.sort_values(by="peak_heights", inplace=True, ascending=False)
 
 
 def linear(K, alpha, beta):
+    """Fit zwischen Kanalnummer und Energie"""
     return alpha * K + beta
 
 
 least_squares = LeastSquares(
-    peaks, europium_lit["Energie"], europium_lit["Unsicherheit(E)"], linear
+    peaks["peaks"], europium_lit["Energie"], europium_lit["Unsicherheit(E)"], linear
 )
 m = Minuit(least_squares, alpha=0, beta=0)
 m.migrad()
 m.hesse()
 
-print(len(peaks))
 print(peaks.info())
-print(europium.info())
-print(len(europium_lit))
-print(europium_lit.info())
-print(europium_lit)
+print(peaks)
 
 plt.errorbar(
-    peaks,
+    peaks["peaks"],
     europium_lit["Energie"],
     europium_lit["Unsicherheit(E)"],
     fmt="ok",
     label="data",
 )
-plt.plot(peaks, linear(peaks, *m.values), label="fit")
+plt.plot(peaks["peaks"], linear(peaks["peaks"], *m.values), label="fit")
 
 # display legend with some fit info
 fit_info = [
