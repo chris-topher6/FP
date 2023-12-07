@@ -105,3 +105,5 @@ plt.xlabel(r"$\mathrm{Channels}$")
 plt.ylabel(r"$\mathrm{Energy}/\mathrm{keV}$")
 plt.savefig("./build/Europium-Fit.pdf")
 plt.clf()
+
+# TODO plot der Pulls (LeastSquares gibt die schon zurück)
