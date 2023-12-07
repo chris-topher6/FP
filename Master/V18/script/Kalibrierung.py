@@ -79,8 +79,9 @@ m = Minuit(least_squares, alpha=0, beta=0)
 m.migrad()
 m.hesse()
 
-print(peaks.info())
-print(peaks)
+# print(peaks.info())
+# print(peaks)
+# print(least_squares.pulls(m.values)) So könnte man die Pulls ploten, sind hier aber gewaltig...
 
 plt.errorbar(
     peaks["peaks"],
@@ -97,13 +98,14 @@ plt.plot(peaks["peaks"], linear(peaks["peaks"], *m.values), label="fit")
 #     f"$\\chi^2$/$n_\\mathrm{{dof}}$ = {m.fval:.1f} / {m.ndof:.0f} = {m.fmin.reduced_chi2:.1f}",
 # ]
 fit_info = []  # Chi^2 sieht nicht gut aus
-for p, v, e in zip(m.parameters, m.values, m.errors):
-    fit_info.append(f"{p} = ${v:.3f} \\pm {e:.3f}$")
+
+with open('./build/Fitparameter_Kalib.txt', 'w') as file:
+    for p, v, e in zip(m.parameters, m.values, m.errors):
+        fit_info.append(f"{p} = ${v:.3f} \\pm {e:.3f}$")
+        file.write(f"{p} = ${v:.3f} \\pm {e:.3f}$\n")
 
 plt.legend(title="\n".join(fit_info), frameon=False)
 plt.xlabel(r"$\mathrm{Channels}$")
 plt.ylabel(r"$\mathrm{Energy}/\mathrm{keV}$")
 plt.savefig("./build/Europium-Fit.pdf")
 plt.clf()
-
-# TODO plot der Pulls (LeastSquares gibt die schon zurück)
