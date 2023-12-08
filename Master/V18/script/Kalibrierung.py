@@ -86,7 +86,8 @@ m.hesse()
 plt.errorbar(
     peaks["peaks"],
     europium_lit["Energie"],
-    xerr=np.sqrt(peaks["peak_heights"]),  # Poisson-Verteilt
+    # xerr=np.sqrt(peaks["peak_heights"]),  # Poisson-Verteilt das ist aber quatsch,
+    # die Kanäle haben keine Unsicherheit, nur die Höhe der Peaks hat eine
     yerr=europium_lit["Unsicherheit(E)"],
     fmt=".",
     label="data",
@@ -99,7 +100,7 @@ plt.plot(peaks["peaks"], linear(peaks["peaks"], *m.values), label="fit")
 # ]
 fit_info = []  # Chi^2 sieht nicht gut aus
 
-with open('./build/Fitparameter_Kalib.txt', 'w') as file:
+with open("./build/Fitparameter_Kalib.txt", "w") as file:
     for p, v, e in zip(m.parameters, m.values, m.errors):
         fit_info.append(f"{p} = ${v:.3f} \\pm {e:.3f}$")
         file.write(f"{p} = ${v:.3f} \\pm {e:.3f}$\n")
