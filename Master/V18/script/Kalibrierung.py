@@ -2,11 +2,14 @@
 
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib
 import numpy as np
 from scipy.signal import find_peaks
 import iminuit
 from iminuit import Minuit
 from iminuit.cost import LeastSquares
+
+matplotlib.rcParams.update({"font.size": 18})
 
 MAKE_PLOT = True
 
@@ -59,6 +62,7 @@ if MAKE_PLOT == True:
     plt.ylabel(r"Signale")
 
     plt.grid(True, linewidth=0.1)
+    plt.tight_layout()
     plt.savefig("./build/Europium-Peaks.pdf")
     plt.clf()
 
@@ -102,11 +106,12 @@ fit_info = []  # Chi^2 sieht nicht gut aus
 
 with open("./build/Fitparameter_Kalib.txt", "w") as file:
     for p, v, e in zip(m.parameters, m.values, m.errors):
-        fit_info.append(f"{p} = ${v:.3f} \\pm {e:.3f}$")
-        file.write(f"{p} = ${v:.3f} \\pm {e:.3f}$\n")
+        fit_info.append(f"{p} = ${v:.6f} \\pm {e:.6f}$")
+        file.write(f"{p} = ${v:.6f} \\pm {e:.6f}$\n")
 
 plt.legend(title="\n".join(fit_info), frameon=False)
 plt.xlabel(r"$\mathrm{Channels}$")
 plt.ylabel(r"$\mathrm{Energy}/\mathrm{keV}$")
+plt.tight_layout()
 plt.savefig("./build/Europium-Fit.pdf")
 plt.clf()

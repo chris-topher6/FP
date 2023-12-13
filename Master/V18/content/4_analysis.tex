@@ -1,1 +1,46 @@
-\section{Results}
+\section{Analysis}
+\subsection{Detector Calibration}
+
+To calibrate the germanium detector, the spectrum of an $^{152}\text{Eu}$ source is measured;
+this can be seen in Figure~\ref{fig:spectrumeu}.
+\begin{figure}
+  \centering
+  \begin{adjustbox}{width=1.4\textwidth, center}
+  \includegraphics[scale=0.3]{./build/Europium-Peaks.pdf}
+  \end{adjustbox}
+  \caption{Spectrum of an $^{152}\text{Eu}$ source.}
+  \label{fig:spectrumeu}
+\end{figure}
+\noindent
+To calibrate the germanium detector, an energy is assigned to each detector channel.
+The 13 most prominent full energy peaks are selected and compared to the 13 most probable emission
+lines of the known $^{152}\text{Eu}$ spectrum. The most prominent full enery peaks are marked in
+orange in Figure~\ref{fig:spectrumeu} and given in Table~\ref{tab:calibrationvalues}.
+A linear fit
+\begin{equation}
+ E(K) = \alpha \cdot K + \beta
+\end{equation}
+is performed. The resulting fit parameters are
+\begin{align*}
+  \alpha = &  \num{0.218 \pm 0.000}\\
+  \beta = &  \num{104.803 \pm 0.000}.
+\end{align*}
+The fit is displayed in Figure~\ref{fig:calibrationfit}.
+\begin{figure}
+  \centering
+  \begin{adjustbox}{width=1.4\textwidth, center}
+  \includegraphics[scale=0.3]{./build/Europium-Fit.pdf}
+  \end{adjustbox}
+  \caption{Fit of the detector channels and corresponding energy.}
+  \label{fig:calibrationfit}
+\end{figure}
+\noindent
+% \begin{table}
+%   \centering
+%   \caption{Full energy peaks, their known energy and emission probability as well as their assigned channel number.}
+%   \sisetup{table-format=3.2}
+%   \begin{tabular}{S S S S}
+%     \toprule{$\text{FEP}$}
+
+%   \end{tabular}
+% \end{table}
