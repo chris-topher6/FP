@@ -70,6 +70,9 @@ if MAKE_PLOT == True:
 peaks.sort_values(by="peaks", inplace=True, ascending=True)
 europium_lit.sort_values(by="Energie", inplace=True, ascending=True)
 
+print(peaks["peaks"])
+print(europium_lit["Energie"])
+
 
 def linear(K, alpha, beta):
     """Fit zwischen Kanalnummer und Energie"""
