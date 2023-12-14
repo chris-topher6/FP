@@ -3,6 +3,8 @@
  (lambda ()
    (LaTeX-add-labels
     "fig:spectrumeu"
-    "fig:calibrationfit"))
+    "eqn:linear"
+    "fig:calibrationfit"
+    "tab:calibrationvalues"))
  :latex)
 

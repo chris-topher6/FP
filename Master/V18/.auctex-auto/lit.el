@@ -2,8 +2,11 @@
  "lit"
  (lambda ()
    (LaTeX-add-bibitems
-    "V61"
-    "teachspin"
-    "emission"))
+    "V18"
+    "Smith1997GammaRayD"
+    "LNT"
+    "detector"
+    "laraweb"
+    "scipy"))
  '(or :bibtex :latex))
 

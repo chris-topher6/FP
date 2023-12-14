@@ -1,46 +1,67 @@
 \section{Analysis}
 \subsection{Detector Calibration}
-
 To calibrate the germanium detector, the spectrum of an $^{152}\text{Eu}$ source is measured;
 this can be seen in Figure~\ref{fig:spectrumeu}.
 \begin{figure}
-  \centering
-  \begin{adjustbox}{width=1.4\textwidth, center}
-  \includegraphics[scale=0.3]{./build/Europium-Peaks.pdf}
-  \end{adjustbox}
-  \caption{Spectrum of an $^{152}\text{Eu}$ source.}
-  \label{fig:spectrumeu}
+	\centering
+	\begin{adjustbox}{width=1.4\textwidth, center}
+		\includegraphics[scale=0.3]{./build/Europium-Peaks.pdf}
+	\end{adjustbox}
+	\caption{Spectrum of an $^{152}\text{Eu}$ source.}
+	\label{fig:spectrumeu}
 \end{figure}
 \noindent
 To calibrate the germanium detector, an energy is assigned to each detector channel.
 The 13 most prominent full energy peaks are selected and compared to the 13 most probable emission
-lines of the known $^{152}\text{Eu}$ spectrum. The most prominent full enery peaks are marked in
-orange in Figure~\ref{fig:spectrumeu} and given in Table~\ref{tab:calibrationvalues}.
+lines of the known $^{152}\text{Eu}$ spectrum~\cite{laraweb}. The most prominent full enery peaks are marked in
+orange in Figure~\ref{fig:spectrumeu} and given in Table~\ref{tab:calibrationvalues}. The prominence
+calculation is performed using the algorithm \texttt{find\_peaks} from the python library \texttt{scipy} \cite{scipy}.
 A linear fit
 \begin{equation}
- E(K) = \alpha \cdot K + \beta
+	E(K) = \alpha \cdot K + \beta
+	\label{eqn:linear}
 \end{equation}
-is performed. The resulting fit parameters are
+is performed to get a relation between energy $E$ and channel number $K$. The resulting fit parameters are
 \begin{align*}
-  \alpha = &  \num{0.218 \pm 0.000}\\
-  \beta = &  \num{104.803 \pm 0.000}.
+	\alpha = & \num{0.218 \pm 0.000}    \\
+	\beta =  & \num{104.803 \pm 0.000}.
 \end{align*}
 The fit is displayed in Figure~\ref{fig:calibrationfit}.
 \begin{figure}
-  \centering
-  \begin{adjustbox}{width=1.4\textwidth, center}
-  \includegraphics[scale=0.3]{./build/Europium-Fit.pdf}
-  \end{adjustbox}
-  \caption{Fit of the detector channels and corresponding energy.}
-  \label{fig:calibrationfit}
+	\centering
+	\begin{adjustbox}{width=1.4\textwidth, center}
+		\includegraphics[scale=0.3]{./build/Europium-Fit.pdf}
+	\end{adjustbox}
+	\caption{Fit of the detector channels and corresponding energy.}
+	\label{fig:calibrationfit}
 \end{figure}
 \noindent
-\begin{table}
-  \centering
-  \caption{Energy and emission probability of the full energy peaks as well as their assigned channel number.}
-  \sisetup{table-format=3.2}
-  \begin{tabular}{S S S}
-    \toprule{$E$ & }
-
-  \end{tabular}
+The relation~\ref{eqn:linear} with the determined parameters is used thoughout this analysis for energy measurements.
+\begin{table}[H]
+	\centering
+	\caption{Energy and emission probability of the full energy peaks as well as their assigned channel number~\cite{laraweb}.}
+	\label{tab:calibrationvalues}
+	\sisetup{table-format=4.4}
+	\begin{tabular}{S S[table-format=2.2] S[table-format=4.0]}
+		\toprule {$E_{\text{lit}}/\si{\kilo\electronvolt}$} & {$P_{\text{lit}}/\si{\percent}$} & {$K$} \\
+		\midrule
+		121.7817                                            & 28.410                           & 198   \\
+		244.6974                                            & 7.550                            & 225   \\
+		344.2785                                            & 26.590                           & 595   \\
+		411.1165                                            & 2.238                            & 1187  \\
+		443.9650                                            & 2.800                            & 1666  \\
+		778.9045                                            & 12.970                           & 1989  \\
+		867.3800                                            & 4.243                            & 2145  \\
+		964.0790                                            & 14.500                           & 3760  \\
+		1085.8370                                           & 10.130                           & 4192  \\
+		1089.7370                                           & 1.730                            & 4654  \\
+		1112.0760                                           & 13.410                           & 5238  \\
+		1299.1420                                           & 1.633                            & 5370  \\
+		1408.0130                                           & 20.850                           & 6797  \\
+		\bottomrule
+	\end{tabular}
 \end{table}
+
+\subsection{Determination of the full energy detection probability}
+To determine the full energy detection probability, first the activation of the $^{152}\text{Eu}$ source has to be estimated.
+The source had an activation of $\SI{4130 \pm 60}{\becquerel}$ on the 1.10.2000.

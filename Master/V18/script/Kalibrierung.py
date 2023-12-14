@@ -70,9 +70,10 @@ if MAKE_PLOT == True:
 peaks.sort_values(by="peaks", inplace=True, ascending=True)
 europium_lit.sort_values(by="Energie", inplace=True, ascending=True)
 
-print(peaks["peaks"])
 print(europium_lit["Energie"])
-
+print(europium_lit["Intensität"]) # Emissionswahrscheinlichkeit, keine Ahnung
+# warum das bei laraweb intensity heißt
+print(peaks["peaks"])
 
 def linear(K, alpha, beta):
     """Fit zwischen Kanalnummer und Energie"""
