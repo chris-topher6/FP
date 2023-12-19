@@ -13,7 +13,7 @@ lamda = 632.99e-9 # wavelength of the laser (meter)
 
 p, m1, m2, m3, m4, m5 = np.genfromtxt("data/gas.dat", unpack = True)
 
-T_0 = 273.15 + 22.2 # K Raumtemperatur
+T_0 = 273.15 + 21.7 # K Raumtemperatur
 L = ufloat(0.1, 0.1e-3)
 
 def n_air_exp(M):

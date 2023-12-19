@@ -7,13 +7,10 @@ from uncertainties import ufloat
 from uncertainties.unumpy import (nominal_values as noms,
                                   std_devs as stds)
 
-# Wavelength of the laser in meters
 lamda = 632.99e-9 
 
-# Determination of the refractive index of glass
-
 # Reading data from the file and unpacking it into variables
-theta, M1, M2, M3, M4, M5, M6, M7, M8, M9 = np.genfromtxt("data/glas.txt", unpack = True)
+theta, M1, M2, M3, M4, M5, M6, M7, M8, M9 = np.genfromtxt("data/glass.dat", unpack = True)
 
 # Converting theta from degrees to radians
 theta = theta*np.pi/180
@@ -36,6 +33,8 @@ for data in [M1, M2, M3, M4, M5, M6, M7, M8, M9]:
 # Umwandeln der Liste in ein NumPy-Array für eine einfachere Handhabung
 transformed_M = np.array(transformed_M)
 
+print(f"{transformed_M}")
+
 # Berechnung des Mittelwerts für jede Spalte in der Matrix 'transformed_M'
 M_mean = np.mean(transformed_M, axis=0)
 M_std = np.std(transformed_M, axis=0)
@@ -54,6 +53,7 @@ alpha_0 = 10*np.pi/180
 # Function to calculate the number of maxima
 def Maxima(theta, n):
     return 2*T/lamda * (n-1)/n *alpha_0*theta
+
 
 # Curve fitting to determine the refractive index
 params1, pcov1 = op.curve_fit(Maxima, theta, M_mean, sigma = M_std)
