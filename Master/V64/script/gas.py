@@ -64,7 +64,7 @@ ax2.set_ylim(-1.5, 1.5)
 
 # Beschriftungen und Grenzen für den Pull-Plot
 ax2.set_ylabel("Pulls/$\sigma$")
-ax2.set_xlabel(r"$p\ $mb", fontsize=12)
+ax2.set_xlabel(r"$p/$mb", fontsize=12)
 ax2.grid(True, linestyle='--', alpha=0.7)
 
 # Layout anpassen

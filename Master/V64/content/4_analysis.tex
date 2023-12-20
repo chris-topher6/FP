@@ -1,9 +1,10 @@
 \section{Analysis}
 \subsection{Determination of the Contrast in dependency of the polarisation angel}
 
-As described in section \ref{sec:contrast} the minimum and maximum for 
-different polarisation angles are measured. The measured values are 
-listed in Table \ref{tab:contrast}.
+As described in Section \ref{sec:contrast}, the minimum 
+and maximum intensities for different polarization angles 
+are measured. The measured values are listed in Table 
+\ref{tab:contrast}.
 
 \begin{table}
     \centering
@@ -53,21 +54,24 @@ listed in Table \ref{tab:contrast}.
     \caption{Measured minimal and maximal intensity for different polarisation angles $\phi$.}
     \label{tab:contrast}
 \end{table}
-These values are used to calculate via Equation \eqref{eqn:contrast} the 
-Kontrast $K$ for both measurements. After that, the mean and the standarddiviation 
-of $K$ is calculated using \textit{numpy} \cite{numpy}. Figure \ref{fig:contrast}
-visualises these values of $K$. 
+These values are used to calculate the contrast $K$ for 
+both sets of measurements using Equation \eqref{eqn:contrast}. 
+Subsequently, the mean and the standard deviation of $K$ are 
+computed using \textit{numpy} \cite{numpy}. Figure 
+\ref{fig:contrast} visualizes these values of $K$.
 \\
-For the fit the function \eqref{eqn:contrast2} is modified with an constant off set angle $\delta$
-and a factor $K_0$ which describes the maximal contrast. Both parameters are free to variie in 
-the fit and compansate deviations from the experimental setup to the theory.
-The resulting function is 
+For the fit, the function described in Equation 
+\eqref{eqn:contrast2} is modified by introducing a constant 
+offset angle $\delta$ and a factor $K_0$ which represents the 
+maximal contrast. Both parameters are allowed to vary in the 
+fit to compensate for deviations between the experimental setup 
+and the theoretical model. The resulting function is 
 \begin{equation}
     K = 2 K_0|\sin{(\phi-\delta)}\cos{(\phi-\delta)}|
     \label{eqn:K_ana}
 \end{equation}
-The fit, which was done with \textit{scipy} \cite{scipy} is displayed in Figure \ref{fig:contrast}. 
-The values of the parameters are 
+The fit, conducted using \textit{scipy} \cite{scipy}, is displayed 
+in Figure \ref{fig:contrast}. The values of the parameters are 
 \begin{align*}
     K_0=\num{0.895\pm 0.015} \quad\text{and}\quad \delta=\SI{2.27\pm0.33}{\degree}.
 \end{align*}
@@ -75,32 +79,37 @@ The values of the parameters are
 \begin{figure}
     \centering 
     \includegraphics[width=0.8\textwidth]{build/contrast.pdf}
-    \caption{Averaged contrast $K$ in dependency of the polarisation angle $\phi$ with a fit of the function \eqref{eqn:K_ana}.}
+    \caption{Averaged contrast $K$ as a function of the polarization angle $\phi$ with a fit using the function described in Equation \eqref{eqn:K_ana}.}
     \label{fig:contrast}
 \end{figure}
 
-The maximum contrast was measured to be at $\phi=\SI{130}{\degree}$. From now on the polarisation
-angle is set to this value.
+The maximum contrast was measured at a polarization angle of 
+$\phi = \SI{130}{\degree}$. Henceforth, the polarization angle 
+is set to this value for subsequent measurements.
+
+
 
 \subsection{Determination of the refraction index of glass}
-For the measurement of the refraction index two glas planes are 
-placed into the beams of the interferometer as described in 
-section \ref{sec:measurement_glass}. Since the glass planes are 
-tilted by $\theta_0=\pm\SI{10}{\degree}$, Equation \eqref{eqn:delta}
-can be simplified with $\theta_1=-\theta_2=10$ to 
+For the measurement of the refractive index, two glass planes 
+are placed into the beams of the interferometer as described 
+in Section \ref{sec:measurement_glass}. Since the glass planes 
+are tilted by $\theta_0 = \pm \SI{10}{\degree}$, Equation 
+\eqref{eqn:delta} can be simplified with $\theta_1 = -\theta_2 = 10$ to 
 \begin{equation}
     \Delta\Phi(\theta)=2\pi\frac{T}{\lambda_\text{vac}}\frac{n-1}{n}\cdot 2\theta_0\theta.
 \end{equation}
-This results with the relation \eqref{eqn:M} in 
+This, combined with the relation \eqref{eqn:M}, results in 
 \begin{equation}
     M=\frac{T}{\lambda_\text{vac}}\frac{n-1}{n}\cdot 2\theta_0\theta
     \label{eqn:M_ana}
 \end{equation}
-with the wavelength $\lambda=\SI{632.99}{\nano\metre}$ of the laser and 
-the thickness $T=\SI{1}{\milli\metre}$ of the glass planes. Table \ref{tab:glass}
-shows the measured values for $M$ for different $\theta$. Figure \ref{fig:glass}
-shows the fit of the function \eqref{eqn:M_ana} and the means of $M$ with the 
-standarddiviation as errorbars. 
+with the wavelength $\lambda = \SI{632.99}{\nano\metre}$ of 
+the laser and the thickness $T = \SI{1}{\milli\metre}$ of 
+the glass planes. Table \ref{tab:glass} shows the measured 
+values for $M$ at different angles $\theta$. Figure 
+\ref{fig:glass} displays the fit of the function 
+\eqref{eqn:M_ana} to the mean values of $M$ with the 
+standard deviation as error bars.
 
 \begin{table}
     \centering
@@ -115,47 +124,49 @@ standarddiviation as errorbars.
         10 & 33 & 22 & 36 & 36 & 33 & 35 & 33 & 34 & 33 \\
         \bottomrule
     \end{tabular}
-    \caption{Measured values of the numbers of maxima $M$ which passed the center for different angles $\theta$.}
+    \caption{Measured values of the number of maxima $M$ that passed the center for different angles $\theta$.}
     \label{tab:glass}
 \end{table}
 
 \begin{figure}
     \centering 
     \includegraphics[width=0.8\textwidth]{build/n_glass.pdf}
-    \caption{Averaged numbers of maxima $M$ in dependency of the angle $\theta$ with a fit of the function \eqref{eqn:M_ana}.}
+    \caption{Averaged number of maxima $M$ as a function of the angle $\theta$ with a fit using the function described in Equation \eqref{eqn:M_ana}.}
     \label{fig:glass}
 \end{figure}
 
-The measured value of the refraction index results in 
+The measured value of the refractive index is determined to be 
 \begin{align*}
     n=\SI{1.485\pm 0.013}.
 \end{align*}
 
-\subsection{Determination of the refraction index of gas}
-The measured values for the number of maxima $M$ which passed the center 
-for different pressures are listed in Table \ref{tab:gas}. 
-Figure \ref{fig:gas} visualises the averaged values of $M$ in dependency
-of the pressure. 
+\subsection{Determination of the Refractive Index of Gas}
+The measured values for the number of maxima $M$ that passed 
+the center for different pressures are listed in Table \ref{tab:gas}. 
+Figure \ref{fig:gas} visualizes the averaged values of $M$ as a 
+function of the pressure $p$.
 
-In the case of $n\approx \num{1}$ the Lorentz-Lorenz law \eqref{eqn:LLL}
-can be simplified as 
+In the case where $n \approx \num{1}$, the Lorentz-Lorenz law 
+\eqref{eqn:LLL} can be simplified to 
 \begin{equation}
     n=\frac{3}{2}\frac{Ap}{RT}+1.
     \label{eqn:n_gas}
 \end{equation}
-With the measured room temperautre $T_\text{room}=\SI{21.8}{\celsius}$, $L=\SI{100.0\pm0.1}{\milli\metre}$
-this results in a linear function 
+With the measured room temperature $T_{\text{room}} = \SI{21.8}{\celsius}$ 
+and $L = \SI{100.0 \pm 0.1}{\milli\metre}$, this results in a linear function 
 \begin{equation}
     n(p)=\frac{3}{2}\frac{p}{RT_\text{room}\cdot a+b}
 \end{equation}
-where the parameters $a$ and $b$ are fitted to the data. The fit is showed 
-in Figure \ref{fig:gas}. The values of the parameters are 
+where the parameters $a$ and $b$ are fitted to the data. 
+The fit is shown in Figure \ref{fig:gas}. The values of the 
+parameters are 
 \begin{align*}
     a=\num{4.44 \pm 0.02} \quad\text{and}\quad b=\num{0.9999987 \pm 0.0000008}.
 \end{align*}
-Plugging this in Equation \eqref{eqn:n_gas} with a temperautre of 
-$T=\SI{15}{\degree}$ and $p=\SI{1013}{\hecto\pascal}$ leads to 
-the measured refraction index of air at standard atmosphere 
+Plugging these values into Equation \eqref{eqn:n_gas} with a 
+temperature of $T = \SI{15}{\degreeCelsius}$ and a pressure of 
+$p = \SI{1013}{\hecto\pascal}$ leads to the measured refractive 
+index of air at standard atmospheric conditions:
 \begin{equation*}
     n_\text{gas}=\SI{1.0002734\pm 0.0000015}.
 \end{equation*}
@@ -188,13 +199,13 @@ the measured refraction index of air at standard atmosphere
         1000 & 43 & 42 & 45 & 43 & 43 \\
         \bottomrule
     \end{tabular}
-    \caption{Measured values of the numbers of maxima $M$ which passed the center for different gas pressures $p$.}
+    \caption{Measured values of the number of maxima $M$ that passed the center for different gas pressures $p$.}
     \label{tab:gas}
 \end{table}
 
 \begin{figure}
     \centering 
     \includegraphics[width=0.8\textwidth]{build/n_air.pdf}
-    \caption{Averaged numbers of maxima $M$ in dependency of the gas pressure $p$ with a fit of the function \eqref{eqn:M_gas}.}
+    \caption{Averaged number of maxima $M$ as a function of the gas pressure $p$ with a fit using the function described in Equation \eqref{eqn:M_gas}.}
     \label{fig:gas}
 \end{figure}
