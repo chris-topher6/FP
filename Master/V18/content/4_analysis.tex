@@ -63,5 +63,26 @@ The relation~\ref{eqn:linear} with the determined parameters is used thoughout t
 \end{table}
 
 \subsection{Determination of the full energy detection probability}
+The amount of photons which fully penetrate and are registered by the detector is called the full energy
+detection probability $Q$. It is given by
+\begin{equation}
+Q = \frac{4 \pi}{\Omega}\frac{N}{AWt}.
+\label{eqn:fullenergy}
+\end{equation}
+$Q$ depends on the activity of the source $A$, the emission probability $W$, the number of measured photons $N$ and
+the measurement time $t$. $\Omega$ is the solid angle covered by the detector. For the germanium detector, $\Omega$ is given
+by
+\begin{equation}
+ \frac{\Omega}{4 \pi} = \frac{1}{2} \left( 1 - \frac{a}{\sqrt{a^{2} + r^{2}}} \right)
+ \label{eqn:solidangle}
+\end{equation}
+with the detectors radius $r$ and the distance to the probe $a$.
 To determine the full energy detection probability, first the activation of the $^{152}\text{Eu}$ source has to be estimated.
-The source had an activation of $\SI{4130 \pm 60}{\becquerel}$ on the 1.10.2000.
+The source had an activation of $A_{0} = \SI{4130 \pm 60}{\becquerel}$ on the 1.10.2000. According to the law of
+radioactivate decay,
+\begin{equation}
+ A(t) = A_{0} \cdot \exp{\left( - \frac{\ln{(2)}}{\tau} t \right)}
+ \label{eqn:activation}
+\end{equation}
+with the measurement time $t$ of $\SI{46}{\minutes}$ and $\SI{42}{\seconds}$ and half life $\tau$
+the activation on the day of the measurement of $^{152}\text{Eu}$ amounts to

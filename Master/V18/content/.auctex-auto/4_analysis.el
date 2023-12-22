@@ -5,6 +5,9 @@
     "fig:spectrumeu"
     "eqn:linear"
     "fig:calibrationfit"
-    "tab:calibrationvalues"))
+    "tab:calibrationvalues"
+    "eqn:fullenergy"
+    "eqn:solidangle"
+    "eqn:activation"))
  :latex)
 
