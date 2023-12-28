@@ -1,7 +1,7 @@
 # Variablen
 LATEX_COMPILER = lualatex
 BIB_COMPILER = biber
-PYTHON = python3
+PYTHON = python
 LATEX_FLAGS = -output-directory=build
 BIB_FLAGS = --output-directory build
 

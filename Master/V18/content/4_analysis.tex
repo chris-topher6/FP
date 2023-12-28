@@ -23,8 +23,8 @@ A linear fit
 \end{equation}
 is performed to get a relation between energy $E$ and channel number $K$. The resulting fit parameters are
 \begin{align*}
-	\alpha = & \num{0.218 \pm 0.000}    \\
-	\beta =  & \num{104.803 \pm 0.000}.
+	\alpha & =  \num{0.218 \pm 0.000}    \\
+	\beta & =  \num{104.803 \pm 0.000}.
 \end{align*}
 The fit is displayed in Figure~\ref{fig:calibrationfit}.
 \begin{figure}
@@ -77,12 +77,32 @@ by
  \label{eqn:solidangle}
 \end{equation}
 with the detectors radius $r$ and the distance to the probe $a$.
+
+\subsubsection{Determination of the probe activity}
+\label{subsubsec:activity}
 To determine the full energy detection probability, first the activation of the $^{152}\text{Eu}$ source has to be estimated.
 The source had an activation of $A_{0} = \SI{4130 \pm 60}{\becquerel}$ on the 1.10.2000. According to the law of
 radioactivate decay,
 \begin{equation}
- A(t) = A_{0} \cdot \exp{\left( - \frac{\ln{(2)}}{\tau} t \right)}
+ A(t) = A_{0} \cdot \exp{\left( - \frac{\ln{(2)}}{\tau} \cdot t \right)}
  \label{eqn:activation}
 \end{equation}
-with the measurement time $t$ of $\SI{46}{\minute}$ $\SI{42}{\second}$ and half life $\tau$
+with elapsed time $t$ and half life $\tau$,
 the activation on the day of the measurement of $^{152}\text{Eu}$ amounts to
+$A(t_{\text{M}}) = \SI{1262 \pm 18}{\becquerel}$.
+
+\subsubsection{Determination of the solid angle}
+\label{subsubsec:solidangle}
+The solid angle $\frac{Q}{4 \pi}$ covered by the germanium detector is given
+by equation~\ref{eqn:solidangle}. The detector cylinder has a width of
+$\SI{4.5}{\centi\meter}$. The source is located $\SI{6.91}{\centi\meter}$
+away from the aluminium cover; the cover itself is $\SI{1.5}{\centi\meter}$
+away from the detector. Therefore, the parameters in
+equation~\ref{eqn:solidangle} are given by
+\begin{align}
+ r & =  \SI{2.25}{\centi\meter} \\
+ a & =  \SI{8.91}{\centi\meter}.
+\label{eqn:params}
+\end{align}
+
+% measurement time $t$ of $\SI{46}{\minute}$ $\SI{42}{\second}$

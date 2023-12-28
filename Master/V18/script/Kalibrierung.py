@@ -58,8 +58,8 @@ if MAKE_PLOT == True:
 
     plt.ylim(europium["data"].min() - 30)
 
-    plt.xlabel(r"Kanäle")
-    plt.ylabel(r"Signale")
+    plt.xlabel(r"Channels")
+    plt.ylabel(r"Signals")
 
     plt.grid(True, linewidth=0.1)
     plt.tight_layout()
@@ -71,9 +71,10 @@ peaks.sort_values(by="peaks", inplace=True, ascending=True)
 europium_lit.sort_values(by="Energie", inplace=True, ascending=True)
 
 print(europium_lit["Energie"])
-print(europium_lit["Intensität"]) # Emissionswahrscheinlichkeit, keine Ahnung
+print(europium_lit["Intensität"])  # Emissionswahrscheinlichkeit, keine Ahnung
 # warum das bei laraweb intensity heißt
 print(peaks["peaks"])
+
 
 def linear(K, alpha, beta):
     """Fit zwischen Kanalnummer und Energie"""

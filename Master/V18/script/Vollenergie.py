@@ -2,10 +2,20 @@
 
 from uncertainties.umath import *
 from uncertainties import ufloat
+from datetime import datetime
 
-AKTIVITÄT = ufloat(4130, 60) # Bq, am 1.10.2000
-MESSZEIT = 2802 # s
-HALBWERTSZEIT_EU = (13.522)*365*24*60*60 # Jahre, in s umgerechnet
+start_aktivität = ufloat(4130, 60)  # Bq, am 1.10.2000
+
+start_date = datetime(2000, 10, 1)
+end_date = datetime(2023, 11, 20)
+
+# Differenz zwischen den Daten
+time_difference = end_date - start_date
+
+# Umwandlung der Zeitdifferenz in Sekunden
+time_difference_in_seconds = time_difference.total_seconds()
+
+halbwertszeit_eu = (13.522) * 365.25 * 24 * 60 * 60  # Jahre, in s umgerechnet
 
 
 def aktivitätsgesetz(t, A0, tau):
@@ -13,4 +23,7 @@ def aktivitätsgesetz(t, A0, tau):
     return A
 
 
-print(f"Die Aktivität am Messtag")
+end_aktivität = aktivitätsgesetz(
+    time_difference_in_seconds, start_aktivität, halbwertszeit_eu
+)
+print(f"Die Aktivität am Messtag betrug {end_aktivität}")

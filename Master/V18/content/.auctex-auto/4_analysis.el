@@ -8,6 +8,9 @@
     "tab:calibrationvalues"
     "eqn:fullenergy"
     "eqn:solidangle"
-    "eqn:activation"))
+    "subsubsec:activity"
+    "eqn:activation"
+    "subsubsec:solidangle"
+    "eqn:params"))
  :latex)
 
