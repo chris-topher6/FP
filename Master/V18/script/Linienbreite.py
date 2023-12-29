@@ -7,6 +7,7 @@ import matplotlib
 import iminuit
 from iminuit import Minuit
 from iminuit.cost import LeastSquares
+from scipy.stats import truncnorm, truncexpon
 
 matplotlib.rcParams.update({"font.size": 18})
 
@@ -105,3 +106,8 @@ peaks = pd.read_csv("./build/peaks.csv")
 
 print(europium_raw)
 print(peaks)
+
+
+def gauss_exp_cdf(xe, s, b, mu, sigma, tau):
+    """Ja nh"""
+    return s * truncnorm.cdf(xe, *xr, mu, sigma) + b * truncexpon.cdf(xe, *xr, 0, tau)
