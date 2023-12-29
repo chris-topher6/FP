@@ -11,6 +11,7 @@
     "subsubsec:activity"
     "eqn:activation"
     "subsubsec:solidangle"
-    "eqn:params"))
+    "eqn:params"
+    "subsubsec:determinationfep"))
  :latex)
 

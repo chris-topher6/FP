@@ -62,7 +62,7 @@ The relation~\ref{eqn:linear} with the determined parameters is used thoughout t
 	\end{tabular}
 \end{table}
 
-\subsection{Determination of the full energy detection probability}
+\subsection{The full energy detection probability}
 The amount of photons which fully penetrate and are registered by the detector is called the full energy
 detection probability $Q$. It is given by
 \begin{equation}
@@ -70,8 +70,9 @@ Q = \frac{4 \pi}{\Omega}\frac{N}{AWt}.
 \label{eqn:fullenergy}
 \end{equation}
 $Q$ depends on the activity of the source $A$, the emission probability $W$, the number of measured photons $N$ and
-the measurement time $t$. $\Omega$ is the solid angle covered by the detector. For the germanium detector, $\Omega$ is given
-by
+the measurement time $t$. $N$ and $W$ are given in
+table~\ref{tab:calibrationvalues}. $\Omega$ is the solid angle covered by the
+detector. For the germanium detector, $\Omega$ is given by
 \begin{equation}
  \frac{\Omega}{4 \pi} = \frac{1}{2} \left( 1 - \frac{a}{\sqrt{a^{2} + r^{2}}} \right)
  \label{eqn:solidangle}
@@ -93,7 +94,7 @@ $A(t_{\text{M}}) = \SI{1262 \pm 18}{\becquerel}$.
 
 \subsubsection{Determination of the solid angle}
 \label{subsubsec:solidangle}
-The solid angle $\frac{Q}{4 \pi}$ covered by the germanium detector is given
+The solid angle $\frac{\Omega}{4 \pi}$ covered by the germanium detector is given
 by equation~\ref{eqn:solidangle}. The detector cylinder has a width of
 $\SI{4.5}{\centi\meter}$. The source is located $\SI{6.91}{\centi\meter}$
 away from the aluminium cover; the cover itself is $\SI{1.5}{\centi\meter}$
@@ -104,5 +105,16 @@ equation~\ref{eqn:solidangle} are given by
  a & =  \SI{8.91}{\centi\meter}.
 \label{eqn:params}
 \end{align}
+Using equation~\ref{eqn:solidangle} and~\ref{eqn:params} the solid angle
+amounts to
+\begin{equation}
+\frac{\Omega}{4 \pi} = 0.01522.
+\end{equation}
+
+\subsubsection{Determination of the full energy detection probability}
+\label{subsubsec:determinationfep}
+The estimation of the full energy detection probability is performed for
+all measured spectral lines with more than $\SI{150}{\kilo\electronvolt}$,
+which is the limit of the detector sensitivity.
 
 % measurement time $t$ of $\SI{46}{\minute}$ $\SI{42}{\second}$
