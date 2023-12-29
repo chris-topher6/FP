@@ -72,7 +72,7 @@ plt.bar(
     width=1.1,
     label=r"$^{152}\mathrm{Eu}$",
 )
-plt.plot(peaks["peaks"], peaks["peak_heights"], "x", color="orange")
+plt.plot(peaks["peaks"], peaks["peak_heights"], "x", color="orange", label="Peaks")
 
 plt.xticks(np.linspace(0, 8191, 10))
 plt.yticks(np.linspace(europium["data"].min(), europium["data"].max(), 10))
@@ -83,6 +83,7 @@ plt.xlabel(r"Channels")
 plt.ylabel(r"Signals")
 
 plt.grid(True, linewidth=0.1)
+plt.legend()
 plt.tight_layout()
 plt.savefig("./build/Europium-Peaks.pdf")
 plt.clf()

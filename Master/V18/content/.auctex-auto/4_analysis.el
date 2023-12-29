@@ -2,6 +2,8 @@
  "4_analysis"
  (lambda ()
    (LaTeX-add-labels
+    "fig:background"
+    "fig:eubackground"
     "fig:spectrumeu"
     "eqn:linear"
     "fig:calibrationfit"

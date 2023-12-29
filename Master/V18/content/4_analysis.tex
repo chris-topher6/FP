@@ -1,13 +1,35 @@
 \section{Analysis}
 \subsection{Detector Calibration}
-To calibrate the germanium detector, the spectrum of an $^{152}\text{Eu}$ source is measured;
-this can be seen in Figure~\ref{fig:spectrumeu}.
+To calibrate the germanium detector, the spectrum of an $^{152}\text{Eu}$
+source is measured; this can be seen in Figure~\ref{fig:spectrumeu}. A
+background measurement is conducted and removed from the $^{152}\text{Eu}$
+measurement. For this, the background measurement is scaled according to
+the difference in measurement time compared to the $^{152}\text{Eu}$
+measurement. The background can be seen in figure~\ref{fig:background} and
+the scaled background as well as the $^{152}\text{Eu}$ measurement in
+figure~\ref{fig:eubackground}.
+\begin{figure}
+	\centering
+	\begin{adjustbox}{width=1.4\textwidth, center}
+		\includegraphics[scale=0.3]{./build/Untergrund.pdf}
+	\end{adjustbox}
+	\caption{Spectrum of background radiation.}
+	\label{fig:background}
+\end{figure}
+\begin{figure}
+	\centering
+	\begin{adjustbox}{width=1.4\textwidth, center}
+		\includegraphics[scale=0.3]{./build/Europium-Untergrund.pdf}
+	\end{adjustbox}
+	\caption{$^{152}\text{Eu}$ measurement and scaled spectrum of background radiation.}
+	\label{fig:eubackground}
+\end{figure}
 \begin{figure}
 	\centering
 	\begin{adjustbox}{width=1.4\textwidth, center}
 		\includegraphics[scale=0.3]{./build/Europium-Peaks.pdf}
 	\end{adjustbox}
-	\caption{Spectrum of an $^{152}\text{Eu}$ source.}
+	\caption{Spectrum of an $^{152}\text{Eu}$ source and its most prominent peaks.}
 	\label{fig:spectrumeu}
 \end{figure}
 \noindent
@@ -24,7 +46,7 @@ A linear fit
 is performed to get a relation between energy $E$ and channel number $K$. The resulting fit parameters are
 \begin{align*}
 	\alpha & =  \num{0.218 \pm 0.000}    \\
-	\beta & =  \num{104.803 \pm 0.000}.
+	\beta & =  \num{104.803 \pm 0.000292}.
 \end{align*}
 The fit is displayed in Figure~\ref{fig:calibrationfit}.
 \begin{figure}
@@ -36,7 +58,8 @@ The fit is displayed in Figure~\ref{fig:calibrationfit}.
 	\label{fig:calibrationfit}
 \end{figure}
 \noindent
-The relation~\ref{eqn:linear} with the determined parameters is used thoughout this analysis for energy measurements.
+The relation~\ref{eqn:linear} with the determined parameters is used thoughout this analysis for energy measurements. The fit is performed
+using the \texttt{iminuit}~\cite{iminuit} python package.
 \begin{table}[H]
 	\centering
 	\caption{Energy and emission probability of the full energy peaks as well as their assigned channel number~\cite{laraweb}.}
