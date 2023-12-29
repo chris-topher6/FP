@@ -93,3 +93,15 @@ plt.legend()
 plt.tight_layout()
 plt.savefig("./build/Europium-Untergrund.pdf")
 plt.clf()
+
+# Untergrund entfernen
+europium_raw["daten"] = europium_raw["daten"] - untergrund["daten"]
+
+# Negative Werte in einem Histogramm sind unphysikalisch
+europium_raw["daten"] = europium_raw["daten"].clip(lower=0)
+
+# Vorher bestimmte Peaks einlesen
+peaks = pd.read_csv("./build/peaks.csv")
+
+print(europium_raw)
+print(peaks)

@@ -45,8 +45,8 @@ A linear fit
 \end{equation}
 is performed to get a relation between energy $E$ and channel number $K$. The resulting fit parameters are
 \begin{align*}
-	\alpha & =  \num{0.218 \pm 0.000}    \\
-	\beta & =  \num{104.803 \pm 0.000292}.
+	\alpha & =  \num{0.218 \pm 0.000}       \\
+	\beta  & =  \num{104.803 \pm 0.000292}.
 \end{align*}
 The fit is displayed in Figure~\ref{fig:calibrationfit}.
 \begin{figure}
@@ -89,16 +89,16 @@ using the \texttt{iminuit}~\cite{iminuit} python package.
 The amount of photons which fully penetrate and are registered by the detector is called the full energy
 detection probability $Q$. It is given by
 \begin{equation}
-Q = \frac{4 \pi}{\Omega}\frac{N}{AWt}.
-\label{eqn:fullenergy}
+	Q = \frac{4 \pi}{\Omega}\frac{N}{APt}.
+	\label{eqn:fullenergy}
 \end{equation}
-$Q$ depends on the activity of the source $A$, the emission probability $W$, the number of measured photons $N$ and
-the measurement time $t$. $N$ and $W$ are given in
+$Q$ depends on the activity of the source $A$, the emission probability $P$, the number of measured photons $N$ and
+the measurement time $t$. $N$ and $P$ are given in
 table~\ref{tab:calibrationvalues}. $\Omega$ is the solid angle covered by the
 detector. For the germanium detector, $\Omega$ is given by
 \begin{equation}
- \frac{\Omega}{4 \pi} = \frac{1}{2} \left( 1 - \frac{a}{\sqrt{a^{2} + r^{2}}} \right)
- \label{eqn:solidangle}
+	\frac{\Omega}{4 \pi} = \frac{1}{2} \left( 1 - \frac{a}{\sqrt{a^{2} + r^{2}}} \right)
+	\label{eqn:solidangle}
 \end{equation}
 with the detectors radius $r$ and the distance to the probe $a$.
 
@@ -108,8 +108,8 @@ To determine the full energy detection probability, first the activation of the 
 The source had an activation of $A_{0} = \SI{4130 \pm 60}{\becquerel}$ on the 1.10.2000. According to the law of
 radioactivate decay,
 \begin{equation}
- A(t) = A_{0} \cdot \exp{\left( - \frac{\ln{(2)}}{\tau} \cdot t \right)}
- \label{eqn:activation}
+	A(t) = A_{0} \cdot \exp{\left( - \frac{\ln{(2)}}{\tau} \cdot t \right)}
+	\label{eqn:activation}
 \end{equation}
 with elapsed time $t$ and half life $\tau$,
 the activation on the day of the measurement of $^{152}\text{Eu}$ amounts to
@@ -124,14 +124,14 @@ away from the aluminium cover; the cover itself is $\SI{1.5}{\centi\meter}$
 away from the detector. Therefore, the parameters in
 equation~\ref{eqn:solidangle} are given by
 \begin{align}
- r & =  \SI{2.25}{\centi\meter} \\
- a & =  \SI{8.91}{\centi\meter}.
-\label{eqn:params}
+	r & =  \SI{2.25}{\centi\meter}  \\
+	a & =  \SI{8.91}{\centi\meter}.
+	\label{eqn:params}
 \end{align}
 Using equation~\ref{eqn:solidangle} and~\ref{eqn:params} the solid angle
 amounts to
 \begin{equation}
-\frac{\Omega}{4 \pi} = 0.01522.
+	\frac{\Omega}{4 \pi} = 0.01522.
 \end{equation}
 
 \subsubsection{Determination of the full energy detection probability}
