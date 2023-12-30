@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 import matplotlib
 import iminuit
 from iminuit import Minuit
-from iminuit.cost import LeastSquares
-from scipy.stats import truncnorm, truncexpon
+from iminuit.cost import ExtendedBinnedNLL
+from scipy.stats import norm
 
 matplotlib.rcParams.update({"font.size": 18})
 
@@ -15,21 +15,21 @@ SKIP_ANFANG = 12
 SKIP_ENDE = 14
 
 # Einlesen der Kalibrations- und Untergrundmessung
-europium_raw = pd.read_csv("./data/Eu1.Spe", skiprows=SKIP_ANFANG, header=None)
-europium_raw.columns = ["daten"]
+europium = pd.read_csv("./data/Eu1.Spe", skiprows=SKIP_ANFANG, header=None)
+europium.columns = ["daten"]
 untergrund = pd.read_csv("./data/Untergrund.Spe", skiprows=SKIP_ANFANG, header=None)
 untergrund.columns = ["daten"]
 
 # Rotz am Ende entfernen
-europium_raw = europium_raw.iloc[:-SKIP_ENDE]
+europium = europium.iloc[:-SKIP_ENDE]
 untergrund = untergrund.iloc[:-SKIP_ENDE]
 
 # Sicherstellen, dass die Spalte "data" numerische Werte enthält
-europium_raw["daten"] = pd.to_numeric(europium_raw["daten"], errors="coerce")
+europium["daten"] = pd.to_numeric(europium["daten"], errors="coerce")
 untergrund["daten"] = pd.to_numeric(untergrund["daten"], errors="coerce")
 
 # Index hinzufügen
-europium_raw["index"] = europium_raw.index
+europium["index"] = europium.index
 untergrund["index"] = untergrund.index
 
 # Plot der Untergrundmessung
@@ -45,9 +45,9 @@ plt.bar(
 )
 
 plt.xticks(np.linspace(0, 8191, 10))
-plt.yticks(np.linspace(europium_raw["daten"].min(), europium_raw["daten"].max(), 10))
+plt.yticks(np.linspace(europium["daten"].min(), europium["daten"].max(), 10))
 
-plt.ylim(europium_raw["daten"].min() - 30)
+plt.ylim(europium["daten"].min() - 30)
 
 plt.xlabel(r"Channels")
 plt.ylabel(r"Signals")
@@ -66,8 +66,8 @@ untergrund["daten"] = untergrund["daten"] * (2804 / 76353)
 plt.figure(figsize=(21, 9))
 
 plt.bar(
-    europium_raw["index"],
-    europium_raw["daten"],
+    europium["index"],
+    europium["daten"],
     linewidth=2,
     width=1.1,
     label=r"$^{152}\mathrm{Eu}$",
@@ -82,9 +82,9 @@ plt.bar(
 )
 
 plt.xticks(np.linspace(0, 8191, 10))
-plt.yticks(np.linspace(europium_raw["daten"].min(), europium_raw["daten"].max(), 10))
+plt.yticks(np.linspace(europium["daten"].min(), europium["daten"].max(), 10))
 
-plt.ylim(europium_raw["daten"].min() - 30)
+plt.ylim(europium["daten"].min() - 30)
 
 plt.xlabel(r"Channels")
 plt.ylabel(r"Signals")
@@ -96,18 +96,51 @@ plt.savefig("./build/Europium-Untergrund.pdf")
 plt.clf()
 
 # Untergrund entfernen
-europium_raw["daten"] = europium_raw["daten"] - untergrund["daten"]
+europium["daten"] = europium["daten"] - untergrund["daten"]
 
 # Negative Werte in einem Histogramm sind unphysikalisch
-europium_raw["daten"] = europium_raw["daten"].clip(lower=0)
+europium["daten"] = europium["daten"].clip(lower=0)
 
 # Vorher bestimmte Peaks einlesen
 peaks = pd.read_csv("./build/peaks.csv")
 
-print(europium_raw)
+print(europium)
 print(peaks)
 
+bin_edges = np.arange(len(europium) + 1)
 
-def gauss_exp_cdf(xe, s, b, mu, sigma, tau):
-    """Ja nh"""
-    return s * truncnorm.cdf(xe, *xr, mu, sigma) + b * truncexpon.cdf(xe, *xr, 0, tau)
+
+def scaled_gauss_cdf(x, s, mu, sigma):
+    """
+    Eine skalierte kumulative Normalverteilungsfunktion,
+    die an die Signale angepasst werden soll.
+
+    Parameter:
+    x: array-like, bin edges; muss len(n) + 1 sein (n: Anzahl bins)
+    s: Skalierungsparameter der Funktion
+    mu: Erwartungswert der Normalverteilung
+    sigma: Standardabweichung der Normalverteilung
+    """
+    return s * norm(mu, sigma).cdf(x)
+
+
+plt.bar(
+    europium["index"],
+    europium["daten"],
+    linewidth=2,
+    width=1.1,
+    color="blue",
+    label=r"$^{152}\mathrm{Eu}$",
+)
+
+for i in range(len(peaks)):
+    maske = (europium["daten"] >= peaks[i] - 100) & (
+        europium["daten"] <= peaks[i] + 100
+    )
+    europium_cut = europium[maske]
+    cost = ExtendedBinnedNLL(europium_cut["daten"], bin_edges, scaled_gauss_cdf)
+    m = Minuit(cost, s=1, mu=0, sigma=1)
+    m.limits["s", "mu", "sigma"] = (0, None)
+    m.migrad()
+    m.hesse()
+    plt.stairs(np.diff(scaled_gauss_cdf(!!!)))
