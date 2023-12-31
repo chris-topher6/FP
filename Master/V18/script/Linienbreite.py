@@ -157,7 +157,7 @@ for i in range(len(peaks)):
         linewidth=2,
         width=1.1,
         color="blue",
-        label=r"$^{152}\mathrm{Eu}$",
+        label=r"$^{152}\mathrm{Eu}$" + f"-Peak {i+1}",
     )
     plt.stairs(
         np.diff(scaled_gauss_cdf(cut_bin_edges, *m.values)),
