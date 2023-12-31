@@ -104,11 +104,6 @@ europium["daten"] = europium["daten"].clip(lower=0)
 # Vorher bestimmte Peaks einlesen
 peaks = pd.read_csv("./build/peaks.csv")
 
-print(europium)
-print(peaks)
-
-bin_edges = np.arange(len(europium) + 1)
-
 
 def scaled_gauss_cdf(x, s, mu, sigma):
     """
@@ -124,23 +119,57 @@ def scaled_gauss_cdf(x, s, mu, sigma):
     return s * norm(mu, sigma).cdf(x)
 
 
-plt.bar(
-    europium["index"],
-    europium["daten"],
-    linewidth=2,
-    width=1.1,
-    color="blue",
-    label=r"$^{152}\mathrm{Eu}$",
-)
-
 for i in range(len(peaks)):
-    maske = (europium["daten"] >= peaks[i] - 100) & (
-        europium["daten"] <= peaks[i] + 100
+    # Bereich um den jeweiligen Peak herum ausschneiden
+    maske = (europium["index"] >= peaks["peaks"][i] - 50) & (
+        europium["index"] <= peaks["peaks"][i] + 50
     )
     europium_cut = europium[maske]
-    cost = ExtendedBinnedNLL(europium_cut["daten"], bin_edges, scaled_gauss_cdf)
-    m = Minuit(cost, s=1, mu=0, sigma=1)
-    m.limits["s", "mu", "sigma"] = (0, None)
+
+    # Erstelle Bin-Kanten für den abgeschnittenen Datensatz
+    cut_bin_edges = np.arange(
+        europium_cut["index"].min(), europium_cut["index"].max() + 2
+    )
+
+    cost = ExtendedBinnedNLL(europium_cut["daten"], cut_bin_edges, scaled_gauss_cdf)
+
+    # Schätze s über die maximale Höhe des Peaks
+    peak_height = europium_cut["daten"].max()
+
+    # Als Startwert für mu: Position des Peaks
+    peak_position = peaks["peaks"][i]
+
+    # Schätze die Breite des Peaks (sigma)
+    peak_width = (europium_cut["index"].max() - europium_cut["index"].min()) * 0.1
+
+    m = Minuit(cost, s=peak_height, mu=peak_position, sigma=peak_width)
+    m.limits["s", "mu", "sigma"] = (0, 10000)
     m.migrad()
     m.hesse()
-    plt.stairs(np.diff(scaled_gauss_cdf(!!!)))
+
+    print(m.values)
+    print(m.errors)
+
+    # Plot des Fits als Stufenfunktion
+    plt.bar(
+        europium_cut["index"],
+        europium_cut["daten"],
+        linewidth=2,
+        width=1.1,
+        color="blue",
+        label=r"$^{152}\mathrm{Eu}$",
+    )
+    plt.stairs(
+        np.diff(scaled_gauss_cdf(cut_bin_edges, *m.values)),
+        # * europium_cut["daten"].sum(),
+        cut_bin_edges,
+        label="fit (steps)",
+        color="orange",
+        linewidth=2.2,
+    )
+    plt.legend()
+    plt.xlabel(r"$\mathrm{Channels}$")
+    plt.ylabel(r"$\mathrm{Energy}/\mathrm{keV}$")
+    plt.tight_layout()
+    plt.savefig(f"./build/Europium-Fit-Peak{i}.pdf")
+    plt.clf()
