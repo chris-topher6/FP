@@ -170,11 +170,9 @@ def fitmaker_2000(
     europium_cut = europium[maske]
 
     # Kanten der Bins für den abgeschnittenen Datensatz
-    cut_bin_edges = np.arange(europium_cut["index"].min(), europium["index"].max() + 2)
-    print(len(cut_bin_edges))
-    print(len(europium["daten"]))
-
-    # TODO Problem der falschen Länge der bin Kanten lösen, in der Schleife hats noch funktioniert
+    cut_bin_edges = np.arange(
+        europium_cut["index"].min(), europium_cut["index"].max() + 2
+    )
 
     cost = ExtendedBinnedNLL(europium_cut["daten"], cut_bin_edges, scaled_gauss_cdf)
 
@@ -198,6 +196,21 @@ def fitmaker_2000(
     print(m.values)
     print(m.errors)
 
+    # Plot der Daten + Fit + Pulls
+    fig, axs = plt.subplots(
+        2, sharex=True, gridspec_kw={"hspace": 0, "height_ratios": [3, 1]}
+    )
+    axs[0].errorbar(
+        europium_cut["index"],
+        europium_cut["daten"],
+        yerr=np.sqrt(europium_cut["daten"]),
+        fmt="o",
+        color="royalblue"
+        label=r"$^{152}\mathrm{Eu}$" + f"-Peak {peak_idx+1}",
+    )
+
+    # TODO Verbesserte Darstellung mit Pull fertig schreiben
+
     # Plot des Fits als Stufenfunktion
     plt.bar(
         europium_cut["index"],
@@ -209,7 +222,6 @@ def fitmaker_2000(
     )
     plt.stairs(
         np.diff(scaled_gauss_cdf(cut_bin_edges, *m.values)),
-        # * europium_cut["daten"].sum(),
         cut_bin_edges,
         label="fit (steps)",
         color="orange",
