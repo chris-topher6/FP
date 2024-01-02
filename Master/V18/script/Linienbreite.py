@@ -10,7 +10,7 @@ from iminuit.cost import ExtendedBinnedNLL
 from scipy.stats import norm
 from typing import Tuple
 
-matplotlib.rcParams.update({"font.size": 7})
+matplotlib.rcParams.update({"font.size": 5})
 
 SKIP_ANFANG = 12
 SKIP_ENDE = 14
@@ -193,12 +193,9 @@ def fitmaker_2000(
     m.migrad()
     m.hesse()
 
-    print(m.values)
-    print(m.errors)
-
     # Plot der Daten + Fit + Pulls
     fig, axs = plt.subplots(
-        2, sharex=True, gridspec_kw={"hspace": 0, "height_ratios": [3, 1]}
+        2, sharex=True, gridspec_kw={"hspace": 0.05, "height_ratios": [3, 1]}
     )
     axs[0].errorbar(
         europium_cut["index"],
@@ -212,7 +209,7 @@ def fitmaker_2000(
         np.diff(scaled_gauss_cdf(cut_bin_edges, *m.values)),
         cut_bin_edges,
         label="fit (steps)",
-        color="orangered",
+        color="orange",
         linewidth=2.2,
     )
     axs[0].legend()
@@ -226,19 +223,19 @@ def fitmaker_2000(
     pull = (europium_cut["daten"] - n_model) / n_error
 
     axs[1].stairs(pull, cut_bin_edges, fill=True)
-    axs[1].axhline(0, color="orangered", linewidth=0.8)
+    axs[1].axhline(0, color="orange", linewidth=0.8)
     axs[1].set_xlabel(r"$\mathrm{Channels}$")
     axs[1].set_ylabel(r"$\mathrm{Pull}/\sigma$")
     axs[1].set_yticks(
         np.linspace(
             int(pull.min() - 0.1 * pull.min()),
-            5,
             int(pull.max() + 0.1 * pull.max()),
+            10,
         )
     )
     # axs[1].grid(True)
 
-    plt.tight_layout()
+    # plt.tight_layout()
     plt.savefig(f"./build/Europium-Fit-Peak{peak_idx+1}.pdf")
     plt.clf()
 
