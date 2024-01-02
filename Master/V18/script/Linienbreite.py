@@ -4,11 +4,15 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
+import matplotlib.ticker as ticker
 import iminuit
 from iminuit import Minuit
 from iminuit.cost import ExtendedBinnedNLL
+import uncertainties
+from uncertainties import ufloat
 from scipy.stats import norm
 from typing import Tuple
+
 
 matplotlib.rcParams.update({"font.size": 5})
 
@@ -193,6 +197,19 @@ def fitmaker_2000(
     m.migrad()
     m.hesse()
 
+    # Bestimme Linieninhalt
+    # print(np.sum(cost.n))
+    # print(cost.scaled_cdf(cut_bin_edges, *m.values))
+    # print(f"sigma = " + str(m.values["sigma"]) + "+/-" + str(m.errors["sigma"]))
+
+    us = ufloat(m.values["s"], m.errors["s"])
+    umu = ufloat(m.values["mu"], m.errors["mu"])
+    usigma = ufloat(m.values["sigma"], m.errors["sigma"])
+
+    # So kann man auch irgendwie die Pulls berechnen, weiß nur nicht ganz welche Params da rein
+    # müssen
+    # print(cost.pulls(*m.values))
+
     # Plot der Daten + Fit + Pulls
     fig, axs = plt.subplots(
         2, sharex=True, gridspec_kw={"hspace": 0.05, "height_ratios": [3, 1]}
@@ -208,7 +225,7 @@ def fitmaker_2000(
     axs[0].stairs(
         np.diff(scaled_gauss_cdf(cut_bin_edges, *m.values)),
         cut_bin_edges,
-        label="fit (steps)",
+        label="fit",
         color="orange",
         linewidth=2.2,
     )
@@ -226,10 +243,11 @@ def fitmaker_2000(
     axs[1].axhline(0, color="orange", linewidth=0.8)
     axs[1].set_xlabel(r"$\mathrm{Channels}$")
     axs[1].set_ylabel(r"$\mathrm{Pull}/\sigma$")
+    axs[1].yaxis.set_major_formatter(ticker.FormatStrFormatter("%.1f"))
     axs[1].set_yticks(
         np.linspace(
-            int(pull.min() - 0.1 * pull.min()),
-            int(pull.max() + 0.1 * pull.max()),
+            int(pull.min() - 1),
+            int(pull.max() + 1),
             10,
         )
     )
@@ -240,5 +258,11 @@ def fitmaker_2000(
     plt.clf()
 
 
+grenzen = {
+    "L": [5, 8, 8, 10, 12, 8, 11, 12, 12, 15, 12, 15, 18],
+    "R": [12, 12, 7, 8, 12, 9, 15, 12, 10, 15, 16, 15, 12],
+}
+grenzen = pd.DataFrame(data=grenzen)
+
 for i in range(len(peaks)):
-    fitmaker_2000(20, 20, i)
+    fitmaker_2000(grenzen["L"][i], grenzen["R"][i], i)
