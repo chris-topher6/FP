@@ -10,7 +10,7 @@ from iminuit.cost import ExtendedBinnedNLL
 from scipy.stats import norm
 from typing import Tuple
 
-matplotlib.rcParams.update({"font.size": 18})
+matplotlib.rcParams.update({"font.size": 7})
 
 SKIP_ANFANG = 12
 SKIP_ENDE = 14
@@ -205,33 +205,41 @@ def fitmaker_2000(
         europium_cut["daten"],
         yerr=np.sqrt(europium_cut["daten"]),
         fmt="o",
-        color="royalblue"
+        color="royalblue",
         label=r"$^{152}\mathrm{Eu}$" + f"-Peak {peak_idx+1}",
     )
-
-    # TODO Verbesserte Darstellung mit Pull fertig schreiben
-
-    # Plot des Fits als Stufenfunktion
-    plt.bar(
-        europium_cut["index"],
-        europium_cut["daten"],
-        linewidth=2,
-        width=1.1,
-        color="blue",
-        label=r"$^{152}\mathrm{Eu}$" + f"-Peak {peak_idx+1}",
-    )
-    plt.stairs(
+    axs[0].stairs(
         np.diff(scaled_gauss_cdf(cut_bin_edges, *m.values)),
         cut_bin_edges,
         label="fit (steps)",
-        color="orange",
+        color="orangered",
         linewidth=2.2,
     )
-    plt.legend()
-    plt.xlabel(r"$\mathrm{Channels}$")
-    plt.ylabel(r"$\mathrm{Energy}/\mathrm{keV}$")
+    axs[0].legend()
+    axs[0].set_ylabel("Counts")
+    # axs[0].grid(True)
+
+    n_model = np.diff(scaled_gauss_cdf(cut_bin_edges, *m.values))
+    n_error = np.sqrt(n_model)
+
+    # Pull berechnen
+    pull = (europium_cut["daten"] - n_model) / n_error
+
+    axs[1].stairs(pull, cut_bin_edges, fill=True)
+    axs[1].axhline(0, color="orangered", linewidth=0.8)
+    axs[1].set_xlabel(r"$\mathrm{Channels}$")
+    axs[1].set_ylabel(r"$\mathrm{Pull}/\sigma$")
+    axs[1].set_yticks(
+        np.linspace(
+            int(pull.min() - 0.1 * pull.min()),
+            5,
+            int(pull.max() + 0.1 * pull.max()),
+        )
+    )
+    # axs[1].grid(True)
+
     plt.tight_layout()
-    plt.savefig(f"./build/Europium-Fit-Peak{peak_idx}.pdf")
+    plt.savefig(f"./build/Europium-Fit-Peak{peak_idx+1}.pdf")
     plt.clf()
 
 
