@@ -10,6 +10,7 @@ from iminuit import Minuit
 from iminuit.cost import ExtendedBinnedNLL
 import uncertainties
 from uncertainties import ufloat
+from uncertainties.umath import sqrt
 from scipy.stats import norm
 from typing import Tuple
 
@@ -128,6 +129,14 @@ def scaled_gauss_cdf(x, s, mu, sigma):
     return s * norm(mu, sigma).cdf(x)
 
 
+def scaled_gauss_int(s, sigma):
+    """
+    Integral einer skalierten Normalverteilung
+    """
+    return s * sigma * np.sqrt(2 * np.pi)  # Katrins Weg
+    # return s * sqrt(sigma)
+
+
 def fitmaker_2000(
     abstand_links: int,
     abstand_rechts: int,
@@ -178,6 +187,9 @@ def fitmaker_2000(
         europium_cut["index"].min(), europium_cut["index"].max() + 2
     )
 
+    # Kanten der Bins für den vollständigen Datensatz
+    bin_edges = np.arange(europium["index"].min(), europium["index"].max() + 2)
+
     cost = ExtendedBinnedNLL(europium_cut["daten"], cut_bin_edges, scaled_gauss_cdf)
 
     if startwert_schätzen == True:
@@ -198,13 +210,22 @@ def fitmaker_2000(
     m.hesse()
 
     # Bestimme Linieninhalt
-    # print(np.sum(cost.n))
-    # print(cost.scaled_cdf(cut_bin_edges, *m.values))
+    print(f"Peak {peak_idx +1}")
+    print("---")
+    print(np.sum(cost.ndata))
+    print("---")
+    print(np.sum(cost.n))  # so gehts aber halt ohne Fehlerfortpflanzung
+    print("---")
+    print(np.sum(cost.scaled_cdf(cut_bin_edges, *m.values)))
     # print(f"sigma = " + str(m.values["sigma"]) + "+/-" + str(m.errors["sigma"]))
+    print("---")
+    print(np.sum(cost.scaled_cdf(bin_edges, *m.values)))
 
     us = ufloat(m.values["s"], m.errors["s"])
-    umu = ufloat(m.values["mu"], m.errors["mu"])
+    # umu = ufloat(m.values["mu"], m.errors["mu"])
     usigma = ufloat(m.values["sigma"], m.errors["sigma"])
+
+    N = scaled_gauss_int(us, usigma)
 
     # So kann man auch irgendwie die Pulls berechnen, weiß nur nicht ganz welche Params da rein
     # müssen
@@ -233,6 +254,18 @@ def fitmaker_2000(
     axs[0].set_ylabel("Counts")
     # axs[0].grid(True)
 
+    # Chi^2 Test des Fits auf Abbildung schreiben
+    fit_info = [
+        f"$\\chi^2$/$n_\\mathrm{{dof}}$ = {m.fval:.1f} / {m.ndof:.0f} = {m.fmin.reduced_chi2:.1f}",
+    ]
+
+    # Fitparameter auf Abbildung schreiben
+    for p, v, e in zip(m.parameters, m.values, m.errors):
+        fit_info.append(f"{p} = ${v:.3f} \\pm {e:.3f}$")
+
+    # Yield der gefitteten Funktion auf Abbildung schreiben
+    fit_info.append(f"N = ${N.nominal_value:.3f} \\pm {N.std_dev:.3f}$")
+
     n_model = np.diff(scaled_gauss_cdf(cut_bin_edges, *m.values))
     n_error = np.sqrt(n_model)
 
@@ -254,6 +287,7 @@ def fitmaker_2000(
     # axs[1].grid(True)
 
     # plt.tight_layout()
+    axs[0].legend(title="\n".join(fit_info), frameon=False)
     plt.savefig(f"./build/Europium-Fit-Peak{peak_idx+1}.pdf")
     plt.clf()
 
