@@ -120,21 +120,13 @@ def scaled_gauss_cdf(x, s, mu, sigma):
 
     x: array-like, bin edges; muss len(n) + 1 sein (n: Anzahl bins)
 
-    s: Skalierungsparameter der Funktion
+    s: Skalierungsparameter der Funktion; ist auch der Integralwert
 
     mu: Erwartungswert der Normalverteilung
 
     sigma: Standardabweichung der Normalverteilung
     """
     return s * norm(mu, sigma).cdf(x)
-
-
-def scaled_gauss_int(s, sigma):
-    """
-    Integral einer skalierten Normalverteilung
-    """
-    return s * sigma * np.sqrt(2 * np.pi)  # Katrins Weg
-    # return s * sqrt(sigma)
 
 
 def fitmaker_2000(
@@ -209,24 +201,6 @@ def fitmaker_2000(
     m.migrad()
     m.hesse()
 
-    # Bestimme Linieninhalt
-    print(f"Peak {peak_idx +1}")
-    print("---")
-    print(np.sum(cost.ndata))
-    print("---")
-    print(np.sum(cost.n))  # so gehts aber halt ohne Fehlerfortpflanzung
-    print("---")
-    print(np.sum(cost.scaled_cdf(cut_bin_edges, *m.values)))
-    # print(f"sigma = " + str(m.values["sigma"]) + "+/-" + str(m.errors["sigma"]))
-    print("---")
-    print(np.sum(cost.scaled_cdf(bin_edges, *m.values)))
-
-    us = ufloat(m.values["s"], m.errors["s"])
-    # umu = ufloat(m.values["mu"], m.errors["mu"])
-    usigma = ufloat(m.values["sigma"], m.errors["sigma"])
-
-    N = scaled_gauss_int(us, usigma)
-
     # So kann man auch irgendwie die Pulls berechnen, weiß nur nicht ganz welche Params da rein
     # müssen
     # print(cost.pulls(*m.values))
@@ -262,9 +236,6 @@ def fitmaker_2000(
     # Fitparameter auf Abbildung schreiben
     for p, v, e in zip(m.parameters, m.values, m.errors):
         fit_info.append(f"{p} = ${v:.3f} \\pm {e:.3f}$")
-
-    # Yield der gefitteten Funktion auf Abbildung schreiben
-    fit_info.append(f"N = ${N.nominal_value:.3f} \\pm {N.std_dev:.3f}$")
 
     n_model = np.diff(scaled_gauss_cdf(cut_bin_edges, *m.values))
     n_error = np.sqrt(n_model)
