@@ -15,7 +15,8 @@ from scipy.stats import norm
 from typing import Tuple
 
 
-matplotlib.rcParams.update({"font.size": 5})
+matplotlib.rcParams.update({"font.size": 18})
+# plt.rcParams["figure.constrained_layout.use"] = True
 
 SKIP_ANFANG = 12
 SKIP_ENDE = 14
@@ -77,6 +78,7 @@ plt.bar(
     linewidth=2,
     width=1.1,
     label=r"$^{152}\mathrm{Eu}$",
+    color="royalblue",
 )
 plt.bar(
     untergrund["index"],
@@ -100,6 +102,8 @@ plt.legend()
 plt.tight_layout()
 plt.savefig("./build/Europium-Untergrund.pdf")
 plt.clf()
+
+matplotlib.rcParams.update({"font.size": 8})
 
 # Untergrund entfernen
 europium["daten"] = europium["daten"] - untergrund["daten"]
@@ -207,7 +211,10 @@ def fitmaker_2000(
 
     # Plot der Daten + Fit + Pulls
     fig, axs = plt.subplots(
-        2, sharex=True, gridspec_kw={"hspace": 0.05, "height_ratios": [3, 1]}
+        2,
+        sharex=True,
+        gridspec_kw={"hspace": 0.05, "height_ratios": [3, 1]},
+        layout="constrained",
     )
     axs[0].errorbar(
         europium_cut["index"],
@@ -243,7 +250,7 @@ def fitmaker_2000(
     # Pull berechnen
     pull = (europium_cut["daten"] - n_model) / n_error
 
-    axs[1].stairs(pull, cut_bin_edges, fill=True)
+    axs[1].stairs(pull, cut_bin_edges, fill=True, color="royalblue")
     axs[1].axhline(0, color="orange", linewidth=0.8)
     axs[1].set_xlabel(r"$\mathrm{Channels}$")
     axs[1].set_ylabel(r"$\mathrm{Pull}/\sigma$")
@@ -257,7 +264,6 @@ def fitmaker_2000(
     )
     # axs[1].grid(True)
 
-    # plt.tight_layout()
     axs[0].legend(title="\n".join(fit_info), frameon=False)
     plt.savefig(f"./build/Europium-Fit-Peak{peak_idx+1}.pdf")
     plt.clf()

@@ -71,6 +71,7 @@ plt.bar(
     linewidth=2,
     width=1.1,
     label=r"$^{152}\mathrm{Eu}$",
+    color="royalblue",
 )
 plt.plot(peaks["peaks"], peaks["peak_heights"], "x", color="orange", label="Peaks")
 
@@ -122,6 +123,7 @@ plt.errorbar(
     yerr=europium_lit["Unsicherheit(E)"],
     fmt=".",
     label="data",
+    color="royalblue",
 )
 plt.plot(peaks["peaks"], linear(peaks["peaks"], *m.values), label="fit")
 
