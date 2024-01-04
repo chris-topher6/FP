@@ -125,7 +125,7 @@ plt.errorbar(
     label="data",
     color="royalblue",
 )
-plt.plot(peaks["peaks"], linear(peaks["peaks"], *m.values), label="fit")
+plt.plot(peaks["peaks"], linear(peaks["peaks"], *m.values), label="fit", color="orange")
 
 # display legend with some fit info
 # fit_info = [
