@@ -114,6 +114,10 @@ europium["daten"] = europium["daten"].clip(lower=0)
 # Vorher bestimmte Peaks einlesen
 peaks = pd.read_csv("./build/peaks.csv")
 
+# Schonmal neue Spalten anlegen
+peaks["N"] = float(0)
+peaks["N_err"] = float(0)
+
 
 def scaled_gauss_cdf(x, s, mu, sigma):
     """
@@ -267,6 +271,11 @@ def fitmaker_2000(
     axs[0].legend(title="\n".join(fit_info), frameon=False)
     plt.savefig(f"./build/Europium-Fit-Peak{peak_idx+1}.pdf")
     plt.clf()
+
+    # Linienbreite in csv Speichern
+    peaks.loc[peak_idx, "N"] = m.values["s"]
+    peaks.loc[peak_idx, "N_err"] = m.errors["s"]
+    peaks.to_csv("./build/peaks.csv", index=False)
 
 
 grenzen = {

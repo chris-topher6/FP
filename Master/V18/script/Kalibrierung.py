@@ -62,6 +62,12 @@ peaks["peaks"] = peaks_array
 # Peaks die eher dem Untergrundrauschen zuzuordnen sind entfernen
 peaks = peaks.drop([0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 14, 15, 16, 17])
 
+# Noch eben P_lit und Unsicherheit mit abspeichern
+peaks["P_lit"] = europium_lit["Intensität"]
+# print(europium_lit["Intensität"])
+peaks["P_lit_err"] = europium_lit["Unsicherheit(I)"]
+# print(europium_lit["Unsicherheit(I)"])
+
 # Plot der Kalibrationsmessung
 plt.figure(figsize=(21, 9))
 

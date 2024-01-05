@@ -32,8 +32,8 @@ end_aktivität = aktivitätsgesetz(
 a = 8.91  # cm
 r = 2.25  # cm
 omega_4pi = 1 / 2 * (1 - a / (np.sqrt(a**2 + r**2)))
-print(f"Die Aktivität am Messtag betrug {end_aktivität}")
-print(f"Der Raumwinkel Omega/4pi beträgt {omega_4pi:.5f}")
+# print(f"Die Aktivität am Messtag betrug {end_aktivität}")
+# print(f"Der Raumwinkel Omega/4pi beträgt {omega_4pi:.5f}")
 
 peaks = pd.read_csv("./build/peaks.csv")
 
@@ -44,4 +44,23 @@ def fedp(omega, N, A, W, t):
     return Q
 
 
-# peaks["fedp"] = fedp((omega_4pi*4*np.pi),)
+# Messzeit
+t = 2802  # s
+
+peaks["fedp"] = float(0)
+
+for zeile in range(len(peaks)):
+    # Anzahl Events mit Unsicherheit
+    N = ufloat(peaks.loc[zeile, "N"], peaks.loc[zeile, "N_err"])
+    print(f"N = {N}")
+    # Emissionwahrscheinlichekit nach Literatur mit Unsicherheit
+    P = ufloat(peaks.loc[zeile, "P_lit"], peaks.loc[zeile, "P_lit_err"])
+    print(f"P = {P}")
+    u_fedp = fedp((omega_4pi * 4 * np.pi), N, end_aktivität, P, t)
+    print(f"u_fedp = {u_fedp}")
+    peaks.loc[zeile, "fedp"] = u_fedp.n
+    peaks.loc[zeile, "fedp_err"] = u_fedp.s
+
+
+peaks = peaks.to_csv("./build/peaks.csv", index=False)
+print(peaks)
