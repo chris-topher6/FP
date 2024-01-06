@@ -272,10 +272,9 @@ def fitmaker_2000(
     plt.savefig(f"./build/Europium-Fit-Peak{peak_idx+1}.pdf")
     plt.clf()
 
-    # Linienbreite in csv Speichern
+    # Linienbreite muss für jeden Peak gespeichert werden
     peaks.loc[peak_idx, "N"] = m.values["s"]
     peaks.loc[peak_idx, "N_err"] = m.errors["s"]
-    peaks.to_csv("./build/peaks.csv", index=False)
 
 
 grenzen = {
@@ -286,3 +285,5 @@ grenzen = pd.DataFrame(data=grenzen)
 
 for i in range(len(peaks)):
     fitmaker_2000(grenzen["L"][i], grenzen["R"][i], i)
+
+peaks.to_csv("./build/peaks.csv", index=False)
