@@ -235,25 +235,31 @@ which is the limit of the detector sensitivity.
 
 \begin{table}[H]
 	\centering
-	\caption{Energy and emission probability~\cite{laraweb} of the full energy peaks, their assigned channel number as well as the yield of each peak, determined by a fit.}
+	\caption{Energy and the calculated full energy detection probability of the 12 peaks of the $^{152}\text{Eu}$ spectrum with more than $\SI{150}{\kilo\electronvolt}$.}
 	\label{tab:calibrationvalues}
 	\sisetup{table-format=4.4}
 	\begin{tabular}{S  S[table-format=1.5] }
-		\toprule {$E_{\text{lit}}/\si{\kilo\electronvolt}$} & {$Q/\si{\percent}$} \\
+		\toprule {$E_{\text{lit}}/\si{\kilo\electronvolt}$} & {$Q/\si{\percent}$}     \\
 		\midrule
-		121.7817                                            & { 0.0005515535924486806 \pm 2.5815126895009253e-05}\\
-		244.6974                                            & { 0.002133804047293772 \pm 0.00012247773242283678} \\
-		344.2785                                            & { 0.005731407641232477 \pm 0.00010799607117431888} \\
-		411.1165                                            & { 0.012959470014524792 \pm 0.0003847924394551452}  \\
-		443.9650                                            & { 0.02216472098366422 \pm 0.0005255083434547877}   \\
-		778.9045                                            & { 0.000435887644880903 \pm 2.700817261103719e-05}  \\
-		867.3800                                            & { 0.0019215218636629856 \pm 9.794040296394467e-05} \\
-		964.0790                                            & { 0.0009640474960010047 \pm 4.0296582585801055e-05}\\
-		1085.8370                                           & { 0.0005055026855303295 \pm 3.787656514581715e-05} \\
-		1089.7370                                           & { 0.006787746670626513 \pm 0.00029479495446513347} \\
-		1112.0760                                           & { 0.0006081216905882025 \pm 3.336047052711503e-05} \\
-		1299.1420                                           & { 0.006408518909158424 \pm 0.0003026020808133215}  \\
-		1408.0130                                           & { 0.0005711131294647615 \pm 2.5796963841334438e-05}\\
+		% 121.7817                                            & { 0.000552 \pm  0.000026} \\
+		244.6974                                            & { 0.02134 \pm  0.0012}  \\
+		344.2785                                            & { 0.05731 \pm  0.0010}  \\
+		411.1165                                            & { 0.12959 \pm  0.0038}  \\
+		443.9650                                            & { 0.22165 \pm  0.0052}  \\
+		778.9045                                            & { 0.00436 \pm  0.00027} \\
+		867.3800                                            & { 0.01922 \pm  0.00098} \\
+		964.0790                                            & { 0.00964 \pm  0.0004}  \\
+		1085.8370                                           & { 0.00506 \pm  0.00038} \\
+		1089.7370                                           & { 0.06788 \pm  0.0029}  \\
+		1112.0760                                           & { 0.00608 \pm  0.00033} \\
+		1299.1420                                           & { 0.06409 \pm  0.0030}  \\
+		1408.0130                                           & { 0.00571 \pm  0.00026} \\
 		\bottomrule
 	\end{tabular}
 \end{table}
+\noindent
+To obtain the energy dependency of full energy detection probability, a fit using the function
+\begin{equation}
+	Q(E) = a \cdot E^{b}
+\end{equation}
+is performed. The result is displayed in Figure~\ref{fig:fedpfit}.

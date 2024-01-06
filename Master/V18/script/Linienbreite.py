@@ -257,7 +257,7 @@ def fitmaker_2000(
     axs[1].stairs(pull, cut_bin_edges, fill=True, color="royalblue")
     axs[1].axhline(0, color="orange", linewidth=0.8)
     axs[1].set_xlabel(r"$\mathrm{Channels}$")
-    axs[1].set_ylabel(r"$\mathrm{Pull}/\sigma$")
+    axs[1].set_ylabel(r"$\mathrm{Pull}/\,\sigma$")
     axs[1].yaxis.set_major_formatter(ticker.FormatStrFormatter("%.1f"))
     axs[1].set_yticks(
         np.linspace(
