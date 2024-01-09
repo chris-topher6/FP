@@ -79,15 +79,20 @@ def q_energy(E, a, b, c):
 # Es gibt leider viele Ausreißer; das hier ist eigentlich alles nicht das wahre, ich
 # produziere hier absichtlich die zu fittende Funktion ohne das diese wirklich zu den
 # Daten passt
-# peaks = peaks.drop([0, 1, 2, 8, 9, 11, 12])
-peaks = peaks.drop([0, 1, 2, 3, 5, 9, 11, 12])
+# peaks_fit = peaks.drop([0, 1, 2, 4, 5, 6, 8, 9, 11])
+peaks_fit = peaks.drop([0, 1, 2, 9, 11])
 
-lq = LeastSquares(peaks["Energie"], peaks["fedp"], peaks["fedp_err"], q_energy)
-m = Minuit(lq, a=11, b=-1, c=40)
-# m.limits["a"] = (10, 100)
-m.limits["a"] = (10, 15)
-m.limits["b"] = (-100, -1)
-m.limits["c"] = (-1000, 1000)
+energy_scale = np.linspace(
+    350, peaks["Energie"].max(), 10000
+)  # Fester Minimumwert nötig um Divergenz zu vermeiden
+
+lq = LeastSquares(
+    peaks_fit["Energie"], peaks_fit["fedp"], peaks_fit["fedp_err"], q_energy
+)
+m = Minuit(lq, a=15, b=-1, c=400)
+m.limits["a"] = (20, 50)
+m.limits["b"] = (-1.5, -0.01)
+m.limits["c"] = (351, 700)
 m.migrad()
 m.hesse()
 
@@ -105,12 +110,31 @@ axs[0].errorbar(
     xerr=peaks["Unsicherheit(E)"],
     yerr=peaks["fedp_err"],
     fmt="o",
+    color="grey",
+    label="discarded data",
+)
+
+axs[0].errorbar(
+    peaks_fit["Energie"],
+    peaks_fit["fedp"],
+    xerr=peaks_fit["Unsicherheit(E)"],
+    yerr=peaks_fit["fedp_err"],
+    fmt="o",
     color="royalblue",
     label="data",
 )
+
+# axs[0].plot(
+#     peaks_fit["Energie"],
+#     q_energy(peaks_fit["Energie"], *m.values),
+#     label="fit",
+#     color="orange",
+#     linewidth=2.2,
+# )
+
 axs[0].plot(
-    peaks["Energie"],
-    q_energy(peaks["Energie"], *m.values),
+    energy_scale,
+    q_energy(energy_scale, *m.values),
     label="fit",
     color="orange",
     linewidth=2.2,
@@ -128,16 +152,16 @@ fit_info = [
 for p, v, e in zip(m.parameters, m.values, m.errors):
     fit_info.append(f"{p} = ${v:.3f} \\pm {e:.3f}$")
 
-n_model = q_energy(peaks["Energie"], *m.values)
-n_error = peaks["fedp_err"]
-n_data = peaks["fedp"]
+n_model = q_energy(peaks_fit["Energie"], *m.values)
+n_error = peaks_fit["fedp_err"]
+n_data = peaks_fit["fedp"]
 
 pull = (n_data - n_model) / n_error
 
-bin_edges = peaks["Energie"]
+bin_edges = peaks_fit["Energie"]
 
 axs[1].bar(
-    peaks["Energie"],
+    peaks_fit["Energie"],
     pull,
     width=15,
     color="royalblue",
