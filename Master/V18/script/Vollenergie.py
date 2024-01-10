@@ -82,8 +82,8 @@ def q_energy(E, a, b):
 peaks_fit = peaks.drop([0, 1, 2, 5, 6, 7, 8, 10, 12])
 
 energy_scale = np.linspace(
-    360, peaks["Energie"].max(), 10000
-)  # Fester Minimumwert nötig um Divergenz zu vermeiden
+    peaks["Energie"].min(), peaks["Energie"].max(), 10000
+)  # Fester Minimumwert manchmal nötig um Divergenz zu vermeiden
 
 lq = LeastSquares(
     peaks_fit["Energie"], peaks_fit["fedp"], peaks_fit["fedp_err"], q_energy
