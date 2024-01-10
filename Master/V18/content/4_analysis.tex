@@ -261,11 +261,21 @@ which is the limit of the detector sensitivity.
 To obtain the energy dependency of full energy detection probability, a fit using the function
 \begin{equation}
 	Q(E) = a \cdot E^{b}
+	\label{eqn:fedpfit_function}
 \end{equation}
 is performed. The result is displayed in Figure~\ref{fig:fedpfit}.
-\begin{figure}[H]
+\begin{figure}
   \centering
-  \includegraphics[scale=0.8]{./build/FEDP-Fit.pdf}
+  \includegraphics[width=\linewidth]{./build/FEDP-Fit.pdf}
   \caption{Fit of the full energy detection probabilities for different peaks of the $^{152}\text{Eu}$ spectrum.}
   \label{fig:fedpfit}
 \end{figure}
+Values which seem to be far out of the expected value range are excluded from the fit (for details, see Section~\ref{sec:conclusion}). The resulting fit parameters are
+\begin{align*}
+  a & = \num{22.673 \pm 5.031} \\
+  b & = \num{-0.821 \pm 0.033}.
+\end{align*}
+The relation~\ref{eqn:fedpfit_function} with the determined parameters is used to estimate the full energy detection
+probability throughout this analysis.
+
+\subsection{Monochromatic gamma spectrum}

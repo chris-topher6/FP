@@ -139,8 +139,8 @@ axs[0].plot(
     linewidth=2.2,
 )
 axs[0].legend()
-# axs[0].set_ylabel("Q/%")
-axs[0].set_ylabel("Q")
+axs[0].set_ylabel("Q/%")
+# axs[0].set_ylabel("Q")
 
 # Chi^2 Test des Fits auf Abbildung schreiben
 fit_info = [

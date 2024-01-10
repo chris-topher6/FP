@@ -63,7 +63,7 @@ peaks["peaks"] = peaks_array
 peaks = peaks.drop([0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 14, 15, 16, 17])
 
 # Plot der Kalibrationsmessung
-plt.figure(figsize=(21, 9))
+plt.figure(figsize=(21, 9))  # TODO andere dpi ausprobieren
 
 plt.bar(
     europium["index"],

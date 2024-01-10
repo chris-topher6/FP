@@ -15,6 +15,7 @@
     "subsubsec:solidangle"
     "eqn:params"
     "subsubsec:determinationfep"
+    "eqn:fedpfit_function"
     "fig:fedpfit"))
  :latex)
 
