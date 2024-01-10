@@ -61,38 +61,37 @@ for zeile in range(len(peaks)):
     # Emissionwahrscheinlichekit nach Literatur mit Unsicherheit
     P = ufloat(peaks.loc[zeile, "Intensität"], peaks.loc[zeile, "Unsicherheit(I)"])
     u_fedp = fedp((omega_4pi * 4 * np.pi), N, end_aktivität, P, t)
-    peaks.loc[zeile, "fedp"] = round(
-        u_fedp.n, 6
-    )  # * 10  # Der Faktor 10 wird zur Umrechnung in % benötigt; sollten das aber nicht 100 sein?
-    peaks.loc[zeile, "fedp_err"] = round(u_fedp.s, 6)  # * 10
+    peaks.loc[zeile, "fedp"] = round(u_fedp.n, 6) * 10
+    peaks.loc[zeile, "fedp_err"] = round(u_fedp.s, 6) * 10
 
 peaks_speichern = peaks.to_csv("./build/peaks.csv", index=False)
 
 
-def q_energy(E, a, b, c):
+def q_energy(E, a, b):
     """
     Zu fittende Funktion für die Energieabhängigkeit der FEDP
     """
-    return a * ((E - c) ** b)
+    return a * ((E) ** b)
 
 
 # Es gibt leider viele Ausreißer; das hier ist eigentlich alles nicht das wahre, ich
 # produziere hier absichtlich die zu fittende Funktion ohne das diese wirklich zu den
 # Daten passt
-# peaks_fit = peaks.drop([0, 1, 2, 4, 5, 6, 8, 9, 11])
-peaks_fit = peaks.drop([0, 1, 2, 9, 11])
+# peaks_fit = peaks.drop([0, 1, 2, 3, 5, 6, 8, 9, 11])
+# peaks_fit = peaks.drop([0, 1, 2, 9, 11])
+peaks_fit = peaks.drop([0, 1, 2, 5, 6, 7, 8, 10, 12])
 
 energy_scale = np.linspace(
-    350, peaks["Energie"].max(), 10000
+    360, peaks["Energie"].max(), 10000
 )  # Fester Minimumwert nötig um Divergenz zu vermeiden
 
 lq = LeastSquares(
     peaks_fit["Energie"], peaks_fit["fedp"], peaks_fit["fedp_err"], q_energy
 )
-m = Minuit(lq, a=15, b=-1, c=400)
-m.limits["a"] = (20, 50)
-m.limits["b"] = (-1.5, -0.01)
-m.limits["c"] = (351, 700)
+m = Minuit(lq, a=43, b=-0.9)
+# m.limits["a"] = (40, 45)
+m.limits["b"] = (-1, -0.8)
+# m.limits["c"] = (0, None)
 m.migrad()
 m.hesse()
 
