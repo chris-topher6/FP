@@ -176,6 +176,7 @@ using the \texttt{iminuit}~\cite{iminuit} python package.
 	\end{adjustbox}
 	\caption{Fits of peaks of the $^{152}\text{Eu}$ spectrum.}
 \end{figure}
+\FloatBarrier
 
 
 \subsection{The full energy detection probability}
@@ -263,6 +264,7 @@ To obtain the energy dependency of full energy detection probability, a fit usin
 	Q(E) = a \cdot E^{b}
 	\label{eqn:fedpfit_function}
 \end{equation}
+\noindent
 is performed. The result is displayed in Figure~\ref{fig:fedpfit}.
 \begin{figure}
   \centering
@@ -270,6 +272,7 @@ is performed. The result is displayed in Figure~\ref{fig:fedpfit}.
   \caption{Fit of the full energy detection probabilities for different peaks of the $^{152}\text{Eu}$ spectrum.}
   \label{fig:fedpfit}
 \end{figure}
+\noindent
 Values which seem to be far out of the expected value range are excluded from the fit (for details, see Section~\ref{sec:conclusion}). The resulting fit parameters are
 \begin{align*}
   a & = \num{22.673 \pm 5.031} \\
@@ -277,5 +280,46 @@ Values which seem to be far out of the expected value range are excluded from th
 \end{align*}
 The relation~\ref{eqn:fedpfit_function} with the determined parameters is used to estimate the full energy detection
 probability throughout this analysis.
+\noindent
+\FloatBarrier
 
-\subsection{Monochromatic gamma spectrum}
+\subsection{Gamma spectrum of \texorpdfstring{$^{137}\mathrm{Cs}$}{caesium}}
+A $^{137}\text{Cs}$ probe was measured as well. The measurement was carried out for $t=\SI{2865}{\second}$. The
+resulting spectrum is given in Figure~\ref{fig:csspectrum}. The background measurement was again scaled to the
+appropriate measurement time and then removed.
+\begin{figure}
+	\centering
+	\begin{adjustbox}{width=1.4\textwidth, center}
+		\includegraphics[scale=0.3]{./build/Caesium-Peaks.pdf}
+	\end{adjustbox}
+	\caption{Spectrum of the $^{137}\text{Cs}$ measurement.}
+	\label{fig:csspectrum}
+\end{figure}
+\noindent
+The two peaks marked in Figure~\ref{fig:csspectrum} are determined using \texttt{find\_peaks} from the python library \texttt{scipy} \cite{scipy}. A scaled normal distribution is fitted to the peaks using \texttt{iminuit}~\cite{iminuit}
+to determine the yield. The results are displayed in Figure~\ref{fig:csfit}.
+\begin{figure}[H]
+	\centering
+	% Erste Zeile
+	\begin{adjustbox}{width=1.3\textwidth, center}
+		\begin{subfigure}{.5\textwidth}
+			\centering
+			\includegraphics[width=\linewidth]{./build/Caesium-Fit-Peak1.pdf}
+			% \caption{Plot 1}
+		\end{subfigure}%
+		\begin{subfigure}{.5\textwidth}
+			\centering
+			\includegraphics[width=\linewidth]{./build/Caesium-Fit-Peak2.pdf}
+			% \caption{Plot 2}
+		\end{subfigure}
+	\end{adjustbox}
+	\caption{Fits of peaks of the $^{137}\text{Cs}$ spectrum.}
+	\label{fig:csfit}
+\end{figure}
+\noindent
+These fits include a further background estimation parameter $b$\,; the resulting distribution is given in
+equation~\ref{eqn:fitplus}.
+\begin{equation}
+ g(x) = s \cdot \frac{1}{\sqrt{2 \pi} \sigma} \exp{\left( -\frac{1}{2} \frac{(x - \mu)^{2}}{\sigma} \right)} + b
+ \label{eqn:fitplus}
+\end{equation}

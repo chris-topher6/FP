@@ -16,6 +16,9 @@
     "eqn:params"
     "subsubsec:determinationfep"
     "eqn:fedpfit_function"
-    "fig:fedpfit"))
+    "fig:fedpfit"
+    "fig:csspectrum"
+    "fig:csfit"
+    "eqn:fitplus"))
  :latex)
 
