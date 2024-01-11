@@ -3,6 +3,9 @@
  (lambda ()
    (LaTeX-add-labels
     "sec:procedure"
-    "fig:brewster"))
+    "fig:sagnac"
+    "sec:contrast"
+    "sec:measurement_glass"
+    "sec:measurement_gas"))
  :latex)
 
