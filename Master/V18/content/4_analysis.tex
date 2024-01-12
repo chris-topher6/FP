@@ -267,16 +267,16 @@ To obtain the energy dependency of full energy detection probability, a fit usin
 \noindent
 is performed. The result is displayed in Figure~\ref{fig:fedpfit}.
 \begin{figure}
-  \centering
-  \includegraphics[width=\linewidth]{./build/FEDP-Fit.pdf}
-  \caption{Fit of the full energy detection probabilities for different peaks of the $^{152}\text{Eu}$ spectrum.}
-  \label{fig:fedpfit}
+	\centering
+	\includegraphics[width=\linewidth]{./build/FEDP-Fit.pdf}
+	\caption{Fit of the full energy detection probabilities for different peaks of the $^{152}\text{Eu}$ spectrum.}
+	\label{fig:fedpfit}
 \end{figure}
 \noindent
 Values which seem to be far out of the expected value range are excluded from the fit (for details, see Section~\ref{sec:conclusion}). The resulting fit parameters are
 \begin{align*}
-  a & = \num{22.673 \pm 5.031} \\
-  b & = \num{-0.821 \pm 0.033}.
+	a & = \num{22.673 \pm 5.031}  \\
+	b & = \num{-0.821 \pm 0.033}.
 \end{align*}
 The relation~\ref{eqn:fedpfit_function} with the determined parameters is used to estimate the full energy detection
 probability throughout this analysis.
@@ -320,9 +320,23 @@ to determine the yield. The results are displayed in Figure~\ref{fig:csfit}.
 These fits include a further background estimation parameter $b$\,; the resulting distribution is given in
 equation~\ref{eqn:fitplus}.
 \begin{equation}
- g(x) = s \cdot \frac{1}{\sqrt{2 \pi} \sigma} \exp{\left( -\frac{1}{2} \frac{(x - \mu)^{2}}{\sigma} \right)} + b
- \label{eqn:fitplus}
+	g(x) = s \cdot \frac{1}{\sqrt{2 \pi} \sigma} \exp{\left( -\frac{1}{2} \frac{(x - \mu)^{2}}{\sigma} \right)} + b
+	\label{eqn:fitplus}
 \end{equation}
 \noindent
-The full energy detection probability of these peaks is calculated using the fit and parameters deduced in
-section~\ref{subsubsec:determinationfep}. The results are displayed in Table~\ref{tab:csfedp}.
+% The full energy detection probability of these peaks is calculated using the fit and parameters deduced in
+% section~\ref{subsubsec:determinationfep}. The results are displayed in Table~\ref{tab:csfedp}.
+% \begin{table}[H]
+% 	\centering
+% 	\caption{Energy and the calculated full energy detection probability of the two peaks of the $^{137}\text{Cs}$ spectrum with more than $\SI{150}{\kilo\electronvolt}$.}
+% 	\label{tab:calibrationvalues}
+% 	\sisetup{table-format=4.4}
+% 	\begin{tabular}{S  S[table-format=1.5] }
+% 		\toprule {$E_{\text{lit}}/\si{\kilo\electronvolt}$} & {$Q/\si{\percent}$}     \\
+% 		\midrule
+% 		{303.87376 \pm 0.00029}         				                    & { 0.06409 \pm  0.0030}  \\
+% 		{800.13725 \pm 0.00029}                                           & { 0.00571 \pm  0.00026} \\
+% 		\bottomrule
+% 	\end{tabular}
+% \end{table}
+% \noindent

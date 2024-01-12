@@ -124,6 +124,11 @@ for i in range(len(peaks)):
         zorder1=zorder1[i],
         zorder2=zorder2[i],
     )
+    # TODO ich glaube entweder hier oder in Linienbreite.py wird loc falsch benutzt; die Fitparameter müssen
+    # in der csv gespeichert werden
+    peaks.loc["N"][i] = ufloat(s, serr) - ufloat(b.berr) * (
+        grenzen.loc["R"][i] - grenzen.loc["L"][i]
+    )
 
 # Umrechnung der Kanäle in Energien wurde in Kalibrierung.py bestimmt
 alpha = ufloat(0.217564, 0)
@@ -134,7 +139,8 @@ peaks["Energie"] = linear(peaks["peaks"], alpha, beta)
 # Sind die Parameter des Fits für Q(E)
 a = ufloat(22.673, 5.031)
 b = ufloat(-0.821, 0.033)
+peaks["Q"] = q_energy(peaks["Energie"], a, b)
 
 # Bei dem Eventinhalt der Peaks muss der Parameter zur Untergrundabschätzung b beachtet werden
-peaks["Q"] = q_energy(peaks["Energie"], a, b)
+
 peaks.to_csv("./build/peaks_Cs.csv")

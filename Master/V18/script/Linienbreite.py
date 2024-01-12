@@ -318,6 +318,7 @@ def fitmaker_2000(
     # Linienbreite muss für jeden Peak gespeichert werden
     peaks.loc[peak_idx, "N"] = m.values["s"]
     peaks.loc[peak_idx, "N_err"] = m.errors["s"]
+    return None
 
 
 grenzen = {
