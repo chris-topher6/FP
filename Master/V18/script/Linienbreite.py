@@ -12,7 +12,7 @@ import uncertainties
 from uncertainties import ufloat
 from uncertainties.umath import sqrt
 from scipy.stats import norm
-from typing import Tuple
+from typing import Tuple, Callable, Any
 
 
 matplotlib.rcParams.update({"font.size": 18})
@@ -138,9 +138,12 @@ def scaled_gauss_cdf(x, s, mu, sigma):
 
 
 def fitmaker_2000(
+    daten_df: pd.DataFrame,
+    peaks_df: pd.DataFrame,
     abstand_links: int,
     abstand_rechts: int,
     peak_idx: int,
+    fit_function: Callable[..., Any],
     startwert_schätzen: bool = True,
     peak_width: float = 0,
     peak_position: float = 0,
@@ -148,18 +151,25 @@ def fitmaker_2000(
     limit_s: Tuple = (0, None),
     limit_mu: Tuple = (0, None),
     limit_sigma: Tuple = (0, None),
+    zorder1: int = None,
+    zorder2: int = None,
 ) -> None:
     """
     Funktion die einen Fit einer skalierbaren Gauß-Funktion vornimmt. Es kann
     eine Schätzung der Startparameter angegeben werden; alternativ wird eine rudimentäre Schätzung durchgeführt.
 
     Parameter:
+    daten_df: Pandas Dataframe, enthält die Daten
+
+    peaks_df: Pandas Dataframe, enthält die Peaks
 
     abstand_links: int, gibt an, wo die linke Grenze des zu fittenden Bereichs sein soll
 
     abstand_rechts: int, gibt an, wo die rechte Grenze des zu fittenden Bereichs sein soll
 
     peak_idx: int, gibt an, welcher der 13 Peaks gefittet werden soll
+
+    fit_function: Callable, Verteilung die gefittet werden soll
 
     startwert_schätzen: bool, wechselt zwischen automatisch oder manuell geschätzten Startwerten
 
@@ -174,35 +184,42 @@ def fitmaker_2000(
     limit_mu: Tuple, optionaler (oberer und unterer) Grenzwert mu
 
     limit_sigma: Tuple, optionaler (oberer und unterer) Grenzwert sigma
+
+    zorder1: int, gibt an auf welcher Ebene die Daten gemalt werden sollen
+
+    zorder2: int, gibt an auf welcher Ebene der Fit gemalt werden soll
     """
 
     # Bereich um den Peak herum ausschneiden
-    maske = (europium["index"] >= peaks["peaks"][peak_idx] - abstand_links) & (
-        europium["index"] <= peaks["peaks"][peak_idx] + abstand_rechts
+    maske = (daten_df["index"] >= peaks_df["peaks"][peak_idx] - abstand_links) & (
+        daten_df["index"] <= peaks_df["peaks"][peak_idx] + abstand_rechts
     )
-    europium_cut = europium[maske]
+    daten_cut = daten_df[maske]
 
     # Kanten der Bins für den abgeschnittenen Datensatz
-    cut_bin_edges = np.arange(
-        europium_cut["index"].min(), europium_cut["index"].max() + 2
-    )
+    cut_bin_edges = np.arange(daten_cut["index"].min(), daten_cut["index"].max() + 2)
 
     # Kanten der Bins für den vollständigen Datensatz
-    bin_edges = np.arange(europium["index"].min(), europium["index"].max() + 2)
+    bin_edges = np.arange(daten_df["index"].min(), daten_df["index"].max() + 2)
 
-    cost = ExtendedBinnedNLL(europium_cut["daten"], cut_bin_edges, scaled_gauss_cdf)
+    cost = ExtendedBinnedNLL(daten_cut["daten"], cut_bin_edges, fit_function)
 
     if startwert_schätzen == True:
         # Schätze s über die maximale Höhe des Peaks
-        peak_height = europium_cut["daten"].max()
+        peak_height = daten_cut["daten"].max()
 
         # Als Startwert für mu: Position des Peaks
-        peak_position = peaks["peaks"][peak_idx]
+        peak_position = peaks_df["peaks"][peak_idx]
 
         # Schätze die Breite des Peaks (sigma)
-        peak_width = (europium_cut["index"].max() - europium_cut["index"].min()) * 0.1
+        peak_width = (daten_cut["index"].max() - daten_cut["index"].min()) * 0.1
 
-    m = Minuit(cost, s=peak_height, mu=peak_position, sigma=peak_width)
+    if zorder1 is not None and zorder2 is not None:
+        m = Minuit(cost, s=peak_height, mu=peak_position, sigma=peak_width, b=20)
+        m.limits["b"] = (15, 20)
+    else:
+        m = Minuit(cost, s=peak_height, mu=peak_position, sigma=peak_width)
+
     m.limits["s"] = limit_s
     m.limits["mu"] = limit_mu
     m.limits["sigma"] = limit_sigma
@@ -220,21 +237,42 @@ def fitmaker_2000(
         gridspec_kw={"hspace": 0.05, "height_ratios": [3, 1]},
         layout="constrained",
     )
-    axs[0].errorbar(
-        europium_cut["index"],
-        europium_cut["daten"],
-        yerr=np.sqrt(europium_cut["daten"]),
-        fmt="o",
-        color="royalblue",
-        label=r"$^{152}\mathrm{Eu}$" + f"-Peak {peak_idx+1}",
-    )
-    axs[0].stairs(
-        np.diff(scaled_gauss_cdf(cut_bin_edges, *m.values)),
-        cut_bin_edges,
-        label="fit",
-        color="orange",
-        linewidth=2.2,
-    )
+    if zorder1 is not None and zorder2 is not None:
+        axs[0].errorbar(
+            daten_cut["index"],
+            daten_cut["daten"],
+            yerr=np.sqrt(daten_cut["daten"]),
+            fmt="o",
+            color="royalblue",
+            label=r"$^{137}\mathrm{Cs}$"
+            + f"-Peak {peak_idx+1}",  # Hier müsste man nochmal das Label genereller machen
+            zorder=zorder1,
+        )
+        axs[0].stairs(
+            np.diff(fit_function(cut_bin_edges, *m.values)),
+            cut_bin_edges,
+            label="fit",
+            color="orange",
+            linewidth=2.2,
+            zorder=zorder2,
+        )
+    else:
+        axs[0].errorbar(
+            daten_cut["index"],
+            daten_cut["daten"],
+            yerr=np.sqrt(daten_cut["daten"]),
+            fmt="o",
+            color="royalblue",
+            label=r"$^{152}\mathrm{Eu}$"
+            + f"-Peak {peak_idx+1}",  # Hier müsste man nochmal das Label genereller machen
+        )
+        axs[0].stairs(
+            np.diff(fit_function(cut_bin_edges, *m.values)),
+            cut_bin_edges,
+            label="fit",
+            color="orange",
+            linewidth=2.2,
+        )
     axs[0].legend()
     axs[0].set_ylabel("Counts")
     # axs[0].grid(True)
@@ -248,11 +286,11 @@ def fitmaker_2000(
     for p, v, e in zip(m.parameters, m.values, m.errors):
         fit_info.append(f"{p} = ${v:.3f} \\pm {e:.3f}$")
 
-    n_model = np.diff(scaled_gauss_cdf(cut_bin_edges, *m.values))
+    n_model = np.diff(fit_function(cut_bin_edges, *m.values))
     n_error = np.sqrt(n_model)
 
     # Pull berechnen
-    pull = (europium_cut["daten"] - n_model) / n_error
+    pull = (daten_cut["daten"] - n_model) / n_error
 
     axs[1].stairs(pull, cut_bin_edges, fill=True, color="royalblue")
     axs[1].axhline(0, color="orange", linewidth=0.8)
@@ -269,7 +307,12 @@ def fitmaker_2000(
     # axs[1].grid(True)
 
     axs[0].legend(title="\n".join(fit_info), frameon=False)
-    plt.savefig(f"./build/Europium-Fit-Peak{peak_idx+1}.pdf")
+    if zorder1 is not None and zorder2 is not None:
+        plt.savefig(f"./build/Caesium-Fit-Peak{peak_idx+1}.pdf")
+    else:
+        plt.savefig(
+            f"./build/Europium-Fit-Peak{peak_idx+1}.pdf"
+        )  # Bennenung genereller machen
     plt.clf()
 
     # Linienbreite muss für jeden Peak gespeichert werden
@@ -284,6 +327,8 @@ grenzen = {
 grenzen = pd.DataFrame(data=grenzen)
 
 for i in range(len(peaks)):
-    fitmaker_2000(grenzen["L"][i], grenzen["R"][i], i)
+    fitmaker_2000(
+        europium, peaks, grenzen["L"][i], grenzen["R"][i], i, scaled_gauss_cdf
+    )
 
 peaks.to_csv("./build/peaks.csv", index=False)
