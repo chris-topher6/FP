@@ -11,8 +11,11 @@ from iminuit import Minuit
 from iminuit.cost import ExtendedBinnedNLL
 from scipy.stats import norm
 from typing import Tuple
+from uncertainties import ufloat
 from Linienbreite import fitmaker_2000
 from Vollenergie import q_energy
+from Kalibrierung import linear
+
 
 matplotlib.rcParams.update({"font.size": 18})
 
@@ -122,4 +125,16 @@ for i in range(len(peaks)):
         zorder2=zorder2[i],
     )
 
+# Umrechnung der Kanäle in Energien wurde in Kalibrierung.py bestimmt
+alpha = ufloat(0.217564, 0)
+beta = ufloat(104.802701, 0.000292)
+peaks["Energie"] = linear(peaks["peaks"], alpha, beta)
+
+# Wurden durch Fit bestimmt, updaten wenn nötig;
+# Sind die Parameter des Fits für Q(E)
+a = ufloat(22.673, 5.031)
+b = ufloat(-0.821, 0.033)
+
+# Bei dem Eventinhalt der Peaks muss der Parameter zur Untergrundabschätzung b beachtet werden
+peaks["Q"] = q_energy(peaks["Energie"], a, b)
 peaks.to_csv("./build/peaks_Cs.csv")
