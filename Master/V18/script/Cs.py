@@ -137,11 +137,12 @@ for i in range(len(peaks)):
         zorder1=zorder1[i],
         zorder2=zorder2[i],
     )
-    # Die Logik ist hier, das mit b der Untergrund abgeschätzt wird, welcher dann auf der kompletten Breite des Fits
-    # abgezogen wird; es gibt 8192 (0-8191) Kanäle, in denen der Untergrund abgezogen werden muss; es macht mehr Sinn, weiter
-    # in Kanälen zu rechnen, da die Umrechnung in Energien mit Fehlern behaftet ist die man dann die ganze Zeit
-    # mit tragen muss
-    peaks.at[i, "N"] = peaks.at[i, "s"] - peaks.at[i, "b"] * 8192
+    # Frag nicht
+    peaks.at[i, "N"] = peaks.at[i, "s"]
+    N = peaks.at[
+        i, "N"
+    ]  # nur benötigt weil fstrings wenig flexibel sind; ein "" innerhalb des {} macht schon alles kaputt
+    print(f"N_{i+1} = {N:.5f}")
 
 # Umrechnung der Kanäle in Energien wurde in Kalibrierung.py bestimmt
 alpha = ufloat(0.217564, 0)
@@ -153,7 +154,4 @@ peaks["Energie"] = linear(peaks["peaks"], alpha, beta)
 a = ufloat(22.673, 5.031)
 b = ufloat(-0.821, 0.033)
 peaks["Q"] = q_energy(peaks["Energie"], a, b)
-
-# Bei dem Eventinhalt der Peaks muss der Parameter zur Untergrundabschätzung b beachtet werden
-
 peaks.to_csv("./build/peaks_Cs.csv")

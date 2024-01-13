@@ -19,6 +19,7 @@
     "fig:fedpfit"
     "fig:csspectrum"
     "fig:csfit"
-    "eqn:fitplus"))
+    "eqn:fitplus"
+    "tab:csfitparams"))
  :latex)
 
