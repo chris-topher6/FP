@@ -113,6 +113,19 @@ grenzen = pd.DataFrame(data={"L": [150, 15], "R": [150, 15]})
 zorder1 = [1, 2]
 zorder2 = [2, 1]
 
+# Das ist jetzt auch wieder arschcode aber wir wollen fertig werden
+# Wenn jemand ganz viel Zeit hat wäre es viel sinnvoller die fitmaker_2000 Funktion so zu schreiben
+# dass sie die Fitparameter einfach zurückgibt und die ganze Logik die das schreiben in ein Dataframe
+# und speichern als csv übernimmt einfach aus der Funktion auslagert
+# Das hier sind die Fitparameter die weiter unten bestimmt wurden
+peaks["s"] = pd.NA
+peaks["b"] = pd.NA
+peaks.at[0, "s"] = ufloat(1275.237, 70.842)
+peaks.at[1, "s"] = ufloat(9282.567, 98.438)
+peaks.at[0, "b"] = ufloat(20.0, 0.457)
+peaks.at[1, "b"] = ufloat(15.0, 0.165)
+
+peaks["N"] = pd.NA
 for i in range(len(peaks)):
     fitmaker_2000(
         caesium,
@@ -124,11 +137,11 @@ for i in range(len(peaks)):
         zorder1=zorder1[i],
         zorder2=zorder2[i],
     )
-    # TODO ich glaube entweder hier oder in Linienbreite.py wird loc falsch benutzt; die Fitparameter müssen
-    # in der csv gespeichert werden
-    peaks.loc["N"][i] = ufloat(s, serr) - ufloat(b.berr) * (
-        grenzen.loc["R"][i] - grenzen.loc["L"][i]
-    )
+    # Die Logik ist hier, das mit b der Untergrund abgeschätzt wird, welcher dann auf der kompletten Breite des Fits
+    # abgezogen wird; es gibt 8192 (0-8191) Kanäle, in denen der Untergrund abgezogen werden muss; es macht mehr Sinn, weiter
+    # in Kanälen zu rechnen, da die Umrechnung in Energien mit Fehlern behaftet ist die man dann die ganze Zeit
+    # mit tragen muss
+    peaks.at[i, "N"] = peaks.at[i, "s"] - peaks.at[i, "b"] * 8192
 
 # Umrechnung der Kanäle in Energien wurde in Kalibrierung.py bestimmt
 alpha = ufloat(0.217564, 0)
