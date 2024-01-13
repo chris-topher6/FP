@@ -179,3 +179,4 @@ axs[1].set_yticks(
 axs[0].legend(title="\n".join(fit_info), frameon=False)
 plt.savefig("./build/FEDP-Fit.pdf")
 plt.clf()
+plt.close()

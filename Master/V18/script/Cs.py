@@ -6,6 +6,7 @@ import matplotlib
 import matplotlib.ticker as ticker
 import numpy as np
 from scipy.signal import find_peaks
+from scipy.optimize import fsolve
 import iminuit
 from iminuit import Minuit
 from iminuit.cost import ExtendedBinnedNLL
@@ -109,6 +110,24 @@ def scaled_gauss_cdf_b(x, s, mu, sigma, b):
     return s * norm(mu, sigma).cdf(x) + b * x
 
 
+def scaled_gauss_pdf_b(x, s, mu, sigma, b):
+    """
+    Eine skalierte Normalverteilungsfunktion,
+    die an die Signale angepasst werden soll.
+
+    Parameter:
+
+    x: array-like, bin edges; muss len(n) + 1 sein (n: Anzahl bins)
+
+    s: Skalierungsparameter der Funktion; ist auch der Integralwert
+
+    mu: Erwartungswert der Normalverteilung
+
+    sigma: Standardabweichung der Normalverteilung
+    """
+    return s * norm(mu, sigma).pdf(x) + b
+
+
 grenzen = pd.DataFrame(data={"L": [150, 15], "R": [150, 15]})
 zorder1 = [1, 2]
 zorder2 = [2, 1]
@@ -120,10 +139,16 @@ zorder2 = [2, 1]
 # Das hier sind die Fitparameter die weiter unten bestimmt wurden
 peaks["s"] = pd.NA
 peaks["b"] = pd.NA
+peaks["mu"] = pd.NA
+peaks["sigma"] = pd.NA
 peaks.at[0, "s"] = ufloat(1275.237, 70.842)
 peaks.at[1, "s"] = ufloat(9282.567, 98.438)
 peaks.at[0, "b"] = ufloat(20.0, 0.457)
 peaks.at[1, "b"] = ufloat(15.0, 0.165)
+peaks.at[0, "mu"] = ufloat(929.282, 1.989)
+peaks.at[1, "mu"] = ufloat(3195.882, 0.050)
+peaks.at[0, "sigma"] = ufloat(31.257, 2.129)
+peaks.at[1, "sigma"] = ufloat(4.494, 0.038)
 
 peaks["N"] = pd.NA
 for i in range(len(peaks)):
@@ -154,4 +179,112 @@ peaks["Energie"] = linear(peaks["peaks"], alpha, beta)
 a = ufloat(22.673, 5.031)
 b = ufloat(-0.821, 0.033)
 peaks["Q"] = q_energy(peaks["Energie"], a, b)
+
+# Bestimme die x-lims der Halbwertsbreite numerisch, geht bestimmt noch besser
+# Kleine Abkürzung macht alles lesbarer
+gauss_max = (
+    peaks.at[1, "s"].n * 1 / (np.sqrt(2 * np.pi) * peaks.at[1, "sigma"].n)
+    + peaks.at[1, "b"].n
+)
+
+
+def eq1(x):
+    """
+    Funktion die den Schnittpunkt zwischen Halbwertsbreite und Fit als Nullstelle hat
+    """
+    y = 0.5 * gauss_max - scaled_gauss_pdf_b(
+        x,
+        peaks.at[1, "s"].n,
+        peaks.at[1, "mu"].n,
+        peaks.at[1, "sigma"].n,
+        peaks.at[1, "b"].n,
+    )
+    return y
+
+
+def eq2(x):
+    """
+    Funktion die den Schnittpunkt zwischen Zehntelwertsbreite und Fit als Nullstelle hat
+    """
+    y = 0.1 * gauss_max - scaled_gauss_pdf_b(
+        x,
+        peaks.at[1, "s"].n,
+        peaks.at[1, "mu"].n,
+        peaks.at[1, "sigma"].n,
+        peaks.at[1, "b"].n,
+    )
+    return y
+
+
+# Lösungen für die Halbwertsbreite
+solution_hm1 = fsolve(eq1, 3191)
+solution_hm2 = fsolve(eq1, 3201)
+# Lösungen für die Zenhntelwertsbreite
+solution_tm1 = fsolve(eq2, 3185)
+solution_tm2 = fsolve(eq2, 3205)
+print(solution_hm1, solution_hm2, solution_tm1, solution_tm2)
+plt.figure(figsize=(21, 9))
+maske = (caesium["index"] >= peaks["peaks"][1] - 15) & (
+    caesium["index"] <= peaks["peaks"][1] + 15
+)
+daten_cut = caesium[maske]
+cut_bin_edges = np.arange(daten_cut["index"].min(), daten_cut["index"].max() + 2)
+plt.errorbar(
+    daten_cut["index"],
+    daten_cut["daten"],
+    yerr=np.sqrt(daten_cut["daten"]),
+    fmt="o",
+    color="royalblue",
+    label=r"$^{137}\mathrm{Cs}$ Photoeffect Peak",
+)
+plt.stairs(
+    np.diff(
+        scaled_gauss_cdf_b(
+            cut_bin_edges,
+            peaks.at[1, "s"].n,
+            peaks.at[1, "mu"].n,
+            peaks.at[1, "sigma"].n,
+            peaks.at[1, "b"].n,
+        )
+    ),
+    cut_bin_edges,
+    label="fit",
+    color="orange",
+    linewidth=3.5,
+)
+# Das hier ist die Halbwertsbreite
+plt.hlines(
+    y=0.5 * peaks.at[1, "s"].n * 1 / (np.sqrt(2 * np.pi) * peaks.at[1, "sigma"].n)
+    + peaks.at[1, "b"].n,
+    xmin=int(solution_hm1) + 1,  # Geschummelt für die Optik
+    xmax=int(solution_hm2),
+    color="royalblue",
+    label="FWHM",
+    linewidth=3.5,
+)
+# Das hier die Zehntelwertsbreite
+plt.hlines(
+    y=0.1 * peaks.at[1, "s"].n * 1 / (np.sqrt(2 * np.pi) * peaks.at[1, "sigma"].n)
+    + peaks.at[1, "b"].n,
+    xmin=int(solution_tm1) + 1,  # Geschummelt für die Optik
+    xmax=int(solution_tm2),
+    color="royalblue",
+    label="FWTM",
+    linewidth=3.5,
+)
+plt.xticks(np.linspace(daten_cut["index"].min(), daten_cut["index"].max(), 10))
+plt.yticks(np.linspace(daten_cut["daten"].min(), daten_cut["daten"].max(), 10))
+
+plt.ylim(daten_cut["daten"].min() - 30)
+
+plt.xlabel(r"Channels")
+plt.ylabel(r"Signals")
+
+plt.grid(True, linewidth=0.1)
+plt.legend()
+plt.tight_layout()
+plt.savefig("./build/Caesium-FWHM.pdf")
+plt.clf()
+plt.close()
+
 peaks.to_csv("./build/peaks_Cs.csv")

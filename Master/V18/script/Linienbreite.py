@@ -332,4 +332,5 @@ for i in range(len(peaks)):
         europium, peaks, grenzen["L"][i], grenzen["R"][i], i, scaled_gauss_cdf
     )
 
+plt.close()
 peaks.to_csv("./build/peaks.csv", index=False)
