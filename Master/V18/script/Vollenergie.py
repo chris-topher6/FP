@@ -111,6 +111,7 @@ axs[0].errorbar(
     fmt="o",
     color="grey",
     label="discarded data",
+    barsabove=True,
 )
 
 axs[0].errorbar(
@@ -121,6 +122,7 @@ axs[0].errorbar(
     fmt="o",
     color="royalblue",
     label="data",
+    barsabove=True,
 )
 
 # axs[0].plot(

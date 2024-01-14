@@ -121,11 +121,19 @@ plt.errorbar(
     # xerr=np.sqrt(peaks["peak_heights"]),  # Poisson-Verteilt das ist aber quatsch,
     # die Kanäle haben keine Unsicherheit, nur die Höhe der Peaks hat eine
     yerr=europium_lit["Unsicherheit(E)"],
-    fmt=".",
+    fmt="o",
     label="data",
     color="royalblue",
+    elinewidth=3.5,
+    barsabove=True,
 )
-plt.plot(peaks["peaks"], linear(peaks["peaks"], *m.values), label="fit", color="orange")
+plt.plot(
+    peaks["peaks"],
+    linear(peaks["peaks"], *m.values),
+    label="fit",
+    color="orange",
+    linewidth=3.5,
+)
 
 # display legend with some fit info
 # fit_info = [

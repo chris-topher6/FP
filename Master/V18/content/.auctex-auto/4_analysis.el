@@ -20,6 +20,7 @@
     "fig:csspectrum"
     "fig:csfit"
     "eqn:fitplus"
-    "tab:csfitparams"))
+    "tab:csfitparams"
+    "fig:csfwhm"))
  :latex)
 

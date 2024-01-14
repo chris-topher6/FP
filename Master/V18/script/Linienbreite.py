@@ -247,6 +247,7 @@ def fitmaker_2000(
             label=r"$^{137}\mathrm{Cs}$"
             + f"-Peak {peak_idx+1}",  # Hier müsste man nochmal das Label genereller machen
             zorder=zorder1,
+            barsabove=True,
         )
         axs[0].stairs(
             np.diff(fit_function(cut_bin_edges, *m.values)),
@@ -265,6 +266,7 @@ def fitmaker_2000(
             color="royalblue",
             label=r"$^{152}\mathrm{Eu}$"
             + f"-Peak {peak_idx+1}",  # Hier müsste man nochmal das Label genereller machen
+            barsabove=True,
         )
         axs[0].stairs(
             np.diff(fit_function(cut_bin_edges, *m.values)),

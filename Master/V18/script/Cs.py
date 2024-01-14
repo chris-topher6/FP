@@ -222,13 +222,42 @@ solution_hm2 = fsolve(eq1, 3201)
 # Lösungen für die Zenhntelwertsbreite
 solution_tm1 = fsolve(eq2, 3185)
 solution_tm2 = fsolve(eq2, 3205)
-print(solution_hm1, solution_hm2, solution_tm1, solution_tm2)
+
+# Das hier ist die Halbwertsbreite von einer Normalverteilung
+FWHM = 2 * np.sqrt(2 * np.log(2)) * peaks.at[1, "sigma"]
+# und das hier die Zehntelwertsbreite
+FWTM = 2 * np.sqrt(2 * np.log(10)) * peaks.at[1, "sigma"]
+Verhältnis = FWHM / FWTM
+print(FWHM, FWTM, Verhältnis)
+
+# Umrechnung nochmal in keV
+FWHM_keV = linear(FWHM, alpha, beta)
+FWTM_keV = linear(FWTM, alpha, beta)
+print(f"FWHM = {FWHM_keV:.4f} keV")
+print(f"FWTM = {FWTM_keV:.4f} keV")
+
 plt.figure(figsize=(21, 9))
 maske = (caesium["index"] >= peaks["peaks"][1] - 15) & (
     caesium["index"] <= peaks["peaks"][1] + 15
 )
 daten_cut = caesium[maske]
 cut_bin_edges = np.arange(daten_cut["index"].min(), daten_cut["index"].max() + 2)
+
+plt.fill_betweenx(
+    y=[daten_cut["daten"].min() - 30, daten_cut["daten"].max() + 30],
+    x1=int(solution_hm1),
+    x2=int(solution_hm2),
+    color="lightsteelblue",
+    alpha=0.6,
+)
+plt.fill_betweenx(
+    y=[daten_cut["daten"].min() - 30, daten_cut["daten"].max() + 30],
+    x1=int(solution_tm1),
+    x2=int(solution_tm2),
+    color="lightsteelblue",
+    alpha=0.4,
+)
+print(plt.ylim())
 plt.errorbar(
     daten_cut["index"],
     daten_cut["daten"],
@@ -236,6 +265,7 @@ plt.errorbar(
     fmt="o",
     color="royalblue",
     label=r"$^{137}\mathrm{Cs}$ Photoeffect Peak",
+    barsabove=True,
 )
 plt.stairs(
     np.diff(
@@ -253,25 +283,53 @@ plt.stairs(
     linewidth=3.5,
 )
 # Das hier ist die Halbwertsbreite
+# plt.axhline(
+#     y=0.5 * peaks.at[1, "s"].n * 1 / (np.sqrt(2 * np.pi) * peaks.at[1, "sigma"].n)
+#     + peaks.at[1, "b"].n,
+#     xmin=0,
+#     xmax=1,
+#     color="royalblue",
+#     linewidth=3.0,
+#     linestyle="dashed",
+# )
 plt.hlines(
     y=0.5 * peaks.at[1, "s"].n * 1 / (np.sqrt(2 * np.pi) * peaks.at[1, "sigma"].n)
     + peaks.at[1, "b"].n,
-    xmin=int(solution_hm1) + 1,  # Geschummelt für die Optik
+    xmin=int(solution_hm1),
     xmax=int(solution_hm2),
     color="royalblue",
-    label="FWHM",
+    label=f"FWHM with Δx = {FWHM:.4f}",
     linewidth=3.5,
 )
+plt.axvline(x=int(solution_hm1), color="royalblue", linewidth=3.0, linestyle="dashed")
+plt.axvline(x=int(solution_hm2), color="royalblue", linewidth=3.0, linestyle="dashed")
 # Das hier die Zehntelwertsbreite
+# plt.axhline(
+#     y=0.1 * peaks.at[1, "s"].n * 1 / (np.sqrt(2 * np.pi) * peaks.at[1, "sigma"].n)
+#     + peaks.at[1, "b"].n,
+#     xmin=0,
+#     xmax=1,
+#     color="royalblue",
+#     linewidth=3.0,
+#     linestyle="dashed",
+# )
 plt.hlines(
     y=0.1 * peaks.at[1, "s"].n * 1 / (np.sqrt(2 * np.pi) * peaks.at[1, "sigma"].n)
     + peaks.at[1, "b"].n,
-    xmin=int(solution_tm1) + 1,  # Geschummelt für die Optik
+    xmin=int(solution_tm1),
     xmax=int(solution_tm2),
-    color="royalblue",
-    label="FWTM",
+    color="cornflowerblue",
+    label=f"FWTM with Δx = {FWTM:.4f}",
     linewidth=3.5,
 )
+plt.axvline(
+    x=int(solution_tm1), color="cornflowerblue", linewidth=3.0, linestyle="dashed"
+)
+plt.axvline(
+    x=int(solution_tm2), color="cornflowerblue", linewidth=3.0, linestyle="dashed"
+)
+
+
 plt.xticks(np.linspace(daten_cut["index"].min(), daten_cut["index"].max(), 10))
 plt.yticks(np.linspace(daten_cut["daten"].min(), daten_cut["daten"].max(), 10))
 
@@ -280,7 +338,7 @@ plt.ylim(daten_cut["daten"].min() - 30)
 plt.xlabel(r"Channels")
 plt.ylabel(r"Signals")
 
-plt.grid(True, linewidth=0.1)
+# plt.grid(True, linewidth=0.1)
 plt.legend()
 plt.tight_layout()
 plt.savefig("./build/Caesium-FWHM.pdf")
