@@ -40,7 +40,8 @@ europium_lit = pd.read_csv(
     header=None,
 )
 europium_lit.columns = ["Energie", "Unsicherheit(E)", "Intensität", "Unsicherheit(I)"]
-europium_lit = europium_lit.drop([13])  # Ein Wert zuviel
+europium_lit = europium_lit.drop([10, 11, 12, 13])  # Nehme 10 Werte
+# europium_lit = europium_lit.drop([ 1, 13])  # Ein Wert zuviel
 
 # Untergrundmessung dauerte 76353s; Eu Messung dauerte 2804s; normiere auf
 # letzteres für Plot beider Messungen
@@ -60,10 +61,11 @@ peaks = pd.DataFrame(peaks_params)
 peaks["peaks"] = peaks_array
 
 # Peaks die eher dem Untergrundrauschen zuzuordnen sind entfernen
-peaks = peaks.drop([0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 14, 15, 16, 17])
+peaks = peaks.drop([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16, 17, 20])
+# peaks = peaks.drop([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16, 17])
 
 # Plot der Kalibrationsmessung
-plt.figure(figsize=(21, 9))  # TODO andere dpi ausprobieren
+plt.figure(figsize=(21, 9))
 
 plt.bar(
     europium["index"],
@@ -114,7 +116,16 @@ m.migrad()
 m.hesse()
 
 # print(least_squares.pulls(m.values)) So könnte man die Pulls ploten, sind hier aber gewaltig...
-
+matplotlib.rcParams.update({"font.size": 8})
+plt.figure()
+plt.plot(
+    peaks["peaks"],
+    linear(peaks["peaks"], *m.values),
+    label="fit",
+    color="orange",
+    linewidth=3.5,
+    zorder=1,
+)
 plt.errorbar(
     peaks["peaks"],
     europium_lit["Energie"],
@@ -126,15 +137,8 @@ plt.errorbar(
     color="royalblue",
     elinewidth=3.5,
     barsabove=True,
+    zorder=2,
 )
-plt.plot(
-    peaks["peaks"],
-    linear(peaks["peaks"], *m.values),
-    label="fit",
-    color="orange",
-    linewidth=3.5,
-)
-
 # display legend with some fit info
 # fit_info = [
 #     f"$\\chi^2$/$n_\\mathrm{{dof}}$ = {m.fval:.1f} / {m.ndof:.0f} = {m.fmin.reduced_chi2:.1f}",

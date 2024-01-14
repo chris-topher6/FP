@@ -11,6 +11,14 @@ figure~\ref{fig:eubackground}.
 \begin{figure}
 	\centering
 	\begin{adjustbox}{width=1.4\textwidth, center}
+		\includegraphics[scale=0.3]{./build/Europium-Peaks.pdf}
+	\end{adjustbox}
+	\caption{Spectrum of an $^{152}\text{Eu}$ source and its most prominent peaks.}
+	\label{fig:spectrumeu}
+\end{figure}
+\begin{figure}
+	\centering
+	\begin{adjustbox}{width=1.4\textwidth, center}
 		\includegraphics[scale=0.3]{./build/Untergrund.pdf}
 	\end{adjustbox}
 	\caption{Spectrum of background radiation.}
@@ -24,17 +32,9 @@ figure~\ref{fig:eubackground}.
 	\caption{$^{152}\text{Eu}$ measurement and scaled spectrum of background radiation.}
 	\label{fig:eubackground}
 \end{figure}
-\begin{figure}
-	\centering
-	\begin{adjustbox}{width=1.4\textwidth, center}
-		\includegraphics[scale=0.3]{./build/Europium-Peaks.pdf}
-	\end{adjustbox}
-	\caption{Spectrum of an $^{152}\text{Eu}$ source and its most prominent peaks.}
-	\label{fig:spectrumeu}
-\end{figure}
 \noindent
 To calibrate the germanium detector, an energy is assigned to each detector channel.
-The 13 most prominent full energy peaks are selected and compared to the 13 most probable emission
+The 10 most prominent full energy peaks are selected and compared to the 10 most probable emission
 lines of the known $^{152}\text{Eu}$ spectrum~\cite{laraweb}. The most prominent full enery peaks are marked in
 orange in Figure~\ref{fig:spectrumeu} and given in Table~\ref{tab:calibrationvalues}. The prominence
 calculation is performed using the algorithm \texttt{find\_peaks} from the python library \texttt{scipy} \cite{scipy}.
@@ -45,20 +45,11 @@ A linear fit
 \end{equation}
 is performed to get a relation between energy $E$ and channel number $K$. The resulting fit parameters are
 \begin{align*}
-	\alpha & =  \num{0.218 \pm 0.000}       \\
-	\beta  & =  \num{104.803 \pm 0.000292}.
+	\alpha & =  \num{0.207452 \pm 0.000}      \\
+	\beta  & =  \num{-1.622490 \pm 0.000381}.
 \end{align*}
-The fit is displayed in Figure~\ref{fig:calibrationfit}.
-\begin{figure}
-	\centering
-	\begin{adjustbox}{width=1.4\textwidth, center}
-		\includegraphics[scale=0.3]{./build/Europium-Fit.pdf}
-	\end{adjustbox}
-	\caption{Fit of the detector channels and corresponding energy.}
-	\label{fig:calibrationfit}
-\end{figure}
-\noindent
-The relation~\ref{eqn:linear} with the determined parameters is used thoughout this analysis for energy measurements. The fit is performed
+The fit is displayed in Figure~\ref{fig:efit}.
+The relation~\ref{eqn:linear} with the determined parameters is used throughout this analysis for energy measurements. The fit is performed
 using the \texttt{iminuit}~\cite{iminuit} python package.
 \begin{table}[H]
 	\centering
@@ -66,43 +57,33 @@ using the \texttt{iminuit}~\cite{iminuit} python package.
 	\label{tab:calibrationvalues}
 	\sisetup{table-format=4.4}
 	\begin{tabular}{S S[table-format=2.2] S[table-format=4.0] S}
-		\toprule {$E_{\text{lit}}/\si{\kilo\electronvolt}$} & {$P_{\text{lit}}/\si{\percent}$} & {$C$} & {$N$}                 \\
+		\toprule {$E_{\text{lit}}/\si{\kilo\electronvolt}$} & {$P_{\text{lit}}/\si{\percent}$} & {$C$} & {$N$}                  \\
 		\midrule
-		121.7817                                            & {28.410 \pm  0.13}               & 198   & {842.958 \pm 37.370}  \\
-		244.6974                                            & {7.550 \pm   0.04}               & 225   & {866.660 \pm 47.906}  \\
-		344.2785                                            & {26.590 \pm  0.12}               & 595   & {8198.356 \pm 91.156} \\
-		411.1165                                            & {2.238 \pm   0.010}              & 1187  & {1560.251 \pm 39.797} \\
-		443.9650                                            & {2.800 \pm   0.02}               & 1666  & {3338.623 \pm 57.831} \\
-		778.9045                                            & {12.970 \pm  0.06}               & 1989  & {304.132 \pm 18.265}  \\
-		867.3800                                            & {4.243 \pm   0.023}              & 2145  & {438.597 \pm 21.296}  \\
-		964.0790                                            & {14.500 \pm  0.06}               & 3760  & {751.993 \pm 29.308}  \\
-		1085.8370                                           & {10.130 \pm  0.06}               & 4192  & {275.474 \pm 20.183}  \\
-		1089.7370                                           & {1.730 \pm   0.01}               & 4654  & {631.712 \pm 25.596}  \\
-		1112.0760                                           & {13.410 \pm  0.06}               & 5238  & {438.699 \pm 23.124}  \\
-		1299.1420                                           & {1.633 \pm   0.009}              & 5370  & {562.977 \pm 25.103}  \\
-		1408.0130                                           & {20.850 \pm  0.08}               & 6797  & {640.583 \pm 27.287}  \\
+		121.7817                                            & {28.410 \pm  0.13}               & 595   & {8479.012 \pm 103.393} \\
+		244.6974                                            & {7.550 \pm   0.04}               & 1187  & {1597.296 \pm 40.497}  \\
+		344.2785                                            & {26.590 \pm  0.12}               & 1666  & {3301.229 ± 60.211}    \\
+		443.9650                                            & {2.800 \pm   0.02}               & 2145  & {423.909 ± 24.967}     \\
+		778.9045                                            & {12.970 \pm  0.06}               & 3760  & {751.993 ± 29.308}     \\
+		867.3800                                            & {4.243 \pm   0.023}              & 4192  & {247.359 ± 24.580}     \\
+		964.0790                                            & {14.500 \pm  0.06}               & 4654  & {621.455 ± 26.067}     \\
+		1085.8370                                           & {10.130 \pm  0.06}               & 5238  & {469.800 ± 38.635}     \\
+		1112.0760                                           & {13.410 \pm  0.06}               & 5370  & {586.025 ± 35.943}     \\
+		1408.0130                                           & {20.850 \pm  0.08}               & 6797  & {627.462 ± 26.437}     \\
 		\bottomrule
 	\end{tabular}
 \end{table}
-\begin{figure}[H]
-	% Erste Zeile
-	\centering
-	\includegraphics[width=\linewidth]{./build/Europium-Fit-Peak1.pdf}
-	\caption{Fit of the first peak of the $^{152}\text{Eu}$ spectrum.}
-\end{figure}
-
 \begin{figure}[H]
 	\centering
 	% Erste Zeile
 	\begin{adjustbox}{width=1.3\textwidth, center}
 		\begin{subfigure}{.5\textwidth}
 			\centering
-			\includegraphics[width=\linewidth]{./build/Europium-Fit-Peak2.pdf}
+			\includegraphics[width=\linewidth]{./build/Europium-Fit-Peak1.pdf}
 			% \caption{Plot 1}
 		\end{subfigure}%
 		\begin{subfigure}{.5\textwidth}
 			\centering
-			\includegraphics[width=\linewidth]{./build/Europium-Fit-Peak3.pdf}
+			\includegraphics[width=\linewidth]{./build/Europium-Fit-Peak2.pdf}
 			% \caption{Plot 2}
 		\end{subfigure}
 	\end{adjustbox}
@@ -110,12 +91,12 @@ using the \texttt{iminuit}~\cite{iminuit} python package.
 	\begin{adjustbox}{width=1.3\textwidth, center}
 		\begin{subfigure}{.5\textwidth}
 			\centering
-			\includegraphics[width=\linewidth]{./build/Europium-Fit-Peak4.pdf}
+			\includegraphics[width=\linewidth]{./build/Europium-Fit-Peak3.pdf}
 			% \caption{Plot 1}
 		\end{subfigure}%
 		\begin{subfigure}{.5\textwidth}
 			\centering
-			\includegraphics[width=\linewidth]{./build/Europium-Fit-Peak5.pdf}
+			\includegraphics[width=\linewidth]{./build/Europium-Fit-Peak4.pdf}
 			% \caption{Plot 2}
 		\end{subfigure}
 	\end{adjustbox}
@@ -123,12 +104,12 @@ using the \texttt{iminuit}~\cite{iminuit} python package.
 	\begin{adjustbox}{width=1.3\textwidth, center}
 		\begin{subfigure}{.5\textwidth}
 			\centering
-			\includegraphics[width=\linewidth]{./build/Europium-Fit-Peak6.pdf}
+			\includegraphics[width=\linewidth]{./build/Europium-Fit-Peak5.pdf}
 			% \caption{Plot 1}
 		\end{subfigure}%
 		\begin{subfigure}{.5\textwidth}
 			\centering
-			\includegraphics[width=\linewidth]{./build/Europium-Fit-Peak7.pdf}
+			\includegraphics[width=\linewidth]{./build/Europium-Fit-Peak6.pdf}
 			% \caption{Plot 2}
 		\end{subfigure}
 	\end{adjustbox}
@@ -139,12 +120,12 @@ using the \texttt{iminuit}~\cite{iminuit} python package.
 	\begin{adjustbox}{width=1.3\textwidth, center}
 		\begin{subfigure}{.5\textwidth}
 			\centering
-			\includegraphics[width=\linewidth]{./build/Europium-Fit-Peak8.pdf}
+			\includegraphics[width=\linewidth]{./build/Europium-Fit-Peak7.pdf}
 			% \caption{Plot 1}
 		\end{subfigure}%
 		\begin{subfigure}{.5\textwidth}
 			\centering
-			\includegraphics[width=\linewidth]{./build/Europium-Fit-Peak9.pdf}
+			\includegraphics[width=\linewidth]{./build/Europium-Fit-Peak8.pdf}
 			% \caption{Plot 2}
 		\end{subfigure}
 	\end{adjustbox}
@@ -152,29 +133,16 @@ using the \texttt{iminuit}~\cite{iminuit} python package.
 	\begin{adjustbox}{width=1.3\textwidth, center}
 		\begin{subfigure}{.5\textwidth}
 			\centering
+			\includegraphics[width=\linewidth]{./build/Europium-Fit-Peak9.pdf}
+			% \caption{Plot 1}
+		\end{subfigure}%
+		\begin{subfigure}{.5\textwidth}
+			\centering
 			\includegraphics[width=\linewidth]{./build/Europium-Fit-Peak10.pdf}
-			% \caption{Plot 1}
-		\end{subfigure}%
-		\begin{subfigure}{.5\textwidth}
-			\centering
-			\includegraphics[width=\linewidth]{./build/Europium-Fit-Peak11.pdf}
 			% \caption{Plot 2}
 		\end{subfigure}
 	\end{adjustbox}
-	% Sechste Zeile
-	\begin{adjustbox}{width=1.3\textwidth, center}
-		\begin{subfigure}{.5\textwidth}
-			\centering
-			\includegraphics[width=\linewidth]{./build/Europium-Fit-Peak12.pdf}
-			% \caption{Plot 1}
-		\end{subfigure}%
-		\begin{subfigure}{.5\textwidth}
-			\centering
-			\includegraphics[width=\linewidth]{./build/Europium-Fit-Peak13.pdf}
-			% \caption{Plot 2}
-		\end{subfigure}
-	\end{adjustbox}
-	\caption{Fits of peaks of the $^{152}\text{Eu}$ spectrum.}
+	\caption{Fits of the 10 most prominent peaks of the $^{152}\text{Eu}$ spectrum.}
 \end{figure}
 \FloatBarrier
 
@@ -200,12 +168,12 @@ with the detectors radius $r$ and the distance to the probe $a$.
 \label{subsubsec:activity}
 To determine the full energy detection probability, first the activation of the $^{152}\text{Eu}$ source has to be estimated.
 The source had an activation of $A_{0} = \SI{4130 \pm 60}{\becquerel}$ on the 1.10.2000. According to the law of
-radioactivate decay,
+radioactive decay,
 \begin{equation}
 	A(t) = A_{0} \cdot \exp{\left( - \frac{\ln{(2)}}{\tau} \cdot t \right)}
 	\label{eqn:activation}
 \end{equation}
-with elapsed time $t$ and half life $\tau$,
+with elapsed time $t$ and half life $\tau = \num{13.522} \, \text{years}$~\cite{laraweb},
 the activation on the day of the measurement of $^{152}\text{Eu}$ amounts to
 $A(t_{\text{M}}) = \SI{1262 \pm 18}{\becquerel}$.
 
@@ -222,7 +190,7 @@ equation~\ref{eqn:solidangle} are given by
 	a & =  \SI{8.91}{\centi\meter}.
 	\label{eqn:params}
 \end{align}
-Using equation~\ref{eqn:solidangle} and~\ref{eqn:params} the solid angle
+Using equation~\ref{eqn:solidangle} and the parameters~\ref{eqn:params} the solid angle
 amounts to
 \begin{equation}
 	\frac{\Omega}{4 \pi} = 0.01522.
@@ -231,30 +199,25 @@ amounts to
 \subsubsection{Determination of the full energy detection probability}
 \label{subsubsec:determinationfep}
 The estimation of the full energy detection probability is performed for
-all measured spectral lines with more than $\SI{150}{\kilo\electronvolt}$,
-which is the limit of the detector sensitivity.
-
+all measured spectral lines.
 \begin{table}[H]
 	\centering
 	\caption{Energy and the calculated full energy detection probability of the 12 peaks of the $^{152}\text{Eu}$ spectrum with more than $\SI{150}{\kilo\electronvolt}$.}
 	\label{tab:calibrationvalues}
 	\sisetup{table-format=4.4}
 	\begin{tabular}{S  S[table-format=1.5] }
-		\toprule {$E_{\text{lit}}/\si{\kilo\electronvolt}$} & {$Q/\si{\percent}$}     \\
+		\toprule {$E/\si{\kilo\electronvolt}$} & {$Q/\si{\percent}$}   \\
 		\midrule
-		% 121.7817                                            & { 0.000552 \pm  0.000026} \\
-		244.6974                                            & { 0.02134 \pm  0.0012}  \\
-		344.2785                                            & { 0.05731 \pm  0.0010}  \\
-		411.1165                                            & { 0.12959 \pm  0.0038}  \\
-		443.9650                                            & { 0.22165 \pm  0.0052}  \\
-		778.9045                                            & { 0.00436 \pm  0.00027} \\
-		867.3800                                            & { 0.01922 \pm  0.00098} \\
-		964.0790                                            & { 0.00964 \pm  0.0004}  \\
-		1085.8370                                           & { 0.00506 \pm  0.00038} \\
-		1089.7370                                           & { 0.06788 \pm  0.0029}  \\
-		1112.0760                                           & { 0.00608 \pm  0.00033} \\
-		1299.1420                                           & { 0.06409 \pm  0.0030}  \\
-		1408.0130                                           & { 0.00571 \pm  0.00026} \\
+		{121.7817 \pm 0.0003}                  & {0.05548 \pm 0.00108} \\
+		{244.6974 \pm 0.0008}                  & {0.03933 \pm 0.00117} \\
+		{344.2785 \pm 0.0012}                  & {0.02308 \pm 0.00055} \\
+		{443.965 \pm 0.003}                    & {0.02814 \pm 0.00172} \\
+		{778.9045 \pm 0.0024}                  & {0.01078 \pm 0.00045} \\
+		{867.38 \pm 0.003}                     & {0.01083 \pm 0.00109} \\
+		{964.079 \pm 0.018}                    & {0.00797 \pm 0.00036} \\
+		{1085.837 \pm 0.01}                    & {0.00862 \pm 0.00072} \\
+		{1112.076 \pm 0.003}                   & {0.00812 \pm 0.00051} \\
+		{1408.013 \pm 0.003}                   & {0.00559 \pm 0.00025} \\
 		\bottomrule
 	\end{tabular}
 \end{table}
@@ -265,18 +228,29 @@ To obtain the energy dependency of full energy detection probability, a fit usin
 	\label{eqn:fedpfit_function}
 \end{equation}
 \noindent
-is performed. The result is displayed in Figure~\ref{fig:fedpfit}.
-\begin{figure}
+is performed for all measured spectral lines with more than $\SI{150}{\kilo\electronvolt}$,
+which is the limit of the detector sensitivity. The result is displayed in Figure~\ref{fig:efit}.
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{./build/FEDP-Fit.pdf}
-	\caption{Fit of the full energy detection probabilities for different peaks of the $^{152}\text{Eu}$ spectrum.}
-	\label{fig:fedpfit}
+	% Erste Zeile
+	\begin{adjustbox}{width=1.3\textwidth, center}
+		\begin{subfigure}{.5\textwidth}
+			\centering
+			\includegraphics[width=\linewidth]{./build/Europium-Fit.pdf}
+		\end{subfigure}%
+		\begin{subfigure}{.5\textwidth}
+			\centering
+			\includegraphics[width=\linewidth]{./build/FEDP-Fit.pdf}
+		\end{subfigure}
+	\end{adjustbox}
+	\caption{The fit of the measured energy and the detector channels as well as the Fit of the full energy detection probabilities for different peaks of the $^{152}\text{Eu}$ spectrum.}
+	\label{fig:efit}
 \end{figure}
 \noindent
-Values which seem to be far out of the expected value range are excluded from the fit (for details, see Section~\ref{sec:conclusion}). The resulting fit parameters are
+The resulting fit parameters are
 \begin{align*}
-	a & = \num{22.673 \pm 5.031}  \\
-	b & = \num{-0.821 \pm 0.033}.
+	a & = \num{4.757 \pm 0.347}   \\
+	b & = \num{-0.915 \pm 0.013}.
 \end{align*}
 The relation~\ref{eqn:fedpfit_function} with the determined parameters is used to estimate the full energy detection
 probability throughout this analysis.
@@ -324,22 +298,6 @@ equation~\ref{eqn:fitplus}.
 	\label{eqn:fitplus}
 \end{equation}
 \noindent
-% The full energy detection probability of these peaks is calculated using the fit and parameters deduced in
-% section~\ref{subsubsec:determinationfep}. The results are displayed in Table~\ref{tab:csfedp}.
-% \begin{table}[H]
-% 	\centering
-% 	\caption{Energy and the calculated full energy detection probability of the two peaks of the $^{137}\text{Cs}$ spectrum with more than $\SI{150}{\kilo\electronvolt}$.}
-% 	\label{tab:calibrationvalues}
-% 	\sisetup{table-format=4.4}
-% 	\begin{tabular}{S  S[table-format=1.5] }
-% 		\toprule {$E_{\text{lit}}/\si{\kilo\electronvolt}$} & {$Q/\si{\percent}$}     \\
-% 		\midrule
-% 		{303.87376 \pm 0.00029}         				                    & { 0.06409 \pm  0.0030}  \\
-% 		{800.13725 \pm 0.00029}                                           & { 0.00571 \pm  0.00026} \\
-% 		\bottomrule
-% 	\end{tabular}
-% \end{table}
-% \noindent
 The fit parameters including the number of events of each peak is given in Table~\ref{tab:csfitparams}; the yield of each peak is given by the scale factor $s$.
 \begin{table}[H]
 	\centering
@@ -349,8 +307,8 @@ The fit parameters including the number of events of each peak is given in Table
 	\begin{tabular}{S S[table-format=4.3] S[table-format=2.0] S[table-format=4.3] S[table-format=2.3]}
 		\toprule {$E/\si{\kilo\electronvolt}$} & {$s$}                 & {$b$}              & {$\mu$}              & {$\sigma$}         \\
 		\midrule
-		{303.87376 \pm 0.00029}                & {1275.237 \pm 70.842} & {20.000 \pm 0.457} & {929.282 \pm 1.989}  & {31.257 \pm 2.129} \\
-		{800.13725 \pm 0.00029}                & {9282.567 \pm 98.438} & {15.000 \pm 0.165} & {3195.882 \pm 0.050} & {4.494 \pm 0.038}  \\
+		{188.1961 \pm 0.0004}                  & {1275.237 \pm 70.842} & {20.000 \pm 0.457} & {929.282 \pm 1.989}  & {31.257 \pm 2.129} \\
+		{661.3941 \pm 0.0004}                  & {9282.567 \pm 98.438} & {15.000 \pm 0.165} & {3195.882 \pm 0.050} & {4.494 \pm 0.038}  \\
 		\bottomrule
 	\end{tabular}
 \end{table}

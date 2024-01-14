@@ -267,14 +267,14 @@ for i in range(len(peaks)):
     print(f"N_{i+1} = {N:.5f}")
 
 # Umrechnung der Kanäle in Energien wurde in Kalibrierung.py bestimmt
-alpha = ufloat(0.217564, 0)
-beta = ufloat(104.802701, 0.000292)
+alpha = ufloat(0.207452, 0)
+beta = ufloat(-1.622490, 0.000381)
 peaks["Energie"] = linear(peaks["peaks"], alpha, beta)
 
 # Wurden durch Fit bestimmt, updaten wenn nötig;
 # Sind die Parameter des Fits für Q(E)
-a = ufloat(22.673, 5.031)
-b = ufloat(-0.821, 0.033)
+a = ufloat(4.757, 0.347)
+b = ufloat(-0.915, 0.013)
 peaks["Q"] = q_energy(peaks["Energie"], a, b)
 
 # Bestimme die x-lims der Halbwertsbreite numerisch, geht bestimmt noch besser

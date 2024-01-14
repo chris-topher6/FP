@@ -2,11 +2,10 @@
  "4_analysis"
  (lambda ()
    (LaTeX-add-labels
+    "fig:spectrumeu"
     "fig:background"
     "fig:eubackground"
-    "fig:spectrumeu"
     "eqn:linear"
-    "fig:calibrationfit"
     "tab:calibrationvalues"
     "eqn:fullenergy"
     "eqn:solidangle"
@@ -16,7 +15,7 @@
     "eqn:params"
     "subsubsec:determinationfep"
     "eqn:fedpfit_function"
-    "fig:fedpfit"
+    "fig:efit"
     "fig:csspectrum"
     "fig:csfit"
     "eqn:fitplus"

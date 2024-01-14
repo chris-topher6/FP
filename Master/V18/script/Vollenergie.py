@@ -79,7 +79,11 @@ def q_energy(E, a, b):
 # Daten passt
 # peaks_fit = peaks.drop([0, 1, 2, 3, 5, 6, 8, 9, 11])
 # peaks_fit = peaks.drop([0, 1, 2, 9, 11])
-peaks_fit = peaks.drop([0, 1, 2, 5, 6, 7, 8, 10, 12])
+# peaks_fit = peaks.drop([0, 1, 2, 5, 6, 7, 8, 10, 12])
+peaks_fit = (
+    peaks  # Ja das müsste mal einer ordentlich machen aber das trifft ja irgendwie auf
+)
+# alles hier zu
 
 energy_scale = np.linspace(
     peaks["Energie"].min(), peaks["Energie"].max(), 10000
@@ -103,16 +107,16 @@ fig, axs = plt.subplots(
     layout="constrained",
 )
 
-axs[0].errorbar(
-    peaks["Energie"],
-    peaks["fedp"],
-    xerr=peaks["Unsicherheit(E)"],
-    yerr=peaks["fedp_err"],
-    fmt="o",
-    color="grey",
-    label="discarded data",
-    barsabove=True,
-)
+# axs[0].errorbar(
+#     peaks["Energie"],
+#     peaks["fedp"],
+#     xerr=peaks["Unsicherheit(E)"],
+#     yerr=peaks["fedp_err"],
+#     fmt="o",
+#     color="grey",
+#     label="discarded data",
+#     barsabove=True,
+# )
 
 axs[0].errorbar(
     peaks_fit["Energie"],
@@ -159,14 +163,21 @@ n_data = peaks_fit["fedp"]
 
 pull = (n_data - n_model) / n_error
 
-bin_edges = peaks_fit["Energie"]
+# Pseudobinning damit die Pulls nicht scheiße aussehen
+bin_edges = peaks_fit["Energie"].to_numpy()
+bin_edges = np.insert(bin_edges, 0, 0)
+bin_edges = np.append(bin_edges, bin_edges[-1] + (bin_edges[-1] - bin_edges[-2]))
+bin_centers = (bin_edges[:-1] + bin_edges[1:]) / 2
 
-axs[1].bar(
-    peaks_fit["Energie"],
-    pull,
-    width=15,
-    color="royalblue",
-)
+# axs[1].bar(
+#     peaks_fit["Energie"],
+#     pull,
+#     width=15,
+#     color="royalblue",
+# )
+
+axs[1].stairs(pull, bin_centers, fill=True, color="royalblue")
+
 axs[1].axhline(0, color="orange", linewidth=0.8)
 axs[1].set_xlabel(r"$\mathrm{Energy}/\,\mathrm{keV}$")
 axs[1].set_ylabel(r"$\mathrm{Pull}/\,\sigma$")
