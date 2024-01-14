@@ -198,6 +198,7 @@ def fitmaker_2000(
 
     # Kanten der Bins für den abgeschnittenen Datensatz
     cut_bin_edges = np.arange(daten_cut["index"].min(), daten_cut["index"].max() + 2)
+    bin_centers = (cut_bin_edges[:-1] + cut_bin_edges[1:]) / 2
 
     # Kanten der Bins für den vollständigen Datensatz
     bin_edges = np.arange(daten_df["index"].min(), daten_df["index"].max() + 2)
@@ -239,7 +240,7 @@ def fitmaker_2000(
     )
     if zorder1 is not None and zorder2 is not None:
         axs[0].errorbar(
-            daten_cut["index"],
+            bin_centers,
             daten_cut["daten"],
             yerr=np.sqrt(daten_cut["daten"]),
             fmt="o",
@@ -259,7 +260,7 @@ def fitmaker_2000(
         )
     else:
         axs[0].errorbar(
-            daten_cut["index"],
+            bin_centers,
             daten_cut["daten"],
             yerr=np.sqrt(daten_cut["daten"]),
             fmt="o",

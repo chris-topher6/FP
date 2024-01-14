@@ -4,13 +4,15 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib
 import matplotlib.ticker as ticker
+from mpl_toolkits.axes_grid1.inset_locator import inset_axes, mark_inset
 import numpy as np
 from scipy.signal import find_peaks
 from scipy.optimize import fsolve
+from scipy.stats import norm
+import scipy
 import iminuit
 from iminuit import Minuit
 from iminuit.cost import ExtendedBinnedNLL
-from scipy.stats import norm
 from typing import Tuple
 from uncertainties import ufloat
 from Linienbreite import fitmaker_2000
@@ -66,7 +68,7 @@ peaks = peaks.reset_index(drop=True)
 peaks["N"] = float(0)
 peaks["N_err"] = float(0)
 
-plt.figure(figsize=(21, 9), dpi=500)  # TODO andere dpi ausprobieren
+plt.figure(figsize=(21, 9), dpi=500)
 plt.bar(
     caesium["index"],
     caesium["daten"],
@@ -87,6 +89,101 @@ plt.grid(True, linewidth=0.1)
 plt.legend()
 plt.tight_layout()
 plt.savefig("./build/Caesium-Peaks.pdf")
+plt.clf()
+
+
+# Berechnung der theoretischen Erwartung für die Comptonkante
+def emax(egamma, me, c):
+    """
+    Funktion für die Energie des Elektrons bei Compton-Streuung mit theta=180 grad.
+    """
+    return egamma / (1 + (me * c**2) / (2 * egamma))
+
+
+# emax = emax() # TODO die Kanalumrechnung richtig hinkriegen sonst ist das hier auch alles quatsch
+# Um das Compton-Kontinuum und die -Kante besser sehen zu können den Bums nochmal plotten
+plt.figure(figsize=(21, 9), dpi=500)
+caesium_short = caesium[0:3300]  # weiter rechts ist eh nix
+plt.bar(
+    caesium_short["index"],
+    caesium_short["daten"],
+    linewidth=2,
+    width=1.1,
+    label=r"$^{137}\mathrm{Cs}$",
+    color="royalblue",
+)
+plt.plot(
+    peaks.at[0, "peaks"],
+    peaks.at[0, "peak_heights"],
+    "x",
+    color="mediumpurple",
+    label="Backscatter Peak",
+)
+plt.plot(
+    peaks.at[1, "peaks"],
+    peaks.at[1, "peak_heights"],
+    "x",
+    color="seagreen",
+    label="Photoelectric Peak",
+)
+plt.xticks(np.linspace(0, 3300, 10))
+plt.yticks(np.linspace(caesium_short["daten"].min(), caesium_short["daten"].max(), 10))
+
+plt.ylim(caesium_short["daten"].min() - 30)
+plt.xlabel(r"Channels")
+plt.ylabel(r"Signals")
+
+# plt.grid(True, linewidth=0.1)
+plt.legend()
+plt.tight_layout()
+
+# Bereich für die eingesetzte Ansicht definieren
+x1, x2 = 2200, 2500
+y1, y2 = (
+    caesium_short[(caesium_short["index"] >= x1) & (caesium_short["index"] <= x2)][
+        "daten"
+    ].min(),
+    caesium_short[(caesium_short["index"] >= x1) & (caesium_short["index"] <= x2)][
+        "daten"
+    ].max(),
+)
+# Eingesetzte Ansicht erstellen
+ax = plt.gca()
+ax_inset = inset_axes(
+    ax,
+    width="50%",
+    height="50%",
+    loc=3,
+    bbox_to_anchor=(0.5, 0.5, 0.4, 0.4),
+    bbox_transform=ax.transAxes,
+)  # Position und Größe der eingesetzten Ansicht anpassen
+
+ax_inset.bar(
+    caesium_short["index"],
+    caesium_short["daten"],
+    linewidth=2,
+    width=1.1,
+    color="royalblue",
+)
+# ax_inset.plot(
+#     peaks.at[0, "peaks"],
+#     peaks.at[0, "peak_heights"],
+#     "x",
+#     color="mediumpurple",
+# )
+# ax_inset.plot(
+#     peaks.at[1, "peaks"],
+#     peaks.at[1, "peak_heights"],
+#     "x",
+#     color="seagreen",
+# )
+# Grenzen der eingesetzten Ansicht
+ax_inset.set_xlim(x1, x2)
+ax_inset.set_ylim(y1 - 10, y2 + 10)
+# Markiere Bereich im Hauptplot
+mark_inset(ax, ax_inset, loc1=1, loc2=3, fc="none", ec="0.5")
+
+plt.savefig("./build/Caesium-Peaks-Short.pdf")
 plt.clf()
 
 matplotlib.rcParams.update({"font.size": 8})
@@ -228,7 +325,7 @@ FWHM = 2 * np.sqrt(2 * np.log(2)) * peaks.at[1, "sigma"]
 # und das hier die Zehntelwertsbreite
 FWTM = 2 * np.sqrt(2 * np.log(10)) * peaks.at[1, "sigma"]
 Verhältnis = FWHM / FWTM
-print(FWHM, FWTM, Verhältnis)
+print(f"Verhältnis FWHM/FWTM = {Verhältnis:.4f}")
 
 # Umrechnung nochmal in keV
 FWHM_keV = linear(FWHM, alpha, beta)
@@ -242,6 +339,8 @@ maske = (caesium["index"] >= peaks["peaks"][1] - 15) & (
 )
 daten_cut = caesium[maske]
 cut_bin_edges = np.arange(daten_cut["index"].min(), daten_cut["index"].max() + 2)
+bin_centers = (cut_bin_edges[:-1] + cut_bin_edges[1:]) / 2
+matplotlib.rcParams.update({"font.size": 18})
 
 plt.fill_betweenx(
     y=[daten_cut["daten"].min() - 30, daten_cut["daten"].max() + 30],
@@ -257,9 +356,8 @@ plt.fill_betweenx(
     color="lightsteelblue",
     alpha=0.4,
 )
-print(plt.ylim())
 plt.errorbar(
-    daten_cut["index"],
+    bin_centers,
     daten_cut["daten"],
     yerr=np.sqrt(daten_cut["daten"]),
     fmt="o",
