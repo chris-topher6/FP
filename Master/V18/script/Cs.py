@@ -9,10 +9,11 @@ import numpy as np
 from scipy.signal import find_peaks
 from scipy.optimize import fsolve
 from scipy.stats import norm
+from scipy.integrate import quad
 import scipy
 import iminuit
 from iminuit import Minuit
-from iminuit.cost import ExtendedBinnedNLL
+from iminuit.cost import LeastSquares
 from typing import Tuple
 from uncertainties import ufloat
 from Linienbreite import fitmaker_2000
@@ -244,6 +245,7 @@ print(
 )
 summe_compton = caesium_short["daten"].sum()
 print(f"Dieser Bereich enthält {summe_compton} Events")
+print(f"Die 474.7 keV entsprechen einem Kanal von {linear_invers(474.7, alpha, beta)}")
 
 matplotlib.rcParams.update({"font.size": 8})
 
@@ -481,6 +483,142 @@ plt.legend()
 plt.tight_layout()
 plt.savefig("./build/Caesium-FWHM.pdf")
 plt.clf()
-plt.close()
 
+# Compton Kontinuum sollte proportional zum totalen Wirkungsquerschnitt sein
+# totaler Wq ist gegeben durch Klein Nishina
+
+
+def klein_nishina(E_gamma, s, b):
+    """
+    Klein-Nishina Formel, die an das Compton-Kontinuum gefittet werden soll;
+    eigentlich hat sigma noch als Vorfaktor 2pi* (r_e)^2, die können aber eigentlich
+    in den Skalierungsfaktor absorbiert werden
+    E_gamma sollte schon in keV sein; muss also vorher umgerechnet werden
+    m_e * c^2 = 510.99895 keV
+
+    Parameter:
+
+    E_gamma: Energie des Photons
+
+    s: Skalierungsfaktor für den Fit
+
+    b: Konstante Verschiebung
+    """
+    epsilon = E_gamma / (510.99895)
+    term1 = ((1 + epsilon) / epsilon**2) * (
+        (2 * (1 + epsilon) / (1 + 2 * epsilon)) - 1 / epsilon * np.log(1 + 2 * epsilon)
+    )
+    term2 = 1 / (2 * epsilon) * np.log(1 + 2 * epsilon)
+    term3 = (1 + 3 * epsilon) / (1 + 2 * epsilon) ** 2
+    sigma = s * (term1 + term2 - term3) + b
+    return sigma
+
+
+# Compton Kontinuum ausschneiden
+maske = (caesium_short["index"] >= 1300) & (caesium_short["index"] < 2300)
+caesium_compton = caesium_short[maske]
+caesium_compton["daten"] = pd.to_numeric(caesium_compton["daten"], errors="coerce")
+
+# Ich brauche den Index andauernd in Energie
+caesium_compton["index_E"] = linear(caesium_compton["index"], alpha, beta)
+
+
+# Manchmal ist der Fehler schwierig zu verarbeiten
+def nur_n(ufloat_val):
+    return ufloat_val.n
+
+
+caesium_compton["index_E"] = caesium_compton["index_E"].apply(nur_n)
+print(caesium_compton)
+
+# Kanten der Bins für den abgeschnittenen Datensatz
+# cut_bin_edges = np.arange(
+#     caesium_compton["index_E"].min(), caesium_compton["index_E"].max() + 2
+# )
+# bin_centers = (cut_bin_edges[:-1] + cut_bin_edges[1:]) / 2
+
+# cost = LeastSquares(
+#     caesium_compton["index_E"],
+#     caesium_compton["daten"],
+#     np.sqrt(caesium_compton["daten"]),
+#     klein_nishina,
+# )
+
+# # Variante mit LeastSquares
+
+# m = Minuit(cost, s=10, b=15)
+# # Limits?
+# m.migrad()
+# m.hesse()
+
+# matplotlib.rcParams.update({"font.size": 8})
+# # Plot der Daten + Fit + Pulls
+# fig, axs = plt.subplots(
+#     2,
+#     sharex=True,
+#     gridspec_kw={"hspace": 0.05, "height_ratios": [3, 1]},
+#     layout="constrained",
+# )
+# axs[0].errorbar(
+#     caesium_compton["index_E"],
+#     caesium_compton["daten"],
+#     yerr=np.sqrt(caesium_compton["daten"]),
+#     fmt="o",
+#     color="royalblue",
+#     label=r"$^{137}\mathrm{Cs}$",
+#     zorder=1,
+# )
+# # axs[0].stairs(
+# #     klein_nishina(caesium_compton["daten"], *m.values),
+# #     cut_bin_edges,
+# #     label="fit",
+# #     color="orange",
+# #     linewidth=2.2,
+# #     zorder=2,
+# # )
+# axs[0].plot(
+#     caesium_compton["index_E"],
+#     klein_nishina(caesium_compton["index_E"], *m.values),
+#     label="fit",
+#     color="orange",
+#     linewidth=2.2,
+#     zorder=2,
+# )
+# axs[0].legend()
+# axs[0].set_ylabel("Counts")
+
+# # Chi^2 Test des Fits auf Abbildung schreiben
+# fit_info = [
+#     f"$\\chi^2$/$n_\\mathrm{{dof}}$ = {m.fval:.1f} / {m.ndof:.0f} = {m.fmin.reduced_chi2:.1f}",
+# ]
+
+# # Fitparameter auf Abbildung schreiben
+# for p, v, e in zip(m.parameters, m.values, m.errors):
+#     fit_info.append(f"{p} = ${v:.3f} \\pm {e:.3f}$")
+
+# n_model = klein_nishina(linear(caesium_compton["index_E"], alpha, beta), *m.values)
+# n_error = np.sqrt(np.abs(n_model))
+
+# # Pull berechnen
+# pull = (caesium_compton["daten"] - n_model) / n_error
+
+# axs[1].stairs(pull, cut_bin_edges, fill=True, color="royalblue")
+# axs[1].axhline(0, color="orange", linewidth=0.8)
+# axs[1].set_xlabel(r"$\mathrm{Channels}$")
+# axs[1].set_ylabel(r"$\mathrm{Pull}/\,\sigma$")
+# axs[1].yaxis.set_major_formatter(ticker.FormatStrFormatter("%.1f"))
+# axs[1].set_yticks(
+#     np.linspace(
+#         int(pull.min() - 1),
+#         int(pull.max() + 1),
+#         10,
+#     )
+# )
+# axs[0].legend(title="\n".join(fit_info), frameon=False)
+# plt.savefig("./build/Caesium-Compton-Fit.pdf")
+# plt.clf()
+
+
+# Cleanup
+plt.close()
 peaks.to_csv("./build/peaks_Cs.csv")
