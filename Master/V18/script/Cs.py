@@ -18,9 +18,14 @@ from uncertainties import ufloat
 from Linienbreite import fitmaker_2000
 from Vollenergie import q_energy
 from Kalibrierung import linear
+from Kalibrierung import linear_invers
 
 
 matplotlib.rcParams.update({"font.size": 18})
+
+# Das hier sind die Fitparameter aus der Kalibrierung
+alpha = ufloat(0.207452, 0)
+beta = ufloat(-1.622490, 0.000381)
 
 # Einlesen der Caesium Messung
 SKIP_ANFANG = 12
@@ -93,14 +98,21 @@ plt.clf()
 
 
 # Berechnung der theoretischen Erwartung für die Comptonkante
-def emax(egamma, me, c):
+def Eemax(egamma):
     """
     Funktion für die Energie des Elektrons bei Compton-Streuung mit theta=180 grad.
     """
-    return egamma / (1 + (me * c**2) / (2 * egamma))
+    return egamma / (1 + (510.99895) / (2 * egamma))
 
 
-# emax = emax() # TODO die Kanalumrechnung richtig hinkriegen sonst ist das hier auch alles quatsch
+egamma = ufloat(661.3941, 0.0004)
+ecompton = Eemax(egamma)
+
+print(f"E_e für theta=180 = {ecompton} keV")
+
+# Fürs Plotten wieder in Kanäle umrechnen
+ecompton_K = linear_invers(ecompton, alpha, beta)
+
 # Um das Compton-Kontinuum und die -Kante besser sehen zu können den Bums nochmal plotten
 plt.figure(figsize=(21, 9), dpi=500)
 caesium_short = caesium[0:3300]  # weiter rechts ist eh nix
@@ -111,20 +123,23 @@ plt.bar(
     width=1.1,
     label=r"$^{137}\mathrm{Cs}$",
     color="royalblue",
+    zorder=2,
 )
 plt.plot(
     peaks.at[0, "peaks"],
     peaks.at[0, "peak_heights"],
     "x",
-    color="mediumpurple",
+    color="royalblue",
     label="Backscatter Peak",
+    zorder=3,
 )
 plt.plot(
     peaks.at[1, "peaks"],
     peaks.at[1, "peak_heights"],
     "x",
-    color="seagreen",
+    color="cornflowerblue",
     label="Photoelectric Peak",
+    zorder=4,
 )
 plt.xticks(np.linspace(0, 3300, 10))
 plt.yticks(np.linspace(caesium_short["daten"].min(), caesium_short["daten"].max(), 10))
@@ -134,7 +149,6 @@ plt.xlabel(r"Channels")
 plt.ylabel(r"Signals")
 
 # plt.grid(True, linewidth=0.1)
-plt.legend()
 plt.tight_layout()
 
 # Bereich für die eingesetzte Ansicht definieren
@@ -147,6 +161,36 @@ y1, y2 = (
         "daten"
     ].max(),
 )
+plt.axvline(
+    x=ecompton_K.n,
+    color="mediumpurple",
+    linewidth=2.2,
+    label=r"$E_{\mathrm{Compton}}$ (Theoretical)",
+    zorder=5,
+)
+plt.axvline(
+    x=linear_invers(474.7, alpha, beta).n,
+    color="orange",
+    linewidth=2.2,
+    label=r"$E_{\mathrm{Compton}}$ (Estimated)",
+    zorder=6,
+)
+plt.fill_betweenx(
+    y=[caesium_short["daten"].min() - 30, caesium_short["daten"].max() + 30],
+    x1=1350,
+    x2=linear_invers(474.7, alpha, beta).n,
+    color="orange",
+    alpha=0.2,
+    zorder=1,
+)
+plt.axvline(
+    x=1350,
+    color="orange",
+    linewidth=2.2,
+    linestyle="dashed",
+    zorder=6,
+)
+plt.legend()
 # Eingesetzte Ansicht erstellen
 ax = plt.gca()
 ax_inset = inset_axes(
@@ -164,19 +208,28 @@ ax_inset.bar(
     linewidth=2,
     width=1.1,
     color="royalblue",
+    zorder=2,
 )
-# ax_inset.plot(
-#     peaks.at[0, "peaks"],
-#     peaks.at[0, "peak_heights"],
-#     "x",
-#     color="mediumpurple",
-# )
-# ax_inset.plot(
-#     peaks.at[1, "peaks"],
-#     peaks.at[1, "peak_heights"],
-#     "x",
-#     color="seagreen",
-# )
+ax_inset.axvline(
+    x=ecompton_K.n,
+    color="mediumpurple",
+    linewidth=2.2,
+    zorder=4,
+)
+ax_inset.axvline(
+    x=linear_invers(474.7, alpha, beta).n,
+    color="orange",
+    linewidth=2.2,
+    zorder=3,
+)
+ax_inset.fill_betweenx(
+    y=[caesium_short["daten"].min() - 30, caesium_short["daten"].max() + 30],
+    x1=1350,
+    x2=linear_invers(474.7, alpha, beta).n,
+    color="orange",
+    alpha=0.2,
+    zorder=1,
+)
 # Grenzen der eingesetzten Ansicht
 ax_inset.set_xlim(x1, x2)
 ax_inset.set_ylim(y1 - 10, y2 + 10)
@@ -185,6 +238,12 @@ mark_inset(ax, ax_inset, loc1=1, loc2=3, fc="none", ec="0.5")
 
 plt.savefig("./build/Caesium-Peaks-Short.pdf")
 plt.clf()
+
+print(
+    f"Vom Compton-Effekt dominierter Bereich: von {linear(1350, alpha, beta):.3f} keV bis 474.7 keV"
+)
+summe_compton = caesium_short["daten"].sum()
+print(f"Dieser Bereich enthält {summe_compton} Events")
 
 matplotlib.rcParams.update({"font.size": 8})
 
@@ -267,8 +326,6 @@ for i in range(len(peaks)):
     print(f"N_{i+1} = {N:.5f}")
 
 # Umrechnung der Kanäle in Energien wurde in Kalibrierung.py bestimmt
-alpha = ufloat(0.207452, 0)
-beta = ufloat(-1.622490, 0.000381)
 peaks["Energie"] = linear(peaks["peaks"], alpha, beta)
 
 # Wurden durch Fit bestimmt, updaten wenn nötig;
@@ -325,7 +382,9 @@ FWHM = 2 * np.sqrt(2 * np.log(2)) * peaks.at[1, "sigma"]
 # und das hier die Zehntelwertsbreite
 FWTM = 2 * np.sqrt(2 * np.log(10)) * peaks.at[1, "sigma"]
 Verhältnis = FWHM / FWTM
+Verhältnis_keV = linear(Verhältnis, alpha, beta)
 print(f"Verhältnis FWHM/FWTM = {Verhältnis:.4f}")
+print(f"Verhältnis FWHM/FWTM = {Verhältnis_keV:.4f} keV")
 
 # Umrechnung nochmal in keV
 FWHM_keV = linear(FWHM, alpha, beta)
@@ -381,15 +440,6 @@ plt.stairs(
     linewidth=3.5,
 )
 # Das hier ist die Halbwertsbreite
-# plt.axhline(
-#     y=0.5 * peaks.at[1, "s"].n * 1 / (np.sqrt(2 * np.pi) * peaks.at[1, "sigma"].n)
-#     + peaks.at[1, "b"].n,
-#     xmin=0,
-#     xmax=1,
-#     color="royalblue",
-#     linewidth=3.0,
-#     linestyle="dashed",
-# )
 plt.hlines(
     y=0.5 * peaks.at[1, "s"].n * 1 / (np.sqrt(2 * np.pi) * peaks.at[1, "sigma"].n)
     + peaks.at[1, "b"].n,
@@ -402,15 +452,6 @@ plt.hlines(
 plt.axvline(x=int(solution_hm1), color="royalblue", linewidth=3.0, linestyle="dashed")
 plt.axvline(x=int(solution_hm2), color="royalblue", linewidth=3.0, linestyle="dashed")
 # Das hier die Zehntelwertsbreite
-# plt.axhline(
-#     y=0.1 * peaks.at[1, "s"].n * 1 / (np.sqrt(2 * np.pi) * peaks.at[1, "sigma"].n)
-#     + peaks.at[1, "b"].n,
-#     xmin=0,
-#     xmax=1,
-#     color="royalblue",
-#     linewidth=3.0,
-#     linestyle="dashed",
-# )
 plt.hlines(
     y=0.1 * peaks.at[1, "s"].n * 1 / (np.sqrt(2 * np.pi) * peaks.at[1, "sigma"].n)
     + peaks.at[1, "b"].n,
@@ -436,7 +477,6 @@ plt.ylim(daten_cut["daten"].min() - 30)
 plt.xlabel(r"Channels")
 plt.ylabel(r"Signals")
 
-# plt.grid(True, linewidth=0.1)
 plt.legend()
 plt.tight_layout()
 plt.savefig("./build/Caesium-FWHM.pdf")

@@ -20,6 +20,9 @@
     "fig:csfit"
     "eqn:fitplus"
     "tab:csfitparams"
-    "fig:csfwhm"))
+    "fig:csfwhm"
+    "eqn:egamma"
+    "eqn:emax"
+    "fig:csshort"))
  :latex)
 

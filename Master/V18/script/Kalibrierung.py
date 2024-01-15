@@ -108,6 +108,14 @@ def linear(K, alpha, beta):
     return alpha * K + beta
 
 
+def linear_invers(E, alpha, beta):
+    """
+    Zur Umrechnung von Energie in Kanälen
+    """
+    K = E / alpha - beta
+    return K
+
+
 least_squares = LeastSquares(
     peaks["peaks"], europium_lit["Energie"], europium_lit["Unsicherheit(E)"], linear
 )
@@ -123,7 +131,7 @@ plt.plot(
     linear(peaks["peaks"], *m.values),
     label="fit",
     color="orange",
-    linewidth=3.5,
+    linewidth=2.2,
     zorder=1,
 )
 plt.errorbar(
@@ -135,7 +143,7 @@ plt.errorbar(
     fmt="o",
     label="data",
     color="royalblue",
-    elinewidth=3.5,
+    elinewidth=2.2,
     barsabove=True,
     zorder=2,
 )

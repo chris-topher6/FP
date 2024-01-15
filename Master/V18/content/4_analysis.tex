@@ -326,10 +326,38 @@ of the $^{137}\text{Cs}$ spectrum are estimated. To do this, the fitted normal d
 \noindent
 The full width at half maximum and the full width at tenth maximum amount to
 \begin{align}
-	\text{FWHM} & = \num{10.5826 \pm 0.0895} \, \text{Channels} = \SI{}{\kilo\electronvolt}  \\
-	\text{FWTM} & = \num{19.2879 \pm 0.1631} \, \text{Channels} = \SI{}{\kilo\electronvolt}.
+	\text{FWHM} & = \num{10.5826 \pm 0.0895} = \SI{0.5729 \pm 0.0186}{\kilo\electronvolt}  \\
+	\text{FWTM} & = \num{19.2879 \pm 0.1631} = \SI{2.3788 \pm 0.0338}{\kilo\electronvolt}.
 \end{align}
 The ratio of the two is given by
 \begin{equation}
-	\frac{\text{FWHM}}{\text{FWTM}} = \num{0.5487 \pm 0.0000} = \SI{}{\kilo\electronvolt}.
+	\frac{\text{FWHM}}{\text{FWTM}} = \num{0.5487 \pm 0.0000} = \SI{1.5087 \pm 0.0004}{\kilo\electronvolt}.
 \end{equation}
+The energy of the photoelectric peak is determined from the fit to
+\begin{equation}
+	E_{\gamma} = \SI{661.3941 \pm 0.0004}{\kilo\electronvolt}.
+	\label{eqn:egamma}
+\end{equation}
+The energy of the compton edge can be calculated using equation~\ref{eqn:emax}
+\begin{equation}
+	E_{e} \vert_{\theta=\SI{180}{\degree}} = \frac{E_{\gamma}}{1 + \frac{m_{e} c^{2}}{2 E_{\gamma}}}.
+	\label{eqn:emax}
+\end{equation}
+This amounts to
+\begin{equation}
+	E_{e}\vert_{\theta=\SI{180}{\degree}} = \SI{477.0915 \pm 0.0004}{\kilo\electronvolt}.
+\end{equation}
+The spectrum, including the theoretical value computed above as well as an estimate based on this measurement, is displayed in Figure~\ref{fig:csshort}.
+The compton continuum is estimated and marked in orange.
+\begin{figure}
+	\centering
+	\begin{adjustbox}{width=1.4\textwidth, center}
+		\includegraphics[scale=0.3]{./build/Caesium-Peaks-Short.pdf}
+	\end{adjustbox}
+	\caption{Estimates of the compton edge and continuum of the $^{137}\text{Cs}$ measurement.}
+	\label{fig:csshort}
+\end{figure}
+\noindent
+The compton edge is estimated to be at $E_{e}\vert_{\theta=\SI{180}{\degree}} = \SI{474.7}{\kilo\electronvolt}$. The energy region below the compton edge should
+be dominated by the compton effect and includes minimal amounts of background. Therefore the total cross section can be fitted to the compton
+continuum...

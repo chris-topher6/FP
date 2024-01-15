@@ -127,6 +127,7 @@ axs[0].errorbar(
     color="royalblue",
     label="data",
     barsabove=True,
+    zorder=2,
 )
 
 # axs[0].plot(
@@ -143,6 +144,7 @@ axs[0].plot(
     label="fit",
     color="orange",
     linewidth=2.2,
+    zorder=1,
 )
 axs[0].legend()
 axs[0].set_ylabel("Q/%")
