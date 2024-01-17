@@ -358,7 +358,7 @@ The compton continuum is estimated and marked in orange.
 	\label{fig:csshort}
 \end{figure}
 \noindent
-The compton edge is estimated to be at $E_{\gamma}^{\prime}\vert_{\theta=\SI{180}{\degree}} = \SI{474.7}{\kilo\electronvolt}$. The energy
+The compton edge is visually estimated to be at $E_{\gamma}^{\prime}\vert_{\theta=\SI{180}{\degree}} = \SI{474.7}{\kilo\electronvolt}$. The energy
 region below the compton edge should be dominated by the compton effect and include minimal amounts of background. The
 backscatter peak is estimated to be at $E_{\gamma} = \SI{188.1961 \pm 0.0004}{\kilo\electronvolt}$. To estimate the event count
 in the compton continuum, a linear fit is carried out in the region between the backscatter peak and the compton edge.
@@ -382,10 +382,24 @@ The parameters are estimated to the values
 	\alpha & = \num{0.008 \pm 0.0}    \\
 	\beta  & = \num{1.010 \pm 0.784}.
 \end{align}
-This yield of this fit amounts to
+This yield of the compton continuum as estimated by this fit amounts to
 \begin{equation}
 	N = \num{15498.84830 \pm 0.00000}.
 \end{equation}
 \FloatBarrier
 
-\subsection{Gamma spectrum of \texorpdfstring{$^{60}\mathrm{C0}$}{cobalt}}
+\subsection{Gamma spectrum of \texorpdfstring{$^{60}\mathrm{Co}$}{cobalt}}
+A measurement of the spectrum of a cobalt probe was conducted for a total measurement time of
+$t=\SI{4021}{\second}$. Again, the background measurement is subtracted. The algorithm \texttt{find\_peaks}
+from the python library \texttt{scipy} \cite{scipy}
+is utilized again to determine the exact positions of the peaks. The result is displayed in
+Figure~\ref{fig:cospectrum}.
+\begin{figure}
+	\centering
+	\begin{adjustbox}{width=1.4\textwidth, center}
+		\includegraphics[scale=0.3]{./build/Cobalt-Peaks.pdf}
+	\end{adjustbox}
+	\caption{Spectrum of the $^{60}\text{Co}$ measurement.}
+	\label{fig:cospectrum}
+\end{figure}
+\noindent

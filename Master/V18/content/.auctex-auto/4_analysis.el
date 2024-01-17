@@ -25,6 +25,7 @@
     "eqn:emax"
     "fig:csshort"
     "fig:comptonfit"
-    "eqn:comptonfit"))
+    "eqn:comptonfit"
+    "fig:cospectrum"))
  :latex)
 
