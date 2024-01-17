@@ -362,4 +362,30 @@ The compton edge is estimated to be at $E_{\gamma}^{\prime}\vert_{\theta=\SI{180
 region below the compton edge should be dominated by the compton effect and include minimal amounts of background. The
 backscatter peak is estimated to be at $E_{\gamma} = \SI{188.1961 \pm 0.0004}{\kilo\electronvolt}$. To estimate the event count
 in the compton continuum, a linear fit is carried out in the region between the backscatter peak and the compton edge.
-To reduce the influence of the backscatter peak...
+To reduce the influence of the backscatter peak only a certain region from $\SI{278.438 \pm 0.000}{\kilo\electronvolt}$ (marked in
+Figure~\ref{fig:csshort} as a dashed line) up to the compton edge (at $\SI{474.7}{\kilo\electronvolt}$) is used.
+The fit is displayed in Figure~\ref{fig:comptonfit}.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.7]{./build/Caesium-Compton-Fit.pdf}
+	\caption{Linear Fit of the compton continuum.}
+	\label{fig:comptonfit}
+\end{figure}
+\noindent
+The function utilized here is given in Equation~\ref{eqn:comptonfit}
+\begin{equation}
+	f(x) = \alpha \cdot x + \beta .
+	\label{eqn:comptonfit}
+\end{equation}
+The parameters are estimated to the values
+\begin{align}
+	\alpha & = \num{0.008 \pm 0.0}    \\
+	\beta  & = \num{1.010 \pm 0.784}.
+\end{align}
+This yield of this fit amounts to
+\begin{equation}
+	N = \num{15498.84830 \pm 0.00000}.
+\end{equation}
+\FloatBarrier
+
+\subsection{Gamma spectrum of \texorpdfstring{$^{60}\mathrm{C0}$}{cobalt}}

@@ -23,6 +23,8 @@
     "fig:csfwhm"
     "eqn:egamma"
     "eqn:emax"
-    "fig:csshort"))
+    "fig:csshort"
+    "fig:comptonfit"
+    "eqn:comptonfit"))
  :latex)
 

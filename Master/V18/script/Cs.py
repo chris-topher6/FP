@@ -18,8 +18,7 @@ from typing import Tuple
 from uncertainties import ufloat
 from Linienbreite import fitmaker_2000
 from Vollenergie import q_energy
-from Kalibrierung import linear
-from Kalibrierung import linear_invers
+from Kalibrierung import linear, linear_invers
 
 
 matplotlib.rcParams.update({"font.size": 18})
@@ -180,7 +179,7 @@ plt.axvline(
     x=peaks.at[0, "peaks"],
     color="orange",
     linewidth=2.2,
-    label="Backscatter Peak",
+    # label="Backscatter Peak",
     zorder=6,
 )
 plt.fill_betweenx(
@@ -326,6 +325,7 @@ for i in range(len(peaks)):
         grenzen["R"][i],
         i,
         scaled_gauss_cdf_b,
+        "caesium",
         zorder1=zorder1[i],
         zorder2=zorder2[i],
     )
@@ -518,6 +518,17 @@ m = Minuit(cost, alpha=10, beta=15)
 # Limits?
 m.migrad()
 m.hesse()
+
+# Jetzt noch den Yield rausholen
+integral, error = quad(
+    linear,
+    caesium_compton["index"].min(),
+    caesium_compton["index"].max(),
+    args=(m.values["alpha"], m.values["beta"]),
+)
+print(
+    f"Der Yield des linearen Fits des Compton-Kontinuums ergibt sich zu {integral:.5f} +/- {error:.5f} events."
+)
 
 matplotlib.rcParams.update({"font.size": 8})
 # Plot der Daten + Fit + Pulls

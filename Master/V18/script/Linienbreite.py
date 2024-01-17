@@ -144,6 +144,7 @@ def fitmaker_2000(
     abstand_rechts: int,
     peak_idx: int,
     fit_function: Callable[..., Any],
+    element: str,
     startwert_schätzen: bool = True,
     peak_width: float = 0,
     peak_position: float = 0,
@@ -171,6 +172,8 @@ def fitmaker_2000(
 
     fit_function: Callable, Verteilung die gefittet werden soll
 
+    element: string, gibt an, unter welchem Namen der Fit gespeichert werden soll
+
     startwert_schätzen: bool, wechselt zwischen automatisch oder manuell geschätzten Startwerten
 
     peak_width: float, optionaler Schätzwert für sigma, wird nur verwendet wenn startwert_schätzen auf False gesetzt wird
@@ -188,6 +191,7 @@ def fitmaker_2000(
     zorder1: int, gibt an auf welcher Ebene die Daten gemalt werden sollen
 
     zorder2: int, gibt an auf welcher Ebene der Fit gemalt werden soll
+
     """
 
     # Bereich um den Peak herum ausschneiden
@@ -238,7 +242,7 @@ def fitmaker_2000(
         gridspec_kw={"hspace": 0.05, "height_ratios": [3, 1]},
         layout="constrained",
     )
-    if zorder1 is not None and zorder2 is not None:
+    if element == "caesium":
         axs[0].errorbar(
             bin_centers,
             daten_cut["daten"],
@@ -258,7 +262,7 @@ def fitmaker_2000(
             linewidth=2.2,
             zorder=zorder2,
         )
-    else:
+    elif element == "europium":
         axs[0].errorbar(
             bin_centers,
             daten_cut["daten"],
@@ -276,6 +280,27 @@ def fitmaker_2000(
             color="orange",
             linewidth=2.2,
         )
+    elif element == "cobalt":
+        axs[0].errorbar(
+            bin_centers,
+            daten_cut["daten"],
+            yerr=np.sqrt(daten_cut["daten"]),
+            fmt="o",
+            color="royalblue",
+            label=r"$^{60}\mathrm{Co}$"
+            + f"-Peak {peak_idx+1}",  # Hier müsste man nochmal das Label genereller machen
+            barsabove=True,
+        )
+        axs[0].stairs(
+            np.diff(fit_function(cut_bin_edges, *m.values)),
+            cut_bin_edges,
+            label="fit",
+            color="orange",
+            linewidth=2.2,
+        )
+    else:
+        print("Fuck")
+
     axs[0].legend()
     axs[0].set_ylabel("Counts")
     # axs[0].grid(True)
@@ -310,13 +335,16 @@ def fitmaker_2000(
     # axs[1].grid(True)
 
     axs[0].legend(title="\n".join(fit_info), frameon=False)
-    if zorder1 is not None and zorder2 is not None:
+    if element == "caesium":
         plt.savefig(f"./build/Caesium-Fit-Peak{peak_idx+1}.pdf")
-    else:
+    elif element == "europium":
         plt.savefig(
             f"./build/Europium-Fit-Peak{peak_idx+1}.pdf"
         )  # Bennenung genereller machen
+    elif element == "cobalt":
+        plt.savefig(f"./build/Cobalt-Fit-Peak{peak_idx+1}.pdf")
     plt.clf()
+    plt.close()
 
     # Linienbreite muss für jeden Peak gespeichert werden
     peaks.loc[peak_idx, "N"] = m.values["s"]
@@ -332,7 +360,13 @@ grenzen = pd.DataFrame(data=grenzen)
 
 for i in range(len(peaks)):
     fitmaker_2000(
-        europium, peaks, grenzen["L"][i], grenzen["R"][i], i, scaled_gauss_cdf
+        europium,
+        peaks,
+        grenzen["L"][i],
+        grenzen["R"][i],
+        i,
+        scaled_gauss_cdf,
+        "europium",
     )
 
 plt.close()

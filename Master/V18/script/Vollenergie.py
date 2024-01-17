@@ -38,8 +38,8 @@ end_aktivität = aktivitätsgesetz(
 a = 8.91  # cm
 r = 2.25  # cm
 omega_4pi = 1 / 2 * (1 - a / (np.sqrt(a**2 + r**2)))
-print(f"Die Aktivität am Messtag betrug {end_aktivität}")
-print(f"Der Raumwinkel Omega/4pi beträgt {omega_4pi:.5f}")
+# print(f"Die Aktivität am Messtag betrug {end_aktivität}")
+# print(f"Der Raumwinkel Omega/4pi beträgt {omega_4pi:.5f}")
 
 peaks = pd.read_csv("./build/peaks.csv")
 
