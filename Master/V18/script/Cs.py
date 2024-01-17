@@ -101,7 +101,7 @@ plt.clf()
 # Berechnung der theoretischen Erwartung für die Comptonkante
 def Eemax(egamma):
     """
-    Funktion für die Energie des Elektrons bei Compton-Streuung mit theta=180 grad.
+    Funktion für die Energie des Elektrons bei Compton-Streuung mit theta_photon=180 Grad.
     """
     return egamma / (1 + (510.99895) / (2 * egamma))
 
@@ -176,9 +176,16 @@ plt.axvline(
     label=r"$E_{\mathrm{Compton}}$ (Estimated)",
     zorder=6,
 )
+plt.axvline(
+    x=peaks.at[0, "peaks"],
+    color="orange",
+    linewidth=2.2,
+    label="Backscatter Peak",
+    zorder=6,
+)
 plt.fill_betweenx(
     y=[caesium_short["daten"].min() - 30, caesium_short["daten"].max() + 30],
-    x1=1350,
+    x1=peaks.at[0, "peaks"],
     x2=linear_invers(474.7, alpha, beta).n,
     color="orange",
     alpha=0.2,
@@ -246,6 +253,8 @@ print(
 summe_compton = caesium_short["daten"].sum()
 print(f"Dieser Bereich enthält {summe_compton} Events")
 print(f"Die 474.7 keV entsprechen einem Kanal von {linear_invers(474.7, alpha, beta)}")
+rückstreukev = linear(peaks.at[0, "peaks"], alpha, beta)
+print(f"Das Rückstreumaximum liegt bei {rückstreukev} keV")
 
 matplotlib.rcParams.update({"font.size": 8})
 
