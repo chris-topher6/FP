@@ -1,0 +1,158 @@
+\section{Theory}
+\label{sec:theory}
+
+The heat capacity of a solid is defined as the amount of 
+heat $\Delta Q$ that must be added to the solid to raise 
+its temperature by $\Delta T$. 
+The heat capacity can be expressed as the limit for infinitesimal 
+temperature changes
+\begin{equation}
+    C=\lim_{\Delta T\to 0}\frac{\Delta Q}{\delta T}.
+    \label{eqn:C}
+\end{equation}
+The specific heat capacity refers to the heat capacity per unit 
+mass, volume, or amount of substance of the sample. It is 
+distinguished by the following definitions
+\begin{align*}
+    c^n=\frac{C}{n} \qquad
+    c^V=\frac{C}{V} \qquad
+    c^m=\frac{C}{m}
+\end{align*}
+where $n$ is the molar amount, $V$ is the volume, and $m$ is 
+the mass of the substance, respectively. 
+
+According to the first law of thermodynamics
+\begin{equation*}
+    \text{d}Q=\text{d}U+p\text{d}V
+    \label{eqn:TD1}
+\end{equation*}
+two different heat capacities can be defined. 
+Under the assumption of constant volume ($\text{d}V=0$), 
+equation \eqref{eqn:C} yields 
+\begin{equation}
+    C_V=\left(\frac{\partial Q}{\partial T}\right)_{V=const.}=\left(\frac{\partial U}{\partial T}\right)_V.
+    \label{eqn:CV}
+\end{equation}
+Expressing the inner energy as a function of pressure $p$ and temperature $T$
+equation \eqref{eqn:TD1} results in
+\begin{equation*}
+    \text{d}Q 
+    =\left(\frac{\partial U}{\partial T}\right)_p \text{d} T 
+    +\left(\frac{\partial U}{\partial p}\right)_T \text{d} p
+    +p\left(\frac{\partial V}{\partial T}\right)_p \text{d} T
+    +p\left(\frac{\partial V}{\partial p}\right)_T \text{d} p.
+\end{equation*}
+For an isobaric process ($\text{d}p=0$), the heat capacity at 
+constant pressure is given by
+\begin{equation}
+    C_p=\left(\frac{\partial Q}{\partial T}\right)_{p=const.}
+    =\left(\frac{\partial U}{\partial T}\right)_p \text{d} T 
+    +p\left(\frac{\partial V}{\partial T}\right)_p \text{d} T.
+    \label{eqn:Cp}
+\end{equation}
+The difference between the heat capacities at constant pressure and volume is
+determined to be
+\begin{equation}
+    C_p-C_V=9\alpha^2KV_0T
+\end{equation}
+where $\alpha$ is the coefficient of thermal expansion, and $K$ is the bulk modulus. 
+
+While $C_V$ measures the increase in inner energy per degree of 
+temperature increase, $C_p$ also includes the energy used for the work 
+done due to expansion. As a result, $C_p-C_V>0$. Since gases expand 
+significantly more than solids with temperature changes, the difference between 
+$C_p$ and $C_V$ is much larger for gases compared to solids.
+
+\subsection{Classical and Quantum Mechanical Description of Temperature}
+The oscillations of atoms inside a solid can be approximated by 
+harmonic oscillations. 
+
+In a classical system, a harmonic oscillator has a continuous energy spectrum.
+Each mode contributes an average energy of $\frac{1}{2}k_BT$. 
+In a three-dimensional system with $N$ atoms, 
+there are six degrees of freedom — three spatial and three for momentum.
+This leads to a total energy of $3Nk_BT$ and, accordingly, 
+a heat capacity of $3Nk_B$. 
+This is the high-temperature approximation of heat capacity known as the Dulong-Petit law.
+
+In contrast, a quantum mechanical harmonic oscillator has discrete energy levels 
+given by $\hbar\omega(n+1/2)$. To excite this oscillator, an energy 
+large enough to reach the next level is required, i.e., $k_BT>\hbar\omega$.
+For $k_BT<\hbar\omega$, no new modes are excited, leading to a reduction in heat capacity 
+as the temperature decreases. This quantum mechanical behavior is key to explaining 
+the deviation from the Dulong-Petit law at low temperatures.
+
+\subsection{Einstein Model}
+The Einstein model assumes $3N$ eigenmodes, each with the same frequency $\omega_E$.
+This leads to an approximated average inner energy of 
+\begin{equation}
+    \bigl<U\bigr> = 3N \hbar\omega_\text{E} \left(\frac{1}{2} + \text{exp}\left(\frac{\hbar \omega_\text{E}}{k_\text{B}T}\right)
+     - 1\right) .
+\end{equation}
+This yields a heat capacity of 
+\begin{equation}
+    C_V^\text{E} = 3Nk_\text{B} \left(\frac{\theta_\text{E}}{T}\right)^2 \frac{\text{exp}\left(\frac{\theta_\text{E}}{T}\right)}
+    {\left[\text{exp}\left(\frac{\theta_\text{E}}{T}\right) - 1\right]^2} = 
+    \begin{cases}
+        3Nk_\text{B} \left(\frac{\theta_\text{E}}{T}\right)^2 \text{exp}\left(\frac{-\theta_\text{E}}{T}\right), 
+        & T \ll \theta_\text{E} \\
+        3Nk_\text{B} , & T \gg \theta_\text{E}
+    \end{cases}
+\end{equation}
+where $\theta_\text{E} = \frac{\hbar\omega_\text{E}}{k_\text{B}}$ is the specific 
+Einstein temperature.
+
+This model predicts the Dulong-Petit law at high temperatures. However, 
+at low temperatures, it fails to account for the experimentally observed $T^3$ 
+decrease in heat capacity. This limitation can be attributed to the fact that 
+the model only considers optical modes and neglects acoustic modes.
+
+\subsection{Debye Model}
+
+The Debye model, an improvement over the Einstein model, 
+is particularly effective at low temperatures as it incorporates acoustic modes. 
+Contrary to the Einstein model, which assumes a uniform oscillation frequency for all atoms, 
+the Debye model accounts for a continuous spectrum of vibrations.
+
+In the Debye model, vibrational modes are approximated with a linear dispersion relation 
+for low frequencies, described as $\omega = v_i k$. 
+
+The state density function in the Debye model is given by
+\begin{equation}
+    D(\omega) = \frac{Vk^2}{2\pi^2v} = \frac{V\omega^2}{2\pi^2 v^3}.
+    \label{eqn:sdf}
+\end{equation}
+
+The heat capacity at constant volume is derived by integrating over all vibrational modes
+\begin{equation}
+    C_V^\text{E} = 9Nk_\text{B} \left(\frac{T}{\theta_\text{D}}\right)^3 \int_0^{\frac{\theta_\text{D}}{T}} 
+    \frac{x^4\text{e}^x \; \text{d}x}{(\text{e}^x - 1)^2} = 
+    \begin{cases}
+        \frac{12\pi^4}{5}Nk_\text{B}\left(\frac{T}{\theta_\text{D}}\right)^3, & T \ll \theta_\text{E} \\
+        3Nk_\text{B} , & T \gg \theta_\text{E}
+    \end{cases}
+\end{equation}
+where  \( x = \hbar\omega / k_\text{B}T \), and
+$\theta_\text{D}$ is the material-specific Debye temperature, defined as 
+\begin{equation}
+    \theta_\text{D} = \frac{\hbar\omega_\text{D}}{k_\text{B}} = \
+    \frac{\hbar v}{k_\text{B}} \left(6\pi^2\frac{N}{V}\right)^{\frac{1}{3}}.
+    \label{eqn:Debye}
+\end{equation}
+The Debye model accurately predicts the $T^3$ dependence of heat capacity at low temperatures, 
+consistent with experimental observations. 
+At high temperatures, it aligns with the Dulong-Petit law, similar to the Einstein model.
+
+Integrating the state density function \eqref{eqn:sdf} from 
+$\omega=0$ to the Debye frequency $\omega_D$ gives
+\begin{equation}
+    \int_0^{\omega_D}D(\omega)\text{d}\omega=3N
+\end{equation}
+resulting in the Debye frequency
+\begin{equation}
+    \omega_D=v_i\left(6\pi^2\frac{N}{V}\right).
+\end{equation}
+The speed of sound $v_s$ can be determined from the speeds $v_i$ for each mode $i$ using
+\begin{equation}
+    \frac{1}{v_s^2}=\frac{1}{3}\sum_{i=1}{^3}\frac{1}{v_i^3}.
+\end{equation}
