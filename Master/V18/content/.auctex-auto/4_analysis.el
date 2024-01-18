@@ -7,6 +7,7 @@
     "fig:eubackground"
     "eqn:linear"
     "tab:calibrationvalues"
+    "sec:fullenergy"
     "eqn:fullenergy"
     "eqn:solidangle"
     "subsubsec:activity"
@@ -26,6 +27,9 @@
     "fig:csshort"
     "fig:comptonfit"
     "eqn:comptonfit"
-    "fig:cospectrum"))
+    "fig:cospectrum"
+    "eqn:fitplus2"
+    "fig:cofit"
+    "tab:cofitparams"))
  :latex)
 

@@ -114,4 +114,8 @@ for i in range(len(peaks)):
     # ]  # nur benötigt weil fstrings wenig flexibel sind; ein "" innerhalb des {} macht schon alles kaputt
     # print(f"N_{i+1} = {N:.5f}")
 
+# print(peaks.describe())
+peak1_kev = linear(peaks.at[0, "peaks"], alpha, beta)
+peak2_kev = linear(peaks.at[1, "peaks"], alpha, beta)
+print(f"Die Peaks liegen bei den Energien {peak1_kev} keV und {peak2_kev} keV.")
 plt.close()

@@ -148,6 +148,7 @@ using the \texttt{iminuit}~\cite{iminuit} python package.
 
 
 \subsection{The full energy detection probability}
+\label{sec:fullenergy}
 The amount of photons which fully penetrate and are registered by the detector is called the full energy
 detection probability $Q$. It is given by
 \begin{equation}
@@ -393,7 +394,8 @@ A measurement of the spectrum of a cobalt probe was conducted for a total measur
 $t=\SI{4021}{\second}$. Again, the background measurement is subtracted. The algorithm \texttt{find\_peaks}
 from the python library \texttt{scipy} \cite{scipy}
 is utilized again to determine the exact positions of the peaks. The result is displayed in
-Figure~\ref{fig:cospectrum}.
+Figure~\ref{fig:cospectrum}. A comparison to literature values allows the probe to be identified as
+$^{60}\text{Co}$~\cite{laraweb}.
 \begin{figure}
 	\centering
 	\begin{adjustbox}{width=1.4\textwidth, center}
@@ -403,3 +405,51 @@ Figure~\ref{fig:cospectrum}.
 	\label{fig:cospectrum}
 \end{figure}
 \noindent
+To determine the amount of events belonging to each peak, a fit of the form~\ref{eqn:fitplus2} is carried out.
+\begin{equation}
+	g(x) = s \cdot \frac{1}{\sqrt{2 \pi} \sigma} \exp{\left( -\frac{1}{2} \frac{(x - \mu)^{2}}{\sigma} \right)} + b
+	\label{eqn:fitplus2}
+\end{equation}
+\noindent
+The results are displayed in Figure~\ref{fig:cofit} and the parameters as well as the peak yields are given in
+Table~\ref{tab:cofitparams}.
+\begin{figure}[H]
+	\centering
+	% Erste Zeile
+	\begin{adjustbox}{width=1.3\textwidth, center}
+		\begin{subfigure}{.5\textwidth}
+			\centering
+			\includegraphics[width=\linewidth]{./build/Cobalt-Fit-Peak1.pdf}
+			% \caption{Plot 1}
+		\end{subfigure}%
+		\begin{subfigure}{.5\textwidth}
+			\centering
+			\includegraphics[width=\linewidth]{./build/Cobalt-Fit-Peak2.pdf}
+			% \caption{Plot 2}
+		\end{subfigure}
+	\end{adjustbox}
+	\caption{Fits of peaks of the $^{60}\text{Co}$ spectrum.}
+	\label{fig:cofit}
+\end{figure}
+\noindent
+\begin{table}[H]
+	\centering
+	\caption{Fit parameters of the two peaks of the $^{60}\text{Co}$ spectrum.}
+	\label{tab:cofitparams}
+	\sisetup{table-format=3.5}
+	\begin{tabular}{S S[table-format=4.3] S[table-format=2.0] S[table-format=4.3] S[table-format=2.3]}
+		\toprule {$E/\si{\kilo\electronvolt}$} & {$s$}                 & {$b$}              & {$\mu$}              & {$\sigma$}         \\
+		\midrule
+		{1173.3856 \pm 0.0004}                  & {357.811 \pm 26.149} & {15.000 \pm 0.358} & {5662.087 \pm 0.372}  & {4.361 \pm 0.295} \\
+		{1332.2939 \pm 0.0004}                  & {246.984 \pm 24.086} & {15.000 \pm 0.477} & {6429.239 \pm 0.502} & {4.376 \pm 0.415}  \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+\noindent
+To estimate the activity of the $^{60}\text{Co}$ source, Equation~\ref{eqn:fullenergy} is used. The full energy
+detection probabilities estimated in Section~\ref{sec:fullenergy}. Equation~\ref{eqn:fullenergy} is rearranged
+to be able to compute the probe activity:
+\begin{equation}
+	Q = \frac{4 \pi}{\Omega}\frac{N}{APt} \leftrightarrow A = \frac{4 \pi}{\Omega} \frac{N}{QPt}.
+\end{equation}
+The resulting activity and the values used are given in Table~\ref{tab:coactivity}.
