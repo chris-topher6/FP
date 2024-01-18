@@ -17,7 +17,7 @@ from iminuit.cost import LeastSquares
 from typing import Tuple
 from uncertainties import ufloat
 from Linienbreite import fitmaker_2000
-from Vollenergie import q_energy
+from Vollenergie import q_energy, fedp
 from Kalibrierung import linear, linear_invers
 from Cs import scaled_gauss_cdf_b, scaled_gauss_pdf_b
 
@@ -118,4 +118,14 @@ for i in range(len(peaks)):
 peak1_kev = linear(peaks.at[0, "peaks"], alpha, beta)
 peak2_kev = linear(peaks.at[1, "peaks"], alpha, beta)
 print(f"Die Peaks liegen bei den Energien {peak1_kev} keV und {peak2_kev} keV.")
+
+
+def aktivität_q(omega, N, Q, W, t):
+    """
+    Funktion zum Berechnen der Aktivität einer Probe über die bekannte VENW.
+    """
+    A = (4 * np.pi) / omega * N / (Q * W * t)
+    return A
+
+
 plt.close()
