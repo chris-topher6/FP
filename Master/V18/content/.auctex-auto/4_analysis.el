@@ -30,6 +30,7 @@
     "fig:cospectrum"
     "eqn:fitplus2"
     "fig:cofit"
-    "tab:cofitparams"))
+    "tab:cofitparams"
+    "tab:coactivity"))
  :latex)
 

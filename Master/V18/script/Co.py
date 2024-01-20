@@ -128,4 +128,38 @@ def aktivität_q(omega, N, Q, W, t):
     return A
 
 
+# Die Konstanten werden benötigt
+a = 8.91  # cm
+r = 2.25  # cm
+omega_4pi = 1 / 2 * (1 - a / (np.sqrt(a**2 + r**2)))
+
+# Fitparamter für Q(E);
+a_q = ufloat(4.757, 0.347)
+b_q = ufloat(-0.915, 0.013)
+q_1 = q_energy(peak1_kev, a_q, b_q)
+q_2 = q_energy(peak2_kev, a_q, b_q)
+print(q_1, q_2)
+
+# Literaturwerte für die Emissionswahrscheinlichkeiten der Peaks
+p_1 = ufloat(99.85, 0.03)
+p_2 = ufloat(99.9826, 0.0006)
+
+# Messzeit in s
+t = 4021
+
+# Berechnung der Aktivität auf Basis der beiden Peaks
+a_1 = (
+    aktivität_q(omega_4pi, ufloat(357.811, 26.149), q_1, p_1, t) * 10
+)  # sonst sinds keine Bq
+a_2 = aktivität_q(omega_4pi, ufloat(246.984, 24.086), q_2, p_2, t) * 10
+
+print(
+    f"Die berechnete Aktivität auf Basis von Peak 1 von ^60 Co ergibt sich zu {a_1:.4f} Bq"
+)
+print(
+    f"Die berechnete Aktivität auf Basis von Peak 2 von ^60 Co ergibt sich zu {a_2:.4f} Bq"
+)
+a_m = (a_1 + a_2) / 2
+print(f"Der Mittelwert ergibt sich zu {a_m:.4f} Bq.")
+
 plt.close()
