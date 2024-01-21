@@ -53,7 +53,10 @@ def fedp(omega, N, A, W, t):
 # Messzeit
 t = 2802  # s
 
+# Schonmal neue Spalten anlegen
 peaks["fedp"] = float(0)
+peaks["N"] = float(0)
+peaks["N_err"] = float(0)
 
 for zeile in range(len(peaks)):
     # Anzahl Events mit Unsicherheit
