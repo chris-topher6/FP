@@ -31,6 +31,10 @@
     "eqn:fitplus2"
     "fig:cofit"
     "tab:cofitparams"
-    "tab:coactivity"))
+    "tab:coactivity"
+    "fig:urspectrum"
+    "fig:urbackground"
+    "fig:urcomp"
+    "tab:urcomp"))
  :latex)
 

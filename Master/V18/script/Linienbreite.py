@@ -298,6 +298,24 @@ def fitmaker_2000(
             color="orange",
             linewidth=2.2,
         )
+    elif element == "uranium":
+        axs[0].errorbar(
+            bin_centers,
+            daten_cut["daten"],
+            yerr=np.sqrt(daten_cut["daten"]),
+            fmt="o",
+            color="royalblue",
+            label="Uranium"
+            + f"-Peak {peak_idx+1}",  # Hier müsste man nochmal das Label genereller machen
+            barsabove=True,
+        )
+        axs[0].stairs(
+            np.diff(fit_function(cut_bin_edges, *m.values)),
+            cut_bin_edges,
+            label="fit",
+            color="orange",
+            linewidth=2.2,
+        )
     else:
         print("Fuck")
 
@@ -343,6 +361,8 @@ def fitmaker_2000(
         )  # Bennenung genereller machen
     elif element == "cobalt":
         plt.savefig(f"./build/Cobalt-Fit-Peak{peak_idx+1}.pdf")
+    elif element == "uranium":
+        plt.savefig(f"./build/Uran-Fit-Peak{peak_idx+1}.pdf")
     plt.clf()
     plt.close()
 

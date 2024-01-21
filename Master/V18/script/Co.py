@@ -3,23 +3,13 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib
-import matplotlib.ticker as ticker
-from mpl_toolkits.axes_grid1.inset_locator import inset_axes, mark_inset
 import numpy as np
 from scipy.signal import find_peaks
-from scipy.optimize import fsolve
-from scipy.stats import norm
-from scipy.integrate import quad
-import scipy
-import iminuit
-from iminuit import Minuit
-from iminuit.cost import LeastSquares
-from typing import Tuple
 from uncertainties import ufloat
 from Linienbreite import fitmaker_2000
-from Vollenergie import q_energy, fedp
-from Kalibrierung import linear, linear_invers
-from Cs import scaled_gauss_cdf_b, scaled_gauss_pdf_b
+from Vollenergie import q_energy
+from Kalibrierung import linear
+from Cs import scaled_gauss_cdf_b
 
 matplotlib.rcParams.update({"font.size": 18})
 

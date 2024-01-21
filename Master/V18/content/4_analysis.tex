@@ -476,4 +476,72 @@ The averaged activity then results to
 
 \subsection{Spectrum of an unknown source}
 A measurement of an unknown uranium source is conducted. The measured spectrum is displayed in
-Figure~\ref{fig:urspectrum}.
+Figure~\ref{fig:urspectrum}; the measurement time is $t=\SI{2968}{\second}$.
+\begin{figure}[H]
+	\centering
+	\begin{adjustbox}{width=1.4\textwidth, center}
+		\includegraphics[scale=0.3]{./build/Uran-Peaks.pdf}
+	\end{adjustbox}
+	\caption{Spectrum of the uranium measurement.}
+	\label{fig:urspectrum}
+\end{figure}
+\noindent
+The background measurement is displayed in Figure~\ref{fig:urbackground}.
+\begin{figure}[H]
+	\centering
+	\begin{adjustbox}{width=1.4\textwidth, center}
+		\includegraphics[scale=0.3]{./build/Untergrund-Peaks-unskaliert.pdf}
+	\end{adjustbox}
+	\caption{Spectrum of the background measurement.}
+	\label{fig:urbackground}
+\end{figure}
+\noindent
+Through comparing the peaks of both spectra, the ones which likely originate from the uranium probe
+can be identified. These peaks are shown in Figure~\ref{fig:urcomp}.
+\begin{figure}[H]
+	\centering
+	\begin{adjustbox}{width=1.4\textwidth, center}
+		\includegraphics[scale=0.3]{./build/Uran-Uran-Peaks.pdf}
+	\end{adjustbox}
+	\caption{Spectrum of the uranium measurement, with background peaks removed.}
+	\label{fig:urcomp}
+\end{figure}
+\noindent
+The exact channels of the peaks of the uranium measurement and the background measurement are given in
+Table~\ref{tab:urcomp}. A normal distribution is fitted to the remaining peaks to estimate the yield;
+the results are given in Figure~\ref{fig:urgauss}.
+\begin{table}[H]
+	\centering
+	\caption{Channels of peaks in the background and uranium spectrum.}
+	\label{tab:urcomp}
+	\sisetup{table-format=4.0}
+		\begin{tabular}{S[table-format=2.0] S S}
+			\toprule {Index} & {$C_{\text{Ur}}$} & {$C_{\text{B}}$}              \\
+			\midrule
+			0 &       60 &    59 \\
+			1 &      312 &    {-}   \\
+			2 &      379 &   370 \\
+			3 &      428 &   {-} \\
+			4 &      453 &   453 \\
+			5 &      543 &   {-} \\
+			6 &      701 &   {-} \\
+			7 &      750 &   {-} \\
+			8 &      904 &   904 \\
+			9 &     1144 &   {-} \\
+			10 &    1173 &  1158 \\
+			11 &    1256 &   {-} \\
+			12 &    1303 &   {-} \\
+			13 &    1430 & 	1430 \\
+			14 &    1703 & 	1703 \\
+			15 &    2943 & 	2946 \\
+			16 &    3213 & 	3196 \\
+			17 &    3707 &  {-} \\
+			18 &    3889 &  {-} \\
+			19 &    4508 &  {-} \\
+			20 &    5406 &	5410 \\
+			21 &    5974 &  {-} \\
+			22 &    6647 &  {-} \\
+			\bottomrule
+		\end{tabular}
+\end{table}
+\noindent
