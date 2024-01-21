@@ -35,6 +35,7 @@
     "fig:urspectrum"
     "fig:urbackground"
     "fig:urcomp"
-    "tab:urcomp"))
+    "tab:urcomp"
+    "fig:urgauss"))
  :latex)
 

@@ -55,6 +55,10 @@ peaks_array, peaks_params = find_peaks(
 peaks = pd.DataFrame(peaks_params)
 peaks["peaks"] = peaks_array
 
+# Schonmal neue Spalten anlegen
+peaks["N"] = float(0)
+peaks["N_err"] = float(0)
+
 plt.figure(figsize=(21, 9), dpi=500)
 plt.bar(
     cobalt["index"],
