@@ -7,7 +7,7 @@ its temperature by $\Delta T$.
 The heat capacity can be expressed as the limit for infinitesimal 
 temperature changes
 \begin{equation}
-    C=\lim_{\Delta T\to 0}\frac{\Delta Q}{\delta T}.
+    C=\lim_{\Delta T\to 0}\frac{\Delta Q}{\Delta T}.
     \label{eqn:C}
 \end{equation}
 The specific heat capacity refers to the heat capacity per unit 
@@ -53,9 +53,9 @@ constant pressure is given by
 The difference between the heat capacities at constant pressure and volume is
 determined to be
 \begin{equation}
-    C_p-C_V=9\alpha^2KV_0T
+    C_p-C_V=9\alpha^2\kappa V_0T
 \end{equation}
-where $\alpha$ is the coefficient of thermal expansion, and $K$ is the bulk modulus. 
+where $\alpha$ is the coefficient of thermal expansion, and $\kappa$ is the bulk modulus. 
 
 While $C_V$ measures the increase in inner energy per degree of 
 temperature increase, $C_p$ also includes the energy used for the work 
@@ -72,7 +72,11 @@ Each mode contributes an average energy of $\frac{1}{2}k_BT$.
 In a three-dimensional system with $N$ atoms, 
 there are six degrees of freedom — three spatial and three for momentum.
 This leads to a total energy of $3Nk_BT$ and, accordingly, 
-a heat capacity of $3Nk_B$. 
+a heat capacity of 
+\begin{equation}
+    C_V^\text{D}=3Nk_B. 
+    \label{eqn:dulongpetit}    
+\end{equation}
 This is the high-temperature approximation of heat capacity known as the Dulong-Petit law.
 
 In contrast, a quantum mechanical harmonic oscillator has discrete energy levels 
@@ -91,7 +95,7 @@ This leads to an approximated average inner energy of
 \end{equation}
 This yields a heat capacity of 
 \begin{equation}
-    C_V^\text{E} = 3Nk_\text{B} \left(\frac{\theta_\text{E}}{T}\right)^2 \frac{\text{exp}\left(\frac{\theta_\text{E}}{T}\right)}
+    C_V^\text{Einstein} = 3Nk_\text{B} \left(\frac{\theta_\text{E}}{T}\right)^2 \frac{\text{exp}\left(\frac{\theta_\text{E}}{T}\right)}
     {\left[\text{exp}\left(\frac{\theta_\text{E}}{T}\right) - 1\right]^2} = 
     \begin{cases}
         3Nk_\text{B} \left(\frac{\theta_\text{E}}{T}\right)^2 \text{exp}\left(\frac{-\theta_\text{E}}{T}\right), 
@@ -102,7 +106,7 @@ This yields a heat capacity of
 where $\theta_\text{E} = \frac{\hbar\omega_\text{E}}{k_\text{B}}$ is the specific 
 Einstein temperature.
 
-This model predicts the Dulong-Petit law at high temperatures. However, 
+This model predicts the Dulong-Petit law \eqref{eqn:dulongpetit} at high temperatures. However, 
 at low temperatures, it fails to account for the experimentally observed $T^3$ 
 decrease in heat capacity. This limitation can be attributed to the fact that 
 the model only considers optical modes and neglects acoustic modes.
@@ -125,7 +129,7 @@ The state density function in the Debye model is given by
 
 The heat capacity at constant volume is derived by integrating over all vibrational modes
 \begin{equation}
-    C_V^\text{E} = 9Nk_\text{B} \left(\frac{T}{\theta_\text{D}}\right)^3 \int_0^{\frac{\theta_\text{D}}{T}} 
+    C_V^\text{Debye} = 9Nk_\text{B} \left(\frac{T}{\theta_\text{D}}\right)^3 \int_0^{\frac{\theta_\text{D}}{T}} 
     \frac{x^4\text{e}^x \; \text{d}x}{(\text{e}^x - 1)^2} = 
     \begin{cases}
         \frac{12\pi^4}{5}Nk_\text{B}\left(\frac{T}{\theta_\text{D}}\right)^3, & T \ll \theta_\text{E} \\
@@ -141,7 +145,8 @@ $\theta_\text{D}$ is the material-specific Debye temperature, defined as
 \end{equation}
 The Debye model accurately predicts the $T^3$ dependence of heat capacity at low temperatures, 
 consistent with experimental observations. 
-At high temperatures, it aligns with the Dulong-Petit law, similar to the Einstein model.
+At high temperatures, it aligns with the Dulong-Petit law \eqref{eqn:dulongpetit}, 
+similar to the Einstein model.
 
 Integrating the state density function \eqref{eqn:sdf} from 
 $\omega=0$ to the Debye frequency $\omega_D$ gives
