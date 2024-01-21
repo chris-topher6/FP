@@ -77,17 +77,9 @@ def q_energy(E, a, b):
     return a * ((E) ** b)
 
 
-# Es gibt leider viele Ausreißer; das hier ist eigentlich alles nicht das wahre, ich
-# produziere hier absichtlich die zu fittende Funktion ohne das diese wirklich zu den
-# Daten passt
-# peaks_fit = peaks.drop([0, 1, 2, 3, 5, 6, 8, 9, 11])
-# peaks_fit = peaks.drop([0, 1, 2, 9, 11])
-# peaks_fit = peaks.drop([0, 1, 2, 5, 6, 7, 8, 10, 12])
 peaks_fit = (
     peaks  # Ja das müsste mal einer ordentlich machen aber das trifft ja irgendwie auf
 )
-# alles hier zu
-
 energy_scale = np.linspace(
     peaks["Energie"].min(), peaks["Energie"].max(), 10000
 )  # Fester Minimumwert manchmal nötig um Divergenz zu vermeiden
@@ -102,99 +94,99 @@ m.limits["b"] = (-1, -0.8)
 m.migrad()
 m.hesse()
 
-matplotlib.rcParams.update({"font.size": 8})
-fig, axs = plt.subplots(
-    2,
-    sharex=True,
-    gridspec_kw={"hspace": 0.05, "height_ratios": [3, 1]},
-    layout="constrained",
-)
-
-# axs[0].errorbar(
-#     peaks["Energie"],
-#     peaks["fedp"],
-#     xerr=peaks["Unsicherheit(E)"],
-#     yerr=peaks["fedp_err"],
-#     fmt="o",
-#     color="grey",
-#     label="discarded data",
-#     barsabove=True,
+# matplotlib.rcParams.update({"font.size": 8})
+# fig, axs = plt.subplots(
+#     2,
+#     sharex=True,
+#     gridspec_kw={"hspace": 0.05, "height_ratios": [3, 1]},
+#     layout="constrained",
 # )
 
-axs[0].errorbar(
-    peaks_fit["Energie"],
-    peaks_fit["fedp"],
-    xerr=peaks_fit["Unsicherheit(E)"],
-    yerr=peaks_fit["fedp_err"],
-    fmt="o",
-    color="royalblue",
-    label="data",
-    barsabove=True,
-    zorder=2,
-)
+# # axs[0].errorbar(
+# #     peaks["Energie"],
+# #     peaks["fedp"],
+# #     xerr=peaks["Unsicherheit(E)"],
+# #     yerr=peaks["fedp_err"],
+# #     fmt="o",
+# #     color="grey",
+# #     label="discarded data",
+# #     barsabove=True,
+# # )
+
+# axs[0].errorbar(
+#     peaks_fit["Energie"],
+#     peaks_fit["fedp"],
+#     xerr=peaks_fit["Unsicherheit(E)"],
+#     yerr=peaks_fit["fedp_err"],
+#     fmt="o",
+#     color="royalblue",
+#     label="data",
+#     barsabove=True,
+#     zorder=2,
+# )
+
+# # axs[0].plot(
+# #     peaks_fit["Energie"],
+# #     q_energy(peaks_fit["Energie"], *m.values),
+# #     label="fit",
+# #     color="orange",
+# #     linewidth=2.2,
+# # )
 
 # axs[0].plot(
-#     peaks_fit["Energie"],
-#     q_energy(peaks_fit["Energie"], *m.values),
+#     energy_scale,
+#     q_energy(energy_scale, *m.values),
 #     label="fit",
 #     color="orange",
 #     linewidth=2.2,
+#     zorder=1,
 # )
+# axs[0].legend()
+# axs[0].set_ylabel("Q/%")
+# # axs[0].set_ylabel("Q")
 
-axs[0].plot(
-    energy_scale,
-    q_energy(energy_scale, *m.values),
-    label="fit",
-    color="orange",
-    linewidth=2.2,
-    zorder=1,
-)
-axs[0].legend()
-axs[0].set_ylabel("Q/%")
-# axs[0].set_ylabel("Q")
+# # Chi^2 Test des Fits auf Abbildung schreiben
+# fit_info = [
+#     f"$\\chi^2$/$n_\\mathrm{{dof}}$ = {m.fval:.1f} / {m.ndof:.0f} = {m.fmin.reduced_chi2:.1f}",
+# ]
 
-# Chi^2 Test des Fits auf Abbildung schreiben
-fit_info = [
-    f"$\\chi^2$/$n_\\mathrm{{dof}}$ = {m.fval:.1f} / {m.ndof:.0f} = {m.fmin.reduced_chi2:.1f}",
-]
+# # Fitparameter auf Abbildung schreiben
+# for p, v, e in zip(m.parameters, m.values, m.errors):
+#     fit_info.append(f"{p} = ${v:.3f} \\pm {e:.3f}$")
 
-# Fitparameter auf Abbildung schreiben
-for p, v, e in zip(m.parameters, m.values, m.errors):
-    fit_info.append(f"{p} = ${v:.3f} \\pm {e:.3f}$")
+# n_model = q_energy(peaks_fit["Energie"], *m.values)
+# n_error = peaks_fit["fedp_err"]
+# n_data = peaks_fit["fedp"]
 
-n_model = q_energy(peaks_fit["Energie"], *m.values)
-n_error = peaks_fit["fedp_err"]
-n_data = peaks_fit["fedp"]
+# pull = (n_data - n_model) / n_error
 
-pull = (n_data - n_model) / n_error
+# # Pseudobinning damit die Pulls nicht scheiße aussehen
+# bin_edges = peaks_fit["Energie"].to_numpy()
+# bin_edges = np.insert(bin_edges, 0, 0)
+# bin_edges = np.append(bin_edges, bin_edges[-1] + (bin_edges[-1] - bin_edges[-2]))
+# bin_centers = (bin_edges[:-1] + bin_edges[1:]) / 2
 
-# Pseudobinning damit die Pulls nicht scheiße aussehen
-bin_edges = peaks_fit["Energie"].to_numpy()
-bin_edges = np.insert(bin_edges, 0, 0)
-bin_edges = np.append(bin_edges, bin_edges[-1] + (bin_edges[-1] - bin_edges[-2]))
-bin_centers = (bin_edges[:-1] + bin_edges[1:]) / 2
+# # axs[1].bar(
+# #     peaks_fit["Energie"],
+# #     pull,
+# #     width=15,
+# #     color="royalblue",
+# # )
 
-# axs[1].bar(
-#     peaks_fit["Energie"],
-#     pull,
-#     width=15,
-#     color="royalblue",
+# axs[1].stairs(pull, bin_centers, fill=True, color="royalblue")
+
+# axs[1].axhline(0, color="orange", linewidth=0.8)
+# axs[1].set_xlabel(r"$\mathrm{Energy}/\,\mathrm{keV}$")
+# axs[1].set_ylabel(r"$\mathrm{Pull}/\,\sigma$")
+# axs[1].yaxis.set_major_formatter(ticker.FormatStrFormatter("%.1f"))
+# axs[1].set_yticks(
+#     np.linspace(
+#         int(pull.min() - 1),
+#         int(pull.max() + 1),
+#         10,
+#     )
 # )
-
-axs[1].stairs(pull, bin_centers, fill=True, color="royalblue")
-
-axs[1].axhline(0, color="orange", linewidth=0.8)
-axs[1].set_xlabel(r"$\mathrm{Energy}/\,\mathrm{keV}$")
-axs[1].set_ylabel(r"$\mathrm{Pull}/\,\sigma$")
-axs[1].yaxis.set_major_formatter(ticker.FormatStrFormatter("%.1f"))
-axs[1].set_yticks(
-    np.linspace(
-        int(pull.min() - 1),
-        int(pull.max() + 1),
-        10,
-    )
-)
-axs[0].legend(title="\n".join(fit_info), frameon=False)
-plt.savefig("./build/FEDP-Fit.pdf")
-plt.clf()
-plt.close()
+# axs[0].legend(title="\n".join(fit_info), frameon=False)
+# plt.savefig("./build/FEDP-Fit.pdf")
+# plt.clf()
+# plt.close()
