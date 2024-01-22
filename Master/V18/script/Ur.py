@@ -102,9 +102,9 @@ peaks_untergrund_skaliert = pd.DataFrame(peaks_params_untergrund_skaliert)
 peaks_untergrund_skaliert["peaks"] = peaks_array_untergrund_skaliert
 
 # Aufräumen
-indizes_zum_behalten = [0, 13, 17]
-peaks_untergrund_kurz_skaliert = peaks_untergrund_skaliert.iloc[indizes_zum_behalten]
-# peaks_untergrund = peaks_untergrund.iloc[indizes_zum_behalten]
+indizes_zum_behalten = [0, 13, 17, 39, 49, 54, 64, 74, 75, 76, 77, 78, 79]
+# peaks_untergrund_kurz_skaliert = peaks_untergrund_skaliert.iloc[indizes_zum_behalten]
+peaks_untergrund_skaliert = peaks_untergrund_skaliert.iloc[indizes_zum_behalten]
 
 # Zweiter Plot der Untergrundmessung
 plt.figure(figsize=(21, 9), dpi=500)
@@ -123,13 +123,13 @@ plt.plot(
     color="orange",
     label="Peaks",
 )
-plt.plot(
-    peaks_untergrund_kurz_skaliert["peaks"],
-    peaks_untergrund_kurz_skaliert["peak_heights"],
-    "x",
-    color="green",
-    label="Peaks",
-)
+# plt.plot(
+#     peaks_untergrund_kurz_skaliert["peaks"],
+#     peaks_untergrund_kurz_skaliert["peak_heights"],
+#     "x",
+#     color="green",
+#     label="Peaks",
+# )
 plt.xticks(np.linspace(0, 8191, 10))
 plt.yticks(np.linspace(untergrund["daten"].min(), untergrund["daten"].max(), 10))
 
