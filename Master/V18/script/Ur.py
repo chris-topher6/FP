@@ -94,6 +94,55 @@ plt.clf()
 # dauerte 76353s
 untergrund["daten"] = untergrund["daten"] * (2968 / 76353)
 
+# Auch in der skalierten Variante die Peaks finden
+peaks_array_untergrund_skaliert, peaks_params_untergrund_skaliert = find_peaks(
+    untergrund["daten"], height=0, prominence=1, distance=15
+)
+peaks_untergrund_skaliert = pd.DataFrame(peaks_params_untergrund_skaliert)
+peaks_untergrund_skaliert["peaks"] = peaks_array_untergrund_skaliert
+
+# Aufräumen
+indizes_zum_behalten = [0, 13, 17]
+peaks_untergrund_kurz_skaliert = peaks_untergrund_skaliert.iloc[indizes_zum_behalten]
+# peaks_untergrund = peaks_untergrund.iloc[indizes_zum_behalten]
+
+# Zweiter Plot der Untergrundmessung
+plt.figure(figsize=(21, 9), dpi=500)
+plt.bar(
+    untergrund["index"],
+    untergrund["daten"],
+    linewidth=2,
+    width=1.1,
+    label="Background",
+    color="royalblue",
+)
+plt.plot(
+    peaks_untergrund_skaliert["peaks"],
+    peaks_untergrund_skaliert["peak_heights"],
+    "x",
+    color="orange",
+    label="Peaks",
+)
+plt.plot(
+    peaks_untergrund_kurz_skaliert["peaks"],
+    peaks_untergrund_kurz_skaliert["peak_heights"],
+    "x",
+    color="green",
+    label="Peaks",
+)
+plt.xticks(np.linspace(0, 8191, 10))
+plt.yticks(np.linspace(untergrund["daten"].min(), untergrund["daten"].max(), 10))
+
+plt.ylim(untergrund["daten"].min() - 1)
+plt.xlabel(r"Channels")
+plt.ylabel(r"Signals")
+
+plt.grid(True, linewidth=0.1)
+plt.legend()
+plt.tight_layout()
+plt.savefig("./build/Untergrund-Peaks-skaliert.pdf")
+plt.clf()
+
 # Untergrund entfernen
 uran["daten"] = uran["daten"] - untergrund["daten"]
 
@@ -245,3 +294,8 @@ for i in range(len(peaks_uran_uran)):
         zorder1=1,
         zorder2=2,
     )
+
+# Ausgabe der Energien bei der die Peaks liegen
+peaks_keV = linear(peaks_uran_uran["peaks"], alpha, beta)
+print("Peaks in keV")
+print(peaks_keV)
