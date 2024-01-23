@@ -36,6 +36,7 @@
     "fig:urbackground"
     "fig:urcomp"
     "tab:urcomp"
-    "fig:urgauss"))
+    "fig:urgauss"
+    "tab:urmatching"))
  :latex)
 

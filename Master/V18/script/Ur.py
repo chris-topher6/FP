@@ -7,9 +7,10 @@ import numpy as np
 from scipy.signal import find_peaks
 from uncertainties import ufloat
 from Linienbreite import fitmaker_2000
-from Vollenergie import q_energy
 from Kalibrierung import linear
+from Vollenergie import q_energy
 from Cs import scaled_gauss_cdf_b
+from Co import aktivität_q
 
 matplotlib.rcParams.update({"font.size": 18})
 
@@ -50,9 +51,9 @@ indizes_zum_behalten = [0, 14, 18, 39, 50, 63, 71, 90, 95, 97, 99, 105, 106, 108
 # peaks_untergrund_kurz = peaks_untergrund.iloc[indizes_zum_behalten]
 peaks_untergrund = peaks_untergrund.iloc[indizes_zum_behalten]
 
-print("Peaks Im Untergrund")
-print(peaks_untergrund["peaks"])
-print("---")
+# print("Peaks Im Untergrund")
+# print(peaks_untergrund["peaks"])
+# print("---")
 # Erster Plot der Untergrundmessung
 plt.figure(figsize=(21, 9), dpi=500)
 plt.bar(
@@ -221,12 +222,15 @@ plt.close()
 
 peaks_uran = peaks_uran.reset_index(drop=True)
 
+
 # Jetzt nur noch die Peaks die nicht im Untergrund auftreten
-indizes_zum_behalten = [1, 3, 5, 6, 7, 9, 11, 12, 17, 18, 19, 21, 22]
+indizes_zum_behalten = [1, 3, 5, 6, 7, 9, 10, 11, 12, 17, 18, 19, 21, 22]
 peaks_uran_uran = peaks_uran.iloc[indizes_zum_behalten]
 
-print("Peaks im Uran")
-print(peaks_uran["peaks"])
+# print("Peaks im Uran")
+# print(peaks_uran["peaks"])
+# print("Peaks im Dataframe Uran Uran:")
+# print(peaks_uran_uran["peaks"])
 
 plt.figure(figsize=(21, 9), dpi=500)
 plt.bar(
@@ -277,8 +281,8 @@ matplotlib.rcParams.update({"font.size": 8})
 
 grenzen = pd.DataFrame(
     data={
-        "L": [6, 8, 5, 8, 4, 8, 4, 4, 15, 11, 15, 15, 15],
-        "R": [7, 6, 4, 5, 3, 8, 5, 2, 15, 15, 15, 15, 15],
+        "L": [6, 8, 5, 8, 4, 8, 7, 4, 2, 15, 11, 15, 15, 15],
+        "R": [7, 6, 4, 5, 3, 8, 6, 5, 2, 15, 15, 15, 15, 15],
     }
 )
 
@@ -296,6 +300,67 @@ for i in range(len(peaks_uran_uran)):
     )
 
 # Ausgabe der Energien bei der die Peaks liegen
-peaks_keV = linear(peaks_uran_uran["peaks"], alpha, beta)
-print("Peaks in keV")
-print(peaks_keV)
+peaks_keV = pd.DataFrame(data={"peaks": linear(peaks_uran_uran["peaks"], alpha, beta)})
+
+# Die Konstanten werden benötigt
+a = 8.91  # cm
+r = 2.25  # cm
+omega_4pi = 1 / 2 * (1 - a / (np.sqrt(a**2 + r**2)))
+
+# Fitparamter für Q(E);
+a_q = ufloat(4.757, 0.347)
+b_q = ufloat(-0.915, 0.013)
+
+peaks_keV["Q"] = ufloat(0, 0)
+peaks_keV["A"] = ufloat(0, 0)
+peaks_keV["I"] = [
+    float(0.49),
+    float(0.271),
+    float(0.313),
+    float(0.00046),
+    float(0.205),
+    float(1),  # ist natürlich quatsch, aber irgendeinen Wert muss man nehmen
+    float(0.0117),
+    float(0.5318),
+    float(0.0161),
+    float(4.892),
+    float(1.262),
+    float(3.10),
+    float(5.831),
+    float(3.968),
+]
+# ja ich weiß
+peaks_keV["s"] = pd.Series(
+    data=[
+        ufloat(11833.671, 215.914),
+        ufloat(15737.739, 175.705),
+        ufloat(11680.016, 1387.264),
+        ufloat(10920.247, 366.263),
+        ufloat(9042.962, 1500.466),
+        ufloat(5842.050, 217.646),
+        ufloat(15338.125, 132.976),
+        ufloat(4133.150, 597.108),
+        ufloat(1702.320, 1.970),
+        ufloat(3708.917, 0.153),
+        ufloat(2634.706, 58.979),
+        ufloat(748.940, 39.955),
+        ufloat(1280.150, 46.168),
+        ufloat(1599.454, 48.102),
+        ufloat(987.948, 40.773),
+    ]
+)
+
+# Messzeit
+t = 2968
+# print(peaks_keV)
+
+for i in range(len(peaks_keV)):
+    peaks_keV.at[i, "Q"] = q_energy(peaks_keV.at[i, "peaks"], a_q, b_q)
+    peaks_keV.at[i, "A"] = aktivität_q(
+        omega_4pi, peaks_keV.at[i, "s"], peaks_keV.at[i, "Q"], peaks_keV.at[i, "I"], t
+    )
+    Ai = peaks_keV.at[i, "A"]
+    print(f"Die Aktivität von Peak {i} beträgt {Ai:.4f} bq")
+
+plt.close()
+peaks_keV.to_csv("./build/peaks_ur.csv")
