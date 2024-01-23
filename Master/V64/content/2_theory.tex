@@ -34,7 +34,9 @@ single polarization from the unpolarized beam.
 An alternative method for obtaining polarized light involves the use of a polarizing 
 beam splitter cube (PBSC). This cube differentiates between s-polarized and 
 p-polarized light: it reflects the s-polarized light, which oscillates perpendicular 
-to the plane, and transmits the p-polarized light, oscillating parallel to the plane.
+to the incidence plane and transmits the p-polarized light, oscillating parallel to 
+this incidence plane.
+
 
 \begin{figure}
     \centering
@@ -55,10 +57,10 @@ interference pattern. Analogous to the degree of coherence, $K$ ranges from
 \numrange{0}{1}, with a perfect contrast represented by $K=1$.
 
 Since the intensity $I$ is proportional to the superposition of two waves, expressed as
-\begin{equation*}
+\begin{equation}
     I\propto \langle |E_1\cos(\omega t)+E_2\cos(\omega t +\delta)|^2 \rangle
     \label{eqn:intensity}
-\end{equation*}
+\end{equation}
 where $\omega$ is the wave frequency and $\delta$ represents the phase difference 
 between the two waves. Consequently, the maximal and minimal intensities can be written as
 \begin{align*}
@@ -96,10 +98,10 @@ maxima and minima, $M$, is calculated as
 \end{equation}
 For glass, this phase difference is determined by
 \begin{equation}
-    \Delta\Phi(\theta)=2\pi\frac{T}{\lambda_\text{vac}}\frac{n-1}{2n}\theta^2
+    \Delta\Phi(\theta)=2\pi\frac{D}{\lambda_\text{vac}}\frac{n-1}{2n}\theta^2
     \label{eqn:delta1}
 \end{equation}
-where $T$ is the glass thickness, $\lambda_\text{vac}$ is the wavelength in vacuum, and $\theta$ 
+where $D$ is the glass thickness, $\lambda_\text{vac}$ is the wavelength in vacuum, and $\theta$ 
 is the angle of incidence. For glass plates pre-tilted at angles $\theta_1$ and $\theta_2$, 
 the equation \eqref{eqn:delta1} modifies to
 \begin{equation}
@@ -109,8 +111,9 @@ the equation \eqref{eqn:delta1} modifies to
 
 Similar to Equation \eqref{eqn:delta1}, the phase difference for a gas is represented by
 \begin{equation*}
-    \Delta\Phi=2\pi\frac{T}{\lambda_\text{vac}}(n-1).
+    \Delta\Phi=2\pi\frac{L}{\lambda_\text{vac}}(n-1)
 \end{equation*}
+where $L$ denotes the length of the das chamber.
 Additionally, the refractive index of an ideal gas can be approximated using the Lorentz-Lorenz law, 
 which relates it to the gas's pressure $p$ and temperature $T$. The Lorentz-Lorenz formula is expressed as
 \begin{equation}
