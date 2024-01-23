@@ -359,8 +359,8 @@ for i in range(len(peaks_keV)):
     peaks_keV.at[i, "A"] = aktivität_q(
         omega_4pi, peaks_keV.at[i, "s"], peaks_keV.at[i, "Q"], peaks_keV.at[i, "I"], t
     )
-    Ai = peaks_keV.at[i, "A"]
-    print(f"Die Aktivität von Peak {i} beträgt {Ai:.4f} bq")
+    Ai = peaks_keV.at[i, "A"] * 1 / 1000  # Umrechnung in kBq
+    print(f"Die Aktivität von Peak {i} beträgt {Ai:.4f} kBq")
 
 plt.close()
 peaks_keV.to_csv("./build/peaks_ur.csv")
