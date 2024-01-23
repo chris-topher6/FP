@@ -22,10 +22,10 @@ where $n$ is the molar amount, $V$ is the volume, and $m$ is
 the mass of the substance, respectively. 
 
 According to the first law of thermodynamics
-\begin{equation*}
+\begin{equation}
     \text{d}Q=\text{d}U+p\text{d}V
     \label{eqn:TD1}
-\end{equation*}
+\end{equation}
 two different heat capacities can be defined. 
 Under the assumption of constant volume ($\text{d}V=0$), 
 equation \eqref{eqn:C} yields 
@@ -46,8 +46,8 @@ For an isobaric process ($\text{d}p=0$), the heat capacity at
 constant pressure is given by
 \begin{equation}
     C_p=\left(\frac{\partial Q}{\partial T}\right)_{p=const.}
-    =\left(\frac{\partial U}{\partial T}\right)_p \text{d} T 
-    +p\left(\frac{\partial V}{\partial T}\right)_p \text{d} T.
+    =\left(\frac{\partial U}{\partial T}\right)_p
+    +p\left(\frac{\partial V}{\partial T}\right)_p.
     \label{eqn:Cp}
 \end{equation}
 The difference between the heat capacities at constant pressure and volume is
@@ -99,8 +99,8 @@ This yields a heat capacity of
     {\left[\text{exp}\left(\frac{\theta_\text{E}}{T}\right) - 1\right]^2} = 
     \begin{cases}
         3Nk_\text{B} \left(\frac{\theta_\text{E}}{T}\right)^2 \text{exp}\left(\frac{-\theta_\text{E}}{T}\right), 
-        & T \ll \theta_\text{E} \\
-        3Nk_\text{B} , & T \gg \theta_\text{E}
+        & T \ll \theta_\text{D} \\
+        3Nk_\text{B} , & T \gg \theta_\text{D}
     \end{cases}
 \end{equation}
 where $\theta_\text{E} = \frac{\hbar\omega_\text{E}}{k_\text{B}}$ is the specific 
