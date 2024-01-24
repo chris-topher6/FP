@@ -15,6 +15,7 @@
     "subsubsec:solidangle"
     "eqn:params"
     "subsubsec:determinationfep"
+    "tab:Q"
     "eqn:fedpfit_function"
     "fig:efit"
     "fig:csspectrum"
