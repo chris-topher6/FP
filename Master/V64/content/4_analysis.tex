@@ -6,6 +6,39 @@ and maximum intensities for different polarization angles
 are measured. The measured values are listed in Table 
 \ref{tab:contrast}.
 
+These values are used to calculate the contrast $K$ for 
+both sets of measurements using Equation \eqref{eqn:contrast}. 
+Subsequently, the mean and the standard deviation of $K$ are 
+computed using \textit{numpy} \cite{numpy}. Figure 
+\ref{fig:contrast} visualizes these values of $K$.
+\\
+For the fit, the function described in Equation 
+\eqref{eqn:contrast2} is modified by introducing a constant 
+offset angle $\delta$ and a factor $K_0$ which represents the 
+maximal contrast. Both parameters are allowed to vary in the 
+fit to compensate for deviations between the experimental setup 
+and the theoretical model. The resulting function is 
+\begin{equation}
+    K = 2 K_0|\sin{(\phi-\delta)}\cos{(\phi-\delta)}|
+    \label{eqn:K_ana}
+\end{equation}
+The fit, conducted using \textit{scipy} \cite{scipy}, is displayed 
+in Figure \ref{fig:contrast}. The values of the parameters are 
+\begin{align*}
+    K_0=\num{0.895\pm 0.015} \quad\text{and}\quad \delta=\SI{2.27\pm0.33}{\degree}.
+\end{align*}
+
+\begin{figure}[H]
+    \centering 
+    \includegraphics[width=0.8\textwidth]{build/contrast.pdf}
+    \caption{Averaged contrast $K$ as a function of the polarization angle $\phi$ with a fit using the function described in Equation \eqref{eqn:K_ana}.}
+    \label{fig:contrast}
+\end{figure}
+
+The maximum contrast was measured at a polarization angle of 
+$\phi = \SI{130}{\degree}$. Henceforth, the polarization angle 
+is set to this value for subsequent measurements.
+
 \begin{table}
     \centering
     \begin{tabular}{S S S S S}
@@ -54,38 +87,6 @@ are measured. The measured values are listed in Table
     \caption{Measured minimal and maximal intensity for different polarisation angles $\phi$.}
     \label{tab:contrast}
 \end{table}
-These values are used to calculate the contrast $K$ for 
-both sets of measurements using Equation \eqref{eqn:contrast}. 
-Subsequently, the mean and the standard deviation of $K$ are 
-computed using \textit{numpy} \cite{numpy}. Figure 
-\ref{fig:contrast} visualizes these values of $K$.
-\\
-For the fit, the function described in Equation 
-\eqref{eqn:contrast2} is modified by introducing a constant 
-offset angle $\delta$ and a factor $K_0$ which represents the 
-maximal contrast. Both parameters are allowed to vary in the 
-fit to compensate for deviations between the experimental setup 
-and the theoretical model. The resulting function is 
-\begin{equation}
-    K = 2 K_0|\sin{(\phi-\delta)}\cos{(\phi-\delta)}|
-    \label{eqn:K_ana}
-\end{equation}
-The fit, conducted using \textit{scipy} \cite{scipy}, is displayed 
-in Figure \ref{fig:contrast}. The values of the parameters are 
-\begin{align*}
-    K_0=\num{0.895\pm 0.015} \quad\text{and}\quad \delta=\SI{2.27\pm0.33}{\degree}.
-\end{align*}
-
-\begin{figure}
-    \centering 
-    \includegraphics[width=0.8\textwidth]{build/contrast.pdf}
-    \caption{Averaged contrast $K$ as a function of the polarization angle $\phi$ with a fit using the function described in Equation \eqref{eqn:K_ana}.}
-    \label{fig:contrast}
-\end{figure}
-
-The maximum contrast was measured at a polarization angle of 
-$\phi = \SI{130}{\degree}$. Henceforth, the polarization angle 
-is set to this value for subsequent measurements.
 
 \subsection{Determination of the Refractive Index of Glass}
 For the measurement of the refractive index, two glass plates 
