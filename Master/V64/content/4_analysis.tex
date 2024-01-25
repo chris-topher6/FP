@@ -87,44 +87,51 @@ The maximum contrast was measured at a polarization angle of
 $\phi = \SI{130}{\degree}$. Henceforth, the polarization angle 
 is set to this value for subsequent measurements.
 
-
-
-\subsection{Determination of the Refraction Index of Glass}
-For the measurement of the refractive index, two glass planes 
+\subsection{Determination of the Refractive Index of Glass}
+For the measurement of the refractive index, two glass plates 
 are placed into the beams of the interferometer as described 
-in Section \ref{sec:measurement_glass}. Since the glass planes 
+in Section \ref{sec:measurement_glass}. Since the glass plates 
 are tilted by $\theta_0 = \pm \SI{10}{\degree}$, Equation 
-\eqref{eqn:delta} can be simplified with $\theta_1 = -\theta_2 = 10$ to 
+\eqref{eqn:delta} can be simplified with $\theta_1 = -\theta_2 = \SI{10}{\degree}$ to  
 \begin{equation}
     \Delta\Phi(\theta)=2\pi\frac{D}{\lambda_\text{vac}}\frac{n-1}{n}\cdot 2\theta_0\theta.
 \end{equation}
 This, combined with the relation \eqref{eqn:M}, results in 
 \begin{equation}
-    M=\frac{T}{\lambda_\text{vac}}\frac{n-1}{n}\cdot 2\theta_0\theta
+    M=\frac{D}{\lambda_\text{vac}}\frac{n-1}{n}\cdot 2\theta_0\theta
     \label{eqn:M_ana}
 \end{equation}
 with the wavelength $\lambda = \SI{632.99}{\nano\metre}$ of 
-the laser and the thickness $T = \SI{1}{\milli\metre}$ of 
-the glass planes. Table \ref{tab:glass} shows the measured 
-values for $M$ at different angles $\theta$. Figure 
-\ref{fig:glass} displays the fit of the function 
-\eqref{eqn:M_ana} to the mean values of $M$ with the 
-standard deviation as error bars.
+the laser and the thickness $D = \SI{1}{\milli\metre}$ of 
+the glass planes. 
+
+Table \ref{tab:glass} shows the measured 
+values for $M$ at different angles $\theta$. 
+Equation \eqref{eqn:M_ana} is fitted to the average $M$ of 
+all measured number of maxima, varying the parameter $n$.
+Figure \ref{fig:glass} displays the fit to the mean values of $M$ with the 
+standard deviation represented as error bars.
+The fit yields a value of  
+\begin{equation*}
+    n=\SI{1.485 \pm 0.013}{}
+\end{equation*}
+for the refractive index of the glass plates.
 
 \begin{table}
     \centering
-    \begin{tabular}{S S S S S S S S S S}
+    \sisetup{table-format=2.0}
+    \begin{tabular}{S S S S S S S S S S S[table-format=2.1] @{${}\pm{}$} S[table-format=1.1]}
         \toprule
-        {$\theta/\si{\degree}$} & {$M_1$} & {$M_2$} & {$M_3$} & {$M_4$} & {$M_5$} & {$M_6$} & {$M_7$} & {$M_8$} & {$M_9$}\\
+        {$\theta/\si{\degree}$} & {$M_1$} & {$M_2$} & {$M_3$} & {$M_4$} & {$M_5$} & {$M_6$} & {$M_7$} & {$M_8$} & {$M_9$} &  \multicolumn{2}{c}{$M$}\\
         \midrule
-        2 & 6  & 5  & 7  & 5  & 7  & 6  & 7  & 8  & 9  \\
-        4 & 12 & 9  & 13 & 13 & 13 & 11 & 11 & 15 & 14 \\
-        6 & 19 & 15 & 21 & 16 & 20 & 17 & 20 & 22 & 20 \\
-        8 & 27 & 16 & 25 & 23 & 24 & 25 & 25 & 26 & 25 \\
-        10 & 33 & 22 & 36 & 36 & 33 & 35 & 33 & 34 & 33 \\
+        2 & 6  & 5  & 7  & 5  & 7  & 6  & 7  & 8  & 9   & 6.7 & 1.2  \\
+        4 & 12 & 9  & 13 & 13 & 13 & 11 & 11 & 15 & 14  & 12.3 & 1.7 \\
+        6 & 19 & 15 & 21 & 16 & 20 & 17 & 20 & 22 & 20  & 18.9 & 2.2 \\
+        8 & 27 & 16 & 25 & 23 & 24 & 25 & 25 & 26 & 25  & 24.0 & 3.0 \\
+        10 & 33 & 22 & 36 & 36 & 33 & 35 & 33 & 34 & 33 & 32.8 & 4.0 \\
         \bottomrule
     \end{tabular}
-    \caption{Measured values of the number of maxima $M$ that passed the center for different angles $\theta$.}
+    \caption{Measured values of the number of maxima $M_i$ that passed the center for different angles $\theta$ and the calculated average $M$ with standard deviation.}
     \label{tab:glass}
 \end{table}
 
@@ -134,11 +141,6 @@ standard deviation as error bars.
     \caption{Averaged number of maxima $M$ as a function of the angle $\theta$ with a fit using the function described in Equation \eqref{eqn:M_ana}.}
     \label{fig:glass}
 \end{figure}
-
-The measured value of the refractive index is determined to be 
-\begin{align*}
-    n=\SI{1.485\pm 0.013}.
-\end{align*}
 
 \subsection{Determination of the Refractive Index of Gas}
 The measured values for the number of maxima $M$ that passed 
