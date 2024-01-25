@@ -5,9 +5,9 @@ source is measured; this can be seen in Figure~\ref{fig:spectrumeu}. A
 background measurement is conducted and removed from the $^{152}\text{Eu}$
 measurement. For this, the background measurement is scaled according to
 the difference in measurement time compared to the $^{152}\text{Eu}$
-measurement. The background can be seen in figure~\ref{fig:background} and
+measurement. The background can be seen in Figure~\ref{fig:background} and
 the scaled background as well as the $^{152}\text{Eu}$ measurement in
-figure~\ref{fig:eubackground}.
+Figure~\ref{fig:eubackground}.
 \begin{figure}
 	\centering
 	\begin{adjustbox}{width=1.4\textwidth, center}
@@ -45,11 +45,11 @@ A linear fit
 \end{equation}
 is performed to get a relation between energy $E$ and channel number $K$. The resulting fit parameters are
 \begin{align*}
-	\alpha & =  \num{0.207452 \pm 0.000}      \\
-	\beta  & =  \num{-1.622490 \pm 0.000381}.
+	\alpha & =  \num{0.2075 \pm 0.0000}      \\
+	\beta  & =  \num{-1.6225 \pm 0.0004}.
 \end{align*}
 The fit is displayed in Figure~\ref{fig:efit}.
-The relation~\ref{eqn:linear} with the determined parameters is used throughout this analysis for energy measurements. The fit is performed
+The relation~\eqref{eqn:linear} with the determined parameters is used throughout this analysis for energy measurements. The fit is performed
 using the \texttt{iminuit}~\cite{iminuit} python package.
 \begin{table}[H]
 	\centering
@@ -59,16 +59,16 @@ using the \texttt{iminuit}~\cite{iminuit} python package.
 	\begin{tabular}{S S[table-format=2.2] S[table-format=4.0] S}
 		\toprule {$E_{\text{lit}}/\si{\kilo\electronvolt}$} & {$P_{\text{lit}}/\si{\percent}$} & {$C$} & {$N$}                  \\
 		\midrule
-		121.7817                                            & {28.410 \pm  0.13}               & 595   & {8479.012 \pm 103.393} \\
-		244.6974                                            & {7.550 \pm   0.04}               & 1187  & {1597.296 \pm 40.497}  \\
-		344.2785                                            & {26.590 \pm  0.12}               & 1666  & {3301.229 ± 60.211}    \\
-		443.9650                                            & {2.800 \pm   0.02}               & 2145  & {423.909 ± 24.967}     \\
-		778.9045                                            & {12.970 \pm  0.06}               & 3760  & {751.993 ± 29.308}     \\
-		867.3800                                            & {4.243 \pm   0.023}              & 4192  & {247.359 ± 24.580}     \\
-		964.0790                                            & {14.500 \pm  0.06}               & 4654  & {621.455 ± 26.067}     \\
-		1085.8370                                           & {10.130 \pm  0.06}               & 5238  & {469.800 ± 38.635}     \\
-		1112.0760                                           & {13.410 \pm  0.06}               & 5370  & {586.025 ± 35.943}     \\
-		1408.0130                                           & {20.850 \pm  0.08}               & 6797  & {627.462 ± 26.437}     \\
+		121.7817  & {28.41 \pm  0.13}  & 595   & {8479 \pm 103}   \\
+		244.6974  & {7.55 \pm   0.04}  & 1187  & {1597 \pm 40}    \\
+		344.2785  & {26.59 \pm  0.12}  & 1666  & {3301 \pm 60}    \\
+		443.9650  & {2.80 \pm   0.02}  & 2145  & {424 \pm 25}     \\
+		778.9045  & {12.97 \pm  0.06}  & 3760  & {752 \pm 29}     \\
+		867.3800  & {4.24 \pm   0.02}  & 4192  & {247 \pm 25}     \\
+		964.0790  & {14.50 \pm  0.06}  & 4654  & {621 \pm 26}     \\
+		1085.8370 & {10.13 \pm  0.06}  & 5238  & {470 \pm 39}     \\
+		1112.0760 & {13.41 \pm  0.06}  & 5370  & {586 \pm 36}     \\
+		1408.0130 & {20.85 \pm  0.08}  & 6797  & {627 \pm 26}     \\
 		\bottomrule
 	\end{tabular}
 \end{table}
@@ -157,7 +157,7 @@ detection probability $Q$. It is given by
 \end{equation}
 $Q$ depends on the activity of the source $A$, the emission probability $P$, the number of measured photons $N$ and
 the measurement time $t$. $N$ and $P$ are given in
-table~\ref{tab:calibrationvalues}. $\Omega$ is the solid angle covered by the
+Table~\ref{tab:calibrationvalues}. $\Omega$ is the solid angle covered by the
 detector. For the germanium detector, $\Omega$ is given by
 \begin{equation}
 	\frac{\Omega}{4 \pi} = \frac{1}{2} \left( 1 - \frac{a}{\sqrt{a^{2} + r^{2}}} \right)
@@ -181,17 +181,17 @@ $A(t_{\text{M}}) = \SI{1262 \pm 18}{\becquerel}$.
 \subsubsection{Determination of the solid angle}
 \label{subsubsec:solidangle}
 The solid angle $\frac{\Omega}{4 \pi}$ covered by the germanium detector is given
-by equation~\ref{eqn:solidangle}. The detector cylinder has a width of
+by equation~\eqref{eqn:solidangle}. The detector cylinder has a width of
 $\SI{4.5}{\centi\meter}$. The source is located $\SI{6.91}{\centi\meter}$
 away from the aluminum cover; the cover itself is $\SI{1.5}{\centi\meter}$
 away from the detector. Therefore, the parameters in
-equation~\ref{eqn:solidangle} are given by
+equation~\eqref{eqn:solidangle} are given by
 \begin{align}
 	r & =  \SI{2.25}{\centi\meter}  \\
 	a & =  \SI{8.91}{\centi\meter}.
 	\label{eqn:params}
 \end{align}
-Using equation~\ref{eqn:solidangle} and the parameters~\ref{eqn:params} the solid angle
+Using equation~\eqref{eqn:solidangle} and the parameters~\eqref{eqn:params} the solid angle
 amounts to
 \begin{equation}
 	\frac{\Omega}{4 \pi} = 0.01522.
@@ -209,16 +209,16 @@ all measured spectral lines.
 	\begin{tabular}{S  S[table-format=1.5] }
 		\toprule {$E/\si{\kilo\electronvolt}$} & {$Q/\si{\percent}$}   \\
 		\midrule
-		{121.7817 \pm 0.0003}                  & {0.05548 \pm 0.00108} \\
-		{244.6974 \pm 0.0008}                  & {0.03933 \pm 0.00117} \\
-		{344.2785 \pm 0.0012}                  & {0.02308 \pm 0.00055} \\
-		{443.965 \pm 0.003}                    & {0.02814 \pm 0.00172} \\
-		{778.9045 \pm 0.0024}                  & {0.01078 \pm 0.00045} \\
-		{867.38 \pm 0.003}                     & {0.01083 \pm 0.00109} \\
-		{964.079 \pm 0.018}                    & {0.00797 \pm 0.00036} \\
-		{1085.837 \pm 0.01}                    & {0.00862 \pm 0.00072} \\
-		{1112.076 \pm 0.003}                   & {0.00812 \pm 0.00051} \\
-		{1408.013 \pm 0.003}                   & {0.00559 \pm 0.00025} \\
+		{121.7817 \pm 0.0003} & {0.0555 \pm 0.0011} \\
+		{244.6974 \pm 0.0008} & {0.0393 \pm 0.0012} \\
+		{344.2785 \pm 0.0012} & {0.0231 \pm 0.0006} \\
+		{443.965 \pm 0.003}   & {0.0281 \pm 0.0017} \\
+		{778.9045 \pm 0.0024} & {0.0108 \pm 0.0005} \\
+		{867.38 \pm 0.003}    & {0.0108 \pm 0.0011} \\
+		{964.079 \pm 0.018}   & {0.0080 \pm 0.0004} \\
+		{1085.837 \pm 0.01}   & {0.0086 \pm 0.0007} \\
+		{1112.076 \pm 0.003}  & {0.0081 \pm 0.0005} \\
+		{1408.013 \pm 0.003}  & {0.0056 \pm 0.0003} \\
 		\bottomrule
 	\end{tabular}
 \end{table}
@@ -250,10 +250,10 @@ which is the limit of the detector sensitivity. The result is displayed in Figur
 \noindent
 The resulting fit parameters are
 \begin{align*}
-	a & = \num{4.757 \pm 0.347}   \\
+	a & = \num{4.76 \pm 0.35}   \\
 	b & = \num{-0.915 \pm 0.013}.
 \end{align*}
-The relation~\ref{eqn:fedpfit_function} with the determined parameters is used to estimate the full energy detection
+The relation~\eqref{eqn:fedpfit_function} with the determined parameters is used to estimate the full energy detection
 probability throughout this analysis.
 \noindent
 \FloatBarrier
@@ -293,7 +293,7 @@ to determine the yield. The results are displayed in Figure~\ref{fig:csfit}.
 \end{figure}
 \noindent
 These fits include a further background estimation parameter $b$\,; the resulting distribution is given in
-equation~\ref{eqn:fitplus}.
+equation~\eqref{eqn:fitplus}.
 \begin{equation}
 	g(x) = s \cdot \frac{1}{\sqrt{2 \pi} \sigma} \exp{\left( -\frac{1}{2} \frac{(x - \mu)^{2}}{\sigma} \right)} + b
 	\label{eqn:fitplus}
@@ -308,8 +308,8 @@ The fit parameters including the number of events of each peak is given in Table
 	\begin{tabular}{S S[table-format=4.3] S[table-format=2.0] S[table-format=4.3] S[table-format=2.3]}
 		\toprule {$E/\si{\kilo\electronvolt}$} & {$s$}                 & {$b$}              & {$\mu$}              & {$\sigma$}         \\
 		\midrule
-		{188.1961 \pm 0.0004}                  & {1275.237 \pm 70.842} & {20.000 \pm 0.457} & {929.282 \pm 1.989}  & {31.257 \pm 2.129} \\
-		{661.3941 \pm 0.0004}                  & {9282.567 \pm 98.438} & {15.000 \pm 0.165} & {3195.882 \pm 0.050} & {4.494 \pm 0.038}  \\
+		{188.1961 \pm 0.0004} & {1275 \pm 71} & {20.00 \pm 0.46} & {929.28 \pm 1.99}  & {31.26 \pm 2.13} \\
+		{661.3941 \pm 0.0004} & {9283 \pm 98} & {15.00 \pm 0.17} & {3195.88 \pm 0.05} & {4.49 \pm 0.04}  \\
 		\bottomrule
 	\end{tabular}
 \end{table}
@@ -327,8 +327,8 @@ of the $^{137}\text{Cs}$ spectrum are estimated. To do this, the fitted normal d
 \noindent
 The full width at half maximum and the full width at tenth maximum amount to
 \begin{align}
-	\text{FWHM} & = \num{10.5826 \pm 0.0895} = \SI{0.5729 \pm 0.0186}{\kilo\electronvolt}  \\
-	\text{FWTM} & = \num{19.2879 \pm 0.1631} = \SI{2.3788 \pm 0.0338}{\kilo\electronvolt}.
+	\text{FWHM} & = \num{10.58 \pm 0.09} = \SI{0.573 \pm 0.019}{\kilo\electronvolt}  \\
+	\text{FWTM} & = \num{19.29 \pm 0.16} = \SI{2.379 \pm 0.034}{\kilo\electronvolt}.
 \end{align}
 The ratio of the two is given by
 \begin{equation}
@@ -339,7 +339,7 @@ The energy of the photoelectric peak is determined from the fit to
 	E_{\gamma} = \SI{661.3941 \pm 0.0004}{\kilo\electronvolt}.
 	\label{eqn:egamma}
 \end{equation}
-The energy of the compton edge can be calculated using equation~\ref{eqn:emax}
+The energy of the compton edge can be calculated using equation~\eqref{eqn:emax}
 \begin{equation}
 	E_{\gamma}^{\prime} \vert_{\theta=\SI{180}{\degree}} = \frac{E_{\gamma}}{1 + \frac{m_{e} c^{2}}{2 E_{\gamma}}}.
 	\label{eqn:emax}
@@ -373,15 +373,15 @@ The fit is displayed in Figure~\ref{fig:comptonfit}.
 	\label{fig:comptonfit}
 \end{figure}
 \noindent
-The function utilized here is given in Equation~\ref{eqn:comptonfit}
+The function utilized here is given in Equation~\eqref{eqn:comptonfit}
 \begin{equation}
 	f(x) = \alpha \cdot x + \beta .
 	\label{eqn:comptonfit}
 \end{equation}
 The parameters are estimated to the values
 \begin{align}
-	\alpha & = \num{0.008 \pm 0.0}    \\
-	\beta  & = \num{1.010 \pm 0.784}.
+	\alpha & = \num{0.008 \pm 0.000}    \\
+	\beta  & = \num{1.0 \pm 0.8}.
 \end{align}
 This yield of the compton continuum as estimated by this fit amounts to
 \begin{equation}
@@ -405,7 +405,7 @@ $^{60}\text{Co}$~\cite{laraweb}.
 	\label{fig:cospectrum}
 \end{figure}
 \noindent
-To determine the amount of events belonging to each peak, a fit of the form~\ref{eqn:fitplus2} is carried out.
+To determine the amount of events belonging to each peak, a fit of the form~\eqref{eqn:fitplus2} is carried out.
 \begin{equation}
 	g(x) = s \cdot \frac{1}{\sqrt{2 \pi} \sigma} \exp{\left( -\frac{1}{2} \frac{(x - \mu)^{2}}{\sigma} \right)} + b
 	\label{eqn:fitplus2}
@@ -440,14 +440,14 @@ Table~\ref{tab:cofitparams}.
 	\begin{tabular}{S S[table-format=4.3] S[table-format=2.0] S[table-format=4.3] S[table-format=2.3]}
 		\toprule {$E/\si{\kilo\electronvolt}$} & {$s$}                & {$b$}              & {$\mu$}              & {$\sigma$}        \\
 		\midrule
-		{1173.3856 \pm 0.0004}                 & {357.811 \pm 26.149} & {15.000 \pm 0.358} & {5662.087 \pm 0.372} & {4.361 \pm 0.295} \\
-		{1332.2939 \pm 0.0004}                 & {246.984 \pm 24.086} & {15.000 \pm 0.477} & {6429.239 \pm 0.502} & {4.376 \pm 0.415} \\
+		{1173.3856 \pm 0.0004}                 & {358 \pm 26} & {15.0 \pm 0.4} & {5662.1 \pm 0.4} & {4.4 \pm 0.3} \\
+		{1332.2939 \pm 0.0004}                 & {247 \pm 24} & {15.0 \pm 0.5} & {6429.2 \pm 0.5} & {4.4 \pm 0.4} \\
 		\bottomrule
 	\end{tabular}
 \end{table}
 \noindent
-To estimate the activity of the $^{60}\text{Co}$ source, Equation~\ref{eqn:fullenergy} is used. The full energy
-detection probabilities estimated in Section~\ref{sec:fullenergy}. Equation~\ref{eqn:fullenergy} is rearranged
+To estimate the activity of the $^{60}\text{Co}$ source, Equation~\eqref{eqn:fullenergy} is used. The full energy
+detection probabilities estimated in Section~\ref{sec:fullenergy}. Equation~\eqref{eqn:fullenergy} is rearranged
 to be able to compute the probe activity:
 \begin{equation}
 	Q = \frac{4 \pi}{\Omega}\frac{N}{APt} \leftrightarrow A = \frac{4 \pi}{\Omega} \frac{N}{QPt}.
@@ -462,8 +462,8 @@ The resulting activity and the values used are given in Table~\ref{tab:coactivit
 		\begin{tabular}{S S[table-format=4.4] S[table-format=3.4] S[table-format=3.3] S[table-format=2.4] S[table-format=4.0] S[table.format=1.4]}
 			\toprule {$E/\si{\kilo\electronvolt}$} & {$A/\si{\becquerel}$}   & {$N$}                & {$P/\si{\percent}$}  & {$t/\si{\second}$} & {$Q$}               \\
 			\midrule
-			{1173.3856 \pm 0.0004}                 & {995.4611 \pm 137.5887} & {357.811 \pm 26.149} & {99.85 \pm 0.03}     & {4021}             & {0.0074 \pm 0.0009} \\
-			{1332.2939 \pm 0.0004}                 & {770.7859 \pm 118.3582} & {246.984 \pm 24.086} & {99.9826 \pm 0.0006} & {4021}             & {0.0066 \pm 0.0008} \\
+			{1173.3856 \pm 0.0004}                 & {995 \pm 138} & {358 \pm 26} & {99.85 \pm 0.03}     & {4021}             & {0.0074 \pm 0.0009} \\
+			{1332.2939 \pm 0.0004}                 & {771 \pm 118} & {247 \pm 24} & {99.9826 \pm 0.0006} & {4021}             & {0.0066 \pm 0.0008} \\
 			\bottomrule
 		\end{tabular}
 	\end{adjustbox}
@@ -471,7 +471,7 @@ The resulting activity and the values used are given in Table~\ref{tab:coactivit
 \noindent
 The averaged activity then results to
 \begin{equation}
-	\bar{A} = \SI{883.1235 \pm 116.5034}{\becquerel}.
+	\bar{A} = \SI{883.1 \pm 116.5}{\becquerel}.
 \end{equation}
 
 \subsection{Spectrum of an unknown source}
@@ -694,20 +694,20 @@ The resulting activitys are given in Table~\ref{tab:urresults}.
 		\begin{tabular}{S[table-format=2.0] S[table-format=4.4] S[table-format=6.4] S[table-format=2.4] S S[table-format=4.4]}
 			\toprule {Index} & {$\text{Peak}/\si{\kilo\electronvolt}$} & {$A(^{233}\text{U})/\si{\kilo\becquerel}$} & {$A(^{226}\text{Ra})/\si{\kilo\becquerel}$} & {$A(^{214}\text{Pb})/\si{\kilo\becquerel}$} & {$A(^{214}\text{Bi})/\si{\kilo\becquerel}$} \\
 			\midrule
-			0                & {63.1025 \pm 0.0004}                    & {62.6638 \pm 5.7967}                       & {-}                                         & {-}                                         & {-}                                         \\
-			1                & {87.1670 \pm 0.0004}                    & {202.5096 \pm 19.0177}                     & {-}                                         & {-}                                         & {-}                                         \\
-			2                & {111.0239 \pm 0.0004}                   & {162.3700 \pm 24.7190}                     & {-}                                         & {-}                                         & {-}                                         \\
-			3                & {143.8014 \pm 0.0004}                   & {130881.5152 \pm 13486.3424}               & {-}                                         & {-}                                         & {-}                                         \\
-			4                & {153.9665 \pm 0.0004}                   & {50.6208 \pm 5.4876}                       & {-}                                         & {-}                                         & {-}                                         \\
+			0                & {63.1025 \pm 0.0004}                    & {63 \pm 6}                                 & {-}                                         & {-}                                         & {-}                                         \\
+			1                & {87.1670 \pm 0.0004}                    & {202 \pm 19}                               & {-}                                         & {-}                                         & {-}                                         \\
+			2                & {111.0239 \pm 0.0004}                   & {162 \pm 25}                               & {-}                                         & {-}                                         & {-}                                         \\
+			3                & {143.8014 \pm 0.0004}                   & {130882 \pm 13486}                         & {-}                                         & {-}                                         & {-}                                         \\
+			4                & {153.9665 \pm 0.0004}                   & {51 \pm 5}                                 & {-}                                         & {-}                                         & {-}                                         \\
 			5                & {235.7026 \pm 0.0004}                   & {-}                                        & {-}                                         & {-}                                         & {-}                                         \\
-			6                & {241.7187 \pm 0.0004}                   & {11624.2740 \pm 1190.3225}                 & {-}                                         & {-}                                         & {-}                                         \\
-			7                & {258.9372 \pm 0.0004}                   & {-}                                        & {73.3933 \pm 13.0074}                       & {-}                                         & {-}                                         \\
-			8                & {268.6875 \pm 0.0004}                   & {-}                                        & {-}                                         & {-}                                         & {1032.8262 \pm 106.3860}                    \\
-			9                & {767.4021 \pm 0.0004}                   & {-}                                        & {-}                                         & {-}                                         & {19.3467 \pm 2.1870}                        \\
-			10               & {805.1583 \pm 0.0004}                   & {-}                                        & {-}                                         & {-}                                         & {55.6679 \pm 6.4412}                        \\
-			11               & {933.5711 \pm 0.0004}                   & {-}                                        & {-}                                         & {-}                                         & {7.3760 \pm 0.9351}                         \\
-			12               & {1237.6958 \pm 0.0004}                  & {-}                                        & {-}                                         & {-}                                         & {8.6758 \pm 1.0693}                         \\
-			13               & {1377.3110 \pm 0.0004}                  & {-}                                        & {-}                                         & {-}                                         & {17.5657 \pm 2.1552}                        \\
+			6                & {241.7187 \pm 0.0004}                   & {11624 \pm 1190}                           & {-}                                         & {-}                                         & {-}                                         \\
+			7                & {258.9372 \pm 0.0004}                   & {-}                                        & {73 \pm 13}                                 & {-}                                         & {-}                                         \\
+			8                & {268.6875 \pm 0.0004}                   & {-}                                        & {-}                                         & {-}                                         & {1033 \pm 106}                    \\
+			9                & {767.4021 \pm 0.0004}                   & {-}                                        & {-}                                         & {-}                                         & {19.3 \pm 2.2}                        \\
+			10               & {805.1583 \pm 0.0004}                   & {-}                                        & {-}                                         & {-}                                         & {56 \pm 6}                        \\
+			11               & {933.5711 \pm 0.0004}                   & {-}                                        & {-}                                         & {-}                                         & {7.4 \pm 0.9}                         \\
+			12               & {1237.6958 \pm 0.0004}                  & {-}                                        & {-}                                         & {-}                                         & {8.68 \pm 1.06}                         \\
+			13               & {1377.3110 \pm 0.0004}                  & {-}                                        & {-}                                         & {-}                                         & {17.6 \pm 2.2}                        \\
 			\bottomrule
 		\end{tabular}
 	\end{adjustbox}

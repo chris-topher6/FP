@@ -23,10 +23,9 @@ main.bcf: main.tex content/*.tex build/plots | build
 
 # Python-Skripte ausführen und Plots erstellen
 build/plots: script/*.py data/* | build
-	# for script in script/*.py; do \
-		# $(PYTHON) "$$script"; \
-		$(PYTHON) script/main.py; \
- 	done
+	for script in script/*.py; do \
+		$(PYTHON) "$$script"; \
+	done
 
 # Ordner erstellen
 build:
