@@ -13,6 +13,6 @@ sowie dem WS 2023 (Master).
 *** Master
 1. V60 - Der Diodenlaser [Status: Fertig]
 2. V61 - Der Helium-Neon Laser [Status: Fertig]
-3. V18 - Der Germanium-Detektor [Status: In Korrektur]
+3. V18 - Der Germanium-Detektor [Status: Fertig]
 4. V64 - Interferometrie [Status: In Korrektur]
 5. V47 - Molwärme von Kupfer [Status: in Arbeit]
