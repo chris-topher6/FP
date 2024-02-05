@@ -36,17 +36,18 @@ def temp_berechnung(R):
     return T
 
 
-messung["T_G"] = temp_berechnung(messung["R_G"])
-messung["T_P"] = temp_berechnung(messung["R_P"])
-# t [min], R_G [Ohm], R_P [Ohm], I [mA], U [V], T_G [*C], T_P [*C]
+messung["T_G"] = temp_berechnung(messung["R_G"]) + 273.15
+messung["T_P"] = temp_berechnung(messung["R_P"]) + 273.15
+messung["T"] = (messung["T_G"] + messung["T_P"]) / 2
+# t [min], R_G [Ohm], R_P [Ohm], I [mA], U [V], T_G [K], T_P [K], T[K]
 
 # Für die Formel für C_p brauchen wir die Zeitabstände Delta t...
 messung["Deltat"] = messung["t_err"].diff()
 messung["Deltat"].fillna(1, inplace=True)  # ACHTUNG die 1 ist nur als Platzhalter da
 # ...sowie die Temperaturabstände Delta T:
-messung["DeltaT"] = messung["T_P"].diff()
+messung["DeltaT"] = messung["T"].diff()
 messung["DeltaT"].fillna(1, inplace=True)  # ACHTUNG die 1 ist nur als Platzhalter da
-# t [min], R_G [Ohm], R_P [Ohm], I [mA], U [V], T_G [*C], T_P [*C], Deltat [min], DeltaT [*C]
+# t [min], R_G [Ohm], R_P [Ohm], I [mA], U [V], T_G [K], T_P [K], T[K] Deltat [min], DeltaT [K]
 
 
 def Cp_berechnen(U, I, Deltat, DeltaT, M, m):
@@ -106,6 +107,23 @@ plt.ylabel(r"$\alpha \cdot 10^{-6} / \mathrm{deg}$")
 plt.tight_layout()
 plt.savefig("./build/Alpha-Fit.pdf")
 plt.clf()
+
+# Interpolierte Alpha Werte für jede Temperatur dem Dataframe hinzufügen
+messung["alpha"] = cspl(messung["T"])
+
+
+def CV_berechnen(C_p, alpha, kappa, V0, T):
+    """
+    Funktion zur Berechnung der Wärmekapazität bei konstantem Volumen aus der Wärmekapazität bei konstantem Druck.
+    Args:
+    C_p: isobare Wärmekapazität
+    alpha: Koeffizient der thermischen Ausdehnung
+    kappa: Kompressionsmodul des Kupfers
+    V0:
+    T: Temperatur
+    """
+    C_V = C_p - 9 * alpha**2 * kappa * V0 * T
+    return C_V
 
 
 print(messung)
