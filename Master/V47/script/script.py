@@ -85,7 +85,7 @@ werte.columns = ["T", "alpha"]
 cspl = CubicSpline(werte["T"], werte["alpha"])
 xachse = np.linspace(werte["T"].min(), werte["T"].max(), 100)
 
-plt.figure()
+plt.figure(figsize=(9, 5))
 plt.plot(
     xachse,
     cspl(xachse),
@@ -102,11 +102,12 @@ plt.plot(
     color="royalblue",
 )
 plt.legend()
-plt.xlabel(r"$\mathrm{Temperature}/K$")
-plt.ylabel(r"$\alpha \cdot 10^{-6} / \mathrm{deg}$")
+plt.xlabel(r"$\mathrm{Temperature}/ \, \mathrm{K}$")
+plt.ylabel(r"$\alpha / \, 10^{-6} / \mathrm{deg}$")
 plt.tight_layout()
-plt.savefig("./build/Alpha-Fit.pdf")
+plt.savefig("./build/Alpha-Extrapolation.pdf")
 plt.clf()
+
 
 # Interpolierte Alpha Werte für jede Temperatur dem Dataframe hinzufügen
 messung["alpha"] = cspl(messung["T"])
@@ -119,12 +120,97 @@ def CV_berechnen(C_p, alpha, kappa, V0, T):
     C_p: isobare Wärmekapazität
     alpha: Koeffizient der thermischen Ausdehnung
     kappa: Kompressionsmodul des Kupfers
-    V0:
+    V0: Volumen??
     T: Temperatur
     """
     C_V = C_p - 9 * alpha**2 * kappa * V0 * T
     return C_V
 
 
+# Frag mich nicht warum
+V0 = 7.11 * 10 ** (-6)
+
+messung["C_V"] = CV_berechnen(
+    messung["C_p"], messung["alpha"], KOMPRESSIONSMODUL, V0, messung["T"]
+)
+
+# Plot aller in CV_berechnen verwendeten (von T abh.) Größen
+plt.figure(figsize=(9, 5))
+plt.plot(
+    messung["T"],
+    [v.n for v in messung["C_V"]],  # uncertainties mag pandas nicht
+    label=r"$C_V$",
+    color="royalblue",
+    marker="x",
+    linestyle="None",
+)
+plt.plot(
+    messung["T"],
+    [v.n for v in messung["C_p"]],
+    label=r"$C_p$",
+    color="orange",
+    marker="x",
+    linestyle="None",
+)
+plt.legend()
+plt.xlabel(r"$\mathrm{Temperature}/ \, \mathrm{K}$")
+plt.ylabel(r"$C/ \, \frac{\mathrm{J}}{\mathrm{kg} \cdot \mathrm{K}}$")
+plt.tight_layout()
+plt.savefig("./build/Params_CV_berechnen.pdf")
+plt.clf()
+
+# Theta interpolieren
+werte_theta_arsch = pd.read_csv(
+    "./data/Theta_aber_scheisse.csv", skiprows=1, header=None
+)
+# Ich hasse dieses Tabellenformat
+index = np.arange(0, 16.0, 0.1)
+werte_theta = pd.DataFrame(columns=["Theta", "C_V"])
+werte_theta["Theta"] = index
+werte_theta["C_V"] = pd.Series(werte_theta_arsch.values.flatten())
+
+# CubicSpline braucht monoton steigende x-Werte, C_V fällt aber; daher umdrehen
+werte_theta = werte_theta.sort_values(by="C_V")
+
+# C_V von J/(mol K) in J/(g K) umrechnen; hierfür muss mit der molaren Masse multipliziert werden
+werte_theta["C_V"] = werte_theta["C_V"] * MOLARE_MASSE_CU
+# # in J/(kg K)
+# werte_theta["C_V"] = werte_theta["C_V"] * 1000
+
+# Interpolieren
+cspl2 = CubicSpline(werte_theta["C_V"], werte_theta["Theta"])
+xachse2 = np.linspace(werte_theta["C_V"].min(), werte_theta["C_V"].max(), 100)
+
+plt.figure(figsize=(9, 5))
+plt.plot(
+    xachse2,
+    cspl2(xachse2),
+    label="Cubic Spline",
+    color="orange",
+    zorder=2,
+)
+plt.plot(
+    werte_theta["C_V"],
+    werte_theta["Theta"],
+    "x",
+    label="data",
+    color="royalblue",
+    markersize=5,
+    zorder=1,
+)
+plt.legend()
+plt.xlabel(r"$C_V/ \,\frac{\mathrm{J}}{\mathrm{g} \cdot \mathrm{K}}$")
+plt.ylabel(r"$\frac{\theta_{D}}{T}$")
+plt.tight_layout()
+plt.savefig("./build/Theta-Extrapolation.pdf")
+plt.clf()
+
+messung["Theta/T"] = cspl2([v.n for v in messung["C_V"]])
+messung["Theta"] = messung["Theta/T"] * messung["T"]
+
+# Schön exportieren
+messung.to_csv("./build/Ergebnisse.csv")
+
 print(messung)
 print(messung.describe())
+plt.close()
