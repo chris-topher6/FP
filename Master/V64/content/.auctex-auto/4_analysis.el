@@ -2,22 +2,15 @@
  "4_analysis"
  (lambda ()
    (LaTeX-add-labels
-    "fig:distance-intensity"
-    "tab:distance-intensity"
-    "eqn:TEM00-Fit"
-    "fig:TEM-Messung1"
-    "eqn:TEM10-Fit"
-    "fig:TEM-Messung2"
-    "eqn:intensity-angle"
-    "fig:polarisation"
-    "tab:intensity-angles"
-    "eqn:modetheo"
-    "eqn:modetheomultiple"
-    "tab:multimode"
-    "tab:deltaf"
-    "eqn:doppler"
-    "eqn:doppler2"
-    "eqn:wavelength"
-    "tab:opticalgr"))
+    "eqn:K_ana"
+    "fig:contrast"
+    "tab:contrast"
+    "eqn:M_ana"
+    "tab:glass"
+    "fig:glass"
+    "eqn:n_gas"
+    "eqn:M_gas"
+    "tab:gas"
+    "fig:gas"))
  :latex)
 
