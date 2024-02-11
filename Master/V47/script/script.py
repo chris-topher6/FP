@@ -152,7 +152,7 @@ plt.plot(
     [v.n for v in messung["C_V"]],  # uncertainties mag pandas nicht
     label=r"$C_V$",
     color="royalblue",
-    marker="x",
+    marker="1",
     linestyle="None",
 )
 plt.plot(
@@ -160,12 +160,12 @@ plt.plot(
     [v.n for v in messung["C_p"]],
     label=r"$C_p$",
     color="orange",
-    marker="x",
+    marker="2",
     linestyle="None",
 )
 plt.legend()
 plt.xlabel(r"$\mathrm{Temperature}/ \, \mathrm{K}$")
-plt.ylabel(r"$C/ \, \frac{\mathrm{J}}{\mathrm{kg} \cdot \mathrm{K}}$")
+plt.ylabel(r"$C/ \, \frac{\mathrm{J}}{\mathrm{mol} \cdot \mathrm{K}}$")
 plt.tight_layout()
 plt.savefig("./build/Params_CV_berechnen.pdf")
 plt.clf()
@@ -221,13 +221,28 @@ messung["Theta"] = messung["Theta/T"] * messung["T"]
 
 # Schön exportieren
 messung_export = messung.round(5)
+messung_export.to_csv("./build/Ergebnisse.csv")
 messung_export.to_latex(
     "./build/Ergebnisse.tex",
     columns=["t", "R_G", "R_P", "I", "U", "T", "alpha", "C_p", "C_V", "Theta"],
     float_format="%.2f",
 )
-# messung_export.to_csv("./build/Ergebnisse.csv")
+# Nette Mittelwerte für die beiden Wärmekapazitäten und Theta
+theta_mean = messung["Theta"].drop([0, 4, 37, 49, 51, 52, 61, 62, 71]).mean()
 
-print(messung)
-print(messung.describe())
+# Warum kann pandas sich nicht einfach mit uncertainties anfreunden
+summe_C_V = 0
+for v in messung["C_V"]:
+    summe_C_V = summe_C_V + v
+C_V_mean = summe_C_V / messung["C_V"].size
+
+summe_C_p = 0
+for v in messung["C_p"]:
+    summe_C_p = summe_C_p + v
+C_p_mean = summe_C_p / messung["C_p"].size
+
+print(f"Der Mittelwert von Theta: {theta_mean:.4f}")
+print(f"Der Mittelwert von C_V: {C_V_mean:.4f}")
+print(f"Der Mittelwert von C_p: {C_p_mean:.4f}")
+
 plt.close()

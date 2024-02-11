@@ -2,27 +2,175 @@
 \subsection{Determination of \texorpdfstring{$C_{p}$}{C_p} and \texorpdfstring{$C_{V}$}{C_V}}
 The molar heat capacity at constant pressure can be calculated using equation~\ref{eqn:cp}.
 \begin{equation}
-  C_{p} = \frac{U \cdot I \cdot \Delta t \cdot M}{\Delta T \cdot m}.
-  \label{eqn:cp}
+	C_{p} = \frac{U \cdot I \cdot \Delta t \cdot M}{\Delta T \cdot m}.
+	\label{eqn:cp}
 \end{equation}
 Here, $U$ denotes the heating voltage, $I$ the heating current, $\Delta t$ the heating time interval,
 $M$ the molar mass of copper, $\Delta T$ the achieved temperature increase and $m$ the mass of the probe.
+The measured resistances are converted to the corresponding temperatures using Equation~\ref{eqn:rzut}.
+The mean of the temperature of the dewar and the outer shell is used throughout the following calculations.
+The measurement accuracy is estimated to be $\pm \num{0.5}$ for $U$ and $I$ and $\pm \SI{0.05}{\minute}$ regarding
+the time measurement.
 The molar heat capacity at constant volume is computed using~\ref{eqn:cv}.
 The needed physical constants for these calculations are given in Table~\ref{tab:constants}.
 \begin{table}
-  \centering
-  \caption{Physical constants used.}
-  \label{tab:constants}
-  \sisetup{table-format=3.3}
-  \begin{tabular}{S S S}
-    \toprule
-    {Constant} & {Value} & {Source} \\
-    \midrule
-    {$M$} & {$\SI{0.06355}{\kilogram\per\mole}$} & \cite{ciaaw} \\
-    {$m$} & {$\SI{0.342}{\kilogram}$} & \cite{V47} \\
-    {$\kappa$} & {$\SI{137.8}{\giga\pascal}$} & \cite{pse} \\
-
-    \bottomrule
-  \end{tabular}
-	
+	\centering
+	\caption{Physical constants used.}
+	\label{tab:constants}
+	\sisetup{table-format=3.5}
+	\begin{tabular}{S S S}
+		\toprule
+		{Constant} & {Value}                              & {Source}     \\
+		\midrule
+		{$M$}      & {$\SI{0.06355}{\kilogram\per\mole}$} & \cite{ciaaw} \\
+		{$m$}      & {$\SI{0.342}{\kilogram}$}            & \cite{V47}   \\
+		{$\kappa$} & {$\SI{137.8}{\giga\pascal}$}         & \cite{pse}   \\
+		\bottomrule
+	\end{tabular}
 \end{table}
+\noindent
+The calculation of $C_{V}$ using~\ref{eqn:cv} depends on the coefficient of thermal expansion $\alpha$, which
+is estimated by conducting an interpolation based on the values given in~\cite{V47}; the interpolating
+curve consists of cubic spline functions. The results are displayed in Figure~\ref{fig:interpol1} and used
+to calculate $C_{V}$.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{./build/Alpha-Extrapolation.pdf}
+	\caption{Interpolation of known values of $\alpha$ using cubic splines.}
+	\label{fig:interpol1}
+\end{figure}
+\noindent
+The resulting values for $C_{p}$ and $C_{V}$ are plotted against the mean temperature in Figure~\ref{fig:results} and given in
+Table~\ref{tab:results1} and \ref{tab:results2}.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{./build/Params_CV_berechnen.pdf}
+	\caption{The computed values of $C_{p}$ and $C_{V}$ for different temperatures.}
+	\label{fig:results}
+\end{figure}
+\noindent
+
+\subsection{Determination of the Debye Temperature}
+To determine the Debye temperature $\theta_{D}$, the measured temperatures $T$ are multiplied with the factor $\frac{\theta_{D}}{T}$, which is estimated
+using an interpolation of cubic splines based on the data given in~\cite{V47}. The resulting interpolation is given in Figure~\ref{fig:interpol2}.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{./build/Theta-Extrapolation.pdf}
+	\caption{Interpolation of known values of $\theta$ using cubic splines.}
+	\label{fig:interpol2}
+\end{figure}
+\noindent
+The resulting values of $\theta_{D}$ are given in Table~\ref{tab:results1} and~\ref{tab:results2}.
+\begin{table}[H]
+	\centering
+	\caption{Measured parameters and corresponding computed results for $C_{p}$ and $C_{V}$ (Part 1).}
+	\label{tab:results1}
+	\sisetup{table-format=2.0}
+	\begin{adjustbox}{width=1.2\textwidth, center}
+		\begin{tabular}{S S[table-format=3.2] S[table-format=3.2] S[table-format=3.2] S[table-format=2.2] S[table-format=3.2] S[table-format=2.1] S[table-format=2.2] S[table-format=3.2] S[table-format=4.2]}
+			\toprule
+			{$t/\si{\minute}$} & {$R_{G}/\si{\ohm}$} & {$R_{P}/\si{\ohm}$} & {$I/\si{\milli\ampere}$} & {$U/\si{\volt}$} & {$T/\si{\kelvin}$} & {$C_p/\si{\joule\per\mole\per\kelvin}$} & {$\alpha/10^{-6}\cdot \si{\kelvin}$} & {$C_V/\si{\joule\per\mole\per\kelvin}$} & {$\Theta_{D}/\si{\kelvin}$} \\
+			\midrule
+			0                  & 23.10               & 23.70               & 148.80                   & 15.59            & 84.59              & 25.9 \pm 0.8                            & 8.74                                 & 25.8 \pm 0.8                            & {$\num{-9.44e4}$}           \\
+			2                  & 24.50               & 25.50               & 149.90                   & 15.70            & 88.37              & 13.9 \pm 0.7                            & 9.16                                 & 13.8 \pm 0.7                            & 323.94                      \\
+			4                  & 27.50               & 26.80               & 150.30                   & 15.76            & 93.45              & 10.4 \pm 0.5                            & 9.69                                 & 10.3 \pm 0.5                            & 433.81                      \\
+			6                  & 29.40               & 28.30               & 150.70                   & 15.81            & 97.49              & 13.2 \pm 0.6                            & 10.09                                & 13.1 \pm 0.6                            & 375.85                      \\
+			8                  & 29.50               & 29.60               & 151.10                   & 15.86            & 99.15              & 32.2 \pm 1.5                            & 10.25                                & 32.1 \pm 1.5                            & {$\num{-5.41e7}$}           \\
+			10                 & 30.60               & 31.10               & 151.40                   & 15.89            & 102.24             & 17.4 \pm 0.8                            & 10.54                                & 17.3 \pm 0.8                            & 288.79                      \\
+			12                 & 32.20               & 32.30               & 151.60                   & 15.93            & 105.57             & 16.2 \pm 0.8                            & 10.83                                & 16.0 \pm 0.8                            & 329.00                      \\
+			14                 & 33.70               & 33.70               & 151.80                   & 15.95            & 109.03             & 15.6 \pm 0.7                            & 11.13                                & 15.5 \pm 0.7                            & 354.38                      \\
+			16                 & 35.10               & 35.00               & 152.00                   & 15.97            & 112.25             & 16.8 \pm 0.8                            & 11.39                                & 16.7 \pm 0.8                            & 333.24                      \\
+			18                 & 36.40               & 36.30               & 152.10                   & 16.00            & 115.36             & 17.5 \pm 0.8                            & 11.63                                & 17.3 \pm 0.8                            & 324.32                      \\
+			20                 & 37.60               & 37.50               & 152.30                   & 16.01            & 118.23             & 18.9 \pm 0.9                            & 11.84                                & 18.8 \pm 0.9                            & 290.73                      \\
+			22                 & 38.80               & 38.80               & 152.40                   & 16.03            & 121.23             & 18.2 \pm 0.9                            & 12.06                                & 18.0 \pm 0.9                            & 320.37                      \\
+			24                 & 40.00               & 40.00               & 152.50                   & 16.05            & 124.11             & 18.9 \pm 0.9                            & 12.25                                & 18.8 \pm 0.9                            & 305.13                      \\
+			26                 & 41.10               & 41.20               & 152.60                   & 16.06            & 126.88             & 19.8 \pm 0.9                            & 12.44                                & 19.6 \pm 0.9                            & 286.36                      \\
+			28                 & 42.20               & 42.30               & 152.70                   & 16.08            & 129.53             & 20.7 \pm 1.0                            & 12.60                                & 20.5 \pm 1.0                            & 262.35                      \\
+			30                 & 43.40               & 43.50               & 152.80                   & 16.09            & 132.42             & 18.9 \pm 0.9                            & 12.78                                & 18.8 \pm 0.9                            & 326.02                      \\
+			32                 & 44.60               & 44.70               & 152.80                   & 16.10            & 135.32             & 18.9 \pm 0.9                            & 12.95                                & 18.7 \pm 0.9                            & 333.91                      \\
+			34                 & 45.80               & 45.80               & 152.90                   & 16.11            & 138.10             & 19.8 \pm 0.9                            & 13.10                                & 19.6 \pm 0.9                            & 312.98                      \\
+			36                 & 47.00               & 46.90               & 153.00                   & 16.12            & 140.88             & 19.8 \pm 0.9                            & 13.25                                & 19.5 \pm 0.9                            & 319.61                      \\
+			38                 & 48.30               & 48.10               & 153.00                   & 16.13            & 143.91             & 18.2 \pm 0.9                            & 13.40                                & 17.9 \pm 0.9                            & 383.00                      \\
+			40                 & 49.50               & 49.20               & 153.10                   & 16.14            & 146.70             & 19.7 \pm 0.9                            & 13.53                                & 19.5 \pm 0.9                            & 334.06                      \\
+			42                 & 50.60               & 50.40               & 153.20                   & 16.15            & 149.50             & 19.7 \pm 0.9                            & 13.66                                & 19.5 \pm 0.9                            & 340.75                      \\
+			44                 & 51.60               & 51.50               & 153.20                   & 16.16            & 152.05             & 21.6 \pm 1.0                            & 13.77                                & 21.4 \pm 1.0                            & 272.37                      \\
+			46                 & 52.60               & 52.50               & 153.20                   & 16.16            & 154.49             & 22.7 \pm 1.1                            & 13.87                                & 22.4 \pm 1.1                            & 228.96                      \\
+			48                 & 53.40               & 53.60               & 153.30                   & 16.17            & 156.80             & 23.9 \pm 1.1                            & 13.96                                & 23.6 \pm 1.1                            & 166.26                      \\
+			50                 & 54.30               & 54.70               & 153.30                   & 16.17            & 159.24             & 22.6 \pm 1.1                            & 14.05                                & 22.4 \pm 1.1                            & 237.78                      \\
+			52                 & 55.30               & 55.70               & 153.30                   & 16.18            & 161.69             & 22.6 \pm 1.1                            & 14.14                                & 22.4 \pm 1.1                            & 242.36                      \\
+			56                 & 57.50               & 57.70               & 153.40                   & 16.19            & 166.83             & 21.5 \pm 0.8                            & 14.32                                & 21.2 \pm 0.8                            & 303.96                      \\
+			58                 & 58.70               & 58.70               & 153.40                   & 16.20            & 169.52             & 20.5 \pm 1.0                            & 14.41                                & 20.2 \pm 1.0                            & 354.63                      \\
+			60                 & 60.00               & 59.80               & 153.50                   & 16.20            & 172.47             & 18.8 \pm 0.9                            & 14.51                                & 18.5 \pm 0.9                            & 435.41                      \\
+			62                 & 61.20               & 60.90               & 153.50                   & 16.20            & 175.30             & 19.6 \pm 0.9                            & 14.60                                & 19.3 \pm 0.9                            & 408.80                      \\
+			64                 & 62.40               & 62.00               & 153.50                   & 16.21            & 178.13             & 19.6 \pm 0.9                            & 14.68                                & 19.3 \pm 0.9                            & 416.35                      \\
+			66                 & 63.40               & 63.00               & 153.60                   & 16.21            & 180.59             & 22.5 \pm 1.1                            & 14.75                                & 22.2 \pm 1.1                            & 279.90                      \\
+			68                 & 64.40               & 64.00               & 153.60                   & 16.22            & 183.06             & 22.5 \pm 1.1                            & 14.81                                & 22.2 \pm 1.1                            & 284.76                      \\
+			70                 & 65.20               & 65.10               & 153.60                   & 16.22            & 185.40             & 23.7 \pm 1.1                            & 14.87                                & 23.3 \pm 1.1                            & 216.56                      \\
+			72                 & 66.00               & 66.10               & 153.60                   & 16.22            & 187.63             & 25.0 \pm 1.2                            & 14.92                                & 24.6 \pm 1.2                            & 98.30                       \\
+			74                 & 66.80               & 67.10               & 153.70                   & 16.22            & 189.85             & 25.0 \pm 1.2                            & 14.97                                & 24.6 \pm 1.2                            & 101.73                      \\
+			76                 & 67.60               & 68.00               & 153.70                   & 16.23            & 191.96             & 26.4 \pm 1.2                            & 15.02                                & 26.0 \pm 1.2                            & {$\num{-4.28e5}$}           \\
+			\bottomrule
+		\end{tabular}
+	\end{adjustbox}
+\end{table}
+\begin{table}[H]
+	\centering
+	\caption{Measured parameters and corresponding computed results for $C_{p}$ and $C_{V}$ (Part 2).}
+	\label{tab:results2}
+	\sisetup{table-format=2.0}
+	\begin{adjustbox}{width=1.2\textwidth, center}
+		\begin{tabular}{S S[table-format=3.2] S[table-format=3.2] S[table-format=3.2] S[table-format=2.2] S[table-format=3.2] S[table-format=2.1] S[table-format=2.2] S[table-format=3.2] S[table-format=4.2]}
+			\toprule
+			{$t/\si{\minute}$} & {$R_{G}/\si{\ohm}$} & {$R_{P}/\si{\ohm}$} & {$I/\si{\milli\ampere}$} & {$U/\si{\volt}$} & {$T/\si{\kelvin}$} & {$C_p/\si{\joule\per\mole\per\kelvin}$} & {$\alpha/10^{-6}\cdot \si{\kelvin}$} & {$C_V/\si{\joule\per\mole\per\kelvin}$} & {$\Theta_{D}/\si{\kelvin}$} \\
+			\midrule
+			78                 & 68.40               & 69.00               & 153.70                   & 16.23            & 194.19             & 24.9 \pm 1.2                            & 15.07                                & 24.5 \pm 1.2                            & 110.61                      \\
+			80                 & 69.40               & 70.00               & 153.70                   & 16.23            & 196.67             & 22.4 \pm 1.1                            & 15.12                                & 22.0 \pm 1.1                            & 314.70                      \\
+			82                 & 70.40               & 70.90               & 153.70                   & 16.23            & 199.03             & 23.6 \pm 1.1                            & 15.16                                & 23.2 \pm 1.1                            & 243.74                      \\
+			84                 & 71.70               & 71.90               & 153.70                   & 16.24            & 201.89             & 19.5 \pm 0.9                            & 15.21                                & 19.1 \pm 0.9                            & 482.60                      \\
+			86                 & 73.10               & 72.90               & 153.80                   & 16.24            & 204.88             & 18.6 \pm 0.9                            & 15.27                                & 18.2 \pm 0.9                            & 531.34                      \\
+			88                 & 74.70               & 73.90               & 153.80                   & 16.24            & 208.12             & 17.2 \pm 0.8                            & 15.32                                & 16.8 \pm 0.8                            & 613.32                      \\
+			90                 & 76.20               & 75.00               & 153.80                   & 16.24            & 211.37             & 17.2 \pm 0.8                            & 15.37                                & 16.7 \pm 0.8                            & 624.61                      \\
+			92                 & 77.50               & 76.00               & 153.80                   & 16.24            & 214.24             & 19.4 \pm 0.9                            & 15.42                                & 18.9 \pm 0.9                            & 518.97                      \\
+			94                 & 78.50               & 77.10               & 153.80                   & 16.24            & 216.87             & 21.2 \pm 1.0                            & 15.46                                & 20.7 \pm 1.0                            & 425.26                      \\
+			96                 & 78.80               & 107.40              & 153.80                   & 16.25            & 255.78             & 1.43 \pm 0.07                           & 16.07                                & 0.85 \pm 0.07                           & 3364.56                     \\
+			98                 & 81.00               & 108.00              & 153.80                   & 16.25            & 259.31             & 15.8 \pm 0.7                            & 16.12                                & 15.2 \pm 0.7                            & 863.92                      \\
+			100                & 89.50               & 82.70               & 153.90                   & 16.25            & 237.76             & -2.59 \pm 0.12                          & 15.77                                & -3.11 \pm 0.12                          & {$\num{-1.26e7}$}           \\
+			102                & 89.30               & 84.70               & 153.90                   & 16.25            & 240.03             & 24.6 \pm 1.2                            & 15.81                                & 24.1 \pm 1.2                            & 202.97                      \\
+			104                & 88.00               & 86.10               & 154.00                   & 16.25            & 240.15             & 463 \pm 22                              & 15.81                                & 462 \pm 22                              & {$\num{-2.97e13}$}          \\
+			106                & 87.90               & 87.50               & 154.00                   & 16.25            & 241.80             & 34.0 \pm 1.6                            & 15.84                                & 33.4 \pm 1.6                            & {$\num{-2.21e8}$}           \\
+			108                & 89.00               & 88.70               & 154.00                   & 16.25            & 244.71             & 19.2 \pm 0.9                            & 15.89                                & 18.6 \pm 0.9                            & 611.04                      \\
+			110                & 90.70               & 90.70               & 154.00                   & 16.25            & 249.40             & 11.9 \pm 0.6                            & 15.97                                & 11.3 \pm 0.6                            & 1081.73                     \\
+			112                & 91.90               & 91.90               & 154.00                   & 16.25            & 252.45             & 18.3 \pm 0.9                            & 16.02                                & 17.7 \pm 0.9                            & 684.37                      \\
+			114                & 93.00               & 93.00               & 154.00                   & 16.25            & 255.25             & 19.9 \pm 0.9                            & 16.06                                & 19.4 \pm 0.9                            & 590.44                      \\
+			116                & 94.20               & 94.30               & 154.10                   & 16.25            & 258.43             & 17.5 \pm 0.8                            & 16.11                                & 16.9 \pm 0.8                            & 749.34                      \\
+			118                & 95.50               & 95.40               & 154.10                   & 16.24            & 261.49             & 18.2 \pm 0.9                            & 16.15                                & 17.6 \pm 0.9                            & 715.06                      \\
+			120                & 96.90               & 95.90               & 154.00                   & 16.24            & 263.92             & 23.0 \pm 1.1                            & 16.19                                & 22.4 \pm 1.1                            & 393.13                      \\
+			122                & 98.00               & 96.90               & 154.00                   & 16.24            & 266.60             & 20.8 \pm 1.0                            & 16.22                                & 20.2 \pm 1.0                            & 562.73                      \\
+			124                & 98.60               & 97.90               & 154.00                   & 16.24            & 268.65             & 27.3 \pm 1.3                            & 16.25                                & 26.6 \pm 1.3                            & {$\num{-2.06e6}$}           \\
+			126                & 99.10               & 98.90               & 154.00                   & 16.24            & 270.57             & 29.0 \pm 1.4                            & 16.27                                & 28.4 \pm 1.4                            & {$\num{-1.74e7}$}           \\
+			128                & 99.80               & 100.00              & 154.00                   & 16.24            & 272.87             & 24.2 \pm 1.1                            & 16.30                                & 23.5 \pm 1.1                            & 295.18                      \\
+			130                & 100.90              & 101.00              & 154.00                   & 16.24            & 275.57             & 20.7 \pm 1.0                            & 16.34                                & 20.1 \pm 1.0                            & 589.10                      \\
+			132                & 102.20              & 102.10              & 154.10                   & 16.24            & 278.65             & 18.1 \pm 0.9                            & 16.37                                & 17.5 \pm 0.9                            & 774.36                      \\
+			134                & 104.00              & 103.20              & 154.00                   & 16.24            & 282.38             & 15.0 \pm 0.7                            & 16.42                                & 14.3 \pm 0.7                            & 1002.42                     \\
+			136                & 104.70              & 104.30              & 154.10                   & 16.23            & 284.70             & 24.1 \pm 1.1                            & 16.45                                & 23.4 \pm 1.1                            & 325.09                      \\
+			138                & 105.30              & 105.50              & 154.00                   & 16.23            & 287.01             & 24.0 \pm 1.1                            & 16.47                                & 23.3 \pm 1.1                            & 332.92                      \\
+			140                & 106.10              & 106.50              & 154.00                   & 16.23            & 289.34             & 24.0 \pm 1.1                            & 16.50                                & 23.3 \pm 1.1                            & 339.02                      \\
+			142                & 106.90              & 107.50              & 154.00                   & 16.23            & 291.66             & 24.0 \pm 1.1                            & 16.52                                & 23.3 \pm 1.1                            & 345.08                      \\
+			142                & 108.60              & 108.60              & 154.00                   & 16.23            & 295.28             & 0.0 \pm 0.5                             & 16.56                                & -0.7 \pm 0.5                            & {$\num{-5.7e5}$}            \\
+			144                & 110.50              & 109.70              & 154.10                   & 16.23            & 299.16             & 14.4 \pm 0.7                            & 16.60                                & 13.6 \pm 0.7                            & 1111.42                     \\
+			146                & 111.20              & 110.90              & 154.10                   & 16.23            & 301.63             & 22.6 \pm 1.1                            & 16.63                                & 21.9 \pm 1.1                            & 492.24                      \\
+			148                & 111.70              & 112.10              & 154.10                   & 16.22            & 303.83             & 25.3 \pm 1.2                            & 16.65                                & 24.5 \pm 1.2                            & 176.14                      \\
+			\bottomrule
+		\end{tabular}
+	\end{adjustbox}
+\end{table}
+\noindent
+
+\subsection{Results}
+The negative values in Table~\ref{tab:results1} and~\ref{tab:results2} are unphysical and are therefore not used in further calculations.
+The mean of all other calculated values for $C_{p}$, $C_{V}$ and $\theta_{D}$ result in
+\begin{align}
+	C_{p}      & = \SI{25.7375 \pm 0.2900}{\joule\per\mole\per\kelvin} \\
+	C_{V}      & = \SI{25.3413 \pm 0.2900}{\joule\per\mole\per\kelvin} \\
+	\theta_{D} & = \SI{455.9718}{\kelvin}.
+\end{align}
