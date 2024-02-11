@@ -7,3 +7,22 @@ The molar heat capacity at constant pressure can be calculated using equation~\r
 \end{equation}
 Here, $U$ denotes the heating voltage, $I$ the heating current, $\Delta t$ the heating time interval,
 $M$ the molar mass of copper, $\Delta T$ the achieved temperature increase and $m$ the mass of the probe.
+The molar heat capacity at constant volume is computed using~\ref{eqn:cv}.
+The needed physical constants for these calculations are given in Table~\ref{tab:constants}.
+\begin{table}
+  \centering
+  \caption{Physical constants used.}
+  \label{tab:constants}
+  \sisetup{table-format=3.3}
+  \begin{tabular}{S S S}
+    \toprule
+    {Constant} & {Value} & {Source} \\
+    \midrule
+    {$M$} & {$\SI{0.06355}{\kilogram\per\mole}$} & \cite{ciaaw} \\
+    {$m$} & {$\SI{0.342}{\kilogram}$} & \cite{V47} \\
+    {$\kappa$} & {$\SI{137.8}{\giga\pascal}$} & \cite{pse} \\
+
+    \bottomrule
+  \end{tabular}
+	
+\end{table}

@@ -3,15 +3,13 @@
  (lambda ()
    (LaTeX-add-labels
     "sec:theory"
-    "sec:interference"
-    "eqn:degree"
-    "fig:PBSC"
-    "eqn:contrast"
-    "eqn:intensity"
-    "eqn:contrast2"
-    "eqn:M"
-    "eqn:delta1"
-    "eqn:delta"
-    "eqn:LLL"))
+    "eqn:C"
+    "eqn:TD1"
+    "eqn:CV"
+    "eqn:Cp"
+    "eqn:cv"
+    "eqn:dulongpetit"
+    "eqn:sdf"
+    "eqn:Debye"))
  :latex)
 

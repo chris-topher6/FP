@@ -2,6 +2,7 @@
  "4_analysis"
  (lambda ()
    (LaTeX-add-labels
-    "eqn:cp"))
+    "eqn:cp"
+    "tab:constants"))
  :latex)
 

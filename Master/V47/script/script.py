@@ -10,7 +10,7 @@ pd.set_option("display.max_columns", None)
 # Konstanten definieren
 MOLARE_MASSE_CU = 0.06355  # M [kg/mol]
 PROBENMASSE = 0.342  # m [kg]
-PROBENDICHTE = 8.96  # rho [g/cm^3]
+PROBENDICHTE = 8.96 * 10 ** (-6)  # rho [g/cm^3], umgrechnet in [kg/mm^3]
 KOMPRESSIONSMODUL = 137.8  # kappa [GPa]
 
 messung = pd.read_csv("./data/Messung.csv", skiprows=1, header=None)
@@ -112,7 +112,7 @@ plt.plot(
 )
 plt.legend()
 plt.xlabel(r"$\mathrm{Temperature}/ \, \mathrm{K}$")
-plt.ylabel(r"$\alpha / \, 10^{-6} / \mathrm{deg}$")
+plt.ylabel(r"$\alpha / \, 10^{-6} \mathrm{K}^{-1}$")
 plt.tight_layout()
 plt.savefig("./build/Alpha-Extrapolation.pdf")
 plt.clf()
@@ -127,17 +127,19 @@ def CV_berechnen(C_p, alpha, kappa, V0, T):
     Funktion zur Berechnung der Wärmekapazität bei konstantem Volumen aus der Wärmekapazität bei konstantem Druck.
     Args:
     C_p: isobare Wärmekapazität, [J/(mol * K)]
-    alpha: Koeffizient der thermischen Ausdehnung
-    kappa: Kompressionsmodul des Kupfers
-    V0: Volumen??
-    T: Temperatur
+    alpha: Koeffizient der thermischen Ausdehnung, [10^-6 K]
+    kappa: Kompressionsmodul des Kupfers, [GPa]
+    V0: Volumen pro Mol, [mm^3/mol]
+    T: Temperatur [K]
     """
-    C_V = C_p - 9 * alpha**2 * kappa * V0 * T
+    C_V = (
+        C_p - 9 * alpha**2 * 10 ** (-12) * kappa * V0 * T
+    )  # Faktor 10^-12 kommt aus alpha**2
     return C_V
 
 
-# Frag mich nicht warum
-V0 = 7.11 * 10 ** (-6)
+# Molares Volumen
+V0 = MOLARE_MASSE_CU / PROBENDICHTE
 
 messung["C_V"] = CV_berechnen(
     messung["C_p"], messung["alpha"], KOMPRESSIONSMODUL, V0, messung["T"]
@@ -218,7 +220,13 @@ messung["Theta/T"] = cspl2([v.n for v in messung["C_V"]])
 messung["Theta"] = messung["Theta/T"] * messung["T"]
 
 # Schön exportieren
-messung.to_csv("./build/Ergebnisse.csv")
+messung_export = messung.round(5)
+messung_export.to_latex(
+    "./build/Ergebnisse.tex",
+    columns=["t", "R_G", "R_P", "I", "U", "T", "alpha", "C_p", "C_V", "Theta"],
+    float_format="%.2f",
+)
+# messung_export.to_csv("./build/Ergebnisse.csv")
 
 print(messung)
 print(messung.describe())
