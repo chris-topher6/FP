@@ -20,11 +20,13 @@ The needed physical constants for these calculations are given in Table~\ref{tab
 	\sisetup{table-format=3.5}
 	\begin{tabular}{S S S}
 		\toprule
-		{Constant} & {Value}                              & {Source}     \\
+		{Constant} & {Value}                                            & {Source}     \\
 		\midrule
-		{$M$}      & {$\SI{0.06355}{\kilogram\per\mole}$} & \cite{ciaaw} \\
-		{$m$}      & {$\SI{0.342}{\kilogram}$}            & \cite{V47}   \\
-		{$\kappa$} & {$\SI{137.8}{\giga\pascal}$}         & \cite{pse}   \\
+		{$m$}      & {$\SI{0.342}{\kilogram}$}                          & \cite{V47}   \\
+		{$M$}      & {$\SI{0.06355}{\kilogram\per\mole}$}               & \cite{ciaaw} \\
+		{$\kappa$} & {$\SI{137.8}{\giga\pascal}$}                       & \cite{pse}   \\
+		{$\rho$}   & {$\SI{8.96e-6}{\kilo\gram\per\milli\meter\cubed}$} & \cite{pse}   \\
+		{$v$}      & {$\SI{3570}{\meter\per\second}$}                   & \cite{pse2}  \\
 		\bottomrule
 	\end{tabular}
 \end{table}
@@ -49,18 +51,45 @@ Table~\ref{tab:results1} and \ref{tab:results2}.
 	\label{fig:results}
 \end{figure}
 \noindent
+Given that the results for $C_{V}$ and $C_{p}$ at $T \approx \SI{240}{\kelvin}$ deviate by several orders of magnitude, the visualization is
+performed again without these outlier values to enable a clearer observation of the temperature dependence; the results are displayed in
+Figure~\ref{fig:results_redu}.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{./build/Params_CV_berechnen_reduziert.pdf}
+	\caption{The computed values of $C_{p}$ and $C_{V}$ for different temperatures with an outlier removed.}
+	\label{fig:results_redu}
+\end{figure}
+\noindent
 
 \subsection{Determination of the Debye Temperature}
-To determine the Debye temperature $\theta_{D}$, the measured temperatures $T$ are multiplied with the factor $\frac{\theta_{D}}{T}$, which is estimated
+To determine the Debye temperature $\Theta_{D}$, the measured temperatures $T$ are multiplied with the factor $\frac{\Theta_{D}}{T}$, which is estimated
 using an interpolation of cubic splines based on the data given in~\cite{V47}. The resulting interpolation is given in Figure~\ref{fig:interpol2}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.6]{./build/Theta-Extrapolation.pdf}
-	\caption{Interpolation of known values of $\theta$ using cubic splines.}
+	\caption{Interpolation of known values of $\Theta$ using cubic splines.}
 	\label{fig:interpol2}
 \end{figure}
 \noindent
-The resulting values of $\theta_{D}$ are given in Table~\ref{tab:results1} and~\ref{tab:results2}.
+The resulting values of $\Theta_{D}$ are given in Table~\ref{tab:results1} and~\ref{tab:results2}.
+The Debye temperature can be calculated theoretically using Equation~\ref{eqn:Debye}. The copper probe used has a volume of
+\begin{equation}
+	V = \frac{m}{\rho} = \SI{3.82e-5}{\meter\cubed}.
+	\label{eqn:volumen_probe}
+\end{equation}
+Here, $m$ denotes the probe mass and $\rho$ is the density.
+The number of particles $N$ can be calculated using
+\begin{equation}
+	N = \frac{m}{M} \cdot N_{A} = \SI{3.24e24},
+	\label{eqn:teilchen_probe}
+\end{equation}
+with the probes' molar mass $M$. Utilizing the results from \ref{eqn:volumen_probe} and \ref{eqn:teilchen_probe}, Equation~\ref{eqn:Debye} as well as
+the speed of sound in copper $v$, results in a theoretical Debye temperature of
+\begin{equation}
+	\Theta_{D} = \SI{467.14}{\kelvin}.
+	\label{eqn:Debye_Theorie}
+\end{equation}
 \begin{table}[H]
 	\centering
 	\caption{Measured parameters and corresponding computed results for $C_{p}$ and $C_{V}$ (Part 1).}
@@ -167,10 +196,10 @@ The resulting values of $\theta_{D}$ are given in Table~\ref{tab:results1} and~\
 \noindent
 
 \subsection{Results}
-The negative values in Table~\ref{tab:results1} and~\ref{tab:results2} are unphysical and are therefore not used in further calculations.
-The mean of all other calculated values for $C_{p}$, $C_{V}$ and $\theta_{D}$ result in
+The negative values in Table~\ref{tab:results1} and~\ref{tab:results2} for $C_{p}$, $C_{V}$ and $\Theta_{D}$ are unphysical and are therefore not used in further calculations.
+The mean of all other calculated values for $C_{p}$, $C_{V}$ and $\Theta_{D}$ result in
 \begin{align}
 	C_{p}      & = \SI{25.74 \pm 0.29}{\joule\per\mole\per\kelvin} \\
 	C_{V}      & = \SI{25.34 \pm 0.29}{\joule\per\mole\per\kelvin} \\
-	\theta_{D} & = \SI{455.97}{\kelvin}.
+	\Theta_{D} & = \SI{455.97}{\kelvin}.
 \end{align}

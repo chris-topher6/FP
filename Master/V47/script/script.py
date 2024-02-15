@@ -12,6 +12,22 @@ MOLARE_MASSE_CU = 0.06355  # M [kg/mol]
 PROBENMASSE = 0.342  # m [kg]
 PROBENDICHTE = 8.96 * 10 ** (-6)  # rho [g/cm^3], umgrechnet in [kg/mm^3]
 KOMPRESSIONSMODUL = 137.8  # kappa [GPa]
+AVOGADRO = 6.022 * 10**23  # in mol^(-1)
+SCHALLGESCHWINDIGKEIT_CU = 3570  # m/s
+
+Probenvolumen = (PROBENMASSE / PROBENDICHTE) / 10**9  # Volumen in cm^3
+Teilchenanzahl_Probe = (PROBENMASSE / MOLARE_MASSE_CU) * AVOGADRO  # Einheitenlos
+Theta_D = (
+    7.638
+    * 10 ** (-12)  # der Term hier ist hbar/k_B in [s*K]
+    * SCHALLGESCHWINDIGKEIT_CU  # [m/s]
+    * (6 * np.pi**2 * Teilchenanzahl_Probe / Probenvolumen) ** (1 / 3)  # [1/m]
+)
+
+print(f"Das Probenvolumen beträgt {Probenvolumen} m^3")
+print(f"Die Probe enthält {Teilchenanzahl_Probe} Teilchen")
+print(f"Der Theoriewert für Theta is {Theta_D} K")
+
 
 messung = pd.read_csv("./data/Messung.csv", skiprows=1, header=None)
 messung.columns = ["t", "R_G", "R_P", "I", "U"]
@@ -170,6 +186,33 @@ plt.tight_layout()
 plt.savefig("./build/Params_CV_berechnen.pdf")
 plt.clf()
 
+# Plot aller in CV_berechnen verwendeten Größen, nochmal ohne den einen komischen Wert
+messung_reduziert = messung.drop([51])
+
+plt.figure(figsize=(9, 5))
+plt.plot(
+    messung_reduziert["T"],
+    [v.n for v in messung_reduziert["C_V"]],  # uncertainties mag pandas nicht
+    label=r"$C_V$",
+    color="royalblue",
+    marker="1",
+    linestyle="None",
+)
+plt.plot(
+    messung_reduziert["T"],
+    [v.n for v in messung_reduziert["C_p"]],
+    label=r"$C_p$",
+    color="orange",
+    marker="2",
+    linestyle="None",
+)
+plt.legend()
+plt.xlabel(r"$\mathrm{Temperature}/ \, \mathrm{K}$")
+plt.ylabel(r"$C/ \, \frac{\mathrm{J}}{\mathrm{mol} \cdot \mathrm{K}}$")
+plt.tight_layout()
+plt.savefig("./build/Params_CV_berechnen_reduziert.pdf")
+plt.clf()
+
 # Theta interpolieren
 werte_theta_arsch = pd.read_csv(
     "./data/Theta_aber_scheisse.csv", skiprows=1, header=None
@@ -242,6 +285,8 @@ for v in messung["C_p"]:
 C_p_mean = summe_C_p / messung["C_p"].size
 
 print(f"Der Mittelwert von Theta: {theta_mean:.4f}")
+abweichung = (np.sqrt((455.97 - 467.14) ** 2) / 467.14) * 100
+print(f"Die prozentuale Abweichung vom Theoriewert ist {abweichung:.2f}%")
 print(f"Der Mittelwert von C_V: {C_V_mean:.4f}")
 print(f"Der Mittelwert von C_p: {C_p_mean:.4f}")
 
