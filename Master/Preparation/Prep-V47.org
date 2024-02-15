@@ -1,0 +1,53 @@
+#+title: Vorbereitung V47
+
+* Wie lauten die 3+1 Hauptsätze der Thermodynamik? :drill:
+
+** Antwort
+
+0. Hauptsatz
+   Wenn zwei Systeme jeweils im thermischen Gleichgewicht mit einem dritten System sind,
+   dann sind sie auch untereinander im thermischen Gleichgewicht.
+
+1. Hauptsatz
+   Die Energie eines abgeschlossenen Systems ist konstant. Dieser Satz ist im Wesentlichen
+   ein Ausdruck des Energieerhaltungssatzes und besagt, dass Energie weder erzeugt noch vernichtet,
+   sondern nur von einer Form in eine andere umgewandelt werden kann.
+
+2. Hauptsatz
+   In einem natürlichen thermodynamischen Prozess nimmt die Entropie eines isolierten Systems zu
+   oder bleibt im Idealfall gleich, aber sie nimmt niemals ab. Dies bedeutet, dass Prozesse eine
+   bevorzugte Richtung haben und dass vollständige Umkehrbarkeit in realen Situationen nicht möglich ist.
+
+3. Hauptsatz
+   Sagt aus, dass die Entropie eines geschlossenen Systems für T → 0 gegen eine von thermodynamischen
+   Parametern unabhängige Konstante geht. Daraus folgt, dass der absolute Nullpunkt der Temperatur
+   nicht durch eine endliche Anzahl von Zustandsänderungen erreichbar ist.
+
+* Was ist eine adiabatische Zustandsänderung? :drill:
+
+** Antwort
+
+Eine Zustandsänderung wird als adiabatisch bezeichnet, wenn ein System von einem Zustand in den anderen
+überführt wird ohne Energie mit der Umgebung auszutauschen.
+
+* Was ist Entropie? :drill:
+
+** Antwort
+
+In der statistischen Deutung:
+Ein Makrozustand eines Systems besteht aus vielen Mikrozuständen, die ineinander übergehen können,
+ohne dass sich der Makrozustand dabei ändert. Die Entropie ist dann ein logarithmisches Maß dafür,
+aus wie vielen verschiedenen Mikrozuständen sich der Makrozustand maximal zusammensetzen könnte.
+
+
+* Wie ist die Wärmekapazität eines Festkörpers definiert? Was ist die spezifische Wärmekapazität? :drill:
+
+** Antwort
+
+Die Wärmekapazität eines Festkörpers ist gegeben durch
+\begin{equation*}
+   C = \text{lim}_{\Delta T \to 0} \frac{\Delta Q}{\Delta T}.
+\end{equation*}
+
+Sie beschreibt also, welche Wärmemenge nötig ist, um die Temperatur des Stoffes um eine gewisse Gradzahl
+anzuheben.

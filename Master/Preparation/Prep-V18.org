@@ -1,0 +1,244 @@
+#+title: Vorbereitung
+#+startup: inlineimages latexpreview
+
+* By what process do photons interact with matter? :drill:
+SCHEDULED: <2023-11-24 Fri>
+:PROPERTIES:
+:ID:       1bc46429-b9c5-4411-a3ff-ff69faaa201e
+:DRILL_LAST_INTERVAL: 4.14
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 5.0
+:DRILL_EASE: 2.6
+:DRILL_LAST_QUALITY: 5
+:DRILL_LAST_REVIEWED: [Y-11-20 Mon 09:%]
+:END:
+
+Welche Prozesse finden hier statt?
+
+** Antwort
+
+1. Photoeletric-Effekt
+2. Compton-Effekt
+3. Paarproduktion
+
+* Which processes dominate at small or very large energies (relevant to nuclear physics)? :drill:
+SCHEDULED: <2023-11-24 Fri>
+:PROPERTIES:
+:ID:       d403b9a5-dc4c-4bf3-b8dd-cad91ad07c4d
+:DRILL_LAST_INTERVAL: 4.14
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 5.0
+:DRILL_EASE: 2.6
+:DRILL_LAST_QUALITY: 5
+:DRILL_LAST_REVIEWED: [Y-11-20 Mon 09:%]
+:END:
+
+Welcher der genannten Prozesse dominiert?
+
+** Antwort
+
+Bei kleinen Energien: *Photoelektrischer Effekt*
+
+Bei großen Energien: *Paarproduktion*
+
+* Which material properties have an influence on the probability of interaction? :drill:
+SCHEDULED: <2023-11-24 Fri>
+:PROPERTIES:
+:ID:       76cf5ff9-1da8-4836-8fd8-9aba2e976e37
+:DRILL_LAST_INTERVAL: 4.14
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 5.0
+:DRILL_EASE: 2.6
+:DRILL_LAST_QUALITY: 5
+:DRILL_LAST_REVIEWED: [Y-11-20 Mon 09:%]
+:END:
+How is this related to the extinction coefficient? How does this depend on energy?
+
+** Antwort
+
+Hierbei spielen die
++ Dichte
++ Tiefe
++ Kernladungszahl $Z$
+eine Rolle.
+
+* What is the prediction for the differential cross section as a function of energy for Compton scattering? :drill:
+SCHEDULED: <2023-11-24 Fri>
+:PROPERTIES:
+:ID:       9fae7ba1-1cbd-4107-8773-b4f3e0f7eb96
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-11-20 Mon 09:%]
+:END:
+
+Wie heußt die Gleichung, die den Wirkunsquerschnitt der Compton-Streuung angibt? Wie lautet der
+Wirkunsquerschnitt?
+
+** Antwort
+
+Der Wirkunsquerschnitt ist gegeben durch die Klein-Nishina Formel; sie stellt eine relativistische
+Erweiterung der klassischen Thomson-Formel dar.
+
+Die Thomson-Formel lautet
+
+\begin{equation*}
+   \frac{d \sigma_{Th}}{d \Omega} = \frac{r_{e}^{2}}{2}(1+\cos^{2}{(\theta_{\gamma})}).
+\end{equation*}
+
+Hierbei beschreibt $\theta_{\gamma}$ den Winkel, unter dem das Photon gestreut wird und $r_e$ ist der klassische
+Elektronen-Radius.
+
+Die Klein-Nishina-Formel lautet
+
+\begin{equation*}
+\frac{d \sigma_{\text{KN}}}{d \Omega} = \frac{r_{e}^{2}}{2 \cdot [1 + \epsilon (1-\cos{(\theta_{\gamma})})]^{2}} \left( 1 + \cos^{2}{(\theta_{\gamma})} + \frac{\epsilon^{2} (1 - \cos{(\theta_{\gamma})})^{2}}{1 + \epsilon (1-\cos{(\theta_{\gamma})})} \right).
+\end{equation*}
+
+$\epsilon$ beschreibt hierbei die Energie des Photons. Für kleine Photonenenergien ist sie mit der klassischen
+Thomson-Formel äquivalent.
+
+* Line width in general :drill:
+SCHEDULED: <2023-11-24 Fri>
+:PROPERTIES:
+:ID:       215fbfc2-6474-40f7-b769-1a630cdf1edd
+:DRILL_LAST_INTERVAL: 4.0
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-11-20 Mon 09:%]
+:END:
+
+Was ist allgemein eine Linienbreite?
+
+** Antwort
+
+Die Linienbreite beschreibt die Breite der Energieverteilung eines Emissionsspektrums.
+Idealerweise hätte jedes Photon diesselbe Wellenlänge (und damit Energie). Dann wäre
+die Linienbreite $0$.
+
+In der Realität wird die Linienbreite durch verschiedene Faktoren beeinflusst und verbreitert.
+
+* What physical size of the semiconductor limits the line width of gamma lines? :drill:
+:PROPERTIES:
+:ID:       8306bc9a-a3f0-431b-9d76-20af04f8bf9b
+:END:
+
+Welche physikalische Größe des Halbleiters definiert die Linienbreite der $\gamma$ - Linie?
+
+** Antwort
+
+Es gibt zwei Klassen von Verbreiterungsfaktoren; diejenigen, die alle Photonen gleichermaßen beeinflussen
+(Homogen) und diejenigen, die lokal auftreten und daher nur manche Photonen betreffen (Inhomogen).
+
+1. Homogene Verbreiterung
+2. Inhomogene Verbreiterung
+
+TODO https://en.wikipedia.org/wiki/Spectral_line#Broadening_due_to_local_effects
+
+Die Lebenszeit der angeregten Zustände hängt über die Heisenbergsche Unschärferelation mit der
+Breite der Energieverteilung zusammen. Daher führt eine kürzere Lebensdauer zu einer höheren Linienbreite.
+
+Durch den Doppler-Effekt wird ebenfalls die Linienbreite erhöht; durch eine höhere Temperatur erhöht sich auch
+der Einfluss des Doppler-Effekts.
+
+Die Druckverbreiterung: wenn ein Emissionsprozess durch eine weitere Streuung unterbrochen wird und sich dadurch
+die cahrakteristische Länge des Prozesses ändert, wirkt dies wie die Lebenszeitverringerung.
+
+
+* Compare direct and indirect semiconductors. Which experimental effects lead to further line propagation? :drill:
+SCHEDULED: <2023-11-24 Fri>
+:PROPERTIES:
+:ID:       92a91306-85c9-4fc9-9139-3cf1684c6a77
+:DRILL_LAST_INTERVAL: 4.14
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 5.0
+:DRILL_EASE: 2.6
+:DRILL_LAST_QUALITY: 5
+:DRILL_LAST_REVIEWED: [Y-11-20 Mon 09:%]
+:END:
+
+Was ist ein direkter und indirekter Halbleiter? Welche Effekte führen hier zu weiteren Linienverbreiterungen?
+
+** Antwort
+
+1. Direkter Halbleiter
+   + Minimum des Leitungs- und Maximum des Valenzbandes ist bei demselben k-Vektor (energetisch und im
+     Impulsraum)
+   + Daher kann ein Elektron ohne großen Impulswechsel zwischen dem Valenz- und Leitungsband wechseln
+   + Direkter Übergang ist sehr effizient bei Lichtemission da er keine zusätzliche Gitterschwingung
+     (Phonon) für die Emission/Absorption eines Photons benötigt
+   + Beispiele sind GaAs (Gallium Arsenid) und InP (Indiumphosphid)
+
+2. Indirekter Halbleiter
+   + Minimum des Leitungs- und Maximum des Valenzbandes befinden sich nicht bei demselben k-Vektor
+   + Ein Phonon (Gitterschwingung) wird benötigt um die Impulsdifferenz zu überwinden
+   + Werden oft in Anwendungen verwendet wo Lichtemission keine große Rolle spielt
+   + Ein Beispiel ist z.B. Si (Silizium)
+
+Zusätzliche Linienverbreiterung werden hier durch den Doppler-Effekt und Multistreuung erzeugt.
+
+* How are the signals from a germanium detector amplified? What is the difference between charge and current amplifiers? :drill:
+SCHEDULED: <2023-11-24 Fri>
+:PROPERTIES:
+:ID:       2520bd57-7377-42cc-b790-d09aad4aa5e6
+:DRILL_LAST_INTERVAL: 4.14
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 5.0
+:DRILL_EASE: 2.6
+:DRILL_LAST_QUALITY: 5
+:DRILL_LAST_REVIEWED: [Y-11-20 Mon 09:%]
+:END:
+
+Wie wird das Signal eines Germanium-Detektors verstärkt? Was ist der Unterschied zwischen Ladungs- und
+Stromverstärkern?
+
+** Antwort
+
+1. Verstärkung des Signals
+2. Umwandlung Spannung in Strom?
+3. Filter, um Rauschen zu reduzieren
+4. Diskriminator; Gauß in Puls
+
+* How are energy measuring detectors calibrated? :drill:
+SCHEDULED: <2023-11-24 Fri>
+:PROPERTIES:
+:ID:       45cdb5e1-5079-4f46-9fad-2b4549bb4557
+:DRILL_LAST_INTERVAL: 4.14
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 5.0
+:DRILL_EASE: 2.6
+:DRILL_LAST_QUALITY: 5
+:DRILL_LAST_REVIEWED: [Y-11-20 Mon 09:%]
+:END:
+
+Wie wird ein Detektor der Energien messen soll kalibriert?
+
+** Antwort
+
+Man verwendet eine Quelle, die ein wohlbekanntes Spektrum emittiert. In diesem Versuch ist das $^{152}\text{Eu}$.
+
+* How can the full energy probability of germanium detectors be determined using a point source at a large distance?
+
+* What characteristic structures can be observed in a monochromatic gamma spectrum?
+
+* What is the photon energy with the greatest probability of emission for $^{152} \text{Eu}$, $^{137} \text{Cs}$ and $^{133} \text{Ba}$?

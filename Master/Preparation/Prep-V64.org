@@ -1,0 +1,379 @@
+#+title: Vorbereitung
+#+startup: latexpreview inlineimages
+
+* Kohärenz :drill:
+SCHEDULED: <2023-12-22 Fri>
+:PROPERTIES:
+:ID:       fae65517-ead3-44ba-b8ec-d0831c68413c
+:DRILL_LAST_INTERVAL: 4.14
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 5.0
+:DRILL_EASE: 2.6
+:DRILL_LAST_QUALITY: 5
+:DRILL_LAST_REVIEWED: [Y-12-18 Mon 08:%]
+:END:
+
+Was heißt Kohärenz? Was ist der Grad der Kohärenz? Was versteht man unter
+Frequenzbandbreite und Kohärenzzeit?
+
+** Antwort
+
+Kohärenz bedeutet, dass zwei Wellen eine feste Phasenbeziehung zueinander haben.
+
+Der Grad der Kohärenz ist ein Wert zwischen 0 (vollständig inkohärent) und 1 (vollständig kohärent).
+
+Bei ideal monochromatischem Licht wäre die Kohärenzzeit unendlich groß und die
+Frequenzbandbreite $\Delta \nu = 0$.
+
+Die Kohärenzzeit $\Delta t$ ist gleich dem Kehrwert der Frequenzbandbreite $\Delta \nu$.
+
+* Kohärenzarten :drill:
+:PROPERTIES:
+:ID:       c55513a9-608a-4047-91aa-91808fba5057
+:END:
+
+Was ist temporale und spatiale Kohärenz?
+
+** Antwort
+
+Wenn ein Sender eine begrenzte Bandbreite besitzt (und damit eine endliche Kohärenzzeit),
+spricht man von zeitlicher (temporaler) Kohärenz.
+
+Der Grad der zeitlichen Kohärenz ist groß, wenn die Kohärenzzeit $\Delta t$ groß ist.
+
+Wenn ein Sender eine räumliche Beschränkung besitzt, spricht man von räumlicher Kohärenz; eine Lichtquelle mit großer Oberfläche kann z.B. an zwei verschiedenen
+Punkten Licht mit vollständig unkorrelierter Phasenbeziehung abstrahlen.
+
+* Verschiedene Polarisationseigenschaften :drill:
+SCHEDULED: <2023-12-22 Fri>
+:PROPERTIES:
+:ID:       8ce0140d-73be-4780-9dc4-592444d9115f
+:DRILL_LAST_INTERVAL: 4.14
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 5.0
+:DRILL_EASE: 2.6
+:DRILL_LAST_QUALITY: 5
+:DRILL_LAST_REVIEWED: [Y-12-18 Mon 08:%]
+:END:
+
+Was sind die verschiedenen Polarisationseigenschaften des Lichts?
+
+** Antwort
+
+1. Lineare Polarisation
+   Das elektrische Feld oszilliert in einer Ebene
+2. Zirkulare Polarisation
+   Das elektrische Feld rotiert kreisförmig um die Ausbreitungsrichtung; Wellen bilden so ein Spiralmuster.
+3. Elliptische Polarisation
+   Mischform der anderen beiden Polarisationsarten, das elektrische Feld rotiert in einer Ellipse um die Ausbreitungsrichtung.
+
+   Oben ist mit "elektrisches Feld" der elektrische Feldvektor gemeint.
+
+* Interferenz und Polarisation :drill:
+SCHEDULED: <2023-12-22 Fri>
+:PROPERTIES:
+:ID:       8578f105-6bcb-43d1-98c0-b6a7dfae818b
+:DRILL_LAST_INTERVAL: 4.14
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 5.0
+:DRILL_EASE: 2.6
+:DRILL_LAST_QUALITY: 5
+:DRILL_LAST_REVIEWED: [Y-12-18 Mon 08:%]
+:END:
+
+Wie müssen zwei Lichtstrahlen zueinander polarisiert werden, um Interferenz
+zu beobachten?
+
+** Antwort
+
+Damit effektiv Interfenz erzeugt wird, müssen die Wellen mindestens annähernd parallel zueinander polarisiert sein,
+d.h. die Polarisation beider Wellen liegt in derselben Ebene.
+
+* Interferometerklassen :drill:
+:PROPERTIES:
+:ID:       a477ac0b-d2a2-43c9-95b9-fd39dfbd6dde
+:END:
+
+Was ist ein Interferometer? Welche zwei Klassen von Interferometern gibt es?
+
+** Anwort
+
+Ein Interferometer ist ein optisches System zur Erzeugung von Interferenz.
+
+Es werden zwei Klassen unterschieden:
+
+*Wellenfrontspaltende* Interferometer
+Benutzt Teile der primären Wellenfront entweder direkt als Quellen sekundärer
+Wellen oder in Verbindung mit optischen Geräten, um virtuelle Quellen von
+Sekundärwellen zu erzeugen.
+
+Die sekundären Wellen werden dann miteinander zur Interferenz gebracht.
+
+*Amplitudenspaltende* Interferometer
+Die primäre Welle selbst wird in zwei Segmente unterteilt, die unterschiedliche
+Wege durchlaufen, bevor sie wieder zusammenlaufen und interferieren.
+
+* Mach-Zehnder Interferometer :drill:
+SCHEDULED: <2023-12-22 Fri>
+:PROPERTIES:
+:ID:       8e36429d-c675-4cc4-86b2-cbbe83a81805
+:DRILL_LAST_INTERVAL: 4.14
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 5.0
+:DRILL_EASE: 2.6
+:DRILL_LAST_QUALITY: 5
+:DRILL_LAST_REVIEWED: [Y-12-18 Mon 08:%]
+:END:
+
+Wie funktioniert ein Mach-Zehnder Interferometer?
+
+** Antwort :ATTACH:
+:PROPERTIES:
+:ID:       673b1abe-e2f6-400a-a5cb-e55c41f99359
+:END:
+
+#+attr_html: :width 800px
+[[attachment:_20231217_222855machzehnder.png]]
+
+
+* Michelson-Interferometer :drill:
+SCHEDULED: <2023-12-22 Fri>
+:PROPERTIES:
+:ID:       bebd97da-fcb2-4ab1-bc27-b3cfcc4f2b99
+:DRILL_LAST_INTERVAL: 4.14
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 5.0
+:DRILL_EASE: 2.6
+:DRILL_LAST_QUALITY: 5
+:DRILL_LAST_REVIEWED: [Y-12-18 Mon 08:%]
+:END:
+
+Wie funktioniert ein Michelson-Interferometer?
+
+** Antwort :ATTACH:
+:PROPERTIES:
+:ID:       a2801028-c659-45ba-b313-f8d03f45a0c1
+:END:
+
+#+attr_html: :width 800px
+[[attachment:_20231217_222928Michelson.png]]
+
+
+* Sagnac-Interferometer :drill:
+SCHEDULED: <2023-12-22 Fri>
+:PROPERTIES:
+:ID:       c01ecbaa-0ceb-43ac-8a9c-72710b92bad5
+:DRILL_LAST_INTERVAL: 4.14
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 5.0
+:DRILL_EASE: 2.6
+:DRILL_LAST_QUALITY: 5
+:DRILL_LAST_REVIEWED: [Y-12-18 Mon 08:%]
+:END:
+
+Wie funktioniert ein Sagnac-Interferometer?
+
+** Antwort :ATTACH:
+:PROPERTIES:
+:ID:       e867303a-1349-4e26-a361-2bc801e75158
+:END:
+
+#+attr_html: :width 800px
+[[attachment:_20231217_222949Sagnac.png]]
+
+
+* Stabilität gegen externe Störungen von Interferometern :drill:
+:PROPERTIES:
+:ID:       7d51d564-826a-442b-a58f-1810da420c09
+:END:
+
+Welches Interferometer ist am robustesten gegenüber äußeren Störungen?
+
+** Antwort
+
+Das Sagnac-Interferometer ist besonders robust gegen äußere Störungen.
+
+1. *Geschlossener Lichtweg*
+   Da beide Strahlen denselben Weg durchlaufen, heben sich viele Störungen weg (z.B. sind beide Pfadlängen gleich durch
+   Temperaturschwankungen beeinflusst).
+
+2. *Unabhängigkeit von der Orientierung*
+   Die Messung der Rotationsgeschwindigkeit mit einem Sagnac-Interferometer ist unabhängig von seiner Ausrichtung im Raum.
+    Daher muss das Interferometer nicht präzise ausgerichtet werden, um korrekte Messungen durchzuführen, was es weniger
+    anfällig für Ausrichtungsfehler macht.
+
+3. *Kompaktheit der Konstruktion*
+   Sagnac-Interferometer können relativ kompakt und robust gebaut werden, was sie weniger anfällig für Störungen durch mechanische
+   Erschütterungen macht.
+
+* Kontrast eines Interferometers :drill:
+SCHEDULED: <2023-12-22 Fri>
+:PROPERTIES:
+:ID:       18791e86-f4e5-4fb8-bdf4-bea0f143c0d3
+:DRILL_LAST_INTERVAL: 4.14
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 5.0
+:DRILL_EASE: 2.6
+:DRILL_LAST_QUALITY: 5
+:DRILL_LAST_REVIEWED: [Y-12-18 Mon 08:%]
+:END:
+
+Wie ist der Kontrast eines Interferometers definiert?
+
+** Antwort
+
+Der Kontrast beschreibt sich Sichtbarkeit des Interferenzmusters. Er ist definiert als
+
+\begin{equation*}
+   V = \frac{I_{\text{max}} - I_{\text{min}}}{I_{\text{max}} + I_{\text{min}}}.
+\end{equation*}
+
+Hierbei ist $I_\text{max}$ die maximale Intensität der hellen Streifen (konstruktive Interferenz) und $I_\text{min}$ die minimale
+Intensität der dunklen Streifen (destruktive Interferenz).
+
+Der Kontrastwert liegt zwischen 0 (kein Interferenzmuster) und 1 (sehr klares Interferenzmuster).
+
+* Polarising beam-splitter cube :drill:
+:PROPERTIES:
+:ID:       599521c9-30b9-44d7-ba73-313d8d98d896
+:END:
+
+Was ist ein PBSC?
+
+** Antwort
+
+Ein polarisierender Strahlteilerwürfel (polarizing beam splitter cube) ist ein optisches Bauteil, das eingesetzt wird,
+um Lichtstrahlen basierend auf ihrer Polarisation zu trennen oder zu kombinieren.
+
+Es handelt sich um einen Würfel, der aus zwei rechtwinkligen Prismen besteht, die miteinander verbunden sind.
+Die Hypotenusefläche zwischen den beiden Prismen ist gewöhnlich mit einer speziellen Beschichtung versehen,
+die als polarisierender Strahlteiler dient.
+
+Wenn unpolarisiertes oder gemischt polarisiertes Licht auf den Würfel trifft, wird das Licht in zwei polarisierte Komponenten aufgeteilt.
+
+Die eine Komponente, die gewöhnlich der p-Polarisation (parallel zur Einfallsebene) entspricht, wird durch den Würfel hindurchgelassen (transmittiert),
+während die andere Komponente, die s-Polarisation (senkrecht zur Einfallsebene), reflektiert wird.
+
+Der Würfel kann auch umgekehrt verwendent werden, um zwei verschieden polarisierte Strahlen zusammenzuführen.
+
+* Der Polarisationswinkel :drill:
+:PROPERTIES:
+:ID:       1fd0af6a-89ca-4894-bdc3-1f3eb1b5acaf
+:END:
+
+Was ist der Polarisationswinkel?
+
+** Antwort
+
+Der Polarisations- oder Brewster-Winkel gibt den Winkel an, bei dem von Licht, das auf die Grenzfläche zweier dielektrischer Medien einfällt,
+nur die senkrecht zur Einfallsebene polarisierten Anteile (bezogen auf die elektrische Feldkomponente) reflektiert werden.
+Das reflektierte Licht ist dann linear polarisiert.
+
+* Kontrast und Polarisationswinkel :drill:
+:PROPERTIES:
+:ID:       e85cae63-3509-4c8f-8bb7-153fd0dd819d
+:DRILL_LAST_INTERVAL: 0.0
+:DRILL_REPEATS_SINCE_FAIL: 1
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 2.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 2
+:DRILL_LAST_REVIEWED: [Y-12-18 Mon 08:%]
+:END:
+
+Wie hängt der Kontrast vom Polarisationswinkel ab?
+
+** Antwort
+
+Für möglichst hohen Kontrast sollte die Polarisation beider Wellen idealerweise gleich sein; je unterschiedlicher die Polarisationswinkel
+desto niedriger der Kontrast.
+
+* Die Differenzspannungsmethode :drill:
+:PROPERTIES:
+:ID:       eb2da236-3671-4331-bfff-435058022908
+:END:
+
+Wo liegt der Unterschied bei einer Messung mit einer und einer Messung mit zwei Photodioden?
+Was ist der Vorteil der Differenzspannungsmethode?
+
+** Antwort
+
+1. Messung mit einer Diode
+   Die Messung der Lichtintensität kann mit einer Diode durchgeführt werden. Das gemessene Signal der Diode wird
+   direkt ausgewertet.
+
+2. Messung mit zwei Dioden (Differenzspannungsmethode)
+   Bei der Verwendung von zwei Fotodioden kann die Differenzspannungsmethode angewendet werden.
+    Dabei werden die beiden Dioden so angeordnet, dass sie unterschiedlichen Lichtbedingungen ausgesetzt sind – zum Beispiel die eine im Licht und die andere im Schatten oder beide in leicht unterschiedlichen Winkeln zum Licht.
+    Die erzeugten Spannungen (bzw. Ströme) der beiden Dioden werden dann voneinander subtrahiert, um die Differenzspannung zu erhalten.
+
+    Der Vorteil der Differenzspannungsmethode liegt darin, dass durch die Subtraktion der beiden Messungen voneinander Störeinflüsse die beide
+    Dioden gleichermaßen beeinflussen herausfallen. So können präzisere Messungen durchgeführt werden.
+
+* Bestimmung des Brechungsindex über die Anzahl der Minima/Maxima des Interferenzmusters :drill:
+:PROPERTIES:
+:ID:       ed0a8cd2-dd84-4e2f-8a30-fd9ea6d09dc9
+:END:
+
+Wie kann aus der Anzahl der Minima/Maxima des Interferenzmusters der Brechungsindex eines Materials bestimmt werden?
+
+** Antwort
+
+Dies kann unter Verwendung eines Interferometers geschehen. Dafür wird zuerst das Interferenzmusters des Interferometers ohne weitere Veränderungen
+bestimmt.
+Dann wird in einem der Arme das Material, dessen Brechungsindex bestimmt werden soll, platziert.
+Die Änderung der optischen Weglänge sollte dann
+\begin{equation*}
+   \Delta L = m \cdot \lambda
+\end{equation*}
+erfüllen. Hier ist $m$ die Anzahl der Maxima/Minima und $\lambda$ die Wellenlänge des Lichts.
+
+Wenn die Dicke $d$ des im Arm platzierten Materials bekannt ist, kann über den Zusammenhang
+\begin{equation*}
+   n = \frac{\Delta L + d}{d}
+\end{equation*}
+der Brechungsindex $n$ bestimmt werden.
+
+ACHTUNG Die komplette Antwort stammt von Chatgpt, keine Ahnung ob das stimmt.
+
+* Abhängigkeit des Brechungsindex von der Temperatur und des Drucks eines Gases :drill:
+:PROPERTIES:
+:ID:       bfe7350c-1667-46ed-94ef-abd8d9f770b8
+:DRILL_LAST_INTERVAL: 0.0
+:DRILL_REPEATS_SINCE_FAIL: 1
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 2.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 2
+:DRILL_LAST_REVIEWED: [Y-12-18 Mon 08:%]
+:END:
+
+Was gilt für den obigen Zusammenhang?
+
+** Antwort
+
+Der Zusammenhang ist gegeben durch das Lorentz-Lorenz Gesetz:
+\begin{equation*}
+   \frac{n^{2} - 1}{n^{2} + 2} = \frac{K_{B} \rho}{3}
+\end{equation*}
+Hierbei ist $n$ der Brechungsindex und $\rho$ ist die Gasdichte:
+\begin{equation*}
+   \rho = \frac{p m}{K_{B}T}.
+\end{equation*}
+Hier ist $m$ die Masse? und $T$ die Temperatur.

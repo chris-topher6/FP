@@ -1,0 +1,254 @@
+#+title: Vorbereitung des Versuches V60
+#+startup: inlineimages latexpreview
+
+* Vorbereitungsfragen
+
+** What is coherent light? :drill:
+:PROPERTIES:
+:ID:       a28a3290-1aec-4481-b59a-c80ab4186a9f
+:END:
+
+Was ist kohärentes Licht?
+
+*** Antwort
+
+Wenn Photonen die folgenden Punkte erfüllen, sind die kohärent zueinander:
+
+1. Gleiche Wellenlänge (also monochromatisch sind)
+2. konstante Phasenbeziehung
+3. Gleiche Ausbreitungsrichtung
+
+** How do you get population inversion? :drill:
+:PROPERTIES:
+:ID:       22e26f3a-7297-4e92-b9d5-a632a76049f8
+:END:
+
+Wie erzeugt man eine Besetzungsinversion?
+
+*** Antwort
+
+Eine Besetzungsinversion kann durch die folgenden Prozesse erzeugt werden:
+
+1. Optisches Pumpen
+2. Elektrisches Pumpen
+3. Chemisches Pumpen
+4. Gasentladung
+
+Ziel ist es immer, das mehr Elektronen sich im angeregten Zustand befinden als
+im Grundzustand.
+
+Dann kann mehr stimulierte Emission als spontane Emission und Absorption stattfinden,
+wodurch z.B. Laser implementiert werden können.
+
+
+** How does light amplification in p-n diodes work? :drill:
+:PROPERTIES:
+:ID:       3958c73b-4346-452e-8b8d-8acf5f795746
+:END:
+Wie funktioniert die Verstärkug von Licht in einer Diode?
+
+*** Antwort
+
+Eine p-n Diode besteht aus einer positiv dotierten (p) Schicht und einer negativ dotierten (n) Schicht.
+Wird eine Spannung in Durchlassrichtung angelegt, bewegen sich die freien Ladungsträger (Elektronen
+und Löcher) auf die Grenzschicht zu und rekombinieren da.
+
+Dabei wird Energie, die der Bandlücke des Materials entspricht, freigesetzt. Eine Besetzungsinversion
+wird durch Anlegen einer geeignet großen Spannung erzielt.
+
+Tritt nun ein Photon mit geeigneter Energie in die Diode ein, kommt es zur stimulierten Emission.
+
+Damit dies effektiv den Laser verstärkt, muss ein optischer Resonator um die Diode herum gebaut werden.
+
+
+** What are the differences in electronic structure between metals, semiconductors and isolators? :drill:
+:PROPERTIES:
+:ID:       0349d96e-3666-41d6-b404-659cb530f554
+:END:
+(Explain it with the help of valence and conduction bands.)
+
+*** Antwort :ATTACH:
+:PROPERTIES:
+:ID:       d68b5c3c-aa19-4e83-95e5-c8de97c4dda5
+:END:
+
+#+attr_html: :width 400px
+[[attachment:_20231105_102613Energy_band_model.png]]
+
+*Valenzband:*
++ höchstes besetztes Band am absoluten Nullpunkt
++ Bei Halbleitern und Isolatoren vollständig besetzt
++ Bei Metallen nur teilweise besetzt
+
+*Leitungsband:*
++ Nächsthöheres Energieband
++ Bei Leitern: mit Valenzband identisch oder überlagert sich mit dem Leitungsband
+
+*Bandlücke:*
++ quantenmechanisch verbotener Energiebereich
++ trennt Valenz- und Leitungsband bei Halbleitern und Isolatoren
++ Ist bei Halbleitern deutlich schmaler als bei Isolatoren
+
+*Fermi-Niveau $E_{f}$:*
++ höchste Energie, die ein Teilchen in einem fermionischen Vielteilchensystem haben kann,
+  wenn das System als ganzes im Grundzustand ist
+
+*Funktionsweise eines Halbleiters:*
++ Da das Leitungsband bei Halbleitern erst einmal unbesetzt ist, ist die Leitfähigkeit
+  bei niedrigen Temperaturen nicht gegeben
++ Bei Hinzugabe weiterer Energie (Wärme, eingestrahlte Photonen,...) können Elektronen
+  aus dem Valenzband in das Leitungsband angeregt werden, wodurch der Halbleiter leitend
+  wird
+
+** What is a p- and n-doped semiconductor? :drill:
+:PROPERTIES:
+:ID:       c5437403-a9ad-4c5b-b2ea-366998439c48
+:END:
+
+Was ist ein p- und n- dotierter Halbleiter?
+
+*** Antwort
+
+Ein p- oder n-dotierter Halbleiter besitzt zusätzliche Atome, die entweder
+
+1. ein Elektron abgeben (n-dotiert)
+2. ein Elektron aufnehmen (p-dotiert)
+
+können.
+
+N-dotierte Halbleiter haben also als freie Ladungsträger Elektronen (im Leitungsband), während
+p-dotierte Halbleiter Löcher als freie Ladungsträger (im Valenzband) besitzen.
+
+** Discuss the working principle of a diode laser. :drill:
+:PROPERTIES:
+:ID:       403fbef3-1bbb-43c7-b438-592d7e02cf59
+:END:
+
+Was ist das Funktionsprinzip eines Diodenlasers?
+
+*** Antwort
+
++ Der Diodenlaser enthält einen Halbleiterchip
++ Durch angelegten Strom entsteht Besetzungsinversion
++ An der Grenzfläche der n- und p-Schicht im Halbleiter rekombinieren Elektronen mit Löchern
+  + Emittieren dabei ein Photon
++ Durch Resonator werden diese Photonen verwendet, um weitere kohärente Photonen durch stimulierte
+  Emission zu erzeugen
+
+** Discuss the internal and the external cavity of a diode laser. :drill:
+:PROPERTIES:
+:ID:       c9826556-6d21-491b-8570-b72c9e1adc6f
+:END:
+
+Was sind die Funktionen des internen und externen Resonators eines Diodenlasers?
+
+*** Antwort
+
+*Interner Resonator:*
++ Ermöglicht erst den Laser-Prozess
+  + Sorgt für Dominanz der stimulierten Emission
+
+*Externer Resonator:*
++ Verbessert Frequenzstabilität
++ Verbessert Linienbreite des Laserstrahls
+
+** What is a Littrow configuration? :drill:
+:PROPERTIES:
+:ID:       d25e6ee4-e3ce-4e1e-a0fd-7d685a611aea
+:END:
+
+Was ist eine Littrow-Konfiguration?
+
+*** Antwort
+
+Bei der Littrow-Konfiguration handelt es sich um eine spezielle Ausrichtung eines
+optischen Gitters. Der Blaze-Winkel ist so gewählt, dass der reflektierte Strahl
+genau in die Richtung des einfallenden Strahls gerichtet ist.
+
+Dies wird hier benötigt, um den externen Resonator zu realisieren.
+
+** Which laser modes can be get? Explain the concept of mode hopping. :drill:
+:PROPERTIES:
+:ID:       75651ff8-ac06-4959-9345-d10f2b984272
+:END:
+Welche Lasermoden können hier erzielt werden? Was ist Mode Hopping?
+
+*** Antwort
+
+In den Resonatoren bilden sich verschiedene stehende Wellen aus; sie haben
+unterschiedliche Energien und Wellenlängen.
+
+Da die Wellenlänge des Laserstrahls von verschiedenen Faktoren abhängt, die sich
+alle gegenseitig beeinflussen und unterschiedliche Maxima besitzen, springt der
+Laser zwischen verschiedenen Moden hin und her. Um das zu verhindern müssen die
+verschiedenen Verstärkunsfaktoren simultan justiert werden.
+
+** What defines the wavelength of a laser? :drill:
+:PROPERTIES:
+:ID:       1db808ee-10c8-4a62-9939-44ffcbbdd03e
+:END:
+
+Was definiert die Wellenlänge eines Lasers?
+
+*** Antwort
+
+Die Wellenlänge des Laserstrahls wird beeinflusst durch
+1. Die Breite der Bandlücke des Halbleiters
+2. Der angelegte Strom, der die Besetzungsinversion erzeugt
+3. Die Temperatur (die durch Heizung und den Strom beeinflusst wird)
+
+** To which class of materials does rubidium belong? :drill:
+:PROPERTIES:
+:ID:       f4ee18bc-4596-4d9c-8c34-e0b6d28be6f8
+:END:
+
+Zu welcher Materialsklasse zählt Rubidium?
+
+*** Antwort
+
+Bei Rubidium handelt es sich um ein Alkali-Metall.
+
+** What splittings are caused by an external magnetic field? :drill:
+:PROPERTIES:
+:ID:       016cf5e4-3c9e-463a-88b7-7b5fef51b525
+:END:
+
+Welche Aufteilungen erzeugt ein externes magnetisches Feld?
+
+*** Antwort
+
+Ein externes Magnetfeld sorgt für die Aufspaltung in die Hyperfeinstruktur.
+
+Das magnetische Moment des Atomkerns koppelt an das äußere Magnetfeld, weswegen die Niveaus
+der Feinstruktur noch weiter aufgespalten werden.
+
+Die Quantenzahl $F$ (Gesamtdrehimpuls des Atoms) wird aufgespalten.
+
+** Calculate the hyperfine splitting of rubidium.
+
+** What are the selection rules for magnetic dipole transitions? :drill:
+:PROPERTIES:
+:ID:       692d3fa4-7322-4d83-b577-f9c269bb7a4a
+:END:
+
+Wie lauten die Auswahlregeln für die magnetischen Dipolübergänge?
+
+*** Antwort
+
+\begin{itemize}
+    \item $\Delta J = -1,0,+1$
+    \item $\Delta M = -1,1$
+\end{itemize}
+
+** What does absortion spectroscopy mean? :drill:
+:PROPERTIES:
+:ID:       19a513c8-8072-4bb3-ad47-dc1b0c7575ed
+:END:
+
+Was versteht man unter Absoprtionsspektroskopie?
+
+*** Antwort
+
+Es wird die absorbierte Lichtmenge als Funktion der Frequenz gemessen. Je nachdem, bei welcher
+Wellenlänge mehr/weniger Absorption stattfindet, können Schlüsse auf die atomare Beschaffenheit
+des untersuchten Stoffes gezogen werden.

@@ -1,9 +1,22 @@
 #+title: Vorbereitung Kolloqium V61: He-Ne-Laser
 #+startup: inlineimages latexpreview
 
+#+BEGIN_SRC emacs-lisp
+  (save-excursion
+    (goto-char (point-min))
+    (while (re-search-forward ":DRILL_LAST_REVIEWED: \\[Y.*?\\]" nil t)
+      (replace-match ":DRILL_LAST_REVIEWED: [2023-07-21 Fri 15:00]" nil nil)))
+  (save-buffer)
+#+END_SRC
+
+#+RESULTS:
+
 * Vorbereitungsfragen
 
 ** What are the three basic components of the laser? :drill:
+:PROPERTIES:
+:ID:       c722731f-60a7-4313-9f6a-b2b4fa625ea1
+:END:
 
 *** Antwort :ATTACH:
 :PROPERTIES:
@@ -25,6 +38,9 @@ Ein Laser besteht konzeptionell aus den folgenden drei Bestandteilen:
 
 
 ** What defines the wavelength of the laser? :drill:
+:PROPERTIES:
+:ID:       85a778d5-e222-46eb-ad9d-36539ce1350d
+:END:
 
 *** Antwort
 
@@ -35,6 +51,18 @@ Die Wellenlänge ist abhängig von dem Unterschied der Energieniveaus der Elektr
 \end{equation*}
 
 ** Discuss the most important processes in the active medium. :drill:
+SCHEDULED: <2023-10-26 Thu>
+:PROPERTIES:
+:ID:       f81cae6f-f3a7-4b4b-b669-cc9a68224bb9
+:DRILL_LAST_INTERVAL: 4.14
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 5.0
+:DRILL_EASE: 2.6
+:DRILL_LAST_QUALITY: 5
+:DRILL_LAST_REVIEWED: [2023-07-21 Fri 15:00]
+:END:
 
 Welche Prozesse finden im aktiven Medium statt?
 
@@ -62,6 +90,9 @@ Welche Prozesse finden im aktiven Medium statt?
 
 
 ** Discuss the relationship between the amplification of the light and the population inversion in the active medium. :drill:
+:PROPERTIES:
+:ID:       f473b01e-2f37-438a-9f17-54bcaf57c065
+:END:
 
 *** Antwort :ATTACH:
 :PROPERTIES:
@@ -81,6 +112,9 @@ Da nur durch die stimulierte Emission kohärente Photonen erzeugt werden können
 verstärkt statt abgeschwächt werden.
 
 ** Why is a two-level laser not possible? :drill:
+:PROPERTIES:
+:ID:       0a4290aa-7848-4b9e-ba13-137d6bb6959d
+:END:
 
 *** Antwort
 
@@ -91,6 +125,9 @@ ein Photon *absorbiert*, genauso hoch wie die Wahrscheinlichkeit, dass ein Atom 
 Die zusätzliche spontane Emission sorgt weiterhin dafür, dass nicht einmal diese theoretische Grenze erreicht wird.
 
 ** Which transition is responsible for the red line of the He-Ne-laser? :drill:
+:PROPERTIES:
+:ID:       855a5c7f-5aa3-4d1d-8586-9e3028380dc7
+:END:
 
 *** Antwort :ATTACH:
 :PROPERTIES:
@@ -103,6 +140,18 @@ Mehrere Übergänge des angeregten Neon-Atoms sehen rötlich aus:
 [[attachment:_20231016_212537Bildschirmfoto vom 2023-10-16 21-24-54.png]]
 
 ** How is the population inversion achieved? :drill:
+SCHEDULED: <2023-10-26 Thu>
+:PROPERTIES:
+:ID:       c086995d-c8aa-45b7-86d0-cb2cb7392cec
+:DRILL_LAST_INTERVAL: 4.14
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 5.0
+:DRILL_EASE: 2.6
+:DRILL_LAST_QUALITY: 5
+:DRILL_LAST_REVIEWED: [2023-07-21 Fri 15:00]
+:END:
 
 Wie erzeugt man eine *Besetzungsinversion*? Welches Material wird hier verwendet?
 
@@ -119,13 +168,25 @@ das dieses ionisiert wird. Die Heliumatome werden dabei in einen angeregten Zust
 
 Die Heliumatome übertragen ihre Energie durch *Stöße zweiter Art* auf das Lasermedium (hier Neon).
 
-Bei *Stößen zweiter Art* handelt es sich um einen Stoß zwischen Atomen/Molekülen um Grundzustand und im
+Bei *Stößen zweiter Art* handelt es sich um einen Stoß zwischen Atomen/Molekülen im Grundzustand und im
 angeregten Zustand. Dabei wird die Energie des angeregten Teilchens auf das im Grundzustand übertragen,
 wodurch letzteres angeregt wird, während ersteres in den Grundzustand zurückfällt.
 
 So kann im Neon eine Besetzungsinversion erzeugt werden.
 
-** Calculate the stability parameters $g_1 \cdot g_2$ as a function of the resonator length $L$ for at least two resonator  configurations and plot the result.
+** Calculate the stability parameters $g_1 \cdot g_2$ as a function of the resonator length $L$ for at least two resonator  configurations and plot the result. :drill:
+SCHEDULED: <2023-10-26 Thu>
+:PROPERTIES:
+:ID:       c30db3f9-49de-4d0c-967c-481cf41afc80
+:DRILL_LAST_INTERVAL: 4.14
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.6
+:DRILL_LAST_QUALITY: 5
+:DRILL_LAST_REVIEWED: [2023-07-21 Fri 15:00]
+:END:
 
 Was geben die Stabilitätsparameter an? Wie geht man hier vor? Wie sieht der Plot aus?
 
@@ -153,7 +214,19 @@ mit der Resonatorlänge $L$ und dem Radius $r_i$ der verwendeten Spiegel.
 #+attr_html: :width 400px
 [[attachment:_20231018_125952Bildschirmfoto 2023-10-18 um 12.59.41.png]]
 
-** The available mirror configurations can be found in Table 1. What is the maximum resonator length that can be achieved?
+** The available mirror configurations can be found in Table 1. What is the maximum resonator length that can be achieved? :drill:
+SCHEDULED: <2023-10-26 Thu>
+:PROPERTIES:
+:ID:       4e99898c-4cf0-4a2a-a7be-404c006b7515
+:DRILL_LAST_INTERVAL: 4.14
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.6
+:DRILL_LAST_QUALITY: 5
+:DRILL_LAST_REVIEWED: [2023-07-21 Fri 15:00]
+:END:
 
 Table 1:
 | Spiegel | Design        |
@@ -178,7 +251,19 @@ Setze ineinander ein:
 
 und probiere alle Radii aus der Tabelle aus.
 
-** Describe the intensity curve in the plane perpendicular to the propagation direction for $\text{TEM}_{00}$ and  $\text{TEM}_{01}$ modes.
+** Describe the intensity curve in the plane perpendicular to the propagation direction for $\text{TEM}_{00}$ and  $\text{TEM}_{01}$ modes. :drill:
+SCHEDULED: <2023-10-26 Thu>
+:PROPERTIES:
+:ID:       2ce2fc86-e32d-4f4d-96f4-be1c4152f053
+:DRILL_LAST_INTERVAL: 4.14
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 5.0
+:DRILL_EASE: 2.6
+:DRILL_LAST_QUALITY: 5
+:DRILL_LAST_REVIEWED: [2023-07-21 Fri 15:00]
+:END:
 
 Worfür steht TEM?
 
@@ -195,14 +280,20 @@ Gauß-Kurve ähneln.
 [[attachment:_20231018_162943Laguerre-gaussian.png]]
 
 
-** Explain the term “intracavity aperture for mode selection”.
+** Explain the term “intracavity aperture for mode selection”. :drill:
+:PROPERTIES:
+:ID:       bbfd139b-0813-4af3-92ab-eecd83bc795b
+:END:
 
 *** Antwort
 
 Vorrichtung um die Brennweite des Resonators so zu variieren, dass verschiedene Moden
 ausgewählt weden können.
 
-** What is the difference between longitudinal and transversal modes?
+** What is the difference between longitudinal and transversal modes? :drill:
+:PROPERTIES:
+:ID:       c99127a1-27f4-4d00-992e-b596dfa735c8
+:END:
 
 *** Antwort
 
@@ -213,6 +304,9 @@ ausgewählt weden können.
    Resonator ausbilden
 
 ** Describe the broadenning of the optical transition in gas due to the Doppler effect. :drill:
+:PROPERTIES:
+:ID:       e1b254a8-4acb-48d9-976e-6904282aa67c
+:END:
 
 *** Antwort
 
@@ -220,6 +314,9 @@ Dadurch, dass die Gas-Atome thermische Energie besitzen, bewegen sie sich. Durch
 Doppler-Effekt auf, der das Spektrum ausschmiert.
 
 ** How large is the spectral broadening for the optical transition in Neon gas at room temperature? :drill:
+:PROPERTIES:
+:ID:       f7686aef-0f40-4102-8353-a08a60dc9acf
+:END:
 
 *** Antwort
 
@@ -237,6 +334,9 @@ $m = 3.3509 \cdot 10^{-26} \text{kg}$ ergibt sich ein Verbreiterungsfaktor von
 \end{equation*}
 
 ** Describe the mode spectrum (frequency spectrum) for the laser with typical resonator length L = 1.5m. :drill:
+:PROPERTIES:
+:ID:       e640a685-a791-4637-a9b2-3210afef6775
+:END:
 
 *** Antwort
 
@@ -257,6 +357,9 @@ Für $L=1.5 \text{m}$ ergibt sich
 Resonante Moden sollten also bei vielfachen von $\Delta f$ gefunden werden können.
 
 ** How does mode selection work with the help of a Fabry-Perot etalon? :drill:
+:PROPERTIES:
+:ID:       b75011a0-ee31-48cc-8ec8-f749edb782b5
+:END:
 
 *** Antwort
 
@@ -267,6 +370,9 @@ Das Fabry-Perot Interferometer kann verwendet werden, um spezielle Moden auszuw�
 zuzulassen.
 
 ** The laser under investigation is equipped with Brewster windows fitted to the end of the laser tubes. What is the role of the Brewster windows? What is the resulting polarisation of the laser? :drill:
+:PROPERTIES:
+:ID:       5ff8e188-a8ea-4ef5-94a4-fc6c93ae327f
+:END:
 
 *** Antwort
 
@@ -279,6 +385,18 @@ So ist der Laserstrahl letztlich parallel polarisiert.
 * Versuchsaufbau und Durchführung
 
 ** Aufbau :drill:
+SCHEDULED: <2023-10-26 Thu>
+:PROPERTIES:
+:ID:       bf00159d-7833-4b8a-bbf6-f1141ecd1b51
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [2023-07-21 Fri 15:00]
+:END:
 
 Wie sieht der grobe Versuchsaufbau aus?
 
@@ -300,6 +418,18 @@ Bestandteile:
 Alle Bauteile fußen auf einer optischen Bank.
 
 ** Justage :drill:
+SCHEDULED: <2023-10-26 Thu>
+:PROPERTIES:
+:ID:       7f922c78-364d-4f74-a156-6c84de1fd77d
+:DRILL_LAST_INTERVAL: 4.0
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [2023-07-21 Fri 15:00]
+:END:
 
 Wie muss der Versuchsaufbau justiert werden, um mit dem Versuch beginnen zu können?
 
@@ -313,6 +443,18 @@ Wenn die Spiegel richtig eingestellt sind, beginnt der He-Ne Laser zu leuchten u
 abgeschaltet werden.
 
 ** Messprozess :drill:
+SCHEDULED: <2023-10-26 Thu>
+:PROPERTIES:
+:ID:       2c3d6866-daa4-4435-a6c0-f9f78b7f1152
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [2023-07-21 Fri 15:00]
+:END:
 
 Welche Eigenschaften des Lasers werden in diesem Versuch gemessen?
 
@@ -321,8 +463,21 @@ Welche Eigenschaften des Lasers werden in diesem Versuch gemessen?
 1. Messung der Wellenlänge des Lasers
 2. Polarisation des Lasers
 3. Überprüfung der Stabilitätsbedingung und Messung sovieler Moden wie möglich
+4. Messung der Intensität
 
 ** Brewster-Fenster :drill:
+SCHEDULED: <2023-10-26 Thu>
+:PROPERTIES:
+:ID:       ceaab117-ebac-476c-959b-e8373dccbdf4
+:DRILL_LAST_INTERVAL: 4.14
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 5.0
+:DRILL_EASE: 2.6
+:DRILL_LAST_QUALITY: 5
+:DRILL_LAST_REVIEWED: [2023-07-21 Fri 15:00]
+:END:
 
 Was ist ein Brewster-Fenster?
 
